@@ -33,7 +33,7 @@ The **THRIVE** project builds on this infrastructure, extending it beyond the pa
 
 #### Louvain Foundation Dataset  
 
-Complementing this national longitudinal dataset, the **Louvain Foundation dataset** provides a cross-sectional, multi-country perspective on similar societal processes. It captures how individuals across diverse contexts perceive democracy, experience basic psychological needs, navigate threats, and evaluate societal institutions. This makes it an ideal comparative counterpart to Belgium’s long-form trajectory data.
+[to be completed]
 
 ---
 
@@ -90,8 +90,7 @@ Approved users will be asked to sign a **Data Use Agreement (DUA)**, which speci
 
 Access is granted via **private links** (e.g., private GitHub repo or secure download token) tied to a specific **dataset version**.
 
-[Read access policy](data/access/access_policy.qmd){.btn .btn-primary}  
-[Request data access](data/access/request_form.qmd){.btn .btn-outline}
+[Request data access](data/download.qmd){.btn .btn-primary} 
 
 ---
 

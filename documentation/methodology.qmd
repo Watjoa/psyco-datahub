@@ -34,7 +34,7 @@ Analyses conducted with these datasets include:
 - Experimental and quasi-experimental designs embedded in specific waves.
 - Mixed-method integration with qualitative data.
 
-See full list of projects the overview of [publications](../tutorials/publications.qmd) 
+See full list of projects the overview of [publications](publications.qmd) 
 
 The data hub provides example scripts and tutorials to replicate common analytic strategies.
 

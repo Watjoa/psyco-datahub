@@ -160,6 +160,179 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<style>
+body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f5f5f7;
+    color: #222;
+    line-height: 1.6;
+  }
+
+  main {
+    padding: 2rem;
+  }
+
+  h1 {
+    margin-bottom: 0.25rem;
+  }
+
+  .page-intro {
+    max-width: 800px;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+
+  .year-section {
+    margin-bottom: 3rem;
+  }
+
+  .year-heading {
+    margin: 2rem 0 1rem;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.25rem;
+  }
+
+  .pub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pub-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e5e5e9;
+    display: flex;                /* NEW: side-by-side layout */
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+
+.pub-media {
+  flex: 0 0 200px;
+}
+
+.pub-media img {
+  width: 100%;
+  height: 100%;           /* full card height */
+  object-fit: cover;      /* crop intelligently */
+  border-radius: 10px;
+}
+
+  .pub-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+  }
+
+  .pub-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+  }
+
+  .pub-journal {
+    font-style: italic;
+  }
+
+  .pub-abstract-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin-bottom: 0.1rem;
+  }
+
+  .pub-abstract {
+    font-size: 0.9rem;
+    margin: 0.25rem 0 0;
+    color: #444;
+  }
+
+  .pub-keywords-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .pub-keywords {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .pub-keywords li {
+    font-size: 0.8rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    border: 1px solid #ddd;
+    background: #fafafa;
+  }
+
+.pub-content {
+    flex: 1 1 auto;               /* text takes remaining space */
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* Optional: stack on small screens */
+  @media (max-width: 600px) {
+    .pub-card {
+      flex-direction: column;
+    }
+    .pub-media {
+      flex: 0 0 auto;
+      max-width: 140px;
+    }
+  }
+  
+  .pub-link {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #0052cc;
+    align-self: flex-start;
+  }
+
+  .pub-link:hover {
+    text-decoration: underline;
+  }
+
+  .abstract-container {
+    margin-top: 0.25rem;
+  }
+
+  .readmore-btn {
+    background: #f0f0f5;
+    border: 1px solid #ccc;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-top: 0.4rem;
+    transition: background 0.2s;
+  }
+
+  .readmore-btn:hover {
+    background: #e5e5ec;
+  }
+
+  .pub-abstract.full {
+    margin-top: 0.5rem;
+  }
+</style>
  
 <!-- Wollast et al. (2025). Gender inequality and cultural values... Current Psychology. -->
 <article class="pub-card" data-year="2025">

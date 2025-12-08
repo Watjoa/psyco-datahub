@@ -3,8 +3,6 @@ title: "Data Access Request"
 format:
   html:
     toc: false
-    page-layout: full
-    smooth-scroll: true
 ---
 
 Researchers who wish to obtain restricted, de-identified datasets are invited to

@@ -67,7 +67,7 @@
     "href": "index.html#about",
     "title": "PsySoc Data Hub",
     "section": "About",
-    "text": "About\nThe PsySoc Data Hub brings together two major, complementary datasets that offer unparalleled insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.\n\nMotivation Barometer & THRIVE Dataset\nAt the heart of the hub lies the Motivation Barometer, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.\nThe THRIVE project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven dataset for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.\n\n\nLouvain Foundation Dataset\nComplementing this national longitudinal dataset, the Louvain Foundation dataset provides a cross-sectional, multi-country perspective on similar societal processes. It captures how individuals across diverse contexts perceive democracy, experience basic psychological needs, navigate threats, and evaluate societal institutions. This makes it an ideal comparative counterpart to Belgium’s long-form trajectory data."
+    "text": "About\nThe PsySoc Data Hub brings together two major, complementary datasets that offer unparalleled insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.\n\nMotivation Barometer & THRIVE Dataset\nAt the heart of the hub lies the Motivation Barometer, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.\nThe THRIVE project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven dataset for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.\n\n\nLouvain Foundation Dataset\n[to be completed]"
   },
   {
     "objectID": "index.html#what-the-data-hub-offers",
@@ -81,7 +81,7 @@
     "href": "index.html#three-layer-access-model",
     "title": "PsySoc Data Hub",
     "section": "Three-layer access model",
-    "text": "Three-layer access model\nTo safeguard privacy and ensure responsible use of the data, the hub follows a three-layer access structure:\n\n🔓 Layer 1: Public Access\nOpenly available to everyone:\n\nStudy documentation and protocols\n\nCodebooks and variable lists\n\nAggregated statistics and interactive dashboards\n\nAnalysis scripts and tutorials\n\nUse this layer to:\n\nExplore what the projects are about\n\nUnderstand the structure of the data\n\nTeach and learn longitudinal analysis techniques\n\nBrowse documentation\nView tutorials\n\n\n\n📝 Layer 2: Registered Access\nRestricted, de-identified versions of the real data are accessible on request.\nResearchers can apply for access by submitting:\n\nA brief project description (aims, research questions, planned analyses)\n\nEvidence of ethical approval (where applicable)\n\nAn overview of the variables or modules needed\n\nApproved users will be asked to sign a Data Use Agreement (DUA), which specifies:\n\nNo re-identification attempts\n\nNo redistribution to third parties\n\nSecure storage and responsible handling\n\nProper citation and acknowledgement of the datasets\n\nAccess is granted via private links (e.g., private GitHub repo or secure download token) tied to a specific dataset version.\nRead access policy\nRequest data access\n\n\n\n🔒 Layer 3: Internal Access\nThe full versions of the datasets (including detailed identifiers, extended demographics, and sensitive modules) are accessible only to authorized members of the project consortium.\nThese data:\n\nAre stored in private repositories with role-based permissions\n\nSupport ongoing longitudinal modelling, manuscript preparation, and consortium-driven projects\n\nAre not shared externally without additional procedures"
+    "text": "Three-layer access model\nTo safeguard privacy and ensure responsible use of the data, the hub follows a three-layer access structure:\n\n🔓 Layer 1: Public Access\nOpenly available to everyone:\n\nStudy documentation and protocols\n\nCodebooks and variable lists\n\nAggregated statistics and interactive dashboards\n\nAnalysis scripts and tutorials\n\nUse this layer to:\n\nExplore what the projects are about\n\nUnderstand the structure of the data\n\nTeach and learn longitudinal analysis techniques\n\nBrowse documentation\nView tutorials\n\n\n\n📝 Layer 2: Registered Access\nRestricted, de-identified versions of the real data are accessible on request.\nResearchers can apply for access by submitting:\n\nA brief project description (aims, research questions, planned analyses)\n\nEvidence of ethical approval (where applicable)\n\nAn overview of the variables or modules needed\n\nApproved users will be asked to sign a Data Use Agreement (DUA), which specifies:\n\nNo re-identification attempts\n\nNo redistribution to third parties\n\nSecure storage and responsible handling\n\nProper citation and acknowledgement of the datasets\n\nAccess is granted via private links (e.g., private GitHub repo or secure download token) tied to a specific dataset version.\nRequest data access\n\n\n\n🔒 Layer 3: Internal Access\nThe full versions of the datasets (including detailed identifiers, extended demographics, and sensitive modules) are accessible only to authorized members of the project consortium.\nThese data:\n\nAre stored in private repositories with role-based permissions\n\nSupport ongoing longitudinal modelling, manuscript preparation, and consortium-driven projects\n\nAre not shared externally without additional procedures"
   },
   {
     "objectID": "index.html#using-the-data",
@@ -263,34 +263,69 @@
     "href": "data/access/access_policy.html",
     "title": "Data Access Policy",
     "section": "",
-    "text": "The Motivation & Crisis Data Hub follows a three-layer access model to balance open science with participant protection and ethical use.\n\n\nOpen access is provided to:\n\nStudy documentation and protocols\n\nCodebooks and metadata\n\nAggregated statistics and dashboards\n\nSynthetic datasets and analysis examples\n\nThese materials are freely available and may be used for teaching, exploratory analyses, and methodological development, provided that the hub is properly cited.\n\n\n\nRestricted, de-identified datasets are available on request to qualified researchers.\nRequirements for access include:\n\nSubmission of a brief project description\n\nEvidence of ethical approval (where applicable)\n\nAgreement to the terms outlined in the Data Use Agreement (DUA)\n\nApproved users will receive controlled access (e.g., private GitHub repository or secure download link) to a specific dataset version.\n\n\n\nFull datasets, including highly detailed or sensitive variables, are only accessible to authorized members of the project consortium and are not distributed externally.\n\n\n\nAll users of the restricted datasets agree to:\n\nRefrain from any attempt to re-identify participants\n\nStore data securely and prevent unauthorized access\n\nNot redistribute the data to third parties\n\nCite the dataset and relevant publications appropriately\n\nInform the project team of any manuscripts or reports based on the data\n\nFurther details are specified in the Data Use Agreement provided upon approval."
+    "text": "-The Motivation & Crisis Data Hub follows a three-layer access model to balance open science with participant protection and ethical use."
   },
   {
     "objectID": "data/access/access_policy.html#layer-1-public-access",
     "href": "data/access/access_policy.html#layer-1-public-access",
     "title": "Data Access Policy",
-    "section": "",
-    "text": "Open access is provided to:\n\nStudy documentation and protocols\n\nCodebooks and metadata\n\nAggregated statistics and dashboards\n\nSynthetic datasets and analysis examples\n\nThese materials are freely available and may be used for teaching, exploratory analyses, and methodological development, provided that the hub is properly cited."
+    "section": "Layer 1 – Public Access",
+    "text": "Layer 1 – Public Access\nOpen access is provided to:\n\nStudy documentation and protocols\n\nCodebooks and metadata\n\nAggregated statistics and dashboards\n\nSynthetic datasets and analysis examples\n\nThese materials are freely available and may be used for teaching, exploratory analyses, and methodological development, provided that the hub is properly cited."
   },
   {
     "objectID": "data/access/access_policy.html#layer-2-registered-access",
     "href": "data/access/access_policy.html#layer-2-registered-access",
     "title": "Data Access Policy",
-    "section": "",
-    "text": "Restricted, de-identified datasets are available on request to qualified researchers.\nRequirements for access include:\n\nSubmission of a brief project description\n\nEvidence of ethical approval (where applicable)\n\nAgreement to the terms outlined in the Data Use Agreement (DUA)\n\nApproved users will receive controlled access (e.g., private GitHub repository or secure download link) to a specific dataset version."
+    "section": "Layer 2 – Registered Access",
+    "text": "Layer 2 – Registered Access\nRestricted, de-identified datasets are available on request to qualified researchers.\nRequirements for access include:\n\nSubmission of a brief project description\n\nEvidence of ethical approval (where applicable)\n\nAgreement to the terms outlined in the Data Use Agreement (DUA)\n\nApproved users will receive controlled access (e.g., private GitHub repository or secure download link) to a specific dataset version."
   },
   {
     "objectID": "data/access/access_policy.html#layer-3-internal-access",
     "href": "data/access/access_policy.html#layer-3-internal-access",
     "title": "Data Access Policy",
-    "section": "",
-    "text": "Full datasets, including highly detailed or sensitive variables, are only accessible to authorized members of the project consortium and are not distributed externally."
+    "section": "Layer 3 – Internal Access",
+    "text": "Layer 3 – Internal Access\nFull datasets, including highly detailed or sensitive variables, are only accessible to authorized members of the project consortium and are not distributed externally."
   },
   {
     "objectID": "data/access/access_policy.html#responsibilities-of-data-users",
     "href": "data/access/access_policy.html#responsibilities-of-data-users",
     "title": "Data Access Policy",
-    "section": "",
-    "text": "All users of the restricted datasets agree to:\n\nRefrain from any attempt to re-identify participants\n\nStore data securely and prevent unauthorized access\n\nNot redistribute the data to third parties\n\nCite the dataset and relevant publications appropriately\n\nInform the project team of any manuscripts or reports based on the data\n\nFurther details are specified in the Data Use Agreement provided upon approval."
+    "section": "Responsibilities of Data Users",
+    "text": "Responsibilities of Data Users\nAll users of the restricted datasets agree to:\n\nRefrain from any attempt to re-identify participants\n\nStore data securely and prevent unauthorized access\n\nNot redistribute the data to third parties\n\nCite the dataset and relevant publications appropriately\n\nInform the project team of any manuscripts or reports based on the data\n\nFurther details are specified in the Data Use Agreement provided upon approval."
+  },
+  {
+    "objectID": "documentation/variables_overview.html#core-psychological-processes",
+    "href": "documentation/variables_overview.html#core-psychological-processes",
+    "title": "Variable overview",
+    "section": "1. Core psychological processes",
+    "text": "1. Core psychological processes\n\nBasic Psychological Needs\n\nAutonomy (satisfaction and frustration)\nCompetence (satisfaction and frustration)\nRelatedness (satisfaction and frustration)\n\nMotivation\n\nAdherence to the measures\n\nIdentified motivation\nIntrojected motivation\nExternal motivation\nAmotivation\nEffort\nReactance\n\nVaccination\n\nIdentified motivation\nExternal motivation\nAmotivation (defiance)\nAmotivation (distrust)\nAmotivation (self-efficacy)\n\nMeasures-specific: face covering, hand washing, taking pcr test, physical distance, quarantaine, social distancing, ventilation\nOutcome expectation: physical distance, hand washing, face covering, pcr test, social contact, telework, ventilatino (self and population)\nSelf-efficacy: physical distance, hand washing, face covering, pcr test, social contact, telework, ventilatino (duration and effort)\n\nWell-being and Ill-being\n\nAnxiety\nAspiration (importance and in practice, post-crisis)\nBoredom\nClimate anxiety\nConcerns: health, significant others, situation, finances, job, climate change, war, new COVID-19 variants\nDepression\nEmotion-Regulation\nLife satisfaction\nLoneliness\nMindfulness\nNovelty\nParental stress\nSleep duration\nVitality and depletion"
+  },
+  {
+    "objectID": "documentation/variables_overview.html#behavior-and-behavioral-intentions",
+    "href": "documentation/variables_overview.html#behavior-and-behavioral-intentions",
+    "title": "Variable overview",
+    "section": "2. Behavior and behavioral intentions",
+    "text": "2. Behavior and behavioral intentions\n\nBehavior\n\nadherence to the measures (keeping physical distance, hand washing, avoiding social contect, wearing mouthmask, working from home, ventilation)\nplanned adherence\ntaking part in a protest\n\nIntention to climate activism"
+  },
+  {
+    "objectID": "documentation/variables_overview.html#perceptions-of-crisis-and-society",
+    "href": "documentation/variables_overview.html#perceptions-of-crisis-and-society",
+    "title": "Variable overview",
+    "section": "3. Perceptions of crisis and society",
+    "text": "3. Perceptions of crisis and society\n\nRisk perception\n\nCOVID-19: perceived infection chance and severity of symptoms (towards self and population)\nfuture crises: perceived infection chance and severity of symptoms (towards self and population)\n\nTrust\n\nhow competence one is perceived to be (celebrities, doctors, experts, nurses, healthcare, pharmacists, politicans)\ntrust and perceived expertise with doctor, expert, media, pharmacist, politicians, other vaccinated persons\n\nSocietal themes\n\npopulism\nanomie\nautocratic versus democratic attitudes\n\nPerception of how the crisis is handled by the policy\nEvaluation of: the measures, obligated vaccination\nMemories of the COVID-19 crisis\nFuture crisis\n\napproach\npreparedness\n\nConspiracy theories\n\nOn corona\nGeneral\n\nCommunication style\n\nAutonomy-supportive (Participative, Attuning)\nStructure (Guiding, Clarifying)\nControlling (Demanding, Domineering)\nChaos (Abandoning, Awaiting)"
+  },
+  {
+    "objectID": "documentation/variables_overview.html#communication-and-information-context",
+    "href": "documentation/variables_overview.html#communication-and-information-context",
+    "title": "Variable and Module Overview",
+    "section": "4. Communication and information context",
+    "text": "4. Communication and information context\n\nCommunication style\n\nAutonomy-supportive (Participative, Attuning)\nStructure (Guiding, Clarifying)\nControlling (Demanding, Domineering)\nChaos (Abandoning, Awaiting)\n\nCrisis-related information\n\nInfections: raw numbers, incremental value (source: Sciensano)\nHospitalizations: raw numbers, incremental value (source: Sciensano)\nMortalities: raw numbers, incremental value (source: Sciensano)\nNumber of vaccination doses (A - EEE, source: Sciensano)\nStringency Index (source: Oxford Govermental Tool)"
+  },
+  {
+    "objectID": "documentation/variables_overview.html#contextual-and-background-variables",
+    "href": "documentation/variables_overview.html#contextual-and-background-variables",
+    "title": "Variable overview",
+    "section": "4. Contextual and background variables",
+    "text": "4. Contextual and background variables\n\nMeta\n\nDate\nWeather (daily temperature, sun duration, humidity)\nGoogle Mobility data\nHoliday periods\nSeason\n\nSociodemographics\n\nage\ncivil status\ncomorbidities\ninfection/hospitalization status\neducation level\nfinancial situation\ngender\nlanguage\nphysical activity\nprovince of living\nreligion\nsocio-economic status\nwork situation\n\nCrisis-related information\n\nInfections: raw numbers, incremental value (source: Sciensano)\nHospitalizations: raw numbers, incremental value (source: Sciensano)\nMortalities: raw numbers, incremental value (source: Sciensano)\nNumber of vaccination doses (A - EEE, source: Sciensano)\nStringency Index (source: Oxford Govermental Tool)"
   }
 ]
