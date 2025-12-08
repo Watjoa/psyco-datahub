@@ -1,0 +1,27 @@
+---
+title: "Dashboards"
+format:
+  html:
+    toc: true
+---
+
+This section provides interactive visualizations of key indicators across time.
+
+Available dashboards include:
+
+- [Trends in basic psychological needs](#basic-psychological-needs)
+- [Motivational trajectories](#Motivational-trajectories)
+- [Well-being and mental health indicators](#well-being-indicators)
+
+These dashboards are based on aggregated or synthetic data and are intended for exploration and communication, not for detailed statistical inference.
+
+# Basic psychological needs
+
+# Motivational trajectories
+
+# Well-being indicators
+
+::: {.callout-important}
+[webpage will be updated soon]
+:::
+

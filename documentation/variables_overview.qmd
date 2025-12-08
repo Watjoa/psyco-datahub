@@ -1,0 +1,42 @@
+---
+title: Variable and Module Overview
+format:
+  html:
+    toc: true
+    toc-depth: 5
+    page-layout: full
+    smooth-scroll: true
+---
+
+This page provides an overview of the main variable groups and modules available in the datasets.
+
+# Core modules
+
+- **Basic Psychological Needs**
+  - Autonomy satisfaction and frustration
+  - Competence satisfaction and frustration
+  - Relatedness satisfaction and frustration
+
+- **Motivation**
+
+
+- **Well-being and Ill-being**
+
+
+# Context-specific modules
+
+- **COVID-19 and health behavior**
+
+
+- **Communication & Policy Perceptions**
+
+- **Policy & Society**
+
+
+- **Social Context and Inequalities**
+
+
+# Cross-wave consistency
+
+Where possible, constructs were measured with consistent items and response scales across waves to facilitate longitudinal analyses. Any changes in wording, scaling, or module composition are documented in the relevant codebook.
+

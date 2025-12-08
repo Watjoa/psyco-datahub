@@ -1,0 +1,43 @@
+---
+title: Methodology
+format:
+  html:
+    toc: true
+---
+
+# Data collection procedures
+
+- Online questionnaires administered via secure survey platform Qualtrics.
+- Participants reached through social media advertisement, newspapers, institutional mailing lists, and partner organizations.
+- No financial incentives: participation was voluntary and based on informed consent.
+- Attention checks ("Please, assign option 2 here") and data quality indicators (e.g., removing all participants having completed the survey in less than 200 seconds) were used to identify low-quality responses.
+
+# Data cleaning and processing
+
+Key steps include:
+
+1. **Screening for invalid responses** (e.g., extremely short completion time, failed attention checks).
+2. **Handling missing data** according to pre-specified rules (e.g., minimum item responses for scale scores). - see tutorial how to handle missing data
+3. **Recoding and labeling variables** consistently across surveys, waves and projects. - see tutorial
+4. **Constructing composite scores** (e.g., mean scores). - see tutorial
+5. **Creating weights** for selected waves to approximate Belgian population distributions in age, gender, education, and region. - see tutorial
+
+All major processing steps are documented in reproducible R scripts, available in the GitHub repository and referenced in the [tutorials](../tutorials/index.qmd).
+
+# Analytic approaches
+
+Analyses conducted with these datasets include:
+
+- Cross-sectional regression and structural equation models.
+- Multilevel models and growth curve models for longitudinal data.
+- Cluster profile, latent class, and trajectory analyses. - see tutorial
+- Experimental and quasi-experimental designs embedded in specific waves.
+- Mixed-method integration with qualitative data.
+
+See full list of projects the overview of [publications](../tutorials/publications.qmd) 
+
+The data hub provides example scripts and tutorials to replicate common analytic strategies.
+
+# Ethics
+
+[to be updated soon]

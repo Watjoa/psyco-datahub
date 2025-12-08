@@ -1,0 +1,60 @@
+---
+title: "Basic Longitudinal Models"
+format:
+  html:
+    toc: true
+---
+
+# Basic Longitudinal Models
+
+This tutorial illustrates how to estimate simple longitudinal models using the panel structure of the data.
+
+We assume the dataset contains:
+
+- `id` – participant identifier  
+- `wave` – measurement occasion  
+- `autonomy` – autonomy satisfaction score  
+- Additional covariates (e.g., age, gender, risk perception)
+
+## 1. Linear mixed model
+
+<!-- ```{r} -->
+<!-- #| message: false -->
+<!-- #| warning: false -->
+
+<!-- library(tidyverse) -->
+<!-- library(lme4) -->
+
+<!-- data <- readr::read_csv("data/synthetic/synthetic_longitudinal.csv") -->
+
+<!-- model <- lmer(autonomy ~ wave + (1 | id), data = data) -->
+
+<!-- summary(model) -->
+<!-- ``` -->
+
+<!-- ## 2. Adding covariates -->
+
+<!-- ```{r} -->
+<!-- model_cov <- lmer(autonomy ~ wave + age + gender + (1 | id), data = data) -->
+
+<!-- summary(model_cov) -->
+<!-- ``` -->
+
+<!-- ## 3. Plotting predicted trends -->
+
+<!-- ```{r} -->
+<!-- # Example: plotting raw means by wave -->
+<!-- data %>% -->
+<!--   group_by(wave) %>% -->
+<!--   summarise(mean_autonomy = mean(autonomy, na.rm = TRUE)) %>% -->
+<!--   ggplot(aes(x = wave, y = mean_autonomy)) + -->
+<!--   geom_line() + -->
+<!--   geom_point() + -->
+<!--   labs( -->
+<!--     x = "Wave", -->
+<!--     y = "Mean autonomy satisfaction", -->
+<!--     title = "Mean autonomy satisfaction over time (synthetic example)" -->
+<!--   ) -->
+<!-- ``` -->
+
+For more advanced models (e.g., growth curve models, cross-lagged panel models), you can use packages such as `lavaan`, `nlme`, or `brms`.

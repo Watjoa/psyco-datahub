@@ -1,0 +1,6 @@
+format:
+  html:
+    df-print: paged
+    lang: en
+    code-block-bg: true
+    code-block-border-left: "#0366d6"

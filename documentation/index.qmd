@@ -1,0 +1,27 @@
+---
+title: "Documentation"
+format:
+  html:
+    toc: false
+    page-layout: full
+    smooth-scroll: true
+---
+
+This section provides detailed information about the datasets, study design, measures, and theoretical frameworks underlying the **Motivation Barometer** and **THRIVE** projects.
+
+Use the links below to navigate to:
+
+- [Study design](study_design.qmd)
+- [Methodology](methodology.qmd)
+- [Variables & Modules overview](variables_overview.qmd)
+- [Codebook](codebook.qmd)
+
+<br>
+
+## How to use this documentation
+
+The documentation is structured to support different types of users:
+
+- **Researchers** can find detailed information on sampling, measures, and analysis constraints.
+- **Students** can use the codebooks and tutorials to learn various types of analysis.
+- **Policy stakeholders** can consult conceptual overviews and variable groupings relevant to their domain.

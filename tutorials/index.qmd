@@ -1,0 +1,15 @@
+---
+format:
+  html:
+    toc: false
+    page-layout: full
+    smooth-scroll: true
+---
+
+# Tutorials
+
+This section provides step-by-step examples for working with the datasets in R.
+
+Available tutorials include:
+
+[to be updated soon]

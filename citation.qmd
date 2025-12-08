@@ -1,0 +1,29 @@
+---
+title: "Citation & Acknowledgements"
+format:
+  html:
+    toc: true
+    page-layout: article
+---
+
+If you use the datasets, documentation, or tutorials from this hub, please cite the relevant dataset and acknowledge the project team.
+
+## Dataset citations
+
+**Motivation Barometer and Thrive dataset**
+
+> Motivation Barometer & Thrive Dataset, Version X.X. DOI: [to be added].
+
+Please also cite key methodological or conceptual papers associated with the project, as specified in the project’s publications. [see page]
+
+## Acknowledgement statement
+
+We recommend including the following acknowledgement in publications:
+
+> “This research uses data from the Motivation Barometer and/or THRIVE projects, coordinated at Ghent University and xxxx. We gratefully acknowledge the participants and the wider project team for making these data available. Any errors or interpretations remain the responsibility of the authors.”
+
+## How to reference the Data Hub
+
+When referring to the data hub itself (e.g., in methods or data availability statements), you may write:
+
+> “Data and documentation are available through the PsySoc Data Hub (https://[your-url-here]), which provides layered access to synthetic datasets, documentation, and restricted de-identified data upon request.”

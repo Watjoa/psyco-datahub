@@ -1,0 +1,17 @@
+---
+title: "Using Survey Weights"
+format:
+  html:
+    toc: true
+---
+
+# Using Survey Weights
+
+Some waves include survey weights to better approximate the Belgian population in terms of age, gender, education, and region.
+
+This tutorial shows how to:
+
+1. Specify a survey design object with weights.
+2. Compute weighted estimates for key variables.
+
+Always consult the documentation for each wave to understand how weights were constructed and when they should be used.

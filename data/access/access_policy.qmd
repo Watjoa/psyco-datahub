@@ -1,0 +1,49 @@
+---
+title: "Data Access Policy"
+format:
+  html:
+    toc: true
+---
+
+# Data Access Policy
+
+The Motivation & Crisis Data Hub follows a three-layer access model to balance open science with participant protection and ethical use.
+
+## Layer 1 – Public Access
+
+Open access is provided to:
+
+- Study documentation and protocols  
+- Codebooks and metadata  
+- Aggregated statistics and dashboards  
+- Synthetic datasets and analysis examples  
+
+These materials are freely available and may be used for teaching, exploratory analyses, and methodological development, provided that the hub is properly cited.
+
+## Layer 2 – Registered Access
+
+Restricted, de-identified datasets are available on request to qualified researchers.
+
+Requirements for access include:
+
+- Submission of a brief project description  
+- Evidence of ethical approval (where applicable)  
+- Agreement to the terms outlined in the Data Use Agreement (DUA)  
+
+Approved users will receive controlled access (e.g., private GitHub repository or secure download link) to a specific dataset version.
+
+## Layer 3 – Internal Access
+
+Full datasets, including highly detailed or sensitive variables, are only accessible to authorized members of the project consortium and are not distributed externally.
+
+## Responsibilities of Data Users
+
+All users of the restricted datasets agree to:
+
+- Refrain from any attempt to re-identify participants  
+- Store data securely and prevent unauthorized access  
+- Not redistribute the data to third parties  
+- Cite the dataset and relevant publications appropriately  
+- Inform the project team of any manuscripts or reports based on the data  
+
+Further details are specified in the Data Use Agreement provided upon approval.

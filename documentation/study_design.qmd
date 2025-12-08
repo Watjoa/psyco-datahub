@@ -1,0 +1,58 @@
+---
+title: "Study designs"
+format:
+  html:
+    toc: true
+    page-layout: full
+---
+
+## Overview
+
+The **Motivation Barometer** and **THRIVE datasets** comprise cross-sectional and longitudinal data collected during and after the COVID-19 pandemic. The key aims include:
+
+- Assessing changes in motivation, psychological needs, and well-being over time.
+- Examining responses to public communication and policy measures.
+- Investigating links between societal conditions, behavior and mental health.
+- Deriving evidence-based recommendations for future crisis preparedness and inclusive post-COVID policies.
+
+Below, you can find more detailed information on both projects.
+
+## Motivation Barometer
+
+The **Motivation Barometer** is a large-scale, online monitoring study that was launched on 19 March 2020, one day after the first national lockdown in Belgium. During the first ten weeks of the pandemic, daily surveys were administered, with a subset of participants followed for ten consecutive weeks. As the pandemic evolved, new waves were organized at a slower pace and adapted to emerging topics (e.g., vaccination, COVID certificate, trust, conspiracy beliefs).
+
+- **Total waves:** more than 110 measurement waves over roughly 2.5 years.  
+- **Total responses:** nearly 484 000 completed questionnaires.  
+- **Unique participants:** over 320 000 individuals.  
+- **Design:** combination of cross-sectional cohorts and longitudinal panels, with targeted subsamples (e.g., students, parents, older adults, athletes, (un)vaccinated individuals).
+
+Each wave combined a core set of variables (motivation, basic psychological needs, adherence to measures) with topical modules tailored to the phase of the pandemic (e.g., attitudes toward mandatory vaccination, perceptions of the COVID certificate, conspiracy beliefs, boredom, loneliness).
+
+## THRIVE Project
+
+The **THRIVE** project ("Taking stock to foster health and trust for an inclusive post-Covid society") is a BELSPO funded Post-Covid research programme. THRIVE explicitly builds on the Motivation Barometer by:
+
+- Consolidating and harmonizing existing Motivation Barometer waves.  
+- Adding new post-Covid follow-up waves.  
+- Integrating complementary qualitative and survey data.  
+
+Its core objectives are to:
+
+1. Chart the **social and psychological heterogeneity** of the population during the COVID-19 crisis by identifying distinctive trajectories of motivation, well-being, trust, and democratic attitudes.
+2. Examine how these trajectories relate to **resilience and vulnerability**, including long-term mental health outcomes.
+3. Combine multiple **disciplines and methods** (health psychology, motivation psychology, social psychology, sociology; quantitative and qualitative approaches).
+4. Identify **contextual drivers** (e.g., communication style, stringency of measures, trust, ideology) that feed into people’s experiences and reactions.
+
+## Longitudinal structure
+
+[to be updated soon]
+
+## Ethical Considerations
+
+All data collections were approved by the relevant ethics committees. Participants:
+
+- ... provided informed consent before participation.  
+- ... were informed about the aims of the project, data handling, and their rights.  
+- ... could withdraw at any time without consequences.
+
+Ethical and data protection procedures are detailed in the project’s ethics applications and summarized in the [methodology](methodology.qmd) section.

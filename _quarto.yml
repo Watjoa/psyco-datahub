@@ -1,76 +1,51 @@
 project:
   type: website
-  output-dir: docs
-website:
-  title: "Motivation & Democracy Data Hub"
- #image: "datahublogo.png"
-  favicon: "favicon.png"
-  # google-analytics: "G-FV9Z7SDZ0M"
- # open-graph: true
-  repo-actions: [edit, issue]
-  twitter-card: true
-  sidebar: false 
-  #site-url: https://quarto.org
-  # sidebar:
-  #   search: true
-    # style: "docked"
-  page-footer:
-    center: "© 2025 Joachim Waterschoot"
-  navbar:
-    background: light
-    logo: "datahublogo.png"
-    logo-alt: "logo."
-    #collapse-below: lg
-   # style: "fixed"
-    right:
-      - icon: github
-        href: https://github.com/Watjoa
-        aria-label: Quarto GitHub
-    left:
-      - text: "Purpose"
-        href: index.qmd#concept-note
-      - text: "Explore"
-        href: index.qmd#explore
-      - text: "Documentation"
-        href: index.qmd#documentation
-      - text: "Governance & ethics"
-        href: index.qmd#governance-ethics
-      - text: "Literature overview"
-        href: LiteratureOverview.qmd
-    
 
-bibliography: references.bib
+website:
+  title: "PsySoc Data Hub"
+  favicon: favicon_io/favicon-32x32.png
+  navbar:
+    background: primary
+    search: true
+    right:
+      - text: "Home"
+        href: index.qmd
+      - text: "Dashboards"
+        href: dashboards/index.qmd
+      - text: "Documentation"
+        href: documentation/index.qmd
+      - text: "Data Access"
+        href: data/download.qmd
+      - text: "Tutorials"
+        href: tutorials/index.qmd
+      - text: "Citation"
+        href: citation.qmd
+      - text: "Publications"
+        href: publications.qmd
+      - icon: github
+        href: "https://github.com/"
+        aria-label: GitHub
+
+  page-footer:
+    center: "© 2025 - Centre for Developmental and Motivation Psychology (COM)"
+        
 
 format:
   html:
-    respect-user-color-scheme: true
-    toc: false
-    page-layout: full
-    # grid:
-    #   body-width: 1100px     # your desired content width
-    #   margin-width: 0px      # remove margin column
-    #   sidebar-width: 50px     # ensure no sidebar column is reserved
-    theme:
-      light: [cosmo, theme.scss]
-      dark: [cosmo, theme-dark.scss]
-    code-copy: true
-    code-overflow: wrap
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    number-sections: false
+    theme: flatly
+    smooth-scroll: true
+    highlight-style: github
+    code-fold: false
+    code-line-numbers: false
+    link-external-newwindow: true
     css: styles.css
-    # include-in-header:
-    #   - text: |
-    #       <script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js"
-    #         data-light-bg="#E8EDF2"
-    #         data-light-text="#404041"
-    #         data-light-lt="#ee6331"
-    #         data-light-gt="#447099"
-    #         data-dark-bg="#333333"
-    #         data-dark-lt="#ffffff"
-    #         data-dark-gt="#ffffff"></script>
-    # include-after-body: js.html
-    # grid:
-    #   sidebar-width: 10px
-    #   body-width: 1100px
-    #   margin-width: 0px
-    # smooth-scroll: true
-    # lang: en
-    # page-layout: full
+    grid:
+      gutter-width: 2rem
+
+
+metadata-files:
+  - _metadata.yml

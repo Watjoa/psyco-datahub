@@ -1,0 +1,45 @@
+---
+title: "Handling Missing Data"
+format:
+  html:
+    toc: true
+---
+
+# Handling Missing Data
+
+This tutorial provides basic strategies for inspecting and handling missing data in the datasets.
+
+Topics include:
+
+- Inspecting patterns of missingness.
+- Applying simple rules for constructing scale scores.
+- Considering multiple imputation for more advanced analyses.
+
+```{r}
+#| message: false
+#| warning: false
+
+# library(tidyverse)
+# library(naniar)
+# 
+# data <- readr::read_csv("data/synthetic/synthetic_dataset.csv")
+# 
+# # Visualize missingness
+# gg_miss_var(data)
+# 
+# # Example: compute a mean score with a minimum number of valid items
+# need_items <- c("autonomy_item1", "autonomy_item2", "autonomy_item3")
+# 
+# data <- data %>%
+#   rowwise() %>%
+#   mutate(
+#     autonomy_mean = ifelse(
+#       sum(!is.na(c_across(all_of(need_items)))) >= 2,
+#       mean(c_across(all_of(need_items)), na.rm = TRUE),
+#       NA_real_
+#     )
+#   ) %>%
+#   ungroup()
+```
+
+For more complex analyses, multiple imputation (e.g., with `mice`) or full information maximum likelihood (e.g., in `lavaan`) may be appropriate.

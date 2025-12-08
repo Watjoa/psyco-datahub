@@ -1,0 +1,55 @@
+---
+title: "Data Access Request"
+format:
+  html:
+    toc: true
+---
+
+# Data Access Request
+
+Researchers who wish to obtain restricted, de-identified datasets are invited to submit a request using the template below. At this time, requests may be handled via email or an institutional system.
+
+## Required Information
+
+Please provide the following:
+
+1. **Contact information**
+   - Name  
+   - Institution and department  
+   - Position (e.g., PhD student, Postdoc, Professor)  
+   - Institutional email address  
+
+2. **Project details**
+   - Project title  
+   - Short abstract (150–300 words)  
+   - Main research questions or hypotheses  
+   - Planned analyses (e.g., multilevel models, longitudinal models, cross-sectional comparisons)  
+
+3. **Data needs**
+   - Which dataset(s) are you requesting? (e.g., Motivation Barometer, THRIVE, specific waves)  
+   - Which modules or variable groups are essential? (e.g., needs, motivation, communication, democracy, well-being)  
+   - Any planned data linkages with external sources (if applicable)  
+
+4. **Ethics and governance**
+   - Confirmation that your project has obtained (or will obtain) ethical approval  
+   - Name of ethics committee and reference number (if available)  
+   - Data protection measures at your institution  
+
+5. **Outputs and dissemination**
+   - Intended outputs (e.g., journal article, thesis, report)  
+   - Expected timeline  
+
+---
+
+## Submission
+
+At this stage, please submit your completed request to:
+
+- **Email:** your-data-contact@ugent.be  
+- Subject line: "Data Access Request – Motivation & Crisis Data Hub"
+
+After internal review, we will inform you whether:
+
+- Your request is approved (subject to signing the Data Use Agreement),  
+- Additional information is required, or  
+- The request cannot be granted (with an explanation).

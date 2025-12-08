@@ -1,3 +1,0 @@
-variable,label,scale_min,scale_max,notes
-need_sat,Mean basic need satisfaction,1,7,Composite of AUT/COMP/REL
-wellbeing,Life satisfaction,0,10,Single-item Cantril ladder

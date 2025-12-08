@@ -1,135 +1,160 @@
 ---
-toc: false
-bibliography: references.bib
-csl: apa.csl
+format:
+  html:
+    toc: true
+    page-layout: full
+    smooth-scroll: true
 ---
 
 ::: {.columns style="display:flex; gap:1em;"}
 ::: {.column width="65%"}
 
-# Toward a Psychology of Democratic Well‑Being
+# PsySoc Data Hub
 
-#### A curated, living repository that integrates cross‑national, longitudinal, and experimental evidence on how democratic contexts shape, and are shaped by, psychological basic needs (autonomy, competence, relatedness) and, in turn, citizens’ well‑being and civic engagement. Built for cumulative, open, and policy‑relevant science.
+> Welcome to the central data hub for the **Motivation Barometer** and **THRIVE** projects. <br> <br> An integrated repository hosting Belgian datasets that enable evidence-based research on motivation, basic psychological needs, mental health, and responses to public health measures, accompanied by comprehensive documentation and GDPR-compliant access procedures.
 
 :::
 ::: {.column width="35%"}
-![](datahublogo.png)
+![Official logo of the Motivation Barometer](logo.png)
 :::
 :::
 
-## Purpose
 
-::: {.columns style="display:flex; gap:1em;"}
-::: {.column width="52%" .bg-blue}
-**Purpose**
 
-The Hub curates datasets, metadata, and reproducible code connecting democratic quality, psychological need dynamics, well‑being, and civic attitudes. It offers public aggregates for transparency and governed access for partner microdata.
+## About
 
-:::{.callout-note title="Rationale"}
-Democracies aim to create conditions for human flourishing, yet democratic discontent is rising. By mapping when systems support or thwart citizens’ needs, we clarify why democracies sometimes enhance mental health—and why, under threat, citizens may prefer autocratic solutions.
-:::
-:::
-::: {.column width="48%" .bg-blue}
-**Scope**
+The **PsySoc Data Hub** brings together two major, complementary datasets that offer unparalleled insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.
 
-* Datasets: cross‑national surveys; national panels; experiments; validated short scales.
+#### Motivation Barometer & THRIVE Dataset  
 
-* Metadata: codebooks, translations, invariance reports, sampling frames, weights, changelogs.
+At the heart of the hub lies the **Motivation Barometer**, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.
 
-* Analytics: preregistered pipelines for harmonization, SEM/MLM, experiments, visualization.
+The **THRIVE** project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven dataset for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.
 
-* Access: public aggregates + restricted microdata (DTA/DTUA).
+#### Louvain Foundation Dataset  
 
-* Governance: authorship/citation norms, ethics & GDPR templates, annual DOI releases.
+Complementing this national longitudinal dataset, the **Louvain Foundation dataset** provides a cross-sectional, multi-country perspective on similar societal processes. It captures how individuals across diverse contexts perceive democracy, experience basic psychological needs, navigate threats, and evaluate societal institutions. This makes it an ideal comparative counterpart to Belgium’s long-form trajectory data.
 
-:::
-:::
+---
 
-## Explore
+## What the Data Hub offers
 
-## Documentation
+- 📊 **Two high-quality datasets**
+- 🧠 Documenting **central themes** such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.
+- 🔍 **Comprehensive documentation**, including codebooks, protocols, methodological notes, and variable descriptions  
+- 🛡️ **GDPR-compliant controlled access** for sensitive data  
+- 🧪 **Synthetic datasets**, tutorials, and reproducible examples for learning and transparent analysis  
 
-::: {.columns style="display:flex; gap:1em;"}
+---
 
-::: {.column width="30%" .bg-blue}
-**Codebook**
+## Three-layer access model
 
-Variables, scale anchors, construction rules (e.g., ABC composites), and missing data conventions.
+To safeguard privacy and ensure responsible use of the data, the hub follows a **three-layer access structure**:
 
-<a href="report.qmd" class="btn btn-secondary">Open codebook</a>
+### 🔓 Layer 1: Public Access
 
-<!-- 🪄 You can adjust the color with other Bootstrap classes: -->
-<!-- btn-primary → blue -->
-<!-- btn-secondary → grey -->
-<!-- btn-success → green -->
-<!-- btn-danger → red -->
-<!-- btn-info → teal -->
-<!-- btn-warning → yellow -->
-<!-- and the size: -->
-<!-- btn-sm → small -->
-<!-- btn-lg → large -->
+Openly available to everyone:
 
-Blah Blah [@bion2018; @wickham2015].
-:::
+- Study documentation and protocols  
+- Codebooks and variable lists  
+- Aggregated statistics and interactive dashboards  
+- Analysis scripts and tutorials  
 
-::: {.column width="35%" .bg-blue}
-**Measurement invariance**
+Use this layer to:
 
-Text about your invariance procedure here.
-:::
+- Explore what the projects are about  
+- Understand the structure of the data  
+- Teach and learn longitudinal analysis techniques  
 
-::: {.column width="30%" .bg-blue}
-**Analytic models**
+[Browse documentation](documentation/index.qmd){.btn .btn-primary}  
+[View tutorials](tutorials/index.qmd){.btn .btn-outline}
 
-Text about analytic models here.
-:::
+---
 
-:::
+### 📝 Layer 2: Registered Access
 
-## Governance & ethics
+Restricted, de-identified versions of the real data are accessible **on request**.
 
-::: {.columns style="display:flex; gap:1em;"}
-::: {.column width="50%" .bg-blue}
-**Access policy**
+Researchers can apply for access by submitting:
 
-Tiered access (Public/Partner). Partner access requires a Data Use Agreement, approval by the steering committee, and compliance with GDPR and local IRB requirements.
+1. A brief project description (aims, research questions, planned analyses)  
+2. Evidence of ethical approval (where applicable)  
+3. An overview of the variables or modules needed  
 
-ACCESS_POLICY.html
+Approved users will be asked to sign a **Data Use Agreement (DUA)**, which specifies:
 
-:::
-::: {.column width="50%" .bg-blue}
-**Contributing**
+- No re-identification attempts  
+- No redistribution to third parties  
+- Secure storage and responsible handling  
+- Proper citation and acknowledgement of the datasets  
 
-Intake template, QC pipeline, authorship (CRediT), citation norms, and preregistration requirements for contributed studies.
+Access is granted via **private links** (e.g., private GitHub repo or secure download token) tied to a specific **dataset version**.
 
-CONTRIBUTING.html
+[Read access policy](data/access/access_policy.qmd){.btn .btn-primary}  
+[Request data access](data/access/request_form.qmd){.btn .btn-outline}
 
-:::
-:::
+---
 
-<br> 
+### 🔒 Layer 3: Internal Access
 
-::: {.columns style="display:flex; gap:1em;"}
-::: {.column width="50%" .bg-blue}
-**Ethics template**
+The full versions of the datasets (including detailed identifiers, extended demographics, and sensitive modules) are accessible only to authorized members of the **project consortium**.
 
-Boilerplate for local IRB submissions, consent language, and cross‑border data transfer statements.
+These data:
 
-ETHICS_TEMPLATE.html
+- Are stored in **private repositories** with role-based permissions  
+- Support ongoing longitudinal modelling, manuscript preparation, and consortium-driven projects  
+- Are not shared externally without additional procedures  
 
-:::
-::: {.column width="50%"  .bg-blue}
-**Roadmap**
+---
 
-v1 (inventory & metadata) → v2 (harmonized aggregates) → v3 (MI report + dashboard) → v4 (external contributions).
+## Using the Data
 
-⌘
-Annual DOI snapshot
-:::
+Once you have access to the synthetic or restricted data, you can work with it directly in R.  
+Below is a minimal example showing how to load the data and inspect basic need variables:
 
-:::
 
-### References
 
-::: {#refs}
-:::
+For more advanced examples (longitudinal modelling, multilevel models, weighting, handling missing data), see:
+
+- [Tutorials](tutorials/index.qmd)  
+- [Analysis examples](tutorials/how_to_run_longitudinal_models.qmd)
+
+---
+
+## Versioning and Reproducibility
+
+To ensure **transparency and reproducibility**, all datasets are:
+
+- Released in clearly labeled **versions** (e.g., v1.0, v1.1)  
+- Accompanied by **release notes** describing changes in variables, coding, or sample composition  
+- Linked to **DOIs** for persistent citation  
+
+Analysis scripts and Quarto documents are aligned with specific data versions, allowing users to reproduce published work and tutorial examples exactly.
+
+---
+
+## Citation
+
+If you use the resources or data from this hub, please cite:
+
+> Motivation Barometer and Thrive Dataset, Version 3.0. xxxxx  
+
+A detailed and up-to-date citation format is available on the  
+[Citation & Acknowledgements](citation.qmd) page.
+
+---
+
+## Contact
+
+For questions about:
+
+- Data access and permissions  
+- Collaboration opportunities  
+- Methodological details or extensions  
+
+please contact the coordinating team at:
+
+**[Project coordination team]**  
+Centre for Developmental and Motivation Psychology, Ghent University  
+Email: *joachim.waterschoot@ugent.be*
+
