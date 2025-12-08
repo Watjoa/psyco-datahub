@@ -9,13 +9,13 @@ format:
 ::: {.columns style="display:flex; gap:1em;"}
 ::: {.column width="65%"}
 
-# PsySoc Data Hub
+# PsyCo DataHub
 
-> Welcome to the central data hub for the **Motivation Barometer** and **THRIVE** projects. <br> <br> An integrated repository hosting Belgian datasets that enable evidence-based research on motivation, basic psychological needs, mental health, and responses to public health measures, accompanied by comprehensive documentation and GDPR-compliant access procedures.
+> Welcome to the central datahub for the **Motivation Barometer** and **THRIVE** projects. <br> <br> An integrated repository hosting Belgian datasets that enable evidence-based research on motivation, basic psychological needs, mental health, and responses to public health measures, accompanied by comprehensive documentation and GDPR-compliant access procedures.
 
 :::
 ::: {.column width="35%"}
-![Official logo of the Motivation Barometer](logo.png)
+<center>![Official logo of the Motivation Barometer](logo.png)</center>
 :::
 :::
 

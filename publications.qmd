@@ -2,7 +2,7 @@
 title: "Published projects"
 format:
   html:
-    toc: false
+    toc: true
     page-layout: full
     smooth-scroll: true
     css: styles.css
@@ -182,27 +182,31 @@ body {
   }
 </style>
 
+On this page, you can find an overview of our core themes and the publications linked to each of them. The themes reflect the main domains covered in our datasets, including psychological functioning, behavior, communication and policy, and crisis-related indicators. For every theme, you can browse the selected publications, read the abstract, and visit the full article. 
+
+## Governance, policy & societal regulation
+
+> Public policies and governmental communication shape the extent to which citizens experience societal need support or frustration. These publications examine how proportionality, communication style, trust, and policy design influence motivation, compliance, and public well-being during crises.
+
 ```{=html}
- 
-<!-- Wollast et al. (2025). Gender inequality and cultural values... Current Psychology. -->
-<article class="pub-card" data-year="2025">
+<!-- Vansteenkiste et al. (2023). Motivation Barometer. SIPR. -->
+<article class="pub-card" data-year="2023">
   <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of gender differences and emotions">
+    <img src="https://primary.jwwb.nl/public/q/r/k/temp-rzxwtwhbtjgxfeqtvqxy/barometer_final-zondertekst-transparant-high.png?enable-io=true&crop=1.2448%3A1&width=532"
+         alt="Illustration of psychological science and policy">
   </div>
 
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        Gender Inequality and Cultural Values in Explaining Gender Differences in Positive and Negative Emotions:
-        A Comparison of 24 Countries During the COVID-19 Pandemic
+        Psychological Science and Its Societal Mission During the SARS-CoV-2 Pandemic:
+        The Motivation Barometer as an Evidence-Informed Policy Instrument in Belgium
       </h3>
       <p class="pub-meta pub-authors">
-        Wollast, R., Lüders, A., Nugier, A., Guimond, S., Phillips, J. B., Sutton, R. M., Douglas, K. M., Sengupta, N. K., Lemay, E. P., Zand, S.,
-        Van Lissa, C. J., Bélanger, J. J., et al.
+        Vansteenkiste, M., Waterschoot, J., Morbée, S., Van Oost, P., Schmitz, M., Klein, O., Luminet, O., Yzerbyt, V., &amp; Van den Bergh, O.
       </p>
       <p class="pub-meta pub-journal">
-        Current Psychology (2025), 44, 7584–7602
+        Social Issues and Policy Review (2023), 1–30
       </p>
     </header>
 
@@ -210,11 +214,14 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        The coronavirus pandemic posed a major challenge to mental health. Existing evidence shows that COVID-19 is related to poor emotional well-being, particularly among women.
+        This article presents the Motivation Barometer as a real-time tool linking psychological science to COVID-19 policy in Belgium.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        The coronavirus pandemic posed a major challenge to mental health. Existing evidence shows that COVID-19 is related to poor emotional well-being, particularly among women. However, most work on the subject uses single-country samples, limiting the ability to generalize the disparity or explain it as a function of societal variables. The present study investigates the expression of positive and negative emotions during the pandemic as a function of gender and across 24 countries (N = 49,637). Strong gender differences emerged across countries, with women reporting more negative emotions (anxious, depressed, nervous, exhausted) and less positive emotions (calm, content, relaxed, energetic) than men. The gender gap in positive emotions was significantly wider in countries higher in individualism and narrower in countries higher in power distance. For instance, differences in emotions were larger in Western countries high in individualism, such as the USA, the UK, Italy, and France, and smaller in countries with higher collectivism and power distance, such as China, Malaysia, and South Korea, with a few exceptions like Japan and Brazil. These gender differences across countries were not explained by country-level gender inequalities indicators (GGGI and GII). Interestingly, the national severity of the pandemic, an epidemiological factor, reduced gender differences in positive emotions. These results underscore the importance of considering cultural and national factors when assessing gender differences in well-being.
+        This article describes the development and implementation of the Motivation Barometer, a large-scale monitoring initiative designed to track
+        Belgians’ motivation, experiences, and well-being during the COVID-19 pandemic. It illustrates how psychological data were used to inform
+        policymakers, refine communication strategies, and evaluate the impact of restrictions. The paper reflects on the broader societal mission
+        of psychological science and the challenges and opportunities of embedding evidence-informed tools in policy processes.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -223,40 +230,104 @@ body {
     <div>
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
-        <li>Gender differences</li>
-        <li>Emotions</li>
-        <li>Gender inequality</li>
-        <li>Cultural values</li>
+        <li>Motivation Barometer</li>
         <li>COVID-19</li>
-        <li>Cross-national</li>
+        <li>Public policy</li>
+        <li>Evidence-informed policy</li>
+        <li>Belgium</li>
       </ul>
     </div>
 
     <a class="pub-link"
-       href="https://link.springer.com/article/10.1007/s12144-024-06989-0"
+       href="https://doi.org/10.1111/sipr.12101"
        target="_blank" rel="noopener">
       View article
     </a>
   </div>
 </article> <br>
 
-<!-- Wollast et al. (2024). Self-compassion and loneliness. Cognition and Emotion. -->
+<!-- 4. Waterschoot et al. (2023) – proportionality & stringency -->
+<article class="pub-card" data-year="2023">
+  <!-- LEFT: image -->
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/4167544/pexels-photo-4167544.jpeg" alt="Illustration of COVID-19 restrictions">
+  </div>
+
+  <!-- RIGHT: text content -->
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        How the Stringency of the COVID-19 Restrictions Influences Motivation for Adherence and Well-Being:
+        The Critical Role of Proportionality
+      </h3>
+      <p class="pub-meta pub-authors">
+        Waterschoot, J., Morbée, S., Van den Bergh, O., Yzerbyt, V., Raemdonck, E., Brisbois, M., Schmitz, M.,
+        Klein, O., Luminet, O., Van Oost, P., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        International Journal of Health Policy and Management (2023), 12, 8021
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        Using large-scale longitudinal data from Belgium, this study tests how the proportionality between
+        COVID-19 restrictions and the epidemiological situation relates to citizens’ motivation to comply
+        and their well-being.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        Across multiple pandemic waves, more than 270,000 Belgian respondents reported on their motivation
+        to adhere to COVID-19 measures, their actual adherence, and indicators of mental well-being.
+        These data were linked to objective indices of policy stringency and viral circulation over time.
+        The study examined whether people felt that the strictness of government measures was proportional
+        to the epidemiological risk and how this sense of proportionality related to motivation and well-being.
+        When restrictions were perceived as proportionate, people reported more autonomous motivation to comply,
+        greater adherence, and better psychological functioning. When measures seemed overly strict or insufficient
+        relative to the infection situation, controlled motivation and amotivation increased, and well-being
+        deteriorated. The findings highlight proportionality as a key ingredient for sustainable public health policy.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>COVID-19</li>
+        <li>Policy stringency</li>
+        <li>Proportionality</li>
+        <li>Motivation for adherence</li>
+        <li>Mental health</li>
+        <li>Longitudinal survey</li>
+      </ul>
+    </div>
+
+    <a class="pub-link" href="https://doi.org/10.34172/ijhpm.2023.8021" target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+<!-- Waterschoot et al. (2024). Time-lagged motivation and epidemiological indicators. Motivation Science. -->
 <article class="pub-card" data-year="2024">
   <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of loneliness and self-compassion">
+    <img src="https://images.pexels.com/photos/3873179/pexels-photo-3873179.jpeg"
+         alt="Illustration of motivation and epidemiological indicators">
   </div>
 
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        The Role of Self-Compassion in Loneliness During the COVID-19 Pandemic: A Group-Based Trajectory Modelling Approach
+        Why Motivation for Adhering to COVID-19 Measures Matters: Investigating Time-Lagged Associations with Epidemiological Indicators
       </h3>
       <p class="pub-meta pub-authors">
-        Wollast, R., Preece, D. A., Schmitz, M., Bigot, A., Gross, J. J., &amp; Luminet, O.
+        Waterschoot, J., Morbée, S., Yzerbyt, V., Van Oost, P., Klein, O., Luminet, O., Schmitz, M., Van den Bergh, O., &amp; Vansteenkiste, M.
       </p>
       <p class="pub-meta pub-journal">
-        Cognition and Emotion (2024), 38(1), 103–119
+        Motivation Science (2024), Advance online publication
       </p>
     </header>
 
@@ -264,11 +335,14 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        Research has suggested an increase in loneliness during the COVID-19 pandemic, but much of this work has been cross-sectional, making causal inferences difficult.
+        This article links motivation for adherence to later epidemiological indicators such as infection and hospitalization rates.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        Research has suggested an increase in loneliness during the COVID-19 pandemic, but much of this work has been cross-sectional, making causal inferences difficult. In the present research, we employed a longitudinal design to identify loneliness trajectories within a period of twelve months during the COVID-19 pandemic in Belgium (N = 2106). We were particularly interested in the potential protective role of self-compassion in these temporal dynamics. Using a group-based trajectory modelling approach, we identified trajectory groups of individuals following low (11.0%), moderate-low (22.4%), moderate (25.7%), moderate-high (31.3%), and high (9.6%) levels of loneliness. Findings indicated that younger people, women, and individuals with poor quality relationships, high levels of health anxiety, and stress related to COVID-19, all had a higher probability of belonging to the highest loneliness trajectory groups. Importantly, we also found that people high in two of the three facets of self-compassion (self-kindness and common humanity) had a lower probability of belonging to the highest loneliness trajectory groups. Ultimately, we demonstrated that trajectory groups reflecting higher levels of loneliness were associated with lower life satisfaction and greater depressive symptoms. We discuss the possibility that increasing self-compassion may be used to promote better mental health in similarly challenging situations.
+        Integrating psychological and epidemiological data, this study examines how citizens’ motivational quality for adhering to COVID-19 measures
+        predicts infection and hospitalization rates at later time points. The authors test time-lagged associations between autonomous versus controlled
+        motivation, adherence patterns, and epidemiological trends. The results suggest that fostering high-quality motivation is not only beneficial for
+        well-being but may also have tangible public health implications at the population level.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -277,40 +351,40 @@ body {
     <div>
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
-        <li>Loneliness</li>
-        <li>Self-compassion</li>
-        <li>COVID-19</li>
-        <li>Trajectories</li>
-        <li>Group-based modelling</li>
+        <li>Motivation</li>
+        <li>COVID-19 measures</li>
+        <li>Epidemiology</li>
+        <li>Time-lagged analysis</li>
       </ul>
     </div>
 
     <a class="pub-link"
-       href="https://doi.org/10.1080/02699931.2023.2270201"
+       href="https://doi.org/10.1037/mot0000346"
        target="_blank" rel="noopener">
       View article
     </a>
   </div>
 </article> <br>
 
-<!-- Wollast et al. (2025). Three subtypes of social distancing. European Journal of Health Psychology. -->
-<article class="pub-card" data-year="2025">
+<!-- 5. Legate et al. (2022) – global social distancing experiment -->
+<article class="pub-card" data-year="2022">
+  <!-- LEFT: image -->
   <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of social distancing subtypes">
+    <img src="https://images.pexels.com/photos/3951628/pexels-photo-3951628.jpeg" alt="Illustration of social distancing communication">
   </div>
 
+  <!-- RIGHT: text content -->
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        Are There Three Subtypes of Social Distancing? A Longitudinal Investigation of Physical Distancing,
-        Social Contact Limitations, and Emotional Distancing
+        A Global Experiment on Motivating Social Distancing during the COVID-19 Pandemic
       </h3>
       <p class="pub-meta pub-authors">
-        Wollast, R., Sadeghi-Bahmani, D., Schmitz, M., Bigot, A., Gross, J. J., &amp; Luminet, O.
+        Legate, N., Nguyen, T. V., Weinstein, N., Moller, A., Legault, L., Vally, Z.,
+        <span aria-hidden="true">…</span> &amp; Ogbonnaya, C. E.
       </p>
       <p class="pub-meta pub-journal">
-        European Journal of Health Psychology (2025), 32(3), 148–164
+        Proceedings of the National Academy of Sciences (2022), 119(22), e2111091119
       </p>
     </header>
 
@@ -318,11 +392,22 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        Social distancing is often used as something of a catch-all category without clear definitions of its subtypes.
+        This large cross-country experiment compares autonomy-supportive and controlling messages
+        about social distancing to test which communication strategies foster motivation and compliance
+        during the COVID-19 pandemic.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        Background: Social distancing is often used as something of a catch-all category without clear definitions of its subtypes. Aims: We propose that social distancing has three subtypes: physical distancing, social contact limitations, and emotional distancing. Method: To test this hypothesis, we employed a longitudinal design to analyze the trajectories of social distancing subtypes over a period of 8 months during the COVID-19 pandemic (N = 6,026). Three years after the main survey, we recontacted the same participants, asking whether they would be willing to re-adopt social distancing measures in the context of a new pandemic (N = 841). Results: First, using a confirmatory factor analysis, we demonstrated that these subtypes are related but distinct constructs. Second, using group-based trajectory modeling, we identified trajectories of individuals following persistently low, moderate-low, moderate-high, and high levels of social distancing subtypes over time. Trajectories of physical distancing and social contact limitations were highly similar and decreased over time, whereas trajectories of emotional distancing were significantly different from the other two subtypes and showed stability. Importantly, we found sociodemographic and mental health indicators distinguishing these trajectories. Finally, we found that emotional distancing exhibited a stronger and more consistent association with social contact limitations than with physical distancing across studies. Conclusion: This study proposes a refined taxonomy of social distancing, highlighting the distinct subtypes of physical distancing, social contact limitations, and emotional distancing (see items in the Appendix). This new taxonomy has been both conceptually and statistically validated in the present paper and can assist other experts in assessing the construct of social distancing more accurately in future studies. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+        In collaboration with the Psychological Science Accelerator, this preregistered experiment
+        recruited over 25,000 participants from 89 countries to evaluate different public health messages
+        about social distancing. Participants read either an autonomy-supportive message emphasizing
+        personal choice and reasons for distancing, a controlling message relying on pressure and guilt,
+        or a neutral control message, and then reported their motivation, intentions, and emotional reactions.
+        Across cultures, autonomy-supportive communication promoted more internalized, high-quality motivation
+        for social distancing and more favorable attitudes, without raising defensiveness. In contrast,
+        controlling messages tended to elicit reactance, anger, and lower quality motivation. The findings
+        suggest that respectful, choice-affirming communication is a more effective and sustainable way to
+        encourage public health behaviors globally.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -331,21 +416,206 @@ body {
     <div>
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
-        <li>Social distancing</li>
         <li>COVID-19</li>
-        <li>Mental health</li>
-        <li>Physical distancing</li>
-        <li>Emotional distancing</li>
+        <li>Social distancing</li>
+        <li>Autonomy-supportive communication</li>
+        <li>Controlling message</li>
+        <li>Global experiment</li>
+        <li>Public health</li>
+      </ul>
+    </div>
+
+    <a class="pub-link" href="https://doi.org/10.1073/pnas.2111091119" target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+<!-- 6. Morbée et al. (2023) – communication style & external motivators -->
+<article class="pub-card" data-year="2023">
+  <!-- LEFT: image -->
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/1350560/pexels-photo-1350560.jpeg" alt="Illustration of vaccination communication">
+  </div>
+
+  <!-- RIGHT: text content -->
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        The Role of Communication Style and External Motivators in Predicting Vaccination Experiences
+        and Intentions: An Experimental Vignette Study
+      </h3>
+      <p class="pub-meta pub-authors">
+        Morbée, S., Vansteenkiste, M., Waterschoot, J., Klein, O., Luminet, O., Schmitz, M.,
+        Van den Bergh, O., Van Oost, P., &amp; Yzerbyt, V.
+      </p>
+      <p class="pub-meta pub-journal">
+        Health Communication (2023), 38(13), 2894–2903
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        This vignette study examines how autonomy-supportive versus controlling communication, combined with
+        external motivators such as incentives or mandates, shapes people’s vaccination experiences and intentions.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        Participants evaluated hypothetical vaccination messages that varied in communication style
+        (autonomy-supportive versus controlling) and the presence or absence of external motivators
+        (e.g., rewards, pressure, or requirements). They subsequently reported their emotional reactions,
+        perceived legitimacy of the policy, and intention to be vaccinated. Messages that acknowledged
+        people’s perspectives, provided meaningful rationales, and preserved a sense of choice promoted more
+        autonomous motivation, more positive vaccination experiences, and higher intentions. Strong external
+        pressure and controlling language, in contrast, were linked to more negative affect and lower quality
+        motivation, even when they sometimes boosted short-term intentions. The findings suggest that respectful,
+        autonomy-supportive communication is critical for fostering durable acceptance of vaccination policies,
+        particularly when external motivators are used.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>COVID-19</li>
+        <li>Vaccination</li>
+        <li>Communication style</li>
+        <li>External motivators</li>
+        <li>Autonomous motivation</li>
+        <li>Vignette experiment</li>
+      </ul>
+    </div>
+
+    <a class="pub-link" href="https://doi.org/10.1080/10410236.2022.2125012" target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+<!-- Van de Casteele et al. (2022). Saliva testing among teachers. SSM. -->
+<article class="pub-card" data-year="2022">
+  <div class="pub-media">
+    <img src="https://news.uga.edu/wp-content/uploads/2021/01/saliva_testing.jpg"
+         alt="Illustration of saliva testing among teachers">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        Saliva Testing Among Teachers During the COVID-19 Pandemic:
+        Effects on Health Concerns, Well-Being, and Precautionary Behavior
+      </h3>
+      <p class="pub-meta pub-authors">
+        Van de Casteele, M., Waterschoot, J., Anthierens, S., DeSmet, A., Galand, B., Goossens, H., Morbée, S., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        Social Science &amp; Medicine (2022), 311, 115295
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        This article examines how saliva testing programs for teachers affected their health concerns, well-being, and precautionary behavior.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        This study evaluates the psychological impact of implementing saliva testing among teachers during the COVID-19 pandemic. It examines whether
+        such testing reduces health concerns, supports well-being, and encourages precautionary behaviors, or conversely, increases anxiety and burden.
+        The findings provide evidence on how targeted testing strategies can be integrated into school settings with attention to staff’s psychological
+        experiences and motivation to comply with health protocols.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Saliva testing</li>
+        <li>Teachers</li>
+        <li>COVID-19</li>
+        <li>Well-being</li>
+        <li>Precautionary behavior</li>
       </ul>
     </div>
 
     <a class="pub-link"
-       href="https://doi.org/10.1027/2512-8442/a000179"
+       href="https://doi.org/10.1016/j.socscimed.2022.115295"
        target="_blank" rel="noopener">
       View article
     </a>
   </div>
 </article> <br>
+
+<!-- Waterschoot et al. (2022). Christmas expectations. EJHP. -->
+<article class="pub-card" data-year="2022">
+  <div class="pub-media">
+    <img src="https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/F7DD/production/_115635436_gettyimages-1282640974.jpg"
+         alt="Illustration of Christmas gatherings during pandemic">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        Merry Christmas and a ‘Healthy’ New Year: Assessing People’s Expectations Regarding Christmas Gathering in Pandemic Times
+      </h3>
+      <p class="pub-meta pub-authors">
+        Waterschoot, J., Morbée, S., Van den Bergh, O., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        European Journal of Health Psychology (2022), 30(1), 17–28
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        This article explores expectations and concerns about Christmas gatherings during the COVID-19 pandemic.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        Focusing on holiday gatherings, this study assesses how people anticipated Christmas celebrations under COVID-19 restrictions, examining their
+        health concerns, perceived risks, and motivational profiles. It also explores willingness to adjust traditions to protect vulnerable family
+        members. The findings reveal ambivalence between the desire for connection and the need for safety, highlighting the emotional and motivational
+        tensions at play in private decision-making during a public health crisis.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Christmas gatherings</li>
+        <li>COVID-19</li>
+        <li>Risk perception</li>
+        <li>Family</li>
+        <li>Health psychology</li>
+      </ul>
+    </div>
+
+    <a class="pub-link"
+       href="https://doi.org/10.1027/2512-8442/a000114"
+       target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+```
+
+## Collective health behavior & public safety
+
+> Collective safety depends on citizens’ willingness and ability to enact protective health behaviors. The studies in this theme analyze the motivational, cognitive, and contextual factors that guide population-level engagement in preventive actions such as distancing, hygiene behaviors, and risk-responsive behavior.
+
+```{=html}
 
 <!-- Wollast et al. (2023). Trajectories of health behaviors. Psychology & Health. -->
 <article class="pub-card" data-year="2023">
@@ -401,6 +671,7 @@ body {
   </div>
 </article> <br>
 
+
 <!-- Wollast et al. (2024). Predicting health behaviors. PLoS ONE. -->
 <article class="pub-card" data-year="2024">
   <div class="pub-media">
@@ -448,6 +719,60 @@ body {
 
     <a class="pub-link"
        href="https://doi.org/10.1371/journal.pone.0299868"
+       target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+<!-- Wollast et al. (2025). Three subtypes of social distancing. European Journal of Health Psychology. -->
+<article class="pub-card" data-year="2025">
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of social distancing subtypes">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        Are There Three Subtypes of Social Distancing? A Longitudinal Investigation of Physical Distancing,
+        Social Contact Limitations, and Emotional Distancing
+      </h3>
+      <p class="pub-meta pub-authors">
+        Wollast, R., Sadeghi-Bahmani, D., Schmitz, M., Bigot, A., Gross, J. J., &amp; Luminet, O.
+      </p>
+      <p class="pub-meta pub-journal">
+        European Journal of Health Psychology (2025), 32(3), 148–164
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        Social distancing is often used as something of a catch-all category without clear definitions of its subtypes.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        Background: Social distancing is often used as something of a catch-all category without clear definitions of its subtypes. Aims: We propose that social distancing has three subtypes: physical distancing, social contact limitations, and emotional distancing. Method: To test this hypothesis, we employed a longitudinal design to analyze the trajectories of social distancing subtypes over a period of 8 months during the COVID-19 pandemic (N = 6,026). Three years after the main survey, we recontacted the same participants, asking whether they would be willing to re-adopt social distancing measures in the context of a new pandemic (N = 841). Results: First, using a confirmatory factor analysis, we demonstrated that these subtypes are related but distinct constructs. Second, using group-based trajectory modeling, we identified trajectories of individuals following persistently low, moderate-low, moderate-high, and high levels of social distancing subtypes over time. Trajectories of physical distancing and social contact limitations were highly similar and decreased over time, whereas trajectories of emotional distancing were significantly different from the other two subtypes and showed stability. Importantly, we found sociodemographic and mental health indicators distinguishing these trajectories. Finally, we found that emotional distancing exhibited a stronger and more consistent association with social contact limitations than with physical distancing across studies. Conclusion: This study proposes a refined taxonomy of social distancing, highlighting the distinct subtypes of physical distancing, social contact limitations, and emotional distancing (see items in the Appendix). This new taxonomy has been both conceptually and statistically validated in the present paper and can assist other experts in assessing the construct of social distancing more accurately in future studies. (PsycInfo Database Record (c) 2025 APA, all rights reserved)
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Social distancing</li>
+        <li>COVID-19</li>
+        <li>Mental health</li>
+        <li>Physical distancing</li>
+        <li>Emotional distancing</li>
+      </ul>
+    </div>
+
+    <a class="pub-link"
+       href="https://doi.org/10.1027/2512-8442/a000179"
        target="_blank" rel="noopener">
       View article
     </a>
@@ -509,179 +834,6 @@ body {
   </div>
 </article> <br>
 
-<!-- Waterschoot et al. (2023). Stringency and proportionality. IJHPM. -->
-<article class="pub-card" data-year="2023">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of restriction stringency and motivation">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        How the Stringency of the COVID-19 Restrictions Influences Motivation for Adherence and Well-Being:
-        The Critical Role of Proportionality
-      </h3>
-      <p class="pub-meta pub-authors">
-        Waterschoot, J., Morbée, S., Van den Bergh, O., Yzerbyt, V., Raemdonck, E., Brisbois, M., Schmitz, M., Klein, O., Luminet, O.,
-        Van Oost, P., &amp; Vansteenkiste, M.
-      </p>
-      <p class="pub-meta pub-journal">
-        International Journal of Health Policy and Management (2023), 12(1), 1–13
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This article investigates how restriction stringency and perceived proportionality shape motivation and well-being during COVID-19.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        This paper examines how the stringency of COVID-19 restrictions and their perceived proportionality influence people’s motivation to adhere
-        and their psychological well-being. Drawing on Self-Determination Theory, it tests whether measures perceived as fair and proportionate are
-        more likely to foster autonomous motivation and less likely to undermine mental health. The findings underscore that not only the content but
-        also the perceived fairness of policies matters for sustainable public cooperation.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>COVID-19 restrictions</li>
-        <li>Proportionality</li>
-        <li>Motivation</li>
-        <li>Well-being</li>
-        <li>Health policy</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.34172/ijhpm.2023.8021"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Vansteenkiste et al. (2023). Motivation Barometer. SIPR. -->
-<article class="pub-card" data-year="2023">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of psychological science and policy">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        Psychological Science and Its Societal Mission During the SARS-CoV-2 Pandemic:
-        The Motivation Barometer as an Evidence-Informed Policy Instrument in Belgium
-      </h3>
-      <p class="pub-meta pub-authors">
-        Vansteenkiste, M., Waterschoot, J., Morbée, S., Van Oost, P., Schmitz, M., Klein, O., Luminet, O., Yzerbyt, V., &amp; Van den Bergh, O.
-      </p>
-      <p class="pub-meta pub-journal">
-        Social Issues and Policy Review (2023), 1–30
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This article presents the Motivation Barometer as a real-time tool linking psychological science to COVID-19 policy in Belgium.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        This article describes the development and implementation of the Motivation Barometer, a large-scale monitoring initiative designed to track
-        Belgians’ motivation, experiences, and well-being during the COVID-19 pandemic. It illustrates how psychological data were used to inform
-        policymakers, refine communication strategies, and evaluate the impact of restrictions. The paper reflects on the broader societal mission
-        of psychological science and the challenges and opportunities of embedding evidence-informed tools in policy processes.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Motivation Barometer</li>
-        <li>COVID-19</li>
-        <li>Public policy</li>
-        <li>Evidence-informed policy</li>
-        <li>Belgium</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1111/sipr.12101"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Waterschoot (2023). PhD thesis. -->
-<article class="pub-card" data-year="2023">
-  <div class="pub-media">
-    <img src="https://media.licdn.com/dms/image/v2/D4E12AQH6_mNENgbGGg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1689059111617?e=2147483647&v=beta&t=Qaj6l8XCjo11_BXhAc5-BJMMWMPENWXJRNagUAhkLcM"
-         alt="Illustration of PhD dissertation on motivation barometer">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        The Motivation Barometer During the COVID-19 Crisis in Belgium: The Role of Basic Needs,
-        Risk Perception and Motivation Predicting Behavior and Well-Being
-      </h3>
-      <p class="pub-meta pub-authors">
-        Waterschoot, J.
-      </p>
-      <p class="pub-meta pub-journal">
-        Doctoral dissertation, Ghent University, Faculty of Psychology and Educational Sciences (2023)
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This dissertation uses the Motivation Barometer to examine how needs, risk perception, and motivation predicted behavior and well-being in Belgium.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        This doctoral thesis synthesizes data from the Motivation Barometer to investigate how basic psychological needs, risk perception, and different
-        forms of motivation jointly predicted citizens’ behaviors and well-being throughout the COVID-19 crisis in Belgium. It combines variable-centered
-        and person-centered approaches to capture both average trends and heterogeneity in individual responses. The work highlights the importance of
-        autonomy-supportive policies, calibrated risk communication, and high-quality motivation for sustaining adherence and protecting mental health
-        during prolonged crises.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Motivation Barometer</li>
-        <li>Psychological needs</li>
-        <li>Risk perception</li>
-        <li>COVID-19</li>
-        <li>Belgium</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="http://hdl.handle.net/1854/LU-01H4WQ7YAZA9ES768Z4C41Q16C"
-       target="_blank" rel="noopener">
-      View dissertation
-    </a>
-  </div>
-</article> <br>
-
 <!-- Morbée et al. (2021). Cycling and resilience. IJSEP. -->
 <article class="pub-card" data-year="2021">
   <div class="pub-media">
@@ -732,397 +884,6 @@ body {
 
     <a class="pub-link"
        href="https://doi.org/10.1080/1612197X.2021.1940241"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Morbée et al. (2021). Adherence to COVID-19 measures. Motivation Science. -->
-<article class="pub-card" data-year="2021">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of adherence to measures and motivation">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        Adherence to COVID-19 Measures: The Critical Role of Autonomous Motivation on a Short- and Long-Term Basis
-      </h3>
-      <p class="pub-meta pub-authors">
-        Morbée, S., Vermote, B., Waterschoot, J., Dieleman, L., Soenens, B., Van den Bergh, O., Ryan, R. M., Vanhalst, J., De Muynck, G.-J., &amp; Vansteenkiste, M.
-      </p>
-      <p class="pub-meta pub-journal">
-        Motivation Science (2021), 7(4), 487–496
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This article shows that autonomous motivation is critical for sustaining adherence to COVID-19 measures over time.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        Grounded in Self-Determination Theory, this study examines how different forms of motivation—autonomous versus controlled—predict adherence to
-        COVID-19 measures in both the short and long term. The authors demonstrate that autonomous motivation is associated with more sustained and
-        higher-quality adherence, whereas controlled motivation and amotivation are linked to poorer compliance and well-being. The findings support
-        the importance of autonomy-supportive public health strategies.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Autonomous motivation</li>
-        <li>COVID-19 measures</li>
-        <li>Adherence</li>
-        <li>Self-Determination Theory</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1037/mot0000250"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Schmitz et al. (2022). Predicting vaccine uptake. Vaccine. -->
-<article class="pub-card" data-year="2022">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/3952224/pexels-photo-3952224.jpeg?_gl=1*130nn5h*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzcxMDMkajU0JGwwJGgw"
-         alt="Illustration of vaccine uptake and motivation">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        Predicting Vaccine Uptake During COVID-19 Crisis: A Motivational Approach
-      </h3>
-      <p class="pub-meta pub-authors">
-        Schmitz, M., Luminet, O., Klein, O., Morbée, S., Van den Bergh, O., Van Oost, P., Waterschoot, J., Yzerbyt, V., &amp; Vansteenkiste, M.
-      </p>
-      <p class="pub-meta pub-journal">
-        Vaccine (2022), 40(2), 288–297
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This article applies a motivational lens to understand who gets vaccinated and why during the COVID-19 crisis.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        Using Self-Determination Theory as a guiding framework, this study examines how different types of motivation and psychological need experiences
-        predict COVID-19 vaccine uptake. It explores the role of autonomous and controlled motives, trust, and perceived benefits in shaping intentions
-        and actual vaccination behavior. The findings highlight that high-quality, autonomous motivation is a key driver of vaccine acceptance beyond
-        demographic and attitudinal factors.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Vaccination</li>
-        <li>Motivation</li>
-        <li>COVID-19</li>
-        <li>Self-Determination Theory</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1016/j.vaccine.2021.11.068"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Van Oost et al. (2024). Alternative medicine, nature and god. EJSP. -->
-<article class="pub-card" data-year="2024">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of beliefs and vaccination intentions">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        When Views About Alternative Medicine, Nature and God Come in the Way of People’s Vaccination Intentions
-      </h3>
-      <p class="pub-meta pub-authors">
-        Van Oost, P., Schmitz, M., Klein, O., Brisbois, M., Luminet, O., Morbée, S., Raemdonck, E., Van den Bergh, O., Vansteenkiste, M.,
-        Waterschoot, J., &amp; Yzerbyt, V.
-      </p>
-      <p class="pub-meta pub-journal">
-        European Journal of Social Psychology (2024), 54(3), 767–784
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This article investigates how beliefs about alternative medicine, nature, and God interfere with vaccination intentions.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        This study examines how endorsement of alternative medicine, beliefs about nature, and religious convictions shape people’s vaccination intentions.
-        It tests whether these belief systems undermine trust in conventional medicine and public health authorities, and how they interact with
-        motivational factors. The findings shed light on cultural and ideological barriers to vaccination and suggest ways to engage respectfully with
-        diverse worldviews in health communication.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Vaccination intentions</li>
-        <li>Alternative medicine</li>
-        <li>Religious beliefs</li>
-        <li>Nature beliefs</li>
-        <li>COVID-19</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1002/ejsp.3047"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Van Oost et al. (2022). Conspiracism, trust and vaccination intentions. SSM. -->
-<article class="pub-card" data-year="2022">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of conspiracism and trust">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        The Relation Between Conspiracism, Government Trust, and COVID-19 Vaccination Intentions:
-        The Key Role of Motivation
-      </h3>
-      <p class="pub-meta pub-authors">
-        Van Oost, P., Yzerbyt, V., Schmitz, M., Vansteenkiste, M., Luminet, O., Morbée, S., Van den Bergh, O., Waterschoot, J., &amp; Klein, O.
-      </p>
-      <p class="pub-meta pub-journal">
-        Social Science &amp; Medicine (2022), 301, 114926
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This paper examines how conspiracist beliefs and government trust relate to vaccination intentions through motivation.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        This study investigates the interplay between conspiracist worldviews, trust in government, and motivation in predicting COVID-19 vaccination
-        intentions. It tests whether high conspiracism undermines trust and fosters controlled or amotivated states that, in turn, reduce willingness to
-        vaccinate. The findings highlight motivation as a central mechanism linking broader beliefs about authorities to concrete health decisions,
-        providing targets for interventions that respect autonomy while addressing misinformation.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Conspiracism</li>
-        <li>Government trust</li>
-        <li>Vaccination intentions</li>
-        <li>Motivation</li>
-        <li>COVID-19</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1016/j.socscimed.2022.114926"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Waterschoot et al. (2022). Christmas expectations. EJHP. -->
-<article class="pub-card" data-year="2022">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of Christmas gatherings during pandemic">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        Merry Christmas and a ‘Healthy’ New Year: Assessing People’s Expectations Regarding Christmas Gathering in Pandemic Times
-      </h3>
-      <p class="pub-meta pub-authors">
-        Waterschoot, J., Morbée, S., Van den Bergh, O., &amp; Vansteenkiste, M.
-      </p>
-      <p class="pub-meta pub-journal">
-        European Journal of Health Psychology (2022), 30(1), 17–28
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This article explores expectations and concerns about Christmas gatherings during the COVID-19 pandemic.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        Focusing on holiday gatherings, this study assesses how people anticipated Christmas celebrations under COVID-19 restrictions, examining their
-        health concerns, perceived risks, and motivational profiles. It also explores willingness to adjust traditions to protect vulnerable family
-        members. The findings reveal ambivalence between the desire for connection and the need for safety, highlighting the emotional and motivational
-        tensions at play in private decision-making during a public health crisis.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Christmas gatherings</li>
-        <li>COVID-19</li>
-        <li>Risk perception</li>
-        <li>Family</li>
-        <li>Health psychology</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1027/2512-8442/a000114"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Waterschoot et al. (2024). Time-lagged motivation and epidemiological indicators. Motivation Science. -->
-<article class="pub-card" data-year="2024">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of motivation and epidemiological indicators">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        Why Motivation for Adhering to COVID-19 Measures Matters: Investigating Time-Lagged Associations with Epidemiological Indicators
-      </h3>
-      <p class="pub-meta pub-authors">
-        Waterschoot, J., Morbée, S., Yzerbyt, V., Van Oost, P., Klein, O., Luminet, O., Schmitz, M., Van den Bergh, O., &amp; Vansteenkiste, M.
-      </p>
-      <p class="pub-meta pub-journal">
-        Motivation Science (2024), Advance online publication
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This article links motivation for adherence to later epidemiological indicators such as infection and hospitalization rates.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        Integrating psychological and epidemiological data, this study examines how citizens’ motivational quality for adhering to COVID-19 measures
-        predicts infection and hospitalization rates at later time points. The authors test time-lagged associations between autonomous versus controlled
-        motivation, adherence patterns, and epidemiological trends. The results suggest that fostering high-quality motivation is not only beneficial for
-        well-being but may also have tangible public health implications at the population level.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Motivation</li>
-        <li>COVID-19 measures</li>
-        <li>Epidemiology</li>
-        <li>Time-lagged analysis</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1037/mot0000346"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Waterschoot et al. (2023). Booster and annual dose acceptance. APHWB. -->
-<article class="pub-card" data-year="2023">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of booster and annual dose motivation">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        Who Is Motivated to Accept a Booster and Annual Dose? A Dimensional and Person-Centered Approach
-      </h3>
-      <p class="pub-meta pub-authors">
-        Waterschoot, J., Van Oost, P., Vansteenkiste, M., Brisbois, M., Schmitz, M., Morbée, S., Klein, O., Luminet, O., Van den Bergh, O.,
-        Raemdonck, E., &amp; Yzerbyt, V.
-      </p>
-      <p class="pub-meta pub-journal">
-        Applied Psychology: Health and Well-Being (2023), 15(4), 1293–1318
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This paper identifies motivational profiles linked to acceptance of booster and annual COVID-19 vaccine doses.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        Combining dimensional and person-centered analyses, this study examines who is motivated to accept COVID-19 booster and annual vaccine doses.
-        It identifies motivational profiles based on autonomous and controlled motives, trust, and risk perception, and tests how these profiles predict
-        intentions and actual uptake. The findings underscore the importance of supporting autonomous motives and addressing concerns among hesitant
-        groups when planning repeated vaccination campaigns.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Booster vaccines</li>
-        <li>Annual dose</li>
-        <li>Motivational profiles</li>
-        <li>COVID-19</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1111/aphw.12437"
        target="_blank" rel="noopener">
       View article
     </a>
@@ -1186,6 +947,455 @@ body {
   </div>
 </article> <br>
 
+<!-- Morbée et al. (2023). Physical activity and well-being. MHPA. -->
+<article class="pub-card" data-year="2023">
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of physical activity and mental well-being">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        A Brief Report on the Reciprocal Associations Between Physical Activity and Mental Well-Being During the First 9 Weeks of the COVID-19 Lockdown in Belgium
+      </h3>
+      <p class="pub-meta pub-authors">
+        Morbée, S., Beeckman, M., Loeys, T., Waterschoot, J., Cardon, G., Haerens, L., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        Mental Health and Physical Activity (2023), 24, 100500
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        This report examines reciprocal links between physical activity and mental well-being during the first lockdown weeks.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        This brief report analyzes how physical activity and mental well-being influenced each other during the first nine weeks of COVID-19 lockdown
+        in Belgium. Using cross-lagged analyses, the authors test whether more active individuals subsequently feel better, and whether better mental
+        health promotes continued activity. The findings highlight a positive feedback loop between movement and well-being that may help buffer the
+        psychological costs of stringent restrictions.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Physical activity</li>
+        <li>Mental well-being</li>
+        <li>Lockdown</li>
+        <li>COVID-19</li>
+      </ul>
+    </div>
+
+    <a class="pub-link"
+       href="https://doi.org/10.1016/j.mhpa.2022.100500"
+       target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+```
+
+## Social cohesion, identity & community
+
+> Societal challenges test the strength of social bonds and shared identity. These publications explore how loneliness, emotional distancing, identity processes, and cultural factors shape people’s sense of belonging, emotional functioning, and adaptive capacity within the social fabric.
+
+```{=html}
+
+<!-- Wollast et al. (2024). Self-compassion and loneliness. Cognition and Emotion. -->
+<article class="pub-card" data-year="2024">
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of loneliness and self-compassion">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        The Role of Self-Compassion in Loneliness During the COVID-19 Pandemic: A Group-Based Trajectory Modelling Approach
+      </h3>
+      <p class="pub-meta pub-authors">
+        Wollast, R., Preece, D. A., Schmitz, M., Bigot, A., Gross, J. J., &amp; Luminet, O.
+      </p>
+      <p class="pub-meta pub-journal">
+        Cognition and Emotion (2024), 38(1), 103–119
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        Research has suggested an increase in loneliness during the COVID-19 pandemic, but much of this work has been cross-sectional, making causal inferences difficult.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        Research has suggested an increase in loneliness during the COVID-19 pandemic, but much of this work has been cross-sectional, making causal inferences difficult. In the present research, we employed a longitudinal design to identify loneliness trajectories within a period of twelve months during the COVID-19 pandemic in Belgium (N = 2106). We were particularly interested in the potential protective role of self-compassion in these temporal dynamics. Using a group-based trajectory modelling approach, we identified trajectory groups of individuals following low (11.0%), moderate-low (22.4%), moderate (25.7%), moderate-high (31.3%), and high (9.6%) levels of loneliness. Findings indicated that younger people, women, and individuals with poor quality relationships, high levels of health anxiety, and stress related to COVID-19, all had a higher probability of belonging to the highest loneliness trajectory groups. Importantly, we also found that people high in two of the three facets of self-compassion (self-kindness and common humanity) had a lower probability of belonging to the highest loneliness trajectory groups. Ultimately, we demonstrated that trajectory groups reflecting higher levels of loneliness were associated with lower life satisfaction and greater depressive symptoms. We discuss the possibility that increasing self-compassion may be used to promote better mental health in similarly challenging situations.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Loneliness</li>
+        <li>Self-compassion</li>
+        <li>COVID-19</li>
+        <li>Trajectories</li>
+        <li>Group-based modelling</li>
+      </ul>
+    </div>
+
+    <a class="pub-link"
+       href="https://doi.org/10.1080/02699931.2023.2270201"
+       target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+<!-- Wollast et al. (2025). Gender inequality and cultural values... Current Psychology. -->
+<article class="pub-card" data-year="2025">
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of gender differences and emotions">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        Gender Inequality and Cultural Values in Explaining Gender Differences in Positive and Negative Emotions:
+        A Comparison of 24 Countries During the COVID-19 Pandemic
+      </h3>
+      <p class="pub-meta pub-authors">
+        Wollast, R., Lüders, A., Nugier, A., Guimond, S., Phillips, J. B., Sutton, R. M., Douglas, K. M., Sengupta, N. K., Lemay, E. P., Zand, S.,
+        Van Lissa, C. J., Bélanger, J. J., et al.
+      </p>
+      <p class="pub-meta pub-journal">
+        Current Psychology (2025), 44, 7584–7602
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        The coronavirus pandemic posed a major challenge to mental health. Existing evidence shows that COVID-19 is related to poor emotional well-being, particularly among women.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        The coronavirus pandemic posed a major challenge to mental health. Existing evidence shows that COVID-19 is related to poor emotional well-being, particularly among women. However, most work on the subject uses single-country samples, limiting the ability to generalize the disparity or explain it as a function of societal variables. The present study investigates the expression of positive and negative emotions during the pandemic as a function of gender and across 24 countries (N = 49,637). Strong gender differences emerged across countries, with women reporting more negative emotions (anxious, depressed, nervous, exhausted) and less positive emotions (calm, content, relaxed, energetic) than men. The gender gap in positive emotions was significantly wider in countries higher in individualism and narrower in countries higher in power distance. For instance, differences in emotions were larger in Western countries high in individualism, such as the USA, the UK, Italy, and France, and smaller in countries with higher collectivism and power distance, such as China, Malaysia, and South Korea, with a few exceptions like Japan and Brazil. These gender differences across countries were not explained by country-level gender inequalities indicators (GGGI and GII). Interestingly, the national severity of the pandemic, an epidemiological factor, reduced gender differences in positive emotions. These results underscore the importance of considering cultural and national factors when assessing gender differences in well-being.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Gender differences</li>
+        <li>Emotions</li>
+        <li>Gender inequality</li>
+        <li>Cultural values</li>
+        <li>COVID-19</li>
+        <li>Cross-national</li>
+      </ul>
+    </div>
+
+    <a class="pub-link"
+       href="https://link.springer.com/article/10.1007/s12144-024-06989-0"
+       target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+<!-- Morbée et al. (2021). Adherence to COVID-19 measures. Motivation Science. -->
+<article class="pub-card" data-year="2021">
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of adherence to measures and motivation">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        Adherence to COVID-19 Measures: The Critical Role of Autonomous Motivation on a Short- and Long-Term Basis
+      </h3>
+      <p class="pub-meta pub-authors">
+        Morbée, S., Vermote, B., Waterschoot, J., Dieleman, L., Soenens, B., Van den Bergh, O., Ryan, R. M., Vanhalst, J., De Muynck, G.-J., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        Motivation Science (2021), 7(4), 487–496
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        This article shows that autonomous motivation is critical for sustaining adherence to COVID-19 measures over time.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        Grounded in Self-Determination Theory, this study examines how different forms of motivation—autonomous versus controlled—predict adherence to
+        COVID-19 measures in both the short and long term. The authors demonstrate that autonomous motivation is associated with more sustained and
+        higher-quality adherence, whereas controlled motivation and amotivation are linked to poorer compliance and well-being. The findings support
+        the importance of autonomy-supportive public health strategies.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Autonomous motivation</li>
+        <li>COVID-19 measures</li>
+        <li>Adherence</li>
+        <li>Self-Determination Theory</li>
+      </ul>
+    </div>
+
+    <a class="pub-link"
+       href="https://doi.org/10.1037/mot0000250"
+       target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+<!-- Morbée et al. (2021). Adherence to COVID-19 measures. Motivation Science. -->
+<article class="pub-card" data-year="2021">
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of adherence to measures and motivation">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        Adherence to COVID-19 Measures: The Critical Role of Autonomous Motivation on a Short- and Long-Term Basis
+      </h3>
+      <p class="pub-meta pub-authors">
+        Morbée, S., Vermote, B., Waterschoot, J., Dieleman, L., Soenens, B., Van den Bergh, O., Ryan, R. M., Vanhalst, J., De Muynck, G.-J., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        Motivation Science (2021), 7(4), 487–496
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        This article shows that autonomous motivation is critical for sustaining adherence to COVID-19 measures over time.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        Grounded in Self-Determination Theory, this study examines how different forms of motivation—autonomous versus controlled—predict adherence to
+        COVID-19 measures in both the short and long term. The authors demonstrate that autonomous motivation is associated with more sustained and
+        higher-quality adherence, whereas controlled motivation and amotivation are linked to poorer compliance and well-being. The findings support
+        the importance of autonomy-supportive public health strategies.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Autonomous motivation</li>
+        <li>COVID-19 measures</li>
+        <li>Adherence</li>
+        <li>Self-Determination Theory</li>
+      </ul>
+    </div>
+
+    <a class="pub-link"
+       href="https://doi.org/10.1037/mot0000250"
+       target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+<!-- Waterschoot et al. (2021). Boredom, mindfulness and dual pathway. PAID. -->
+<article class="pub-card" data-year="2021">
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of boredom and mindfulness during lockdown">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        “How to Unlock Myself from Boredom?” The Role of Mindfulness and a Dual Awareness- and Action-Oriented Pathway During the COVID-19 Lockdown
+      </h3>
+      <p class="pub-meta pub-authors">
+        Waterschoot, J., Van der Kaap-Deeder, J., Morbée, S., Soenens, B., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        Personality and Individual Differences (2021), 175, 110729
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        This article investigates how mindfulness and dual pathways of awareness and action help people cope with boredom in lockdown.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        This study explores how mindfulness relates to boredom experiences during the COVID-19 lockdown, proposing dual pathways of awareness and action.
+        It examines whether mindful awareness of internal experiences allows individuals to respond more constructively to boredom by engaging in
+        meaningful activities. The findings suggest that mindfulness can transform boredom from a purely aversive state into a cue for adaptive change,
+        supporting better well-being under restrictive conditions.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Boredom</li>
+        <li>Mindfulness</li>
+        <li>COVID-19 lockdown</li>
+        <li>Emotion regulation</li>
+      </ul>
+    </div>
+
+    <a class="pub-link"
+       href="https://doi.org/10.1016/j.paid.2021.110729"
+       target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+<!-- Schrooyen et al. (2021). Parental identity and adaptation. J Family Psychology. -->
+<article class="pub-card" data-year="2021">
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of parental identity and adaptation">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        Parental Identity as a Resource for Parental Adaptation During the COVID-19 Lockdown
+      </h3>
+      <p class="pub-meta pub-authors">
+        Schrooyen, C., Soenens, B., Waterschoot, J., Vermote, B., Morbée, S., Beyers, W., Brenning, K., Dieleman, L.,
+        Van der Kaap-Deeder, J., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        Journal of Family Psychology (2021), 35(8), 1053–1064
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        This article examines whether a strong parental identity supports better adaptation during lockdown.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        This study investigates how parental identity—feeling clear and committed in one’s role as a parent—helps caregivers adapt to the demands of
+        COVID-19 lockdown. It examines associations between parental identity, need satisfaction, stress, and parenting behavior, highlighting how
+        identity can serve as a psychological resource. The findings suggest that a well-integrated parental identity fosters resilience amid heightened
+        family pressures and uncertainty.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Parental identity</li>
+        <li>Adaptation</li>
+        <li>Parenting</li>
+        <li>COVID-19 lockdown</li>
+      </ul>
+    </div>
+
+    <!-- No DOI provided in your list; add link if available -->
+  </div>
+</article> <br>
+
+```
+
+## Vaccine acceptance, trust & societal narratives
+
+> Vaccination decisions emerge from an interplay of motivation, trust, cultural worldviews, and societal narratives. The papers grouped here investigate how beliefs, misinformation, motivational quality, and communication shape vaccine intentions, uptake, and hesitancy across diverse populations.
+
+```{=html}
+<!-- Schmitz et al. (2022). Predicting vaccine uptake. Vaccine. -->
+<article class="pub-card" data-year="2022">
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/3952224/pexels-photo-3952224.jpeg?_gl=1*130nn5h*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzcxMDMkajU0JGwwJGgw"
+         alt="Illustration of vaccine uptake and motivation">
+  </div>
+
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        Predicting Vaccine Uptake During COVID-19 Crisis: A Motivational Approach
+      </h3>
+      <p class="pub-meta pub-authors">
+        Schmitz, M., Luminet, O., Klein, O., Morbée, S., Van den Bergh, O., Van Oost, P., Waterschoot, J., Yzerbyt, V., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        Vaccine (2022), 40(2), 288–297
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        This article applies a motivational lens to understand who gets vaccinated and why during the COVID-19 crisis.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        Using Self-Determination Theory as a guiding framework, this study examines how different types of motivation and psychological need experiences
+        predict COVID-19 vaccine uptake. It explores the role of autonomous and controlled motives, trust, and perceived benefits in shaping intentions
+        and actual vaccination behavior. The findings highlight that high-quality, autonomous motivation is a key driver of vaccine acceptance beyond
+        demographic and attitudinal factors.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>Vaccination</li>
+        <li>Motivation</li>
+        <li>COVID-19</li>
+        <li>Self-Determination Theory</li>
+      </ul>
+    </div>
+
+    <a class="pub-link"
+       href="https://doi.org/10.1016/j.vaccine.2021.11.068"
+       target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
 <!-- Waterschoot et al. (2023). Vaccination intentions over time. Health Psychology. -->
 <article class="pub-card" data-year="2023">
   <div class="pub-media">
@@ -1242,80 +1452,24 @@ body {
   </div>
 </article> <br>
 
-<!-- Brenning et al. (2022). Maladaptive emotion regulation. Stress & Health. -->
-<article class="pub-card" data-year="2022">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of emotion regulation and stress">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        Maladaptive Emotion Regulation as a Vulnerability Factor During the COVID-19 Pandemic:
-        A 10-Wave Longitudinal Study
-      </h3>
-      <p class="pub-meta pub-authors">
-        Brenning, K., Waterschoot, J., Dieleman, L., Morbée, S., Vermote, B., Soenens, B., Van der Kaap-Deeder, J., van den Bogaard, D., &amp; Vansteenkiste, M.
-      </p>
-      <p class="pub-meta pub-journal">
-        Stress &amp; Health (2022), 39(3), 562–575
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This study shows how maladaptive emotion regulation predicted higher distress over 10 waves during the pandemic.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        In this 10-wave longitudinal study, the authors examine whether maladaptive emotion regulation strategies, such as suppression and rumination,
-        act as vulnerability factors during the COVID-19 pandemic. They test associations with anxiety, depression, and stress across time, controlling
-        for baseline functioning. The results demonstrate that ineffective regulation contributes to sustained psychological distress, underscoring the
-        value of promoting healthier regulatory skills in crisis contexts.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Emotion regulation</li>
-        <li>COVID-19</li>
-        <li>Longitudinal</li>
-        <li>Stress</li>
-        <li>Depression</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1002/smi.3204"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Morbée et al. (2023). Physical activity and well-being. MHPA. -->
+<!-- Waterschoot et al. (2023). Booster and annual dose acceptance. APHWB. -->
 <article class="pub-card" data-year="2023">
   <div class="pub-media">
     <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of physical activity and mental well-being">
+         alt="Illustration of booster and annual dose motivation">
   </div>
 
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        A Brief Report on the Reciprocal Associations Between Physical Activity and Mental Well-Being During the First 9 Weeks of the COVID-19 Lockdown in Belgium
+        Who Is Motivated to Accept a Booster and Annual Dose? A Dimensional and Person-Centered Approach
       </h3>
       <p class="pub-meta pub-authors">
-        Morbée, S., Beeckman, M., Loeys, T., Waterschoot, J., Cardon, G., Haerens, L., &amp; Vansteenkiste, M.
+        Waterschoot, J., Van Oost, P., Vansteenkiste, M., Brisbois, M., Schmitz, M., Morbée, S., Klein, O., Luminet, O., Van den Bergh, O.,
+        Raemdonck, E., &amp; Yzerbyt, V.
       </p>
       <p class="pub-meta pub-journal">
-        Mental Health and Physical Activity (2023), 24, 100500
+        Applied Psychology: Health and Well-Being (2023), 15(4), 1293–1318
       </p>
     </header>
 
@@ -1323,14 +1477,14 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        This report examines reciprocal links between physical activity and mental well-being during the first lockdown weeks.
+        This paper identifies motivational profiles linked to acceptance of booster and annual COVID-19 vaccine doses.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        This brief report analyzes how physical activity and mental well-being influenced each other during the first nine weeks of COVID-19 lockdown
-        in Belgium. Using cross-lagged analyses, the authors test whether more active individuals subsequently feel better, and whether better mental
-        health promotes continued activity. The findings highlight a positive feedback loop between movement and well-being that may help buffer the
-        psychological costs of stringent restrictions.
+        Combining dimensional and person-centered analyses, this study examines who is motivated to accept COVID-19 booster and annual vaccine doses.
+        It identifies motivational profiles based on autonomous and controlled motives, trust, and risk perception, and tests how these profiles predict
+        intentions and actual uptake. The findings underscore the importance of supporting autonomous motives and addressing concerns among hesitant
+        groups when planning repeated vaccination campaigns.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -1339,39 +1493,100 @@ body {
     <div>
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
-        <li>Physical activity</li>
-        <li>Mental well-being</li>
-        <li>Lockdown</li>
+        <li>Booster vaccines</li>
+        <li>Annual dose</li>
+        <li>Motivational profiles</li>
         <li>COVID-19</li>
       </ul>
     </div>
 
     <a class="pub-link"
-       href="https://doi.org/10.1016/j.mhpa.2022.100500"
+       href="https://doi.org/10.1111/aphw.12437"
        target="_blank" rel="noopener">
       View article
     </a>
   </div>
 </article> <br>
+<!-- 3. Morbée et al. (2022) – vaccination intention -->
+<article class="pub-card" data-year="2022">
+  <!-- LEFT: image -->
+  <div class="pub-media">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw" alt="Illustration of vaccination decision">
+  </div>
 
-<!-- Van de Casteele et al. (2022). Saliva testing among teachers. SSM. -->
+  <!-- RIGHT: text content -->
+  <div class="pub-content">
+    <header>
+      <h3 class="pub-title">
+        Personal and Contextual Determinants of COVID-19 Vaccination Intention: A Vignette Study
+      </h3>
+      <p class="pub-meta pub-authors">
+        Morbée, S., Waterschoot, J., Yzerbyt, V., Klein, O., Luminet, O., Schmitz, M., Van den Bergh, O.,
+        Van Oost, P., De Craene, S., &amp; Vansteenkiste, M.
+      </p>
+      <p class="pub-meta pub-journal">
+        Expert Review of Vaccines (2022), 21(10), 1475–1485
+      </p>
+    </header>
+
+    <div class="abstract-container">
+      <div class="pub-abstract-label">Abstract</div>
+
+      <p class="pub-abstract preview">
+        Using experimentally varied vignettes, this study explores how personal motives and contextual features
+        of the vaccination campaign shape people’s intentions to receive a COVID-19 vaccine.
+      </p>
+
+      <p class="pub-abstract full" style="display:none;">
+        This vignette-based experiment examined which factors encourage or undermine individuals’ willingness
+        to be vaccinated against COVID-19. Participants evaluated hypothetical vaccination scenarios that differed
+        in contextual characteristics (e.g., infection risk, vaccine efficacy, and social norms) and reported their
+        motivation and intention to get vaccinated. The study also assessed individual differences in motivational
+        regulation and vaccine-related distrust. Results showed that stronger vaccination intentions were observed
+        when scenarios emphasized higher benefits and collective protection, and when people experienced more
+        autonomous rather than pressured motivation. High mistrust and reluctance in the scenarios were linked
+        to lower intentions. These findings highlight the importance of combining supportive messaging with
+        favorable contextual conditions to increase vaccination uptake.
+      </p>
+
+      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
+    </div>
+
+    <div>
+      <div class="pub-keywords-label">Keywords</div>
+      <ul class="pub-keywords">
+        <li>COVID-19</li>
+        <li>Vaccination intention</li>
+        <li>Vignette study</li>
+        <li>Motivation</li>
+        <li>Vaccine hesitancy</li>
+      </ul>
+    </div>
+
+    <a class="pub-link" href="https://doi.org/10.1080/14760584.2022.2105212" target="_blank" rel="noopener">
+      View article
+    </a>
+  </div>
+</article> <br>
+
+<!-- Van Oost et al. (2022). Conspiracism, trust and vaccination intentions. SSM. -->
 <article class="pub-card" data-year="2022">
   <div class="pub-media">
     <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of saliva testing among teachers">
+         alt="Illustration of conspiracism and trust">
   </div>
 
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        Saliva Testing Among Teachers During the COVID-19 Pandemic:
-        Effects on Health Concerns, Well-Being, and Precautionary Behavior
+        The Relation Between Conspiracism, Government Trust, and COVID-19 Vaccination Intentions:
+        The Key Role of Motivation
       </h3>
       <p class="pub-meta pub-authors">
-        Van de Casteele, M., Waterschoot, J., Anthierens, S., DeSmet, A., Galand, B., Goossens, H., Morbée, S., &amp; Vansteenkiste, M.
+        Van Oost, P., Yzerbyt, V., Schmitz, M., Vansteenkiste, M., Luminet, O., Morbée, S., Van den Bergh, O., Waterschoot, J., &amp; Klein, O.
       </p>
       <p class="pub-meta pub-journal">
-        Social Science &amp; Medicine (2022), 311, 115295
+        Social Science &amp; Medicine (2022), 301, 114926
       </p>
     </header>
 
@@ -1379,14 +1594,14 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        This article examines how saliva testing programs for teachers affected their health concerns, well-being, and precautionary behavior.
+        This paper examines how conspiracist beliefs and government trust relate to vaccination intentions through motivation.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        This study evaluates the psychological impact of implementing saliva testing among teachers during the COVID-19 pandemic. It examines whether
-        such testing reduces health concerns, supports well-being, and encourages precautionary behaviors, or conversely, increases anxiety and burden.
-        The findings provide evidence on how targeted testing strategies can be integrated into school settings with attention to staff’s psychological
-        experiences and motivation to comply with health protocols.
+        This study investigates the interplay between conspiracist worldviews, trust in government, and motivation in predicting COVID-19 vaccination
+        intentions. It tests whether high conspiracism undermines trust and fosters controlled or amotivated states that, in turn, reduce willingness to
+        vaccinate. The findings highlight motivation as a central mechanism linking broader beliefs about authorities to concrete health decisions,
+        providing targets for interventions that respect autonomy while addressing misinformation.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -1395,39 +1610,40 @@ body {
     <div>
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
-        <li>Saliva testing</li>
-        <li>Teachers</li>
+        <li>Conspiracism</li>
+        <li>Government trust</li>
+        <li>Vaccination intentions</li>
+        <li>Motivation</li>
         <li>COVID-19</li>
-        <li>Well-being</li>
-        <li>Precautionary behavior</li>
       </ul>
     </div>
 
     <a class="pub-link"
-       href="https://doi.org/10.1016/j.socscimed.2022.115295"
+       href="https://doi.org/10.1016/j.socscimed.2022.114926"
        target="_blank" rel="noopener">
       View article
     </a>
   </div>
 </article> <br>
 
-<!-- Vermote et al. (2023). Meaning and intrinsic goals. Journal of Happiness Studies. -->
-<article class="pub-card" data-year="2023">
+<!-- Van Oost et al. (2024). Alternative medicine, nature and god. EJSP. -->
+<article class="pub-card" data-year="2024">
   <div class="pub-media">
     <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of meaning and intrinsic goals in late adulthood">
+         alt="Illustration of beliefs and vaccination intentions">
   </div>
 
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        How Do Late Adults Experience Meaning During the COVID-19 Lockdown? The Role of Intrinsic Goals
+        When Views About Alternative Medicine, Nature and God Come in the Way of People’s Vaccination Intentions
       </h3>
       <p class="pub-meta pub-authors">
-        Vermote, B., Morbée, S., Waterschoot, J., Dieleman, L., Soenens, B., Ryan, R. M., Vanhalst, J., De Muynck, G.-J., &amp; Vansteenkiste, M.
+        Van Oost, P., Schmitz, M., Klein, O., Brisbois, M., Luminet, O., Morbée, S., Raemdonck, E., Van den Bergh, O., Vansteenkiste, M.,
+        Waterschoot, J., &amp; Yzerbyt, V.
       </p>
       <p class="pub-meta pub-journal">
-        Journal of Happiness Studies (2023), 24(5), 1759–1780
+        European Journal of Social Psychology (2024), 54(3), 767–784
       </p>
     </header>
 
@@ -1435,14 +1651,14 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        This article examines how intrinsic goals support experiences of meaning among older adults during lockdown.
+        This article investigates how beliefs about alternative medicine, nature, and God interfere with vaccination intentions.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        Focusing on late adulthood, this study explores how pursuing intrinsic goals—such as personal growth, relationships, and community contribution—
-        relates to experiences of meaning during COVID-19 lockdown. The authors test whether intrinsic goal pursuit buffers against loneliness and
-        distress, and how it interacts with basic psychological needs. The findings highlight the importance of value-congruent striving for maintaining
-        meaning in later life under restrictive conditions.
+        This study examines how endorsement of alternative medicine, beliefs about nature, and religious convictions shape people’s vaccination intentions.
+        It tests whether these belief systems undermine trust in conventional medicine and public health authorities, and how they interact with
+        motivational factors. The findings shed light on cultural and ideological barriers to vaccination and suggest ways to engage respectfully with
+        diverse worldviews in health communication.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -1451,21 +1667,28 @@ body {
     <div>
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
-        <li>Meaning in life</li>
-        <li>Intrinsic goals</li>
-        <li>Older adults</li>
-        <li>COVID-19 lockdown</li>
+        <li>Vaccination intentions</li>
+        <li>Alternative medicine</li>
+        <li>Religious beliefs</li>
+        <li>Nature beliefs</li>
+        <li>COVID-19</li>
       </ul>
     </div>
 
     <a class="pub-link"
-       href="https://doi.org/10.1007/s10902-023-00657-z"
+       href="https://doi.org/10.1002/ejsp.3047"
        target="_blank" rel="noopener">
       View article
     </a>
   </div>
 </article> <br>
+```
 
+## Individual resilience, psychological needs and well-being
+
+Crises expose vulnerabilities but also reveal pathways to resilience. These publications highlight how basic psychological needs, emotion regulation, and identity processes support or hinder well-being, mental health, and adaptive functioning among individuals and families across the lifespan.
+
+```{=html}
 <!-- Vermote et al. (2022). Psychological needs in times of uncertainty. J Happiness Studies. -->
 <article class="pub-card" data-year="2022">
   <div class="pub-media">
@@ -1578,24 +1801,24 @@ body {
     </a>
   </div>
 </article> <br>
-
-<!-- Waterschoot et al. (2022). Emotion regulation in times of COVID-19. Current Psychology. -->
+<!-- Brenning et al. (2022). Maladaptive emotion regulation. Stress & Health. -->
 <article class="pub-card" data-year="2022">
   <div class="pub-media">
     <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of emotion regulation profiles during COVID-19">
+         alt="Illustration of emotion regulation and stress">
   </div>
 
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        Emotion Regulation in Times of COVID-19: A Person-Centered Approach Based on Self-Determination Theory
+        Maladaptive Emotion Regulation as a Vulnerability Factor During the COVID-19 Pandemic:
+        A 10-Wave Longitudinal Study
       </h3>
       <p class="pub-meta pub-authors">
-        Waterschoot, J., Morbée, S., Vermote, B., Brenning, K., Flamant, N., Vansteenkiste, M., &amp; Soenens, B.
+        Brenning, K., Waterschoot, J., Dieleman, L., Morbée, S., Vermote, B., Soenens, B., Van der Kaap-Deeder, J., van den Bogaard, D., &amp; Vansteenkiste, M.
       </p>
       <p class="pub-meta pub-journal">
-        Current Psychology (2023), 42, 20211–20225
+        Stress &amp; Health (2022), 39(3), 562–575
       </p>
     </header>
 
@@ -1603,14 +1826,14 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        This article uses a person-centered approach to identify emotion regulation profiles and their links to well-being.
+        This study shows how maladaptive emotion regulation predicted higher distress over 10 waves during the pandemic.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        Adopting a person-centered perspective, this study identifies distinct emotion regulation profiles during the COVID-19 pandemic and explores how
-        they relate to psychological needs and well-being. It distinguishes profiles characterized by integrative, suppressive, and dysregulated tendencies
-        and examines their associations with adjustment. The findings show that need-supportive regulation patterns are linked to better mental health,
-        whereas dysregulation is associated with greater distress, aligning with Self-Determination Theory’s emphasis on integrative functioning.
+        In this 10-wave longitudinal study, the authors examine whether maladaptive emotion regulation strategies, such as suppression and rumination,
+        act as vulnerability factors during the COVID-19 pandemic. They test associations with anxiety, depression, and stress across time, controlling
+        for baseline functioning. The results demonstrate that ineffective regulation contributes to sustained psychological distress, underscoring the
+        value of promoting healthier regulatory skills in crisis contexts.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -1620,69 +1843,15 @@ body {
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
         <li>Emotion regulation</li>
-        <li>Person-centered</li>
-        <li>Self-Determination Theory</li>
         <li>COVID-19</li>
+        <li>Longitudinal</li>
+        <li>Stress</li>
+        <li>Depression</li>
       </ul>
     </div>
 
     <a class="pub-link"
-       href="https://doi.org/10.1007/s12144-021-02623-5"
-       target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-<!-- Waterschoot et al. (2021). Boredom, mindfulness and dual pathway. PAID. -->
-<article class="pub-card" data-year="2021">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of boredom and mindfulness during lockdown">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        “How to Unlock Myself from Boredom?” The Role of Mindfulness and a Dual Awareness- and Action-Oriented Pathway During the COVID-19 Lockdown
-      </h3>
-      <p class="pub-meta pub-authors">
-        Waterschoot, J., Van der Kaap-Deeder, J., Morbée, S., Soenens, B., &amp; Vansteenkiste, M.
-      </p>
-      <p class="pub-meta pub-journal">
-        Personality and Individual Differences (2021), 175, 110729
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This article investigates how mindfulness and dual pathways of awareness and action help people cope with boredom in lockdown.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        This study explores how mindfulness relates to boredom experiences during the COVID-19 lockdown, proposing dual pathways of awareness and action.
-        It examines whether mindful awareness of internal experiences allows individuals to respond more constructively to boredom by engaging in
-        meaningful activities. The findings suggest that mindfulness can transform boredom from a purely aversive state into a cue for adaptive change,
-        supporting better well-being under restrictive conditions.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Boredom</li>
-        <li>Mindfulness</li>
-        <li>COVID-19 lockdown</li>
-        <li>Emotion regulation</li>
-      </ul>
-    </div>
-
-    <a class="pub-link"
-       href="https://doi.org/10.1016/j.paid.2021.110729"
+       href="https://doi.org/10.1002/smi.3204"
        target="_blank" rel="noopener">
       View article
     </a>
@@ -1745,123 +1914,6 @@ body {
     </a>
   </div>
 </article> <br>
-
-<!-- Schrooyen et al. (2021). Parental identity and adaptation. J Family Psychology. -->
-<article class="pub-card" data-year="2021">
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
-         alt="Illustration of parental identity and adaptation">
-  </div>
-
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        Parental Identity as a Resource for Parental Adaptation During the COVID-19 Lockdown
-      </h3>
-      <p class="pub-meta pub-authors">
-        Schrooyen, C., Soenens, B., Waterschoot, J., Vermote, B., Morbée, S., Beyers, W., Brenning, K., Dieleman, L.,
-        Van der Kaap-Deeder, J., &amp; Vansteenkiste, M.
-      </p>
-      <p class="pub-meta pub-journal">
-        Journal of Family Psychology (2021), 35(8), 1053–1064
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This article examines whether a strong parental identity supports better adaptation during lockdown.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        This study investigates how parental identity—feeling clear and committed in one’s role as a parent—helps caregivers adapt to the demands of
-        COVID-19 lockdown. It examines associations between parental identity, need satisfaction, stress, and parenting behavior, highlighting how
-        identity can serve as a psychological resource. The findings suggest that a well-integrated parental identity fosters resilience amid heightened
-        family pressures and uncertainty.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>Parental identity</li>
-        <li>Adaptation</li>
-        <li>Parenting</li>
-        <li>COVID-19 lockdown</li>
-      </ul>
-    </div>
-
-    <!-- No DOI provided in your list; add link if available -->
-  </div>
-</article> <br>
-
-<!-- 1. Van der Kaap-Deeder et al. (2021) -->
-<article class="pub-card" data-year="2021">
-  <!-- LEFT: image -->
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw" alt="Illustration of parents during COVID-19">
-  </div>
-
-  <!-- RIGHT: text content -->
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        The Role of Ego Integrity and Despair in Older Adults’ Well-Being during the COVID-19 Crisis:
-        The Mediating Role of Need-Based Experiences
-      </h3>
-      <p class="pub-meta pub-authors">
-        van der Kaap-Deeder, J., Vermote, B., Waterschoot, J., Soenens, B., Morbée, S., &amp; Vansteenkiste, M.
-      </p>
-      <p class="pub-meta pub-journal">
-        European Journal of Ageing (2021), 19(1), 117–129
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This study investigates how older adults’ ego integrity and despair during the COVID-19 lockdown
-        relate to their well-being and psychological distress via basic psychological need experiences.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        Drawing on Erikson’s theory and Self-Determination Theory, this study examined whether ego integrity
-        and despair function as resilience and vulnerability factors for older adults during the COVID-19 crisis.
-        A sample of community-dwelling older adults completed questionnaires about ego integrity, despair,
-        basic psychological need satisfaction, and indicators of well-being and distress during the early lockdown
-        in Belgium. Structural equation models showed that higher ego integrity and lower despair were associated
-        with greater well-being and fewer symptoms of distress, largely through more satisfying need-based
-        experiences in daily life. The study further explored how sociodemographic and contextual factors (e.g.,
-        income, relationship status) are linked to well-being, highlighting pathways by which psychological needs
-        help older adults adapt to major societal stressors.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>COVID-19</li>
-        <li>Older adults</li>
-        <li>Ego integrity</li>
-        <li>Despair</li>
-        <li>Basic psychological needs</li>
-        <li>Well-being</li>
-      </ul>
-    </div>
-
-    <a class="pub-link" href="https://doi.org/10.1007/s10433-021-00610-0" target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-
 <!-- 2. Wauters et al. (2022) -->
 <article class="pub-card" data-year="2022">
   <!-- LEFT: image -->
@@ -1928,27 +1980,25 @@ body {
     </a>
   </div>
 </article> <br>
-
-
-<!-- 3. Morbée et al. (2022) – vaccination intention -->
-<article class="pub-card" data-year="2022">
+<!-- 1. Van der Kaap-Deeder et al. (2021) -->
+<article class="pub-card" data-year="2021">
   <!-- LEFT: image -->
   <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw" alt="Illustration of vaccination decision">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw" alt="Illustration of parents during COVID-19">
   </div>
 
   <!-- RIGHT: text content -->
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        Personal and Contextual Determinants of COVID-19 Vaccination Intention: A Vignette Study
+        The Role of Ego Integrity and Despair in Older Adults’ Well-Being during the COVID-19 Crisis:
+        The Mediating Role of Need-Based Experiences
       </h3>
       <p class="pub-meta pub-authors">
-        Morbée, S., Waterschoot, J., Yzerbyt, V., Klein, O., Luminet, O., Schmitz, M., Van den Bergh, O.,
-        Van Oost, P., De Craene, S., &amp; Vansteenkiste, M.
+        van der Kaap-Deeder, J., Vermote, B., Waterschoot, J., Soenens, B., Morbée, S., &amp; Vansteenkiste, M.
       </p>
       <p class="pub-meta pub-journal">
-        Expert Review of Vaccines (2022), 21(10), 1475–1485
+        European Journal of Ageing (2021), 19(1), 117–129
       </p>
     </header>
 
@@ -1956,20 +2006,20 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        Using experimentally varied vignettes, this study explores how personal motives and contextual features
-        of the vaccination campaign shape people’s intentions to receive a COVID-19 vaccine.
+        This study investigates how older adults’ ego integrity and despair during the COVID-19 lockdown
+        relate to their well-being and psychological distress via basic psychological need experiences.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        This vignette-based experiment examined which factors encourage or undermine individuals’ willingness
-        to be vaccinated against COVID-19. Participants evaluated hypothetical vaccination scenarios that differed
-        in contextual characteristics (e.g., infection risk, vaccine efficacy, and social norms) and reported their
-        motivation and intention to get vaccinated. The study also assessed individual differences in motivational
-        regulation and vaccine-related distrust. Results showed that stronger vaccination intentions were observed
-        when scenarios emphasized higher benefits and collective protection, and when people experienced more
-        autonomous rather than pressured motivation. High mistrust and reluctance in the scenarios were linked
-        to lower intentions. These findings highlight the importance of combining supportive messaging with
-        favorable contextual conditions to increase vaccination uptake.
+        Drawing on Erikson’s theory and Self-Determination Theory, this study examined whether ego integrity
+        and despair function as resilience and vulnerability factors for older adults during the COVID-19 crisis.
+        A sample of community-dwelling older adults completed questionnaires about ego integrity, despair,
+        basic psychological need satisfaction, and indicators of well-being and distress during the early lockdown
+        in Belgium. Structural equation models showed that higher ego integrity and lower despair were associated
+        with greater well-being and fewer symptoms of distress, largely through more satisfying need-based
+        experiences in daily life. The study further explored how sociodemographic and contextual factors (e.g.,
+        income, relationship status) are linked to well-being, highlighting pathways by which psychological needs
+        help older adults adapt to major societal stressors.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -1979,40 +2029,37 @@ body {
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
         <li>COVID-19</li>
-        <li>Vaccination intention</li>
-        <li>Vignette study</li>
-        <li>Motivation</li>
-        <li>Vaccine hesitancy</li>
+        <li>Older adults</li>
+        <li>Ego integrity</li>
+        <li>Despair</li>
+        <li>Basic psychological needs</li>
+        <li>Well-being</li>
       </ul>
     </div>
 
-    <a class="pub-link" href="https://doi.org/10.1080/14760584.2022.2105212" target="_blank" rel="noopener">
+    <a class="pub-link" href="https://doi.org/10.1007/s10433-021-00610-0" target="_blank" rel="noopener">
       View article
     </a>
   </div>
 </article> <br>
 
-
-<!-- 4. Waterschoot et al. (2023) – proportionality & stringency -->
+<!-- Vermote et al. (2023). Meaning and intrinsic goals. Journal of Happiness Studies. -->
 <article class="pub-card" data-year="2023">
-  <!-- LEFT: image -->
   <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw" alt="Illustration of COVID-19 restrictions">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of meaning and intrinsic goals in late adulthood">
   </div>
 
-  <!-- RIGHT: text content -->
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        How the Stringency of the COVID-19 Restrictions Influences Motivation for Adherence and Well-Being:
-        The Critical Role of Proportionality
+        How Do Late Adults Experience Meaning During the COVID-19 Lockdown? The Role of Intrinsic Goals
       </h3>
       <p class="pub-meta pub-authors">
-        Waterschoot, J., Morbée, S., Van den Bergh, O., Yzerbyt, V., Raemdonck, E., Brisbois, M., Schmitz, M.,
-        Klein, O., Luminet, O., Van Oost, P., &amp; Vansteenkiste, M.
+        Vermote, B., Morbée, S., Waterschoot, J., Dieleman, L., Soenens, B., Ryan, R. M., Vanhalst, J., De Muynck, G.-J., &amp; Vansteenkiste, M.
       </p>
       <p class="pub-meta pub-journal">
-        International Journal of Health Policy and Management (2023), 12, 8021
+        Journal of Happiness Studies (2023), 24(5), 1759–1780
       </p>
     </header>
 
@@ -2020,21 +2067,14 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        Using large-scale longitudinal data from Belgium, this study tests how the proportionality between
-        COVID-19 restrictions and the epidemiological situation relates to citizens’ motivation to comply
-        and their well-being.
+        This article examines how intrinsic goals support experiences of meaning among older adults during lockdown.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        Across multiple pandemic waves, more than 270,000 Belgian respondents reported on their motivation
-        to adhere to COVID-19 measures, their actual adherence, and indicators of mental well-being.
-        These data were linked to objective indices of policy stringency and viral circulation over time.
-        The study examined whether people felt that the strictness of government measures was proportional
-        to the epidemiological risk and how this sense of proportionality related to motivation and well-being.
-        When restrictions were perceived as proportionate, people reported more autonomous motivation to comply,
-        greater adherence, and better psychological functioning. When measures seemed overly strict or insufficient
-        relative to the infection situation, controlled motivation and amotivation increased, and well-being
-        deteriorated. The findings highlight proportionality as a key ingredient for sustainable public health policy.
+        Focusing on late adulthood, this study explores how pursuing intrinsic goals—such as personal growth, relationships, and community contribution—
+        relates to experiences of meaning during COVID-19 lockdown. The authors test whether intrinsic goal pursuit buffers against loneliness and
+        distress, and how it interacts with basic psychological needs. The findings highlight the importance of value-congruent striving for maintaining
+        meaning in later life under restrictive conditions.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -2043,108 +2083,37 @@ body {
     <div>
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
-        <li>COVID-19</li>
-        <li>Policy stringency</li>
-        <li>Proportionality</li>
-        <li>Motivation for adherence</li>
-        <li>Mental health</li>
-        <li>Longitudinal survey</li>
+        <li>Meaning in life</li>
+        <li>Intrinsic goals</li>
+        <li>Older adults</li>
+        <li>COVID-19 lockdown</li>
       </ul>
     </div>
 
-    <a class="pub-link" href="https://doi.org/10.34172/ijhpm.2023.8021" target="_blank" rel="noopener">
+    <a class="pub-link"
+       href="https://doi.org/10.1007/s10902-023-00657-z"
+       target="_blank" rel="noopener">
       View article
     </a>
   </div>
 </article> <br>
-
-
-<!-- 5. Legate et al. (2022) – global social distancing experiment -->
-<article class="pub-card" data-year="2022">
-  <!-- LEFT: image -->
-  <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw" alt="Illustration of social distancing communication">
-  </div>
-
-  <!-- RIGHT: text content -->
-  <div class="pub-content">
-    <header>
-      <h3 class="pub-title">
-        A Global Experiment on Motivating Social Distancing during the COVID-19 Pandemic
-      </h3>
-      <p class="pub-meta pub-authors">
-        Legate, N., Nguyen, T. V., Weinstein, N., Moller, A., Legault, L., Vally, Z.,
-        <span aria-hidden="true">…</span> &amp; Ogbonnaya, C. E.
-      </p>
-      <p class="pub-meta pub-journal">
-        Proceedings of the National Academy of Sciences (2022), 119(22), e2111091119
-      </p>
-    </header>
-
-    <div class="abstract-container">
-      <div class="pub-abstract-label">Abstract</div>
-
-      <p class="pub-abstract preview">
-        This large cross-country experiment compares autonomy-supportive and controlling messages
-        about social distancing to test which communication strategies foster motivation and compliance
-        during the COVID-19 pandemic.
-      </p>
-
-      <p class="pub-abstract full" style="display:none;">
-        In collaboration with the Psychological Science Accelerator, this preregistered experiment
-        recruited over 25,000 participants from 89 countries to evaluate different public health messages
-        about social distancing. Participants read either an autonomy-supportive message emphasizing
-        personal choice and reasons for distancing, a controlling message relying on pressure and guilt,
-        or a neutral control message, and then reported their motivation, intentions, and emotional reactions.
-        Across cultures, autonomy-supportive communication promoted more internalized, high-quality motivation
-        for social distancing and more favorable attitudes, without raising defensiveness. In contrast,
-        controlling messages tended to elicit reactance, anger, and lower quality motivation. The findings
-        suggest that respectful, choice-affirming communication is a more effective and sustainable way to
-        encourage public health behaviors globally.
-      </p>
-
-      <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
-    </div>
-
-    <div>
-      <div class="pub-keywords-label">Keywords</div>
-      <ul class="pub-keywords">
-        <li>COVID-19</li>
-        <li>Social distancing</li>
-        <li>Autonomy-supportive communication</li>
-        <li>Controlling message</li>
-        <li>Global experiment</li>
-        <li>Public health</li>
-      </ul>
-    </div>
-
-    <a class="pub-link" href="https://doi.org/10.1073/pnas.2111091119" target="_blank" rel="noopener">
-      View article
-    </a>
-  </div>
-</article> <br>
-
-
-<!-- 6. Morbée et al. (2023) – communication style & external motivators -->
+<!-- Vermote et al. (2023). Meaning and intrinsic goals. Journal of Happiness Studies. -->
 <article class="pub-card" data-year="2023">
-  <!-- LEFT: image -->
   <div class="pub-media">
-    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw" alt="Illustration of vaccination communication">
+    <img src="https://images.pexels.com/photos/6517195/pexels-photo-6517195.jpeg?_gl=1*1iwkn7u*_ga*NDA2OTA4MTMyLjE3NjQ2NzM0MDE.*_ga_8JE65Q40S6*czE3NjQ4NzU0OTgkbzIkZzEkdDE3NjQ4NzU1MTMkajQ1JGwwJGgw"
+         alt="Illustration of meaning and intrinsic goals in late adulthood">
   </div>
 
-  <!-- RIGHT: text content -->
   <div class="pub-content">
     <header>
       <h3 class="pub-title">
-        The Role of Communication Style and External Motivators in Predicting Vaccination Experiences
-        and Intentions: An Experimental Vignette Study
+        How Do Late Adults Experience Meaning During the COVID-19 Lockdown? The Role of Intrinsic Goals
       </h3>
       <p class="pub-meta pub-authors">
-        Morbée, S., Vansteenkiste, M., Waterschoot, J., Klein, O., Luminet, O., Schmitz, M.,
-        Van den Bergh, O., Van Oost, P., &amp; Yzerbyt, V.
+        Vermote, B., Morbée, S., Waterschoot, J., Dieleman, L., Soenens, B., Ryan, R. M., Vanhalst, J., De Muynck, G.-J., &amp; Vansteenkiste, M.
       </p>
       <p class="pub-meta pub-journal">
-        Health Communication (2023), 38(13), 2894–2903
+        Journal of Happiness Studies (2023), 24(5), 1759–1780
       </p>
     </header>
 
@@ -2152,21 +2121,14 @@ body {
       <div class="pub-abstract-label">Abstract</div>
 
       <p class="pub-abstract preview">
-        This vignette study examines how autonomy-supportive versus controlling communication, combined with
-        external motivators such as incentives or mandates, shapes people’s vaccination experiences and intentions.
+        This article examines how intrinsic goals support experiences of meaning among older adults during lockdown.
       </p>
 
       <p class="pub-abstract full" style="display:none;">
-        Participants evaluated hypothetical vaccination messages that varied in communication style
-        (autonomy-supportive versus controlling) and the presence or absence of external motivators
-        (e.g., rewards, pressure, or requirements). They subsequently reported their emotional reactions,
-        perceived legitimacy of the policy, and intention to be vaccinated. Messages that acknowledged
-        people’s perspectives, provided meaningful rationales, and preserved a sense of choice promoted more
-        autonomous motivation, more positive vaccination experiences, and higher intentions. Strong external
-        pressure and controlling language, in contrast, were linked to more negative affect and lower quality
-        motivation, even when they sometimes boosted short-term intentions. The findings suggest that respectful,
-        autonomy-supportive communication is critical for fostering durable acceptance of vaccination policies,
-        particularly when external motivators are used.
+        Focusing on late adulthood, this study explores how pursuing intrinsic goals—such as personal growth, relationships, and community contribution—
+        relates to experiences of meaning during COVID-19 lockdown. The authors test whether intrinsic goal pursuit buffers against loneliness and
+        distress, and how it interacts with basic psychological needs. The findings highlight the importance of value-congruent striving for maintaining
+        meaning in later life under restrictive conditions.
       </p>
 
       <button class="readmore-btn" onclick="toggleAbstract(this)">Read more</button>
@@ -2175,23 +2137,24 @@ body {
     <div>
       <div class="pub-keywords-label">Keywords</div>
       <ul class="pub-keywords">
-        <li>COVID-19</li>
-        <li>Vaccination</li>
-        <li>Communication style</li>
-        <li>External motivators</li>
-        <li>Autonomous motivation</li>
-        <li>Vignette experiment</li>
+        <li>Meaning in life</li>
+        <li>Intrinsic goals</li>
+        <li>Older adults</li>
+        <li>COVID-19 lockdown</li>
       </ul>
     </div>
 
-    <a class="pub-link" href="https://doi.org/10.1080/10410236.2022.2125012" target="_blank" rel="noopener">
+    <a class="pub-link"
+       href="https://doi.org/10.1007/s10902-023-00657-z"
+       target="_blank" rel="noopener">
       View article
     </a>
   </div>
 </article> <br>
-
-
 ```
+
+
+
 
  <script>
     function toggleAbstract(button) {
