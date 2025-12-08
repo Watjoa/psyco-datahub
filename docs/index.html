@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PsyCo DataHub</title>
+<title>PsySoc DataHub</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -82,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">PsyCo DataHub</span>
+    <span class="navbar-title">PsySoc DataHub</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -139,14 +139,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a></li>
-  <li><a href="#what-the-data-hub-offers" id="toc-what-the-data-hub-offers" class="nav-link" data-scroll-target="#what-the-data-hub-offers">What the Data Hub offers</a></li>
-  <li><a href="#three-layer-access-model" id="toc-three-layer-access-model" class="nav-link" data-scroll-target="#three-layer-access-model">Three-layer access model</a>
+  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a>
   <ul class="collapse">
-  <li><a href="#layer-1-public-access" id="toc-layer-1-public-access" class="nav-link" data-scroll-target="#layer-1-public-access">🔓 Layer 1: Public Access</a></li>
-  <li><a href="#layer-2-registered-access" id="toc-layer-2-registered-access" class="nav-link" data-scroll-target="#layer-2-registered-access">📝 Layer 2: Registered Access</a></li>
-  <li><a href="#layer-3-internal-access" id="toc-layer-3-internal-access" class="nav-link" data-scroll-target="#layer-3-internal-access">🔒 Layer 3: Internal Access</a></li>
+  <li><a href="#current-datasets" id="toc-current-datasets" class="nav-link" data-scroll-target="#current-datasets">Current datasets</a></li>
   </ul></li>
+  <li><a href="#what-the-data-hub-offers" id="toc-what-the-data-hub-offers" class="nav-link" data-scroll-target="#what-the-data-hub-offers">What the Data Hub offers</a></li>
+  <li><a href="#accessibility" id="toc-accessibility" class="nav-link" data-scroll-target="#accessibility">Accessibility</a></li>
   <li><a href="#using-the-data" id="toc-using-the-data" class="nav-link" data-scroll-target="#using-the-data">Using the Data</a></li>
   <li><a href="#versioning-and-reproducibility" id="toc-versioning-and-reproducibility" class="nav-link" data-scroll-target="#versioning-and-reproducibility">Versioning and Reproducibility</a></li>
   <li><a href="#citation" id="toc-citation" class="nav-link" data-scroll-target="#citation">Citation</a></li>
@@ -159,17 +157,51 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">PsyCo DataHub</h1></header>
+<main class="content column-page-right" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">PsySoc DataHub</h1></header>
 
 
 
 
+<style>
+.card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.4rem 1.6rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card a.btn {
+  margin-top: auto;
+}
+
+.columns-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .columns-3 {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 <div class="columns" style="display:flex; gap:1em;">
 <div class="column" style="width:65%;">
-<section id="psyco-datahub" class="level1">
+<section id="psysoc-datahub" class="level1">
 
 <blockquote class="blockquote">
-<p>Welcome to the PsyCo DataHub: <strong>the Psychology &amp; Cooperation DataHub.</strong> <br> <br> This platform serves as the central repository for the <em>Motivation Barometer</em> and <em>THRIVE</em> projects, bringing together Belgian datasets designed to advance collaborative, evidence-based research. The name <em>PsyCo</em> reflects a core mission: to strengthen cooperation on a societal level by enabling dialogue and joint efforts across scientific domains, practitioners, and policy actors, an essential foundation in times of crisis and in society at large.<br> <br> The DataHub offers structured access to high-quality data on motivation, basic psychological needs, mental health, and responses to societal and public health measures, supported by comprehensive documentation and GDPR-compliant access procedures.</p>
+<p>Welcome to the PsySoc DataHub: the Psychology &amp; Society DataHub. <br><br> This platform serves as a central repository for large-scale Belgian datasets on psychology and society, such as the Motivation Barometer and THRIVE projects, with additional datasets to be added over time. The name PsySoc highlights the mission of the DataHub: to bridge psychological science with societal needs by fostering collaboration across research domains, practitioners, and policy actors—an essential endeavour both in times of crisis and for society’s long-term resilience. <br><br> The DataHub provides structured access to high-quality data on motivation, basic psychological needs, mental health, and responses to societal and public health measures, supported by comprehensive documentation and GDPR-compliant access procedures.</p>
 </blockquote>
 </section>
 </div><div class="column" style="width:35%;">
@@ -185,22 +217,26 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="about" class="level2">
 <h2 class="anchored" data-anchor-id="about">About</h2>
-<p>The <strong>PsySoc Data Hub</strong> brings together two major, complementary datasets that offer unparalleled insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.</p>
-<section id="motivation-barometer-thrive-dataset" class="level4">
-<h4 class="anchored" data-anchor-id="motivation-barometer-thrive-dataset">Motivation Barometer &amp; THRIVE Dataset</h4>
+<p>The <strong>PsySoc DataHub</strong> brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.</p>
+<section id="current-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="current-datasets">Current datasets</h3>
+<section id="motivation-barometer-thrive-datasets" class="level4">
+<h4 class="anchored" data-anchor-id="motivation-barometer-thrive-datasets">Motivation Barometer &amp; THRIVE Datasets</h4>
 <p>At the heart of the hub lies the <strong>Motivation Barometer</strong>, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.</p>
-<p>The <strong>THRIVE</strong> project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven dataset for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.</p>
+<p>The <strong>THRIVE</strong> project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven resource for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.</p>
 </section>
 <section id="louvain-foundation-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="louvain-foundation-dataset">Louvain Foundation Dataset</h4>
 <p>[to be completed]</p>
+<p>See full overview of datasets [link]</p>
 <hr>
+</section>
 </section>
 </section>
 <section id="what-the-data-hub-offers" class="level2">
 <h2 class="anchored" data-anchor-id="what-the-data-hub-offers">What the Data Hub offers</h2>
 <ul>
-<li>📊 <strong>Two high-quality datasets</strong></li>
+<li>📊 <strong>A growing collection of high-quality datasets</strong> (currently including the Motivation Barometer, THRIVE, and the Louvain Foundation dataset)</li>
 <li>🧠 Documenting <strong>central themes</strong> such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.</li>
 <li>🔍 <strong>Comprehensive documentation</strong>, including codebooks, protocols, methodological notes, and variable descriptions<br>
 </li>
@@ -210,18 +246,18 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <hr>
 </section>
-<section id="three-layer-access-model" class="level2">
-<h2 class="anchored" data-anchor-id="three-layer-access-model">Three-layer access model</h2>
-<p>To safeguard privacy and ensure responsible use of the data, the hub follows a <strong>three-layer access structure</strong>:</p>
-<section id="layer-1-public-access" class="level3">
-<h3 class="anchored" data-anchor-id="layer-1-public-access">🔓 Layer 1: Public Access</h3>
+<section id="accessibility" class="level2">
+<h2 class="anchored" data-anchor-id="accessibility">Accessibility</h2>
+<div class="columns-3">
+<section id="layer-1-public-access" class="level4 card">
+<h4 class="anchored" data-anchor-id="layer-1-public-access">🔓 Layer 1: Public Access</h4>
 <p>Openly available to everyone:</p>
 <ul>
 <li>Study documentation and protocols<br>
 </li>
 <li>Codebooks and variable lists<br>
 </li>
-<li>Aggregated statistics and interactive dashboards<br>
+<li>Aggregated statistics and dashboards<br>
 </li>
 <li>Analysis scripts and tutorials</li>
 </ul>
@@ -231,50 +267,49 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>Understand the structure of the data<br>
 </li>
-<li>Teach and learn longitudinal analysis techniques</li>
+<li>Teach &amp; learn longitudinal analysis</li>
 </ul>
 <p><a href="./documentation/index.html" class="btn btn-primary">Browse documentation</a><br>
 <a href="./tutorials/index.html" class="btn btn-outline">View tutorials</a></p>
-<hr>
 </section>
-<section id="layer-2-registered-access" class="level3">
-<h3 class="anchored" data-anchor-id="layer-2-registered-access">📝 Layer 2: Registered Access</h3>
-<p>Restricted, de-identified versions of the real data are accessible <strong>on request</strong>.</p>
-<p>Researchers can apply for access by submitting:</p>
+<section id="layer-2-registered-access" class="level4 card">
+<h4 class="anchored" data-anchor-id="layer-2-registered-access">📝 Layer 2: Registered Access</h4>
+<p>Restricted, de-identified versions of the real data are available <strong>on request</strong>.</p>
+<p>To apply, researchers provide:</p>
 <ol type="1">
-<li>A brief project description (aims, research questions, planned analyses)<br>
+<li>A brief project description<br>
 </li>
-<li>Evidence of ethical approval (where applicable)<br>
+<li>Ethical approval (if applicable)<br>
 </li>
-<li>An overview of the variables or modules needed</li>
+<li>Required variables/modules</li>
 </ol>
-<p>Approved users will be asked to sign a <strong>Data Use Agreement (DUA)</strong>, which specifies:</p>
+<p>Approved users sign a <strong>Data Use Agreement</strong>, committing to:</p>
 <ul>
-<li>No re-identification attempts<br>
+<li>No re-identification<br>
 </li>
-<li>No redistribution to third parties<br>
+<li>No redistribution<br>
 </li>
-<li>Secure storage and responsible handling<br>
+<li>Secure storage<br>
 </li>
-<li>Proper citation and acknowledgement of the datasets</li>
+<li>Proper citation</li>
 </ul>
-<p>Access is granted via <strong>private links</strong> (e.g., private GitHub repo or secure download token) tied to a specific <strong>dataset version</strong>.</p>
+<p>Access is granted via <strong>private links</strong> tied to a specific dataset version.</p>
 <p><a href="./data/download.html" class="btn btn-primary">Request data access</a></p>
-<hr>
 </section>
-<section id="layer-3-internal-access" class="level3">
-<h3 class="anchored" data-anchor-id="layer-3-internal-access">🔒 Layer 3: Internal Access</h3>
-<p>The full versions of the datasets (including detailed identifiers, extended demographics, and sensitive modules) are accessible only to authorized members of the <strong>project consortium</strong>.</p>
+<section id="layer-3-internal-access" class="level4 card">
+<h4 class="anchored" data-anchor-id="layer-3-internal-access">🔒 Layer 3: Internal Access</h4>
+<p>Full datasets—including sensitive modules and detailed identifiers—are restricted to the <strong>project consortium</strong>.</p>
 <p>These data:</p>
 <ul>
-<li>Are stored in <strong>private repositories</strong> with role-based permissions<br>
+<li>Are stored in secure private repositories<br>
 </li>
-<li>Support ongoing longitudinal modelling, manuscript preparation, and consortium-driven projects<br>
+<li>Support ongoing modelling &amp; manuscript preparation<br>
 </li>
 <li>Are not shared externally without additional procedures</li>
 </ul>
-<hr>
 </section>
+</div>
+<hr>
 </section>
 <section id="using-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="using-the-data">Using the Data</h2>
@@ -303,11 +338,8 @@ Below is a minimal example showing how to load the data and inspect basic need v
 </section>
 <section id="citation" class="level2">
 <h2 class="anchored" data-anchor-id="citation">Citation</h2>
-<p>If you use the resources or data from this hub, please cite:</p>
-<blockquote class="blockquote">
-<p>Motivation Barometer and Thrive Dataset, Version 3.0. xxxxx</p>
-</blockquote>
-<p>A detailed and up-to-date citation format is available on the<br>
+<p>If you use the resources or data from this hub, please cite the specific dataset(s) and version(s) you relied on.<br>
+An up-to-date citation format for each dataset is available on the<br>
 <a href="./citation.html">Citation &amp; Acknowledgements</a> page.</p>
 <hr>
 </section>

@@ -37,56 +37,56 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "PsyCo DataHub",
+    "title": "PsySoc DataHub",
     "section": "",
-    "text": "Welcome to the PsyCo DataHub: the Psychology & Cooperation DataHub.   This platform serves as the central repository for the Motivation Barometer and THRIVE projects, bringing together Belgian datasets designed to advance collaborative, evidence-based research. The name PsyCo reflects a core mission: to strengthen cooperation on a societal level by enabling dialogue and joint efforts across scientific domains, practitioners, and policy actors, an essential foundation in times of crisis and in society at large.  The DataHub offers structured access to high-quality data on motivation, basic psychological needs, mental health, and responses to societal and public health measures, supported by comprehensive documentation and GDPR-compliant access procedures.\n\n\n\n\n\n\n\nOfficial logo of the Motivation Barometer"
+    "text": "Welcome to the PsySoc DataHub: the Psychology & Society DataHub.  This platform serves as a central repository for large-scale Belgian datasets on psychology and society, such as the Motivation Barometer and THRIVE projects, with additional datasets to be added over time. The name PsySoc highlights the mission of the DataHub: to bridge psychological science with societal needs by fostering collaboration across research domains, practitioners, and policy actors—an essential endeavour both in times of crisis and for society’s long-term resilience.  The DataHub provides structured access to high-quality data on motivation, basic psychological needs, mental health, and responses to societal and public health measures, supported by comprehensive documentation and GDPR-compliant access procedures.\n\n\n\n\n\n\n\nOfficial logo of the Motivation Barometer"
   },
   {
     "objectID": "index.html#about",
     "href": "index.html#about",
-    "title": "PsyCo DataHub",
+    "title": "PsySoc DataHub",
     "section": "About",
-    "text": "About\nThe PsySoc Data Hub brings together two major, complementary datasets that offer unparalleled insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.\n\nMotivation Barometer & THRIVE Dataset\nAt the heart of the hub lies the Motivation Barometer, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.\nThe THRIVE project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven dataset for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.\n\n\nLouvain Foundation Dataset\n[to be completed]"
+    "text": "About\nThe PsySoc DataHub brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.\n\nCurrent datasets\n\nMotivation Barometer & THRIVE Datasets\nAt the heart of the hub lies the Motivation Barometer, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.\nThe THRIVE project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven resource for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.\n\n\nLouvain Foundation Dataset\n[to be completed]\nSee full overview of datasets [link]"
   },
   {
     "objectID": "index.html#what-the-data-hub-offers",
     "href": "index.html#what-the-data-hub-offers",
-    "title": "PsyCo DataHub",
+    "title": "PsySoc DataHub",
     "section": "What the Data Hub offers",
-    "text": "What the Data Hub offers\n\n📊 Two high-quality datasets\n🧠 Documenting central themes such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.\n🔍 Comprehensive documentation, including codebooks, protocols, methodological notes, and variable descriptions\n\n🛡️ GDPR-compliant controlled access for sensitive data\n\n🧪 Synthetic datasets, tutorials, and reproducible examples for learning and transparent analysis"
+    "text": "What the Data Hub offers\n\n📊 A growing collection of high-quality datasets (currently including the Motivation Barometer, THRIVE, and the Louvain Foundation dataset)\n🧠 Documenting central themes such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.\n🔍 Comprehensive documentation, including codebooks, protocols, methodological notes, and variable descriptions\n\n🛡️ GDPR-compliant controlled access for sensitive data\n\n🧪 Synthetic datasets, tutorials, and reproducible examples for learning and transparent analysis"
   },
   {
-    "objectID": "index.html#three-layer-access-model",
-    "href": "index.html#three-layer-access-model",
-    "title": "PsyCo DataHub",
-    "section": "Three-layer access model",
-    "text": "Three-layer access model\nTo safeguard privacy and ensure responsible use of the data, the hub follows a three-layer access structure:\n\n🔓 Layer 1: Public Access\nOpenly available to everyone:\n\nStudy documentation and protocols\n\nCodebooks and variable lists\n\nAggregated statistics and interactive dashboards\n\nAnalysis scripts and tutorials\n\nUse this layer to:\n\nExplore what the projects are about\n\nUnderstand the structure of the data\n\nTeach and learn longitudinal analysis techniques\n\nBrowse documentation\nView tutorials\n\n\n\n📝 Layer 2: Registered Access\nRestricted, de-identified versions of the real data are accessible on request.\nResearchers can apply for access by submitting:\n\nA brief project description (aims, research questions, planned analyses)\n\nEvidence of ethical approval (where applicable)\n\nAn overview of the variables or modules needed\n\nApproved users will be asked to sign a Data Use Agreement (DUA), which specifies:\n\nNo re-identification attempts\n\nNo redistribution to third parties\n\nSecure storage and responsible handling\n\nProper citation and acknowledgement of the datasets\n\nAccess is granted via private links (e.g., private GitHub repo or secure download token) tied to a specific dataset version.\nRequest data access\n\n\n\n🔒 Layer 3: Internal Access\nThe full versions of the datasets (including detailed identifiers, extended demographics, and sensitive modules) are accessible only to authorized members of the project consortium.\nThese data:\n\nAre stored in private repositories with role-based permissions\n\nSupport ongoing longitudinal modelling, manuscript preparation, and consortium-driven projects\n\nAre not shared externally without additional procedures"
+    "objectID": "index.html#accessibility",
+    "href": "index.html#accessibility",
+    "title": "PsySoc DataHub",
+    "section": "Accessibility",
+    "text": "Accessibility\n\n\n🔓 Layer 1: Public Access\nOpenly available to everyone:\n\nStudy documentation and protocols\n\nCodebooks and variable lists\n\nAggregated statistics and dashboards\n\nAnalysis scripts and tutorials\n\nUse this layer to:\n\nExplore what the projects are about\n\nUnderstand the structure of the data\n\nTeach & learn longitudinal analysis\n\nBrowse documentation\nView tutorials\n\n\n📝 Layer 2: Registered Access\nRestricted, de-identified versions of the real data are available on request.\nTo apply, researchers provide:\n\nA brief project description\n\nEthical approval (if applicable)\n\nRequired variables/modules\n\nApproved users sign a Data Use Agreement, committing to:\n\nNo re-identification\n\nNo redistribution\n\nSecure storage\n\nProper citation\n\nAccess is granted via private links tied to a specific dataset version.\nRequest data access\n\n\n🔒 Layer 3: Internal Access\nFull datasets—including sensitive modules and detailed identifiers—are restricted to the project consortium.\nThese data:\n\nAre stored in secure private repositories\n\nSupport ongoing modelling & manuscript preparation\n\nAre not shared externally without additional procedures"
   },
   {
     "objectID": "index.html#using-the-data",
     "href": "index.html#using-the-data",
-    "title": "PsyCo DataHub",
+    "title": "PsySoc DataHub",
     "section": "Using the Data",
     "text": "Using the Data\nOnce you have access to the synthetic or restricted data, you can work with it directly in R.\nBelow is a minimal example showing how to load the data and inspect basic need variables:\nFor more advanced examples (longitudinal modelling, multilevel models, weighting, handling missing data), see:\n\nTutorials\n\nAnalysis examples"
   },
   {
     "objectID": "index.html#versioning-and-reproducibility",
     "href": "index.html#versioning-and-reproducibility",
-    "title": "PsyCo DataHub",
+    "title": "PsySoc DataHub",
     "section": "Versioning and Reproducibility",
     "text": "Versioning and Reproducibility\nTo ensure transparency and reproducibility, all datasets are:\n\nReleased in clearly labeled versions (e.g., v1.0, v1.1)\n\nAccompanied by release notes describing changes in variables, coding, or sample composition\n\nLinked to DOIs for persistent citation\n\nAnalysis scripts and Quarto documents are aligned with specific data versions, allowing users to reproduce published work and tutorial examples exactly."
   },
   {
     "objectID": "index.html#citation",
     "href": "index.html#citation",
-    "title": "PsyCo DataHub",
+    "title": "PsySoc DataHub",
     "section": "Citation",
-    "text": "Citation\nIf you use the resources or data from this hub, please cite:\n\nMotivation Barometer and Thrive Dataset, Version 3.0. xxxxx\n\nA detailed and up-to-date citation format is available on the\nCitation & Acknowledgements page."
+    "text": "Citation\nIf you use the resources or data from this hub, please cite the specific dataset(s) and version(s) you relied on.\nAn up-to-date citation format for each dataset is available on the\nCitation & Acknowledgements page."
   },
   {
     "objectID": "index.html#contact",
     "href": "index.html#contact",
-    "title": "PsyCo DataHub",
+    "title": "PsySoc DataHub",
     "section": "Contact",
     "text": "Contact\nFor questions about:\n\nData access and permissions\n\nCollaboration opportunities\n\nMethodological details or extensions\n\nplease contact the coordinating team at:\n[Project coordination team]\nCentre for Developmental and Motivation Psychology, Ghent University\nEmail: joachim.waterschoot@ugent.be"
   },

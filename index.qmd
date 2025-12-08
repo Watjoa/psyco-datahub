@@ -6,14 +6,49 @@ format:
     smooth-scroll: true
 ---
 
+<style>
+.card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.4rem 1.6rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card a.btn {
+  margin-top: auto;
+}
+
+.columns-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .columns-3 {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
 ::: {.columns style="display:flex; gap:1em;"}
 ::: {.column width="65%"}
 
-# PsyCo DataHub
+# PsySoc DataHub
 
-> Welcome to the PsyCo DataHub: **the Psychology & Cooperation DataHub.** <br> <br>
-This platform serves as the central repository for the *Motivation Barometer* and *THRIVE* projects, bringing together Belgian datasets designed to advance collaborative, evidence-based research. The name *PsyCo* reflects a core mission: to strengthen cooperation on a societal level by enabling dialogue and joint efforts across scientific domains, practitioners, and policy actors, an essential foundation in times of crisis and in society at large.<br> <br>
-The DataHub offers structured access to high-quality data on motivation, basic psychological needs, mental health, and responses to societal and public health measures, supported by comprehensive documentation and GDPR-compliant access procedures.
+> Welcome to the PsySoc DataHub: the Psychology & Society DataHub. <br><br>
+This platform serves as a central repository for large-scale Belgian datasets on psychology and society, such as the Motivation Barometer and THRIVE projects, with additional datasets to be added over time. The name PsySoc highlights the mission of the DataHub: to bridge psychological science with societal needs by fostering collaboration across research domains, practitioners, and policy actors—an essential endeavour both in times of crisis and for society’s long-term resilience. <br><br>
+The DataHub provides structured access to high-quality data on motivation, basic psychological needs, mental health, and responses to societal and public health measures, supported by comprehensive documentation and GDPR-compliant access procedures.
 :::
 ::: {.column width="35%"}
 <center>![Official logo of the Motivation Barometer](logo.png)</center>
@@ -24,23 +59,27 @@ The DataHub offers structured access to high-quality data on motivation, basic p
 
 ## About
 
-The **PsySoc Data Hub** brings together two major, complementary datasets that offer unparalleled insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.
+The **PsySoc DataHub** brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.  
 
-#### Motivation Barometer & THRIVE Dataset  
+### Current datasets
+
+#### Motivation Barometer & THRIVE Datasets  
 
 At the heart of the hub lies the **Motivation Barometer**, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.
 
-The **THRIVE** project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven dataset for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.
+The **THRIVE** project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven resource for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.
 
 #### Louvain Foundation Dataset  
 
 [to be completed]
 
+See full overview of datasets [link]
+
 ---
 
 ## What the Data Hub offers
 
-- 📊 **Two high-quality datasets**
+- 📊 **A growing collection of high-quality datasets** (currently including the Motivation Barometer, THRIVE, and the Louvain Foundation dataset)
 - 🧠 Documenting **central themes** such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.
 - 🔍 **Comprehensive documentation**, including codebooks, protocols, methodological notes, and variable descriptions  
 - 🛡️ **GDPR-compliant controlled access** for sensitive data  
@@ -48,62 +87,72 @@ The **THRIVE** project builds on this infrastructure, extending it beyond the pa
 
 ---
 
-## Three-layer access model
+## Accessibility
 
-To safeguard privacy and ensure responsible use of the data, the hub follows a **three-layer access structure**:
+::: {.columns-3}
 
-### 🔓 Layer 1: Public Access
+<div class="card">
+
+#### 🔓 Layer 1: Public Access
 
 Openly available to everyone:
 
 - Study documentation and protocols  
 - Codebooks and variable lists  
-- Aggregated statistics and interactive dashboards  
+- Aggregated statistics and dashboards  
 - Analysis scripts and tutorials  
 
 Use this layer to:
 
 - Explore what the projects are about  
 - Understand the structure of the data  
-- Teach and learn longitudinal analysis techniques  
+- Teach & learn longitudinal analysis  
 
 [Browse documentation](documentation/index.qmd){.btn .btn-primary}  
 [View tutorials](tutorials/index.qmd){.btn .btn-outline}
 
----
+</div>
 
-### 📝 Layer 2: Registered Access
+<div class="card">
 
-Restricted, de-identified versions of the real data are accessible **on request**.
+#### 📝 Layer 2: Registered Access
 
-Researchers can apply for access by submitting:
+Restricted, de-identified versions of the real data are available **on request**.
 
-1. A brief project description (aims, research questions, planned analyses)  
-2. Evidence of ethical approval (where applicable)  
-3. An overview of the variables or modules needed  
+To apply, researchers provide:
 
-Approved users will be asked to sign a **Data Use Agreement (DUA)**, which specifies:
+1. A brief project description  
+2. Ethical approval (if applicable)  
+3. Required variables/modules  
 
-- No re-identification attempts  
-- No redistribution to third parties  
-- Secure storage and responsible handling  
-- Proper citation and acknowledgement of the datasets  
+Approved users sign a **Data Use Agreement**, committing to:
 
-Access is granted via **private links** (e.g., private GitHub repo or secure download token) tied to a specific **dataset version**.
+- No re-identification  
+- No redistribution  
+- Secure storage  
+- Proper citation  
 
-[Request data access](data/download.qmd){.btn .btn-primary} 
+Access is granted via **private links** tied to a specific dataset version.
 
----
+[Request data access](data/download.qmd){.btn .btn-primary}
 
-### 🔒 Layer 3: Internal Access
+</div>
 
-The full versions of the datasets (including detailed identifiers, extended demographics, and sensitive modules) are accessible only to authorized members of the **project consortium**.
+<div class="card">
+
+#### 🔒 Layer 3: Internal Access
+
+Full datasets—including sensitive modules and detailed identifiers—are restricted to the **project consortium**.
 
 These data:
 
-- Are stored in **private repositories** with role-based permissions  
-- Support ongoing longitudinal modelling, manuscript preparation, and consortium-driven projects  
+- Are stored in secure private repositories  
+- Support ongoing modelling & manuscript preparation  
 - Are not shared externally without additional procedures  
+
+</div>
+
+:::
 
 ---
 
@@ -111,8 +160,6 @@ These data:
 
 Once you have access to the synthetic or restricted data, you can work with it directly in R.  
 Below is a minimal example showing how to load the data and inspect basic need variables:
-
-
 
 For more advanced examples (longitudinal modelling, multilevel models, weighting, handling missing data), see:
 
@@ -135,11 +182,8 @@ Analysis scripts and Quarto documents are aligned with specific data versions, a
 
 ## Citation
 
-If you use the resources or data from this hub, please cite:
-
-> Motivation Barometer and Thrive Dataset, Version 3.0. xxxxx  
-
-A detailed and up-to-date citation format is available on the  
+If you use the resources or data from this hub, please cite the specific dataset(s) and version(s) you relied on.  
+An up-to-date citation format for each dataset is available on the  
 [Citation & Acknowledgements](citation.qmd) page.
 
 ---
@@ -157,4 +201,3 @@ please contact the coordinating team at:
 **[Project coordination team]**  
 Centre for Developmental and Motivation Psychology, Ghent University  
 Email: *joachim.waterschoot@ugent.be*
-
