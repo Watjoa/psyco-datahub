@@ -39,21 +39,14 @@
     "href": "index.html",
     "title": "PsySoc DataHub",
     "section": "",
-    "text": "Welcome to the PsySoc DataHub: the Psychology & Society DataHub.  This platform serves as a central repository for large-scale Belgian datasets on psychology and society, such as the Motivation Barometer and THRIVE projects, with additional datasets to be added over time. The name PsySoc highlights the mission of the DataHub: to bridge psychological science with societal needs by fostering collaboration across research domains, practitioners, and policy actors—an essential endeavour both in times of crisis and for society’s long-term resilience.  The DataHub provides structured access to high-quality data on motivation, basic psychological needs, mental health, and responses to societal and public health measures, supported by comprehensive documentation and GDPR-compliant access procedures.\n\n\n\n\n\n\n\nOfficial logo of the Motivation Barometer"
+    "text": "Welcome to the PsySoc DataHub: the Psychology & Society DataHub. This platform serves as a central repository for large-scale datasets on psychology and society.  The name PsySoc highlights the mission of the DataHub: to bridge psychological science with societal topics by fostering collaboration across research domains, practitioners, and policy actors, an essential endeavour both in times of crisis and for society’s long-term resilience. \n\n\n\n\n\n\n\nOfficial logo of the Motivation Barometer"
   },
   {
     "objectID": "index.html#about",
     "href": "index.html#about",
     "title": "PsySoc DataHub",
     "section": "About",
-    "text": "About\nThe PsySoc DataHub brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.\n\nCurrent datasets\n\nMotivation Barometer & THRIVE Datasets\nAt the heart of the hub lies the Motivation Barometer, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.\nThe THRIVE project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven resource for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.\n\n\nLouvain Foundation Dataset\n[to be completed]\nSee full overview of datasets [link]"
-  },
-  {
-    "objectID": "index.html#what-the-data-hub-offers",
-    "href": "index.html#what-the-data-hub-offers",
-    "title": "PsySoc DataHub",
-    "section": "What the Data Hub offers",
-    "text": "What the Data Hub offers\n\n📊 A growing collection of high-quality datasets (currently including the Motivation Barometer, THRIVE, and the Louvain Foundation dataset)\n🧠 Documenting central themes such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.\n🔍 Comprehensive documentation, including codebooks, protocols, methodological notes, and variable descriptions\n\n🛡️ GDPR-compliant controlled access for sensitive data\n\n🧪 Synthetic datasets, tutorials, and reproducible examples for learning and transparent analysis"
+    "text": "About\nThe PsySoc DataHub brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them. It offers:\n\n📊 A growing collection of high-quality datasets\n🧠 Documenting central themes such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.\n🔍 Comprehensive documentation, including codebooks, protocols, methodological notes, and variable descriptions\n\n🛡️ GDPR-compliant controlled access for sensitive data\n\n🧪 Synthetic datasets, tutorials, and reproducible examples for learning and transparent analysis\n\n\nCurrent datasets\n\nMotivation Barometer & THRIVE Datasets\nAt the heart of the hub lies the Motivation Barometer, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.\nThe THRIVE project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven resource for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.\nBoth datasets are integrated into one cohesive data ecosystem, allowing researchers to seamlessly explore trends over time, compare modules, and link psychological indicators to societal developments.\n\n\nLouvain Foundation Dataset\nThe Louvain Foundation dataset follows more than 5000 UCLouvain students and Belgian residents across seven waves from 2021–2022, with a follow-up wave in 2025. It gives many information into COVID-19–related perceptions and behaviors (e.g., trust in health authorities, adherence to public health measures), alongside well-being, social connection, emotional responses, and other psychological indicators during and after the pandemic. Fully anonymized by design, it offers a secure and useful resource for research on the social and psychological impact of COVID-19.\nBrowse datasets"
   },
   {
     "objectID": "index.html#accessibility",
@@ -81,7 +74,7 @@
     "href": "index.html#citation",
     "title": "PsySoc DataHub",
     "section": "Citation",
-    "text": "Citation\nIf you use the resources or data from this hub, please cite the specific dataset(s) and version(s) you relied on.\nAn up-to-date citation format for each dataset is available on the\nCitation & Acknowledgements page."
+    "text": "Citation\nIf you use the resources or data from this hub, please cite the specific dataset(s) and version(s) you relied on.\nAn up-to-date citation format for each dataset is available on the Citation & Acknowledgements page."
   },
   {
     "objectID": "index.html#contact",
@@ -91,46 +84,67 @@
     "text": "Contact\nFor questions about:\n\nData access and permissions\n\nCollaboration opportunities\n\nMethodological details or extensions\n\nplease contact the coordinating team at:\n[Project coordination team]\nCentre for Developmental and Motivation Psychology, Ghent University\nEmail: joachim.waterschoot@ugent.be"
   },
   {
-    "objectID": "documentation/methodology.html",
-    "href": "documentation/methodology.html",
-    "title": "Methodology",
+    "objectID": "documentation/datasets/motivation-barometer/study_design.html",
+    "href": "documentation/datasets/motivation-barometer/study_design.html",
+    "title": "Study designs",
     "section": "",
-    "text": "Data collection procedures\n\nOnline questionnaires administered via secure survey platform Qualtrics.\nParticipants reached through social media advertisement, newspapers, institutional mailing lists, and partner organizations.\nNo financial incentives: participation was voluntary and based on informed consent.\nAttention checks (“Please, assign option 2 here”) and data quality indicators (e.g., removing all participants having completed the survey in less than 200 seconds) were used to identify low-quality responses.\n\n\n\nData cleaning and processing\nKey steps include:\n\nScreening for invalid responses (e.g., extremely short completion time, failed attention checks).\nHandling missing data according to pre-specified rules (e.g., minimum item responses for scale scores). - see tutorial how to handle missing data\nRecoding and labeling variables consistently across surveys, waves and projects. - see tutorial\nConstructing composite scores (e.g., mean scores). - see tutorial\nCreating weights for selected waves to approximate Belgian population distributions in age, gender, education, and region. - see tutorial\n\nAll major processing steps are documented in reproducible R scripts, available in the GitHub repository and referenced in the tutorials.\n\n\nAnalytic approaches\nAnalyses conducted with these datasets include:\n\nCross-sectional regression and structural equation models.\nMultilevel models and growth curve models for longitudinal data.\nCluster profile, latent class, and trajectory analyses. - see tutorial\nExperimental and quasi-experimental designs embedded in specific waves.\nMixed-method integration with qualitative data.\n\nSee full list of projects the overview of publications\nThe data hub provides example scripts and tutorials to replicate common analytic strategies.\n\n\nEthics\n[to be updated soon]"
+    "text": "The Motivation Barometer and THRIVE datasets comprise cross-sectional and longitudinal data collected during and after the COVID-19 pandemic. The key aims include:\n\nAssessing changes in motivation, psychological needs, and well-being over time.\nExamining responses to public communication and policy measures.\nInvestigating links between societal conditions, behavior and mental health.\nDeriving evidence-based recommendations for future crisis preparedness and inclusive post-COVID policies.\n\nBelow, you can find more detailed information on both projects."
   },
   {
-    "objectID": "documentation/variables_overview.html",
-    "href": "documentation/variables_overview.html",
-    "title": "Variable overview",
+    "objectID": "documentation/datasets/motivation-barometer/study_design.html#overview",
+    "href": "documentation/datasets/motivation-barometer/study_design.html#overview",
+    "title": "Study designs",
     "section": "",
-    "text": "This page provides an overview of the main variable groups and modules available in the datasets."
+    "text": "The Motivation Barometer and THRIVE datasets comprise cross-sectional and longitudinal data collected during and after the COVID-19 pandemic. The key aims include:\n\nAssessing changes in motivation, psychological needs, and well-being over time.\nExamining responses to public communication and policy measures.\nInvestigating links between societal conditions, behavior and mental health.\nDeriving evidence-based recommendations for future crisis preparedness and inclusive post-COVID policies.\n\nBelow, you can find more detailed information on both projects."
   },
   {
-    "objectID": "documentation/variables_overview.html#core-psychological-processes",
-    "href": "documentation/variables_overview.html#core-psychological-processes",
-    "title": "Variable overview",
-    "section": "1. Core psychological processes",
-    "text": "1. Core psychological processes\n\nBasic Psychological Needs\n\nAutonomy (satisfaction and frustration)\nCompetence (satisfaction and frustration)\nRelatedness (satisfaction and frustration)\n\nMotivation\n\nAdherence to the measures\n\nIdentified motivation\nIntrojected motivation\nExternal motivation\nAmotivation\nEffort\nReactance\n\nVaccination\n\nIdentified motivation\nExternal motivation\nAmotivation (defiance)\nAmotivation (distrust)\nAmotivation (self-efficacy)\n\nMeasures-specific: face covering, hand washing, taking pcr test, physical distance, quarantaine, social distancing, ventilation\nOutcome expectation: physical distance, hand washing, face covering, pcr test, social contact, telework, ventilatino (self and population)\nSelf-efficacy: physical distance, hand washing, face covering, pcr test, social contact, telework, ventilatino (duration and effort)\n\nWell-being and Ill-being\n\nAnxiety\nAspiration (importance and in practice, post-crisis)\nBoredom\nClimate anxiety\nConcerns: health, significant others, situation, finances, job, climate change, war, new COVID-19 variants\nDepression\nEmotion-Regulation\nLife satisfaction\nLoneliness\nMindfulness\nNovelty\nParental stress\nSleep duration\nVitality and depletion"
+    "objectID": "documentation/datasets/motivation-barometer/study_design.html#motivation-barometer",
+    "href": "documentation/datasets/motivation-barometer/study_design.html#motivation-barometer",
+    "title": "Study designs",
+    "section": "Motivation Barometer",
+    "text": "Motivation Barometer\nThe Motivation Barometer is a large-scale, online monitoring study that was launched on 19 March 2020, one day after the first national lockdown in Belgium. During the first ten weeks of the pandemic, daily surveys were administered, with a subset of participants followed for ten consecutive weeks. As the pandemic evolved, new waves were organized at a slower pace and adapted to emerging topics (e.g., vaccination, COVID certificate, trust, conspiracy beliefs).\n\nTotal waves: more than 110 measurement waves over roughly 2.5 years.\n\nTotal responses: nearly 484 000 completed questionnaires.\n\nUnique participants: over 320 000 individuals.\n\nDesign: combination of cross-sectional cohorts and longitudinal panels, with targeted subsamples (e.g., students, parents, older adults, athletes, (un)vaccinated individuals).\n\nEach wave combined a core set of variables (motivation, basic psychological needs, adherence to measures) with topical modules tailored to the phase of the pandemic (e.g., attitudes toward mandatory vaccination, perceptions of the COVID certificate, conspiracy beliefs, boredom, loneliness)."
   },
   {
-    "objectID": "documentation/variables_overview.html#behavior-and-behavioral-intentions",
-    "href": "documentation/variables_overview.html#behavior-and-behavioral-intentions",
-    "title": "Variable overview",
-    "section": "2. Behavior and behavioral intentions",
-    "text": "2. Behavior and behavioral intentions\n\nBehavior\n\nadherence to the measures (keeping physical distance, hand washing, avoiding social contect, wearing mouthmask, working from home, ventilation)\nplanned adherence\ntaking part in a protest\n\nIntention to climate activism"
+    "objectID": "documentation/datasets/motivation-barometer/study_design.html#thrive-project",
+    "href": "documentation/datasets/motivation-barometer/study_design.html#thrive-project",
+    "title": "Study designs",
+    "section": "THRIVE Project",
+    "text": "THRIVE Project\nThe THRIVE project (“Taking stock to foster health and trust for an inclusive post-Covid society”) is a BELSPO funded Post-Covid research programme. THRIVE explicitly builds on the Motivation Barometer by:\n\nConsolidating and harmonizing existing Motivation Barometer waves.\n\nAdding new post-Covid follow-up waves.\n\nIntegrating complementary qualitative and survey data.\n\nIts core objectives are to:\n\nChart the social and psychological heterogeneity of the population during the COVID-19 crisis by identifying distinctive trajectories of motivation, well-being, trust, and democratic attitudes.\nExamine how these trajectories relate to resilience and vulnerability, including long-term mental health outcomes.\nCombine multiple disciplines and methods (health psychology, motivation psychology, social psychology, sociology; quantitative and qualitative approaches).\nIdentify contextual drivers (e.g., communication style, stringency of measures, trust, ideology) that feed into people’s experiences and reactions."
   },
   {
-    "objectID": "documentation/variables_overview.html#perceptions-of-crisis-and-society",
-    "href": "documentation/variables_overview.html#perceptions-of-crisis-and-society",
-    "title": "Variable overview",
-    "section": "3. Perceptions of crisis and society",
-    "text": "3. Perceptions of crisis and society\n\nRisk perception\n\nCOVID-19: perceived infection chance and severity of symptoms (towards self and population)\nfuture crises: perceived infection chance and severity of symptoms (towards self and population)\n\nTrust\n\nhow competence one is perceived to be (celebrities, doctors, experts, nurses, healthcare, pharmacists, politicans)\ntrust and perceived expertise with doctor, expert, media, pharmacist, politicians, other vaccinated persons\n\nSocietal themes\n\npopulism\nanomie\nautocratic versus democratic attitudes\n\nPerception of how the crisis is handled by the policy\nEvaluation of: the measures, obligated vaccination\nMemories of the COVID-19 crisis\nFuture crisis\n\napproach\npreparedness\n\nConspiracy theories\n\nOn corona\nGeneral\n\nCommunication style\n\nAutonomy-supportive (Participative, Attuning)\nStructure (Guiding, Clarifying)\nControlling (Demanding, Domineering)\nChaos (Abandoning, Awaiting)"
+    "objectID": "documentation/datasets/motivation-barometer/study_design.html#longitudinal-structure",
+    "href": "documentation/datasets/motivation-barometer/study_design.html#longitudinal-structure",
+    "title": "Study designs",
+    "section": "Longitudinal structure",
+    "text": "Longitudinal structure\n[to be updated soon]"
   },
   {
-    "objectID": "documentation/variables_overview.html#contextual-and-background-variables",
-    "href": "documentation/variables_overview.html#contextual-and-background-variables",
-    "title": "Variable overview",
-    "section": "4. Contextual and background variables",
-    "text": "4. Contextual and background variables\n\nMeta\n\nDate\nWeather (daily temperature, sun duration, humidity)\nGoogle Mobility data\nHoliday periods\nSeason\n\nSociodemographics\n\nage\ncivil status\ncomorbidities\ninfection/hospitalization status\neducation level\nfinancial situation\ngender\nlanguage\nphysical activity\nprovince of living\nreligion\nsocio-economic status\nwork situation\n\nCrisis-related information\n\nInfections: raw numbers, incremental value (source: Sciensano)\nHospitalizations: raw numbers, incremental value (source: Sciensano)\nMortalities: raw numbers, incremental value (source: Sciensano)\nNumber of vaccination doses (A - EEE, source: Sciensano)\nStringency Index (source: Oxford Govermental Tool)"
+    "objectID": "documentation/datasets/motivation-barometer/study_design.html#ethical-considerations",
+    "href": "documentation/datasets/motivation-barometer/study_design.html#ethical-considerations",
+    "title": "Study designs",
+    "section": "Ethical Considerations",
+    "text": "Ethical Considerations\nAll data collections were approved by the relevant ethics committees. Participants:\n\n… provided informed consent before participation.\n\n… were informed about the aims of the project, data handling, and their rights.\n\n… could withdraw at any time without consequences.\n\nEthical and data protection procedures are detailed in the project’s ethics applications and summarized in the methodology section."
+  },
+  {
+    "objectID": "documentation/datasets/motivation-barometer/index.html",
+    "href": "documentation/datasets/motivation-barometer/index.html",
+    "title": "Documentation",
+    "section": "",
+    "text": "This page provides an overview of all datasets currently available in the DataHub.\nSelect a dataset to access its study design, methodology, variables, and codebook.\n\n\n\nMotivation Barometer & THRIVE\n\n\nLongitudinal monitoring of motivation, basic psychological needs, mental health, and responses to public health measures in Belgium during and after the COVID-19 crisis.\n\n\n\nDataset overview\n\n\nStudy design\n\n\nMethodology\n\n\nVariables & modules\n\n\nCodebook\n\n\n\n\n\nLouvain Foundation Dataset\n\n\nSurvey data supported by the Louvain Foundation, focusing on citizens’ motivation, needs, and well-being in response to societal and public health challenges.\n\n\n\nDataset overview\n\n\nStudy design\n\n\nMethodology\n\n\nVariables & modules\n\n\nCodebook"
+  },
+  {
+    "objectID": "documentation/datasets/motivation-barometer/codebook.html",
+    "href": "documentation/datasets/motivation-barometer/codebook.html",
+    "title": "Codebook",
+    "section": "",
+    "text": "English Nederlands \n\n\n\nTable 1\n\n\nPlease indicate how much you agree with each statement.   In the past week...Variable nameLabelItem wording (short)Response scale (text)MinMaxTypeMissing codesNotesauto_1Autonomy item 1I feel free to make my own choices1 = strongly disagree … 5 = strongly agree15integer-99Positively worded.auto_2Autonomy item 2I feel pressured to do things I do not want1 = strongly disagree … 5 = strongly agree15integer-99Reverse-coded for scale score.auto_3Autonomy item 3I can decide for myself how to live my life1 = strongly disagree … 5 = strongly agree15integer-99Positively worded.auto_meanAutonomy mean scoreMean of auto_1–auto_31–5 (higher = more autonomy satisfaction)numeric-99Min. 2 valid items required.\n\n\n\n\n\n\nTable 2\n\n\nPlease indicate how much you agree with each statement.   In the past week...Variable nameLabelItem wording (short)Response scale (text)MinMaxTypeMissing codesNotesauto_1Autonomie item 1Ik voel mij vrij om mijn eigen keuzes te maken1 = helemaal oneens … 5 = helemaal eens15integer-99Positief geformuleerd.auto_2Autonomie item 2Ik voel mij onder druk gezet om dingen te doen die ik niet wil1 = helemaal oneens … 5 = helemaal eens15integer-99Omgekeerd gescoord.auto_3Autonomie item 3Ik kan zelf beslissen hoe ik mijn leven leid1 = helemaal oneens … 5 = helemaal eens15integer-99Positief geformuleerd.auto_meanGemiddelde autonomieGemiddelde van auto_1–auto_31–5 (hoger = meer autonomiesatisfactie)numeric-99Min. 2 geldige items vereist."
+  },
+  {
+    "objectID": "documentation/datasets/motivation-barometer/codebook.html#basic-psychological-needs",
+    "href": "documentation/datasets/motivation-barometer/codebook.html#basic-psychological-needs",
+    "title": "Codebook",
+    "section": "",
+    "text": "English Nederlands \n\n\n\nTable 1\n\n\nPlease indicate how much you agree with each statement.   In the past week...Variable nameLabelItem wording (short)Response scale (text)MinMaxTypeMissing codesNotesauto_1Autonomy item 1I feel free to make my own choices1 = strongly disagree … 5 = strongly agree15integer-99Positively worded.auto_2Autonomy item 2I feel pressured to do things I do not want1 = strongly disagree … 5 = strongly agree15integer-99Reverse-coded for scale score.auto_3Autonomy item 3I can decide for myself how to live my life1 = strongly disagree … 5 = strongly agree15integer-99Positively worded.auto_meanAutonomy mean scoreMean of auto_1–auto_31–5 (higher = more autonomy satisfaction)numeric-99Min. 2 valid items required.\n\n\n\n\n\n\nTable 2\n\n\nPlease indicate how much you agree with each statement.   In the past week...Variable nameLabelItem wording (short)Response scale (text)MinMaxTypeMissing codesNotesauto_1Autonomie item 1Ik voel mij vrij om mijn eigen keuzes te maken1 = helemaal oneens … 5 = helemaal eens15integer-99Positief geformuleerd.auto_2Autonomie item 2Ik voel mij onder druk gezet om dingen te doen die ik niet wil1 = helemaal oneens … 5 = helemaal eens15integer-99Omgekeerd gescoord.auto_3Autonomie item 3Ik kan zelf beslissen hoe ik mijn leven leid1 = helemaal oneens … 5 = helemaal eens15integer-99Positief geformuleerd.auto_meanGemiddelde autonomieGemiddelde van auto_1–auto_31–5 (hoger = meer autonomiesatisfactie)numeric-99Min. 2 geldige items vereist."
   },
   {
     "objectID": "citation.html",
@@ -161,74 +175,53 @@
     "text": "How to reference the Data Hub\nWhen referring to the data hub itself (e.g., in methods or data availability statements), you may write:\n\n“Data and documentation are available through the PsySoc Data Hub (https://[your-url-here]), which provides layered access to synthetic datasets, documentation, and restricted de-identified data upon request.”"
   },
   {
-    "objectID": "documentation/codebook.html",
-    "href": "documentation/codebook.html",
-    "title": "Codebook",
+    "objectID": "documentation/datasets/motivation-barometer/variables_overview.html",
+    "href": "documentation/datasets/motivation-barometer/variables_overview.html",
+    "title": "Variable overview",
     "section": "",
-    "text": "Please indicate how much you agree with each statement.   In the past week...Variable nameLabelItem wording (short)Response scale (text)MinMaxTypeMissing codesNotesauto_1Autonomy item 1I feel free to make my own choices1 = strongly disagree … 5 = strongly agree15integer-99Positively worded.auto_2Autonomy item 2I feel pressured to do things I do not want1 = strongly disagree … 5 = strongly agree15integer-99Reverse-coded for scale score.auto_3Autonomy item 3I can decide for myself how to live my life1 = strongly disagree … 5 = strongly agree15integer-99Positively worded.auto_meanAutonomy mean scoreMean of auto_1–auto_31–5 (higher = more autonomy satisfaction)numeric-99Min. 2 valid items required."
+    "text": "This page provides an overview of the main variable groups and modules available in the datasets."
   },
   {
-    "objectID": "documentation/codebook.html#basic-psychological-needs",
-    "href": "documentation/codebook.html#basic-psychological-needs",
-    "title": "Codebook",
+    "objectID": "documentation/datasets/motivation-barometer/variables_overview.html#core-psychological-processes",
+    "href": "documentation/datasets/motivation-barometer/variables_overview.html#core-psychological-processes",
+    "title": "Variable overview",
+    "section": "1. Core psychological processes",
+    "text": "1. Core psychological processes\n\nBasic Psychological Needs\n\nAutonomy (satisfaction and frustration)\nCompetence (satisfaction and frustration)\nRelatedness (satisfaction and frustration)\n\nMotivation\n\nAdherence to the measures\n\nIdentified motivation\nIntrojected motivation\nExternal motivation\nAmotivation\nEffort\nReactance\n\nVaccination\n\nIdentified motivation\nExternal motivation\nAmotivation (defiance)\nAmotivation (distrust)\nAmotivation (self-efficacy)\n\nMeasures-specific: face covering, hand washing, taking pcr test, physical distance, quarantaine, social distancing, ventilation\nOutcome expectation: physical distance, hand washing, face covering, pcr test, social contact, telework, ventilatino (self and population)\nSelf-efficacy: physical distance, hand washing, face covering, pcr test, social contact, telework, ventilatino (duration and effort)\n\nWell-being and Ill-being\n\nAnxiety\nAspiration (importance and in practice, post-crisis)\nBoredom\nClimate anxiety\nConcerns: health, significant others, situation, finances, job, climate change, war, new COVID-19 variants\nDepression\nEmotion-Regulation\nLife satisfaction\nLoneliness\nMindfulness\nNovelty\nParental stress\nSleep duration\nVitality and depletion"
+  },
+  {
+    "objectID": "documentation/datasets/motivation-barometer/variables_overview.html#behavior-and-behavioral-intentions",
+    "href": "documentation/datasets/motivation-barometer/variables_overview.html#behavior-and-behavioral-intentions",
+    "title": "Variable overview",
+    "section": "2. Behavior and behavioral intentions",
+    "text": "2. Behavior and behavioral intentions\n\nBehavior\n\nadherence to the measures (keeping physical distance, hand washing, avoiding social contect, wearing mouthmask, working from home, ventilation)\nplanned adherence\ntaking part in a protest\n\nIntention to climate activism"
+  },
+  {
+    "objectID": "documentation/datasets/motivation-barometer/variables_overview.html#perceptions-of-crisis-and-society",
+    "href": "documentation/datasets/motivation-barometer/variables_overview.html#perceptions-of-crisis-and-society",
+    "title": "Variable overview",
+    "section": "3. Perceptions of crisis and society",
+    "text": "3. Perceptions of crisis and society\n\nRisk perception\n\nCOVID-19: perceived infection chance and severity of symptoms (towards self and population)\nfuture crises: perceived infection chance and severity of symptoms (towards self and population)\n\nTrust\n\nhow competence one is perceived to be (celebrities, doctors, experts, nurses, healthcare, pharmacists, politicans)\ntrust and perceived expertise with doctor, expert, media, pharmacist, politicians, other vaccinated persons\n\nSocietal themes\n\npopulism\nanomie\nautocratic versus democratic attitudes\n\nPerception of how the crisis is handled by the policy\nEvaluation of: the measures, obligated vaccination\nMemories of the COVID-19 crisis\nFuture crisis\n\napproach\npreparedness\n\nConspiracy theories\n\nOn corona\nGeneral\n\nCommunication style\n\nAutonomy-supportive (Participative, Attuning)\nStructure (Guiding, Clarifying)\nControlling (Demanding, Domineering)\nChaos (Abandoning, Awaiting)"
+  },
+  {
+    "objectID": "documentation/datasets/motivation-barometer/variables_overview.html#contextual-and-background-variables",
+    "href": "documentation/datasets/motivation-barometer/variables_overview.html#contextual-and-background-variables",
+    "title": "Variable overview",
+    "section": "4. Contextual and background variables",
+    "text": "4. Contextual and background variables\n\nMeta\n\nDate\nWeather (daily temperature, sun duration, humidity)\nGoogle Mobility data\nHoliday periods\nSeason\n\nSociodemographics\n\nage\ncivil status\ncomorbidities\ninfection/hospitalization status\neducation level\nfinancial situation\ngender\nlanguage\nphysical activity\nprovince of living\nreligion\nsocio-economic status\nwork situation\n\nCrisis-related information\n\nInfections: raw numbers, incremental value (source: Sciensano)\nHospitalizations: raw numbers, incremental value (source: Sciensano)\nMortalities: raw numbers, incremental value (source: Sciensano)\nNumber of vaccination doses (A - EEE, source: Sciensano)\nStringency Index (source: Oxford Govermental Tool)"
+  },
+  {
+    "objectID": "documentation/datasets/motivation-barometer/methodology.html",
+    "href": "documentation/datasets/motivation-barometer/methodology.html",
+    "title": "Methodology",
     "section": "",
-    "text": "Please indicate how much you agree with each statement.   In the past week...Variable nameLabelItem wording (short)Response scale (text)MinMaxTypeMissing codesNotesauto_1Autonomy item 1I feel free to make my own choices1 = strongly disagree … 5 = strongly agree15integer-99Positively worded.auto_2Autonomy item 2I feel pressured to do things I do not want1 = strongly disagree … 5 = strongly agree15integer-99Reverse-coded for scale score.auto_3Autonomy item 3I can decide for myself how to live my life1 = strongly disagree … 5 = strongly agree15integer-99Positively worded.auto_meanAutonomy mean scoreMean of auto_1–auto_31–5 (higher = more autonomy satisfaction)numeric-99Min. 2 valid items required."
+    "text": "Data collection procedures\n\nOnline questionnaires administered via secure survey platform Qualtrics.\nParticipants reached through social media advertisement, newspapers, institutional mailing lists, and partner organizations.\nNo financial incentives: participation was voluntary and based on informed consent.\nAttention checks (“Please, assign option 2 here”) and data quality indicators (e.g., removing all participants having completed the survey in less than 200 seconds) were used to identify low-quality responses.\n\n\n\nData cleaning and processing\nKey steps include:\n\nScreening for invalid responses (e.g., extremely short completion time, failed attention checks).\nHandling missing data according to pre-specified rules (e.g., minimum item responses for scale scores). - see tutorial how to handle missing data\nRecoding and labeling variables consistently across surveys, waves and projects. - see tutorial\nConstructing composite scores (e.g., mean scores). - see tutorial\nCreating weights for selected waves to approximate Belgian population distributions in age, gender, education, and region. - see tutorial\n\nAll major processing steps are documented in reproducible R scripts, available in the GitHub repository and referenced in the tutorials.\n\n\nAnalytic approaches\nAnalyses conducted with these datasets include:\n\nCross-sectional regression and structural equation models.\nMultilevel models and growth curve models for longitudinal data.\nCluster profile, latent class, and trajectory analyses. - see tutorial\nExperimental and quasi-experimental designs embedded in specific waves.\nMixed-method integration with qualitative data.\n\nSee full list of projects the overview of publications\nThe data hub provides example scripts and tutorials to replicate common analytic strategies.\n\n\nEthics\n[to be updated soon]"
   },
   {
     "objectID": "documentation/index.html",
     "href": "documentation/index.html",
     "title": "Documentation",
     "section": "",
-    "text": "This section provides detailed information about the datasets, study design, measures, and theoretical frameworks underlying the Motivation Barometer and THRIVE projects.\nUse the links below to navigate to:"
-  },
-  {
-    "objectID": "documentation/index.html#how-to-use-this-documentation",
-    "href": "documentation/index.html#how-to-use-this-documentation",
-    "title": "Documentation",
-    "section": "How to use this documentation",
-    "text": "How to use this documentation\nThe documentation is structured to support different types of users:\n\nResearchers can find detailed information on sampling, measures, and analysis constraints.\nStudents can use the codebooks and tutorials to learn various types of analysis.\nPolicy stakeholders can consult conceptual overviews and variable groupings relevant to their domain."
-  },
-  {
-    "objectID": "documentation/study_design.html",
-    "href": "documentation/study_design.html",
-    "title": "Study designs",
-    "section": "",
-    "text": "The Motivation Barometer and THRIVE datasets comprise cross-sectional and longitudinal data collected during and after the COVID-19 pandemic. The key aims include:\n\nAssessing changes in motivation, psychological needs, and well-being over time.\nExamining responses to public communication and policy measures.\nInvestigating links between societal conditions, behavior and mental health.\nDeriving evidence-based recommendations for future crisis preparedness and inclusive post-COVID policies.\n\nBelow, you can find more detailed information on both projects."
-  },
-  {
-    "objectID": "documentation/study_design.html#overview",
-    "href": "documentation/study_design.html#overview",
-    "title": "Study designs",
-    "section": "",
-    "text": "The Motivation Barometer and THRIVE datasets comprise cross-sectional and longitudinal data collected during and after the COVID-19 pandemic. The key aims include:\n\nAssessing changes in motivation, psychological needs, and well-being over time.\nExamining responses to public communication and policy measures.\nInvestigating links between societal conditions, behavior and mental health.\nDeriving evidence-based recommendations for future crisis preparedness and inclusive post-COVID policies.\n\nBelow, you can find more detailed information on both projects."
-  },
-  {
-    "objectID": "documentation/study_design.html#motivation-barometer",
-    "href": "documentation/study_design.html#motivation-barometer",
-    "title": "Study designs",
-    "section": "Motivation Barometer",
-    "text": "Motivation Barometer\nThe Motivation Barometer is a large-scale, online monitoring study that was launched on 19 March 2020, one day after the first national lockdown in Belgium. During the first ten weeks of the pandemic, daily surveys were administered, with a subset of participants followed for ten consecutive weeks. As the pandemic evolved, new waves were organized at a slower pace and adapted to emerging topics (e.g., vaccination, COVID certificate, trust, conspiracy beliefs).\n\nTotal waves: more than 110 measurement waves over roughly 2.5 years.\n\nTotal responses: nearly 484 000 completed questionnaires.\n\nUnique participants: over 320 000 individuals.\n\nDesign: combination of cross-sectional cohorts and longitudinal panels, with targeted subsamples (e.g., students, parents, older adults, athletes, (un)vaccinated individuals).\n\nEach wave combined a core set of variables (motivation, basic psychological needs, adherence to measures) with topical modules tailored to the phase of the pandemic (e.g., attitudes toward mandatory vaccination, perceptions of the COVID certificate, conspiracy beliefs, boredom, loneliness)."
-  },
-  {
-    "objectID": "documentation/study_design.html#thrive-project",
-    "href": "documentation/study_design.html#thrive-project",
-    "title": "Study designs",
-    "section": "THRIVE Project",
-    "text": "THRIVE Project\nThe THRIVE project (“Taking stock to foster health and trust for an inclusive post-Covid society”) is a BELSPO funded Post-Covid research programme. THRIVE explicitly builds on the Motivation Barometer by:\n\nConsolidating and harmonizing existing Motivation Barometer waves.\n\nAdding new post-Covid follow-up waves.\n\nIntegrating complementary qualitative and survey data.\n\nIts core objectives are to:\n\nChart the social and psychological heterogeneity of the population during the COVID-19 crisis by identifying distinctive trajectories of motivation, well-being, trust, and democratic attitudes.\nExamine how these trajectories relate to resilience and vulnerability, including long-term mental health outcomes.\nCombine multiple disciplines and methods (health psychology, motivation psychology, social psychology, sociology; quantitative and qualitative approaches).\nIdentify contextual drivers (e.g., communication style, stringency of measures, trust, ideology) that feed into people’s experiences and reactions."
-  },
-  {
-    "objectID": "documentation/study_design.html#longitudinal-structure",
-    "href": "documentation/study_design.html#longitudinal-structure",
-    "title": "Study designs",
-    "section": "Longitudinal structure",
-    "text": "Longitudinal structure\n[to be updated soon]"
-  },
-  {
-    "objectID": "documentation/study_design.html#ethical-considerations",
-    "href": "documentation/study_design.html#ethical-considerations",
-    "title": "Study designs",
-    "section": "Ethical Considerations",
-    "text": "Ethical Considerations\nAll data collections were approved by the relevant ethics committees. Participants:\n\n… provided informed consent before participation.\n\n… were informed about the aims of the project, data handling, and their rights.\n\n… could withdraw at any time without consequences.\n\nEthical and data protection procedures are detailed in the project’s ethics applications and summarized in the methodology section."
+    "text": "This page provides an overview of all datasets currently available in the DataHub.\nSelect a dataset to access its study design, methodology, variables, and codebook.\n\n\n\nMotivation Barometer & THRIVE\n\n\nLongitudinal monitoring of motivation, basic psychological needs, mental health, and responses to public health measures in Belgium during and after the COVID-19 crisis.\n\n\n\nDataset overview\n\n\nStudy design\n\n\nMethodology\n\n\nVariables & modules\n\n\nCodebook\n\n\n\n\n\nLouvain Foundation Dataset\n\n\nSurvey data supported by the Louvain Foundation, focusing on citizens’ motivation, needs, and well-being in response to societal and public health challenges.\n\n\n\nDataset overview\n\n\nStudy design\n\n\nMethodology\n\n\nVariables & modules\n\n\nCodebook"
   },
   {
     "objectID": "publications.html",

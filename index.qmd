@@ -46,9 +46,8 @@ format:
 
 # PsySoc DataHub
 
-> Welcome to the PsySoc DataHub: the Psychology & Society DataHub. <br><br>
-This platform serves as a central repository for large-scale Belgian datasets on psychology and society, such as the Motivation Barometer and THRIVE projects, with additional datasets to be added over time. The name PsySoc highlights the mission of the DataHub: to bridge psychological science with societal needs by fostering collaboration across research domains, practitioners, and policy actors—an essential endeavour both in times of crisis and for society’s long-term resilience. <br><br>
-The DataHub provides structured access to high-quality data on motivation, basic psychological needs, mental health, and responses to societal and public health measures, supported by comprehensive documentation and GDPR-compliant access procedures.
+> Welcome to the PsySoc DataHub: the Psychology & Society DataHub. This platform serves as a central repository for large-scale datasets on psychology and society. <br><br>
+The name PsySoc highlights the mission of the DataHub: to bridge psychological science with societal topics by fostering collaboration across research domains, practitioners, and policy actors, an essential endeavour both in times of crisis and for society’s long-term resilience. <br><br>
 :::
 ::: {.column width="35%"}
 <center>![Official logo of the Motivation Barometer](logo.png)</center>
@@ -59,7 +58,13 @@ The DataHub provides structured access to high-quality data on motivation, basic
 
 ## About
 
-The **PsySoc DataHub** brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them.  
+The **PsySoc DataHub** brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them. It offers:
+
+- 📊 **A growing collection of high-quality datasets** 
+- 🧠 Documenting **central themes** such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.
+- 🔍 **Comprehensive documentation**, including codebooks, protocols, methodological notes, and variable descriptions  
+- 🛡️ **GDPR-compliant controlled access** for sensitive data  
+- 🧪 **Synthetic datasets**, tutorials, and reproducible examples for learning and transparent analysis  
 
 ### Current datasets
 
@@ -69,21 +74,13 @@ At the heart of the hub lies the **Motivation Barometer**, a landmark monitoring
 
 The **THRIVE** project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven resource for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.
 
+Both datasets are integrated into one cohesive data ecosystem, allowing researchers to seamlessly explore trends over time, compare modules, and link psychological indicators to societal developments.
+
 #### Louvain Foundation Dataset  
 
-[to be completed]
+The **Louvain Foundation** dataset follows more than 5000 UCLouvain students and Belgian residents across seven waves from 2021–2022, with a follow-up wave in 2025. It gives many information into COVID-19–related perceptions and behaviors (e.g., trust in health authorities, adherence to public health measures), alongside well-being, social connection, emotional responses, and other psychological indicators during and after the pandemic. Fully anonymized by design, it offers a secure and useful resource for research on the social and psychological impact of COVID-19.
 
-See full overview of datasets [link]
-
----
-
-## What the Data Hub offers
-
-- 📊 **A growing collection of high-quality datasets** (currently including the Motivation Barometer, THRIVE, and the Louvain Foundation dataset)
-- 🧠 Documenting **central themes** such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.
-- 🔍 **Comprehensive documentation**, including codebooks, protocols, methodological notes, and variable descriptions  
-- 🛡️ **GDPR-compliant controlled access** for sensitive data  
-- 🧪 **Synthetic datasets**, tutorials, and reproducible examples for learning and transparent analysis  
+[Browse datasets](documentation/index.qmd){.btn .btn-primary}
 
 ---
 
@@ -92,8 +89,7 @@ See full overview of datasets [link]
 ::: {.columns-3}
 
 <div class="card">
-
-#### 🔓 Layer 1: Public Access
+**🔓 Layer 1: Public Access**
 
 Openly available to everyone:
 
@@ -115,7 +111,7 @@ Use this layer to:
 
 <div class="card">
 
-#### 📝 Layer 2: Registered Access
+**📝 Layer 2: Registered Access**
 
 Restricted, de-identified versions of the real data are available **on request**.
 
@@ -140,7 +136,7 @@ Access is granted via **private links** tied to a specific dataset version.
 
 <div class="card">
 
-#### 🔒 Layer 3: Internal Access
+**🔒 Layer 3: Internal Access**
 
 Full datasets—including sensitive modules and detailed identifiers—are restricted to the **project consortium**.
 
@@ -183,8 +179,7 @@ Analysis scripts and Quarto documents are aligned with specific data versions, a
 ## Citation
 
 If you use the resources or data from this hub, please cite the specific dataset(s) and version(s) you relied on.  
-An up-to-date citation format for each dataset is available on the  
-[Citation & Acknowledgements](citation.qmd) page.
+An up-to-date citation format for each dataset is available on the [Citation & Acknowledgements](citation.qmd) page.
 
 ---
 
