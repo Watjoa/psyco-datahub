@@ -19,7 +19,7 @@ Below, you can find more detailed information on both projects.
 
 ## Motivation Barometer
 
-The **Motivation Barometer** is a large-scale, online monitoring study that was launched on 19 March 2020, one day after the first national lockdown in Belgium. During the first ten weeks of the pandemic, daily surveys were administered, with a subset of participants followed for ten consecutive weeks. As the pandemic evolved, new waves were organized at a slower pace and adapted to emerging topics (e.g., vaccination, COVID certificate, trust, conspiracy beliefs).
+The **Motivation Barometer** is a large-scale, online monitoring study that was launched on 19 March 2020, one day after the first national lockdown in Belgium (2020 - 2023). During the first ten weeks of the pandemic, daily surveys were administered, with a subset of participants followed for ten consecutive weeks. As the pandemic evolved, new waves were organized at a slower pace and adapted to emerging topics (e.g., vaccination, COVID certificate, trust, conspiracy beliefs).
 
 - **Total waves:** more than 110 measurement waves over roughly 2.5 years.  
 - **Total responses:** nearly 484 000 completed questionnaires.  
@@ -30,7 +30,7 @@ Each wave combined a core set of variables (motivation, basic psychological need
 
 ## THRIVE Project
 
-The **THRIVE** project ("Taking stock to foster health and trust for an inclusive post-Covid society") is a BELSPO funded Post-Covid research programme. THRIVE explicitly builds on the Motivation Barometer by:
+The **THRIVE** project ("Taking stock to foster health and trust for an inclusive post-Covid society") is a BELSPO funded Post-Covid research programme (2023 - 2026). THRIVE explicitly builds on the Motivation Barometer by:
 
 - Consolidating and harmonizing existing Motivation Barometer waves.  
 - Adding new post-Covid follow-up waves.  

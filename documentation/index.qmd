@@ -7,13 +7,13 @@ format:
     smooth-scroll: true
 ---
 
-This page provides an overview of all datasets currently available in the DataHub.  
+This page provides an overview of all datasets currently available in the Data Hub.  
 Select a dataset to access its study design, methodology, variables, and codebook.
 
 <div class="dataset-grid">
 
 <div class="dataset-card">
-  <h2>Motivation Barometer & THRIVE</h2>
+  <h2>Motivation Barometer & THRIVE 🦠</h2>
   <p>
     Longitudinal monitoring of motivation, basic psychological needs, mental health,
     and responses to public health measures in Belgium during and after the COVID-19 crisis.
@@ -27,10 +27,10 @@ Select a dataset to access its study design, methodology, variables, and codeboo
 </div>
 
 <div class="dataset-card">
-  <h2>Louvain Foundation Dataset</h2>
+  <h2>Louvain Foundation Dataset 🦠</h2>
   <p>
     Survey data supported by the Louvain Foundation, focusing on citizens’ motivation,
-    needs, and well-being in response to societal and public health challenges.
+    needs, and well-being in response to societal and public health challenges during and after the COVID-19 crisis.
   </p>
   <ul>
     <li><a href="datasets/louvain-foundation/index.qmd">Dataset overview</a></li>

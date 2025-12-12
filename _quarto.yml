@@ -42,6 +42,7 @@ format:
     toc-location: left
     number-sections: false
     theme: flatly
+    fontsize: 15px
     smooth-scroll: true
     highlight-style: github
     code-fold: false

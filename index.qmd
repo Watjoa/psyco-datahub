@@ -47,14 +47,12 @@ format:
 # PsySoc Data Hub
 
 > Welcome to the PsySoc Data Hub: the Psychology & Society Data Hub. This platform serves as a central repository for large-scale datasets on themes regarding psychology and society. <br><br>
-The name PsySoc highlights the mission of the Data Hub: to bridge psychological science with societal topics by fostering collaboration across research domains, practitioners, and policy actors, an essential endeavour both in times of crisis and for society’s long-term resilience. <br><br>
+The name PsySoc highlights the mission of the Data Hub: to bridge psychological science with societal topics by fostering collaboration across research domains, practitioners, and policy actors, an essential endeavour both in times of crisis and for society’s long-term resilience.
 :::
 ::: {.column width="35%"}
 <center>![Official logo of the Motivation Barometer](logo.png)</center>
 :::
 :::
-
-
 
 ## About
 
