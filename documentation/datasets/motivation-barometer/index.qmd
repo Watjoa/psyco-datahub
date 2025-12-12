@@ -1,82 +1,228 @@
 ---
-title: "Documentation"
+title: "Motivation Barometer & THRIVE"
 format:
   html:
-    toc: false
+    toc: true
+    toc-depth: 2
     page-layout: full
     smooth-scroll: true
 ---
 
-This page provides an overview of all datasets currently available in the DataHub.  
-Select a dataset to access its study design, methodology, variables, and codebook.
+## About this dataset
 
-<div class="dataset-grid">
+The Motivation Barometer & THRIVE dataset brings together repeated follow-up surveys with a large panel of participants in Belgium. It follows people’s motivation, psychological functioning, and societal attitudes during and after the COVID-19 crisis and across broader societal challenges.
 
-<div class="dataset-card">
-  <h2>Motivation Barometer & THRIVE</h2>
-  <p>
-    Longitudinal monitoring of motivation, basic psychological needs, mental health,
-    and responses to public health measures in Belgium during and after the COVID-19 crisis.
-  </p>
-  <ul>
-    <li><a href="datasets/motivation-barometer/index.qmd">Dataset overview</a></li>
-    <li><a href="datasets/motivation-barometer/study_design.qmd">Study design</a></li>
-    <li><a href="datasets/motivation-barometer/methodology.qmd">Methodology</a></li>
-    <li><a href="datasets/motivation-barometer/variables_overview.qmd">Variables & modules</a></li>
-    <li><a href="datasets/motivation-barometer/codebook.qmd">Codebook</a></li>
-  </ul>
-</div>
+- All variables with items can be found in the [codebook](codebook.qmd)
+- A total overview of variables can be found [here](#total-overview-of-variables)
+- See all variables by year [here](#variables-by-year)
 
-<div class="dataset-card">
-  <h2>Louvain Foundation Dataset</h2>
-  <p>
-    Survey data supported by the Louvain Foundation, focusing on citizens’ motivation,
-    needs, and well-being in response to societal and public health challenges.
-  </p>
-  <ul>
-    <li><a href="datasets/louvain-foundation/index.qmd">Dataset overview</a></li>
-    <li><a href="datasets/louvain-foundation/study_design.qmd">Study design</a></li>
-    <li><a href="datasets/louvain-foundation/methodology.qmd">Methodology</a></li>
-    <li><a href="datasets/louvain-foundation/variables_overview.qmd">Variables & modules</a></li>
-    <li><a href="datasets/louvain-foundation/codebook.qmd">Codebook</a></li>
-  </ul>
-</div>
+## Total overview of variables
 
-</div>
+### 1. Core psychological processes
 
-<style>
-.dataset-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.2rem;
-}
+- **Basic Psychological Needs**
+  - Autonomy (satisfaction and frustration)
+  - Competence (satisfaction and frustration)
+  - Relatedness (satisfaction and frustration)
 
-.dataset-card {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 1.2rem 1.4rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-}
+- **Motivation**
+  - **_Adherence to the measures_**
+    - Identified motivation
+    - Introjected motivation
+    - External motivation
+    - Amotivation
+    - Effort
+    - Reactance
+  - **_Vaccination_**
+    - Identified motivation
+    - External motivation
+    - Amotivation (defiance)
+    - Amotivation (distrust)
+    - Amotivation (self-efficacy)
+  - **_Measures-specific_**: face covering, hand washing, taking pcr test, physical distance, quarantaine, social distancing, ventilation
+  - **_Outcome expectation_**: physical distance, hand washing, face covering, pcr test, social contact, telework, ventilatino (self and population) 
+  - **_Self-efficacy_**: physical distance, hand washing, face covering, pcr test, social contact, telework, ventilatino (duration and effort)
 
-.dataset-card h2 {
-  margin-top: 0;
-  margin-bottom: 0.4rem;
-}
+- **Well-being and Ill-being**
+  - Anxiety
+  - Aspiration (importance and in practice, post-crisis)
+  - Boredom
+  - Climate anxiety
+  - Concerns: health, significant others, situation, finances, job, climate change, war, new COVID-19 variants
+  - Depression
+  - Emotion-Regulation
+  - Life satisfaction
+  - Loneliness
+  - Mindfulness
+  - Novelty
+  - Parental stress
+  - Sleep duration
+  - Vitality and depletion
 
-.dataset-card p {
-  margin-top: 0;
-  margin-bottom: 0.8rem;
-  font-size: 0.95rem;
-}
+### 2. Behavior and behavioral intentions
 
-.dataset-card ul {
-  padding-left: 1.1rem;
-  margin: 0;
-}
+- **Behavior**
+  - adherence to the measures (keeping physical distance, hand washing, avoiding social contect, wearing mouthmask, working from home, ventilation)
+  - planned adherence
+  - taking part in a protest
 
-.dataset-card li {
-  margin-bottom: 0.2rem;
-}
-</style>
+- **Intention to climate activism**
+
+
+### 3. Perceptions of crisis and society
+
+- **Risk perception** 
+  - COVID-19: perceived infection chance and severity of symptoms (towards self and population)
+  - future crises: perceived infection chance and severity of symptoms (towards self and population)
+
+- **Trust**
+  - how competence one is perceived to be (celebrities, doctors, experts, nurses, healthcare, pharmacists, politicans)
+  - trust and perceived expertise with doctor, expert, media, pharmacist, politicians, other vaccinated persons
+
+- **Societal themes**
+  - populism
+  - anomie
+  - autocratic versus democratic attitudes
+
+- **Perception of how the crisis is handled by the policy**
+
+- **Evaluation of: the measures, obligated vaccination**
+
+- **Memories** of the COVID-19 crisis
+
+- **Future crisis**
+  - approach
+  - preparedness  
+
+- **Conspiracy theories**
+  - On corona
+  - General
+
+- **Communication style**
+  - Autonomy-supportive (Participative, Attuning)
+  - Structure (Guiding, Clarifying)
+  - Controlling (Demanding, Domineering)
+  - Chaos (Abandoning, Awaiting)
+
+### 4. Contextual and background variables
+
+- **Meta**
+  - Date
+  - Weather (daily temperature, sun duration, humidity)
+  - Google Mobility data
+  - Holiday periods
+  - Season
+
+- **Sociodemographics**
+  - age
+  - civil status
+  - comorbidities
+  - infection/hospitalization status
+  - education level
+  - financial situation
+  - gender
+  - language
+  - physical activity
+  - province of living
+  - religion
+  - socio-economic status
+  - work situation
+
+- **Crisis-related information**
+  - Infections: raw numbers, incremental value (source: Sciensano)
+  - Hospitalizations: raw numbers, incremental value (source: Sciensano)
+  - Mortalities: raw numbers, incremental value (source: Sciensano)
+  - Number of vaccination doses (A - EEE, source: Sciensano)
+  - Stringency Index (source: Oxford Govermental Tool)
+  
+## Variables by year
+
+<details open>
+<summary><strong>2025: Post-crisis adjustment & regimes</strong></summary>
+
+- **Basic psychological needs**  
+  Autonomy, competence, and relatedness satisfaction, unfulfillment and frustration  
+  Perceived support and thwart in life
+
+- **Well-being and ill-being**  
+  Anxiety, depression, depletion  
+  Vitality & life satisfaction  
+  Sleep quality  
+  Concerns
+
+- **Governmental communication style**  
+  The development of a circumplex pattern
+
+- **Societal attitudes**  
+  anomie 
+  
+- **Old and new crises**  
+  Intention to adhere to COVID-19 and climate-related measures and related (lack of) motivation  
+  Risk perception COVID-19 and climate crisis  
+  Intented usage of COVID-19 hygiene behaviors at work and at family occassions when feeling sick
+  
+</details>
+
+<details>
+<summary><strong>2024: Post-crisis adjustment & regimes</strong></summary>
+
+- **Basic psychological needs (personal & group-based)**  
+  Autonomy, competence, and relatedness satisfaction and frustration; group-based needs.
+
+- **Well-being and ill-being**  
+  Anxiety, depression, depletion, vitality, life satisfaction, sleep quality, concerns, loneliness, flourishing/mental health (MHC), novelty, self-compassion, post-crisis and post-lockdown perceptions.
+
+- **Perceptions of the COVID-19 crisis & future crises**  
+  Memories of the crisis, post-crisis perception, approach to future crises, risk perception of future crises.
+
+- **Democratic attitudes and societal views**  
+  Perceptions of democracy and autocracy, anomie, populist attitudes, conspiracy beliefs (incl. corona), views on experts and government.
+
+- **Information sources & communication**  
+  Use of information sources, following governmental communication (e.g., press conferences).
+
+- **Social identities & group membership**  
+  Identity centrality, national and government identification, social group variables.
+
+- **Sociodemographics**  
+  Age, gender, education, work situation, socio-economic and financial situation, province, nationality, number of children, partner status, political orientation, language, consent, and survey metadata.
+</details>
+
+<details>
+
+<summary><strong>2022: COVID transition period, climate concern & vaccination attitudes</strong></summary>
+
+- **Basic psychological needs**  
+  Satisfaction and frustration of autonomy, competence, relatdness 
+
+- **Well-being and ill-being**  
+  Anxiety, depression, depletion  
+  Vitality & life satisfaction  
+  Sleep quality & sleep duration  
+  Concerns and irritations (e.g., annoyance by others)
+
+- **Crisis perceptions & societal attitudes**  
+  Attitudes toward **obligatory vaccination**  
+  Perceived risk (general)  
+  Climate anxiety and climate-related worry  
+  Intention toward climate activism  
+
+- **Vaccination behaviour, intentions & motivation**  
+  Vaccination status (dose count: 1–4 doses, one/two doses)  
+  Intention for yearly booster  
+  Beliefs about vaccine **efficacy** & **safety**  
+  Motivation for vaccination (SDT-based): External motivation, Identified motivation, Amotivation (defiance, distrust, self-efficacy)  
+
+- **Perceptions of experts, government & institutions**  
+  Trust in experts and government  
+  Perceived competence, integrity, benevolence of authorities  
+
+- **Behaviour when symptomatic**  
+  Protective behaviour and adherence  
+  (e.g., avoiding interactions, mask use, informing others)
+
+- **Sociodemographics & personal background**  
+  Age, gender, education, region/province, work situation, partner status, number of children, Belgian region of living, religion, socio-economic status & financial situation, comorbidities, recent infection (COVID-19)  
+
+</details>
+

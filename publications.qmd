@@ -182,7 +182,7 @@ body {
   }
 </style>
 
-On this page, you can find an overview of our core themes and the publications linked to each of them. The themes reflect the main domains covered in our datasets, including psychological functioning, behavior, communication and policy, and crisis-related indicators. For every theme, you can browse the selected publications, read the abstract, and visit the full article. 
+Publications sorted by theme
 
 ## Governance, policy & societal regulation
 

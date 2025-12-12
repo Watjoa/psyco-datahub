@@ -10,102 +10,164 @@ format:
 
 # Core module
 
-## Basic Psychological Needs 
-
-### Autonomy
-
 ```{r echo = FALSE, message=FALSE}
-
 library(tidyverse)
+library(readxl)
 library(flextable)
 
-codebook_en <- tribble(
-  ~variable,  ~label,               ~item_short,                                    ~response_scale,                         ~response_min, ~response_max, ~type,     ~missing, ~notes,
-  "auto_1",   "Autonomy item 1",    "I feel free to make my own choices",          "1 = strongly disagree … 5 = strongly agree", 1L, 5L,  "integer", "-99",    "Positively worded.",
-  "auto_2",   "Autonomy item 2",    "I feel pressured to do things I do not want", "1 = strongly disagree … 5 = strongly agree", 1L, 5L,  "integer", "-99",    "Reverse-coded for scale score.",
-  "auto_3",   "Autonomy item 3",    "I can decide for myself how to live my life", "1 = strongly disagree … 5 = strongly agree", 1L, 5L,  "integer", "-99",    "Positively worded.",
-  "auto_mean","Autonomy mean score","Mean of auto_1–auto_3",                       "1–5 (higher = more autonomy satisfaction)", NA,  NA,  "numeric", "-99",    "Min. 2 valid items required."
-)
+# 1. Read full codebook from Excel
+cb_raw <- read_excel("codebook.xlsx", sheet = 1)
 
-codebook_nl <- tribble(
-  ~variable,  ~label,               ~item_short,                                    ~response_scale,                         ~response_min, ~response_max, ~type,     ~missing, ~notes,
-  "auto_1",   "Autonomie item 1",   "Ik voel mij vrij om mijn eigen keuzes te maken",
-  "1 = helemaal oneens … 5 = helemaal eens", 1L, 5L,  "integer", "-99",    "Positief geformuleerd.",
-  "auto_2",   "Autonomie item 2",   "Ik voel mij onder druk gezet om dingen te doen die ik niet wil",
-  "1 = helemaal oneens … 5 = helemaal eens", 1L, 5L,  "integer", "-99",    "Omgekeerd gescoord.",
-  "auto_3",   "Autonomie item 3",   "Ik kan zelf beslissen hoe ik mijn leven leid",
-  "1 = helemaal oneens … 5 = helemaal eens", 1L, 5L,  "integer", "-99",    "Positief geformuleerd.",
-  "auto_mean","Gemiddelde autonomie","Gemiddelde van auto_1–auto_3",
-  "1–5 (hoger = meer autonomiesatisfactie)", NA,  NA,  "numeric", "-99",    "Min. 2 geldige items vereist."
-)
+# 2. Helper: get section-specific header text (first non-NA)
+get_header <- function(dat, lang = c("en", "nl"), section_id = NULL) {
+  lang <- match.arg(lang)
 
-make_ft <- function(dat) {
-  dat %>%
+  d <- dat
+  if (!is.null(section_id)) {
+    d <- d %>% filter(section == section_id)
+  }
+
+  colname <- if (lang == "en") "header_en" else "header_nl"
+
+  hdr <- d %>%
+    filter(!is.na(.data[[colname]])) %>%
+    pull(.data[[colname]])
+
+  if (length(hdr) == 0) {
+    return(NULL)
+  } else {
+    return(hdr[1])
+  }
+}
+
+# 3. Create English view of the codebook (all variables)
+codebook_en <- cb_raw %>%
+  transmute(
+    variable,
+    section,
+    label          = label_en,
+    item_short     = item_short_en,
+    response_scale = response_scale_en,
+    response_min,
+    response_max,
+    type,
+    missing,
+    notes          = notes_en
+  )
+
+# 4. Create Dutch view of the codebook (all variables)
+codebook_nl <- cb_raw %>%
+  transmute(
+    variable,
+    section,
+    label          = label_nl,
+    item_short     = item_short_nl,
+    response_scale = response_scale_nl,
+    response_min,
+    response_max,
+    type,
+    missing,
+    notes          = notes_nl
+  )
+
+# 5. General flextable builder (language + optional header text)
+make_ft <- function(dat, lang = c("en", "nl"), header = NULL) {
+  lang <- match.arg(lang)
+
+  ft <- dat %>%
     select(
       variable, label, item_short,
       response_scale, response_min, response_max,
       type, missing, notes
     ) %>%
-    flextable() %>%
-    set_header_labels(
-      variable       = "Variable name",
-      label          = "Label",
-      item_short     = "Item wording (short)",
-      response_scale = "Response scale (text)",
-      response_min   = "Min",
-      response_max   = "Max",
-      type           = "Type",
-      missing        = "Missing codes",
-      notes          = "Notes"
-    ) %>%
+    flextable()
+
+  if (lang == "en") {
+    ft <- ft %>%
+      set_header_labels(
+        variable       = "Variable name",
+        label          = "Label",
+        item_short     = "Item wording (short)",
+        response_scale = "Response scale (text)",
+        response_min   = "Min",
+        response_max   = "Max",
+        type           = "Type",
+        missing        = "Missing codes",
+        notes          = "Notes"
+      )
+
+  } else if (lang == "nl") {
+    ft <- ft %>%
+      set_header_labels(
+        variable       = "Variabelenaam",
+        label          = "Label",
+        item_short     = "Itemformulering (kort)",
+        response_scale = "Antwoordschaal (tekst)",
+        response_min   = "Min",
+        response_max   = "Max",
+        type           = "Type",
+        missing        = "Missingscodes",
+        notes          = "Notities"
+      )
+  }
+
+  # Optional top header row if 'header' provided
+  if (!is.null(header)) {
+    ft <- ft %>%
+      add_header_row(
+        values = header,
+        colwidths = 9
+      )
+  }
+
+  ft %>%
     autofit() %>%
     align(part = "all", align = "left") %>%
     valign(part = "all", valign = "top") %>%
     fontsize(part = "all", size = 9) %>%
     bold(part = "header") %>%
     theme_booktabs() %>%
-    add_header_row(
-      values = "Please indicate how much you agree with each statement. \n \n In the past week...",
-      colwidths = 9
-    ) %>%
     bold(i = 1, part = "header") %>%
     merge_h(i = 1, part = "header")
 }
 
-ft_en <- make_ft(codebook_en)
-ft_nl <- make_ft(codebook_nl)
+```
+
+## Basic Psychological Needs 
+
+### Autonomy
+
+```{r echo = FALSE, message=FALSE}
+current_section <- "autonomy"
+
+codebook_en_section <- codebook_en %>% filter(section == current_section)
+codebook_nl_section <- codebook_nl %>% filter(section == current_section)
+
+header_en_section <- get_header(cb_raw, lang = "en", section_id = current_section)
+header_nl_section <- get_header(cb_raw, lang = "nl", section_id = current_section)
+
+ft_en_aut <- make_ft(codebook_en_section, lang = "en", header = header_en_section)
+ft_nl_aut <- make_ft(codebook_nl_section, lang = "nl", header = header_nl_section)
+
 
 ```
 
-<select id="lang-select">
-  <option value="en">English</option>
-  <option value="nl">Nederlands</option>
-</select>
+<select id="lang-autonomy"> <option value="en">English</option> <option value="nl">Nederlands</option> </select> <div id="tbl-autonomy-en"> `r ft_en_aut` </div> <div id="tbl-autonomy-nl" style="display:none;"> `r ft_nl_aut` </div> <script> document.addEventListener("DOMContentLoaded", function() { const select = document.getElementById("lang-autonomy"); const enDiv = document.getElementById("tbl-autonomy-en"); const nlDiv = document.getElementById("tbl-autonomy-nl"); if (!select || !enDiv || !nlDiv) return; select.addEventListener("change", function() { if (this.value === "en") { enDiv.style.display = ""; nlDiv.style.display = "none"; } else { enDiv.style.display = "none"; nlDiv.style.display = ""; } }); }); </script>
 
-<div id="tbl-en">
-`r ft_en`
-</div>
+### risk_perception
 
-<div id="tbl-nl" style="display:none;">
-`r ft_nl`
-</div>
+```{r echo = FALSE, message=FALSE}
+current_section <- "comm_style"
 
+codebook_en_section <- codebook_en %>% filter(section == current_section)
+codebook_nl_section <- codebook_nl %>% filter(section == current_section)
 
+header_en_section <- get_header(cb_raw, lang = "en", section_id = current_section)
+header_nl_section <- get_header(cb_raw, lang = "nl", section_id = current_section)
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const select = document.getElementById("lang-select");
-  const enDiv  = document.getElementById("tbl-en");
-  const nlDiv  = document.getElementById("tbl-nl");
+ft_en_comm <- make_ft(codebook_en_section, lang = "en", header = header_en_section)
+ft_nl_comm <- make_ft(codebook_nl_section, lang = "nl", header = header_nl_section)
 
-  select.addEventListener("change", function() {
-    if (this.value === "en") {
-      enDiv.style.display = "";
-      nlDiv.style.display = "none";
-    } else {
-      enDiv.style.display = "none";
-      nlDiv.style.display = "";
-    }
-  });
-});
-</script>
+```
+
+<select id="lang-comm"> <option value="en">English</option> <option value="nl">Nederlands</option> </select> <div id="tbl-comm-en"> `r ft_en_comm` </div> <div id="tbl-comm-nl" style="display:none;"> `r ft_nl_comm` </div> <script> document.addEventListener("DOMContentLoaded", function() { const select = document.getElementById("lang-comm"); const enDiv = document.getElementById("tbl-comm-en"); const nlDiv = document.getElementById("tbl-comm-nl"); if (!select || !enDiv || !nlDiv) return; select.addEventListener("change", function() { if (this.value === "en") { enDiv.style.display = ""; nlDiv.style.display = "none"; } else { enDiv.style.display = "none"; nlDiv.style.display = ""; } }); }); </script>

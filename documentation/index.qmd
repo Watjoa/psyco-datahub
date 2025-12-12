@@ -20,10 +20,9 @@ Select a dataset to access its study design, methodology, variables, and codeboo
   </p>
   <ul>
     <li><a href="datasets/motivation-barometer/index.qmd">Dataset overview</a></li>
+    <li><a href="datasets/motivation-barometer/codebook.qmd">Codebook</a></li>
     <li><a href="datasets/motivation-barometer/study_design.qmd">Study design</a></li>
     <li><a href="datasets/motivation-barometer/methodology.qmd">Methodology</a></li>
-    <li><a href="datasets/motivation-barometer/variables_overview.qmd">Variables & modules</a></li>
-    <li><a href="datasets/motivation-barometer/codebook.qmd">Codebook</a></li>
   </ul>
 </div>
 

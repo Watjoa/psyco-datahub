@@ -44,10 +44,10 @@ format:
 ::: {.columns style="display:flex; gap:1em;"}
 ::: {.column width="65%"}
 
-# PsySoc DataHub
+# PsySoc Data Hub
 
-> Welcome to the PsySoc DataHub: the Psychology & Society DataHub. This platform serves as a central repository for large-scale datasets on psychology and society. <br><br>
-The name PsySoc highlights the mission of the DataHub: to bridge psychological science with societal topics by fostering collaboration across research domains, practitioners, and policy actors, an essential endeavour both in times of crisis and for society’s long-term resilience. <br><br>
+> Welcome to the PsySoc Data Hub: the Psychology & Society Data Hub. This platform serves as a central repository for large-scale datasets on themes regarding psychology and society. <br><br>
+The name PsySoc highlights the mission of the Data Hub: to bridge psychological science with societal topics by fostering collaboration across research domains, practitioners, and policy actors, an essential endeavour both in times of crisis and for society’s long-term resilience. <br><br>
 :::
 ::: {.column width="35%"}
 <center>![Official logo of the Motivation Barometer](logo.png)</center>
@@ -58,7 +58,7 @@ The name PsySoc highlights the mission of the DataHub: to bridge psychological s
 
 ## About
 
-The **PsySoc DataHub** brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them. It offers:
+The **PsySoc Data Hub** brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them. It offers:
 
 - 📊 **A growing collection of high-quality datasets** 
 - 🧠 Documenting **central themes** such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.
