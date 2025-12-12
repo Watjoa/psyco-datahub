@@ -26,7 +26,7 @@ website:
       - text: "Publications"
         href: publications.qmd
       - text: "Outreach"
-        href: guidelines.qmd
+        href: outreach.qmd
       - icon: github
         href: "https://github.com/"
         aria-label: GitHub
