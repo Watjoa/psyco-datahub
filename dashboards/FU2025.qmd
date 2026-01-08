@@ -1,0 +1,2529 @@
+---
+title: "Follow-up 2025"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-expand: true
+    page-layout: full
+    number-sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results = "hide"}
+
+x<-c('foreign','lavaan','tidyverse','cluster',
+     'factoextra','dendextend','ape','tidyr',
+     'magrittr','clValid','sirt','broom.mixed',
+     'ggfortify','clustree','FactoMineR',
+     'corrplot','ggiraphExtra','GGally',
+     'knitr','kableExtra','plyr','haven','apaTables',
+     'qgraph','dplyr','ComplexHeatmap','dendextend',
+     'circlize','RColorBrewer','ggpubr','rstatix',
+     'car','broom','hausekeep',"writexl",
+     'Publish','data.table','ja  nitor','psych',
+     'sjPlot', 'Hmisc','xtable','survey', 'marginaleffects',
+     'srvyr','questionr','ggalt','lm.beta','clubSandwich',
+     'lme4','lmerTest','jtools','zoo','performance',
+     'lavaanPlot','questionr','writexl','janitor','CaviR',
+     'nFactors','ggthemes')
+
+shift<-function(x,shift_by){
+  stopifnot(is.numeric(shift_by))
+  stopifnot(is.numeric(x))
+  
+  if (length(shift_by)>1)
+    return(sapply(shift_by,shift, x=x))
+  
+  out<-NULL
+  abs_shift_by=abs(shift_by)
+  if (shift_by > 0 )
+    out<-c(tail(x,-abs_shift_by),rep(NA,abs_shift_by))
+  else if (shift_by < 0 )
+    out<-c(rep(NA,abs_shift_by), head(x,-abs_shift_by))
+  else
+    out<-x
+  out
+}
+
+lapply(x, require, character.only = TRUE)
+
+dftot <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/FollowUp2025/followup_2025.rds")
+
+plot_likert_unweighted_base <- function(
+    data = data,
+    cols = cols,
+    sort_items = c("none", "mean"),
+    sort_descending = FALSE,
+    likert_levels = likert_levels,
+    likert_labels = likert_labels,
+    col_labels = NULL,
+    title = "Please indicate to what extent you agree with the following statements",
+    caption = NULL,
+    palette = "RdYlBu",
+    show_percent_labels = TRUE,
+    label_min_prop = 0.04
+) {
+  stopifnot(is.character(cols))
+  
+  # Packages used only for plotting
+  library(ggplot2)
+  library(RColorBrewer)
+  library(ggthemes)
+  library(scales)
+  
+  # Build long data in base R
+  df_items <- data[, cols, drop = FALSE]
+  long <- stack(df_items)                 # values + ind (column name)
+  names(long) <- c("response_raw", "item_raw")
+  
+  # Drop missing responses
+  long <- long[!is.na(long$response_raw), , drop = FALSE]
+  
+  # Map item order to match `cols` and optionally label
+  if (!is.null(col_labels)) {
+    if (length(col_labels) != length(cols)) stop("col_labels must have same length as cols.")
+    item_levels <- col_labels
+    long$item <- factor(long$item_raw, levels = cols, labels = col_labels)
+  } else {
+    item_levels <- cols
+    long$item <- factor(long$item_raw, levels = cols)
+  }
+  
+  # Map responses to ordered factor using numeric codes 1..K
+  K <- length(likert_levels)
+  long$response <- factor(
+    long$response_raw,
+    levels = seq_len(K),
+    labels = likert_labels,
+    ordered = TRUE
+  )
+  
+  # Unweighted counts per item x response
+  tab <- xtabs(~ item + response, data = long, drop.unused.levels = FALSE)
+  
+  # Unweighted proportions per item (row-wise)
+  prop <- prop.table(tab, margin = 1)
+  
+  # Convert to long for ggplot
+  plot_df <- as.data.frame(prop, stringsAsFactors = FALSE)
+  names(plot_df) <- c("item", "response", "prop")
+  
+  # Keep strict ordering
+  plot_df$item <- factor(plot_df$item, levels = item_levels)
+  plot_df$response <- factor(plot_df$response, levels = likert_labels, ordered = TRUE)
+  
+  
+  
+  # numeric codes for Likert levels (1..K)
+  likert_numeric <- setNames(seq_along(likert_labels), likert_labels)
+  
+  # add numeric score
+  plot_df$score <- likert_numeric[as.character(plot_df$response)]
+  
+  # compute mean per item (already unweighted)
+  item_means <- aggregate(
+    score * prop ~ item,
+    data = plot_df,
+    FUN = sum
+  )
+  
+  # default: keep original order
+  item_order <- item_levels
+  
+  if (sort_items == "mean") {
+    item_means_tmp <- aggregate(
+      score * prop ~ item,
+      data = plot_df,
+      FUN = sum
+    )
+    
+    item_order <- item_means_tmp$item[
+      order(item_means_tmp$`score * prop`, decreasing = sort_descending)
+    ]
+  }
+  
+  plot_df$item <- factor(plot_df$item, levels = item_order)
+  
+  item_means <- aggregate(
+    score * prop ~ item,
+    data = plot_df,
+    FUN = sum
+  )
+  
+  colnames(item_means)[2] <- "mean"
+  
+  
+  p <- ggplot(plot_df, aes(x = prop, y = item, fill = response)) +
+    geom_col(width = 0.7, position = position_stack(reverse = TRUE)) +
+    scale_x_continuous(labels = percent_format(accuracy = 1),
+                       limit=c(0,1.1),breaks=c(0,0.25,0.5,0.75,1)) +
+    scale_fill_manual(
+      values = brewer.pal(n = length(likert_labels), name = palette),
+      breaks = likert_labels,
+      labels = likert_labels
+    ) +
+    labs(title=title,
+          caption = paste(caption,'\n\n N =',dim(na.omit(df_items)),
+                          '\n\n Data collected by the Motivation Barometer and THRIVE, December 2025'), 
+                                     x = NULL, y = NULL, fill = "Responses") +
+    theme_few() +
+    theme(legend.position = "right",text=element_text(size=14))
+  
+  # Optional percent labels inside segments
+  if (show_percent_labels) {
+    plot_df$lab <- ifelse(
+      plot_df$prop >= label_min_prop,
+      percent(plot_df$prop, accuracy = 1),
+      ""
+    )
+    
+    p <- p +
+      geom_text(
+        data = plot_df,
+        aes(label = lab),
+        position = position_stack(vjust = 0.5, reverse = TRUE),
+        size = 3
+      )
+  }
+  
+  p <- p +
+    geom_text(
+      data = item_means,
+      aes(
+        x = 1.02,   # just outside the bar
+        y = item,
+        label = sprintf("%.2f", mean)
+      ),
+      inherit.aes = FALSE,
+      hjust = 0,
+      size = 3.5,
+      color="darkgrey"
+    ) +
+    coord_cartesian(xlim = c(0, 1.12), clip = "off")
+  
+  
+  list(
+    plot = p,
+    item_order = item_order
+  )
+}
+
+plot_likert_weighted_base <- function(
+    data = data,
+    cols = cols,
+    likert_levels = likert_levels,
+    likert_labels = likert_labels,
+    weights_col = weights,
+    item_order = NULL,
+    col_labels = NULL,
+    title = "Please indicate to what extent you agree with the following statements",
+    caption = NULL,
+    palette = "RdYlBu",
+    show_percent_labels = TRUE,
+    label_min_prop = 0.04
+) {
+  stopifnot(is.character(cols))
+  stopifnot(is.character(weights_col) && length(weights_col) == 1)
+  stopifnot(weights_col %in% names(data))
+  
+  # Packages used only for plotting
+  library(ggplot2)
+  library(RColorBrewer)
+  library(ggthemes)
+  library(scales)
+  
+  # Extract weights + check numeric
+  w <- data[[weights_col]]
+  if (!is.numeric(w)) stop("weights_col must point to a numeric column.")
+  if (any(!is.finite(w) & !is.na(w))) stop("weights contain non-finite values (Inf/-Inf).")
+  
+  # Build long data in base R
+  df_items <- data[, cols, drop = FALSE]
+  long <- stack(df_items)                    # values + ind (column name)
+  names(long) <- c("response_raw", "item_raw")
+  long$w <- rep(w, times = length(cols))     # repeat weights for each stacked column
+  
+  # Drop missing response or missing weight
+  keep <- !is.na(long$response_raw) & !is.na(long$w)
+  long <- long[keep, , drop = FALSE]
+  
+  # Map item order to match `cols` and optionally label
+  if (!is.null(col_labels)) {
+    if (length(col_labels) != length(cols)) stop("col_labels must have same length as cols.")
+    item_levels <- col_labels
+    # convert raw colnames -> labels
+    long$item <- factor(long$item_raw, levels = cols, labels = col_labels)
+  } else {
+    item_levels <- cols
+    long$item <- factor(long$item_raw, levels = cols)
+  }
+  
+  # Map responses to ordered factor using numeric codes 1..K
+  # (If your data already contains text levels, see note below.)
+  K <- length(likert_levels)
+  long$response <- factor(
+    long$response_raw,
+    levels = seq_len(K),
+    labels = likert_labels,
+    ordered = TRUE
+  )
+  
+  # Weighted counts per item x response (base R)
+  # xtabs sums weights by cells
+  tab_w <- xtabs(w ~ item + response, data = long, drop.unused.levels = FALSE)
+  
+  # Weighted proportions per item (row-wise)
+  prop <- prop.table(tab_w, margin = 1)
+  
+  # Convert to long for ggplot
+  plot_df <- as.data.frame(prop, stringsAsFactors = FALSE)
+  names(plot_df) <- c("item", "response", "prop")
+  
+  # Keep strict ordering
+  plot_df$item <- factor(plot_df$item, levels = item_levels)
+  plot_df$response <- factor(plot_df$response, levels = likert_labels, ordered = TRUE)
+  
+  # numeric codes for Likert levels (1..K)
+  likert_numeric <- setNames(seq_along(likert_labels), likert_labels)
+  
+  # add numeric score
+  plot_df$score <- likert_numeric[as.character(plot_df$response)]
+  
+  if (is.null(item_order)) {
+    stop("item_order must be supplied to match unweighted ordering.")
+  }
+  
+  plot_df$item <- factor(plot_df$item, levels = item_order) 
+  
+  
+  item_means <- aggregate(
+    score * prop ~ item,
+    data = plot_df,
+    FUN = sum
+  )
+  
+  colnames(item_means)[2] <- "mean"
+  
+  
+  p <- ggplot(plot_df, aes(x = prop, y = item, fill = response)) +
+    geom_col(width = 0.7, position = position_stack(reverse = TRUE)) +
+    scale_x_continuous(labels = percent_format(accuracy = 1),
+                       limit=c(0,1.1),breaks=c(0,0.25,0.5,0.75,1)) +
+    scale_fill_manual(
+      values = brewer.pal(n = length(likert_labels), name = palette),
+      breaks = likert_labels,
+      labels = likert_labels
+    ) +
+    labs(title=title,caption = paste(caption,'\n\n N (weighted) =',dim(na.omit(data[!is.na(data$weights),cols])),
+                          '\n\n Data collected by the Motivation Barometer and THRIVE, December 2025'), 
+                                     x = NULL, y = NULL, fill = "Responses") +
+    theme_few() +
+    theme(legend.position = "right",,text=element_text(size=14))
+  
+  # Optional labels inside segments
+  if (show_percent_labels) {
+    plot_df$lab <- ifelse(plot_df$prop >= label_min_prop,
+                          percent(plot_df$prop, accuracy = 1), "")
+    p <- p +
+      geom_text(
+        data = plot_df,
+        aes(label = lab),
+        position = position_stack(vjust = 0.5, reverse=TRUE),
+        size = 3
+      )
+  }
+  
+  p <- p +
+    geom_text(
+      data = item_means,
+      aes(
+        x = 1.02,   # just outside the bar
+        y = item,
+        label = sprintf("%.2f", mean)
+      ),
+      inherit.aes = FALSE,
+      hjust = 0,
+      size = 3.5,
+      color="darkgrey"
+    ) +
+    coord_cartesian(xlim = c(0, 1.12), clip = "off")
+  
+  p
+}
+
+```
+
+# Sociodemographics
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=1, dpi=300}
+
+
+
+variableslist <- list(
+  fig0 = c('age_group','gender','partner','education','worksituation',
+           'financial_situation','social_status','pol_orientation','covid_vaccin_cat',
+           'tweejaarlijks','language','month')
+)
+
+names_list <- list(
+  fig0 = c('Age','Gender','Partner','Education level','Work situation',
+           'Financial situation','Social status','Political orientation','COVID vaccins',
+           'Study participation','Language','Month')
+)
+
+dfsub <- dftot
+
+pformat <- function(p.value){
+  unclass(symnum(
+    p.value,
+    corr = FALSE,
+    na = FALSE,
+    cutpoints = c(0, 0.001, 0.01, 0.05, 1),
+    symbols = c("***", "**", "*", " ")
+  ))
+}
+
+plot_list <- list()
+
+for (j in seq_along(variableslist)) {
+  
+  variables <- variableslist[[j]]
+  
+  sociodemo   <- vector("list", length(variables))
+  plots       <- list()
+  
+  for (i in seq_along(variables)) {
+    
+    tab <- table(dfsub[[variables[i]]], exclude = NA)
+   
+  
+    
+    # Percentages
+    sociodemo[[i]] <- as.data.frame(
+      round(prop.table(tab) * 100, 2)
+    )
+    colnames(sociodemo[[i]]) <- c("category", "percent")
+    
+    sociodemo[[i]]$variable <- names_list[[j]][i]
+  }
+  
+  for (i in seq_along(sociodemo)) {
+    
+    df_plot <- sociodemo[[i]]
+    
+    p <- ggplot(
+      df_plot,
+      aes(
+        x = variable,
+        y = percent,
+        fill = category,
+        label = paste0(round(percent, 0), "%")
+      )
+    ) +
+      geom_col(width = 1) +
+      scale_fill_brewer(palette="Paired")+
+      geom_text(
+        position = position_stack(vjust = 0.5),
+        size = 3,
+        color = "white"
+      ) +
+      scale_y_continuous(limits = c(0, 105)) +
+      #coord_flip() +
+      labs(
+        x = "",
+        y = "Percentage",
+        fill = "",
+        caption = paste('N =',length(na.omit(dfsub[,variables[i]]))),
+        title = df_plot$variable[1]
+        # ,subtitle = testlabels[[i]]
+      ) +
+      theme_hc(base_size = 10) +
+      theme(legend.position = "right")
+
+    
+    plots[[i]] <- p
+  }
+  
+  plot_list[[j]] <- ggarrange(
+    plotlist = plots,
+    align = "hv",
+    ncol = 3,
+    nrow = ceiling(length(plots) / 3),
+    common.legend = FALSE
+  )
+}
+
+plot_list[[1]]
+
+```
+
+# Information
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+plot_df <- dftot %>%
+  dplyr::select(resultsevents_1, resultsevents_2) %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = "option",
+    values_to = "response"
+  ) %>%
+  filter(!is.na(response)) %>%   # keep selected responses only
+  dplyr::count(option) %>%
+  dplyr::mutate(
+    percent = n / sum(n),
+    label = paste0(n, " (", scales::percent(percent, accuracy = 1), ")"),
+    option = factor(
+      option,
+      levels = c("resultsevents_1", "resultsevents_2"),
+      labels = c(
+        "Results of the study",
+        "News letter"
+      )
+    )
+  )
+
+ggplot(plot_df, aes(x = option, y = n)) +
+  geom_col(fill = "#2F3D4E", width = 0.6) +
+  geom_text(
+    aes(label = label),
+    vjust = -0.5,
+    size = 4
+  ) +
+  labs(
+    title = "Staying informed about research results and activities",
+    subtitle= "We are happy to keep participants informed about the results of this study and about related study days and other scientific activities (such as lectures or events).
+    The research results will always be shared at the group level in the form of a brief report. Individual results will not be communicated.
+    This communication is entirely voluntary. You can unsubscribe at any time or request that your contact details be removed. Your email address will be used exclusively for scientific communication and will never be shared with third parties.",
+    x = NULL,
+    y = "Number of respondents"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    panel.grid.major.x = element_blank()
+  ) + theme_few()
+```
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+plot_df <- dftot %>%
+  dplyr::select(studiedag_3, studiedag_1, studiedag_2) %>%
+  pivot_longer(
+    cols = everything(),
+    names_to = "option",
+    values_to = "response"
+  ) %>%
+  filter(!is.na(response)) %>%   # keep selected responses only
+  dplyr::count(option) %>%
+  dplyr::mutate(
+    percent = n / sum(n),
+    label = paste0(n, " (", scales::percent(percent, accuracy = 1), ")"),
+    option = factor(
+      option,
+      levels = c("studiedag_3", "studiedag_1", "studiedag_2"),
+      labels = c(
+        "No interest",
+        "In-person seminar",
+        "Online seminar"
+      )
+    )
+  )
+
+ggplot(plot_df, aes(x = option, y = n)) +
+  geom_col(fill = "#2F3D4E", width = 0.6) +
+  geom_text(
+    aes(label = label),
+    vjust = -0.5,
+    size = 4
+  ) +
+  labs(
+    title = "To what extent would you be interested in staying involved with the results of this research?",
+    subtitle= "We believe it is important to involve participants and to share the results with them.\nTherefore, we are considering organising a study day/seminar (online or in person)\nduring which we would present and discuss the findings (e.g., in Ghent or Brussels).",
+    x = NULL,
+    y = "Number of respondents"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    panel.grid.major.x = element_blank()
+  ) + theme_few()
+```
+
+# Specific memories
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+likert_levels <- c(
+  "Herinner mij dit helemaal niet",
+  "Herinner mij dit heel weinig",
+  "Herinner mij dit enigszins",
+  "Herinner mij dit redelijk goed",
+  "Herinner mij dit zeer goed"
+)
+
+likert_labels <- c(
+  "Do not remember this at all",
+  "Remember this very little",
+  "Remember this somewhat",
+  "Remember this fairly well",
+  "Remember this very well"
+)
+
+cols <- c("memo_neg_h_1",           
+          "memo_neg_h_2", "memo_neg_h_3", "memo_neg_h_4", "memo_neg_a_1",           
+          "memo_neg_a_2", "memo_neg_a_3", "memo_neg_a_4", "memo_neg_o_1",           
+          "memo_neg_o_2", "memo_pos_m_1", "memo_pos_m_2", "memo_pos_t_1",           
+          "memo_pos_t_2", "memo_pos_t_3", "memo_pos_o_1", "memo_pos_o_2",           
+          "memo_neut_1",  "memo_neut_2")
+
+caption <- c('"When I think about the COVID-19 pandemic, I remember…"')
+
+col_labels <- c( "the spread of the disease and its negative consequences for the population",
+                 "the shock of seeing people become ill or die",
+                 "the negative consequences for my own health or that of people close to me",
+                 "the fear of becoming infected with the virus myself",
+                 "the role of the media in spreading fear",
+                 "the government abusing its authority",
+                 "unfair measures that were imposed",
+                 "institutions and organizations that did not understand my situation and left me to cope on my own",
+                 "the social isolation",
+                 "the financial insecurity",
+                 "that the overall situation was more manageable than expected",
+                 "that the health crisis ultimately was not as severe as feared",
+                 "the community working together under difficult circumstances",
+                 "the hope that our efforts would save lives",
+                 "a sense of connectedness with others, even while physically apart",
+                 "being able to manage my work life well despite the circumstances",
+                 "enjoying the calm and quiet at home",
+                 "wearing a face mask",
+                 "staying at home")
+
+uw <- plot_likert_unweighted_base(
+    data = dftot,
+    cols = cols,
+    likert_levels = likert_levels,
+    likert_labels = likert_labels,
+    sort_items = c("mean"),
+    sort_descending = FALSE,
+    col_labels = col_labels,
+    title = 'Specific memories',
+    caption = caption,
+    palette = "RdYlBu",
+    show_percent_labels = TRUE,
+    label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Specific memories',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+```
+:::
+
+# Well-being
+
+## Basic Psychological Needs
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  'Helemaal niet akkoord',
+  'Niet akkoord',
+  'Noch wel, noch niet akkoord',
+  'Eerder akkoord',
+  'Helemaal akkoord'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("AS_1" , "AS_3",  "AF_1",  "AF_3",  "CS_1", 
+          "CS_3",  "CF_2",  "CF_3",  "RS_2",  "RS_4", 
+          "RF_1",  "RF_2")
+
+
+caption <- c(
+  "Through the statements below, we would like to learn about your feelings and thoughts.
+  The following questions ask about the kinds of experiences you are having in your life at this moment. 
+  Please read each statement carefully and use the response scale from 1 to 5 to indicate
+  the extent to which you agree with how it applies to your current life."
+)
+
+
+col_labels <- c(
+  # Autonomy satisfaction (AS)
+  "I feel a sense of choice and freedom in the things I do",
+  "I feel that my choices reflect who I truly am",
+  
+  # Autonomy frustration (AF)
+  "Most of the things I do feel like something I have to do",
+  "I feel forced to do many things that I would not choose to do myself",
+  
+  # Competence satisfaction (CS)
+  "I feel confident that I can do things well",
+  "I feel capable in what I do",
+  
+  # Competence frustration (CF)
+  "I feel insecure about my abilities",
+  "I feel disappointed in many of my achievements",
+  
+  # Relatedness satisfaction (RS)
+  "I feel connected to people who care about me and whom I care about",
+  "I feel a sense of warmth toward the people I spend time with",
+  
+  # Relatedness frustration (RF)
+  "I feel excluded from the group I want to belong to",
+  "I feel that people who are important to me are cold and distant toward me"
+)
+
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = 'Basic psychological needs',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Basic psychological needs',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+```
+:::
+
+
+## Life satisfaction and vitality
+
+Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+dftot$levenstevredenheid_cat <- factor(dftot$levenstevredenheid,
+                                     levels=c('1','2','3','4','5'),
+                                     labels=c("Strongly disagree",
+                                              "Disagree",
+                                              "Neither agree nor disagree",
+                                              "Rather agree",
+                                              "Strongly agree"))
+
+dftot$sleepquality_cat <- factor(dftot$slaapkwaliteit,
+                                     levels=c('1','2','3','4','5'),
+                                     labels=c('very bad','bad','neutral','good','very good'))
+
+dftot$vitaliteit_cat <- factor(dftot$vitaliteit,
+                                     levels=c('1','2','3','4','5'),
+                                     labels=c("Strongly disagree",
+                                              "Disagree",
+                                              "Neither agree nor disagree",
+                                              "Rather agree",
+                                              "Strongly agree"))
+
+dftot$depletion_cat <- factor(dftot$depletion,
+                                     levels=c('1','2','3','4','5'),
+                                     labels=c("Strongly disagree",
+                                              "Disagree",
+                                              "Neither agree nor disagree",
+                                              "Rather agree",
+                                              "Strongly agree"))
+
+variableslist <- list(
+  fig0 = c('levenstevredenheid_cat','sleepquality_cat','vitaliteit_cat','depletion_cat')
+)
+
+names_list <- list(
+  fig0 = c('I am satisfied with my life',
+           'My sleepquality last week...',
+           'Last week I felt vivid',
+           'Last week I felt lifeless')
+)
+
+dfsub <- dftot
+
+pformat <- function(p.value){
+  unclass(symnum(
+    p.value,
+    corr = FALSE,
+    na = FALSE,
+    cutpoints = c(0, 0.001, 0.01, 0.05, 1),
+    symbols = c("***", "**", "*", " ")
+  ))
+}
+
+plot_list <- list()
+
+for (j in seq_along(variableslist)) {
+  
+  variables <- variableslist[[j]]
+  
+  sociodemo   <- vector("list", length(variables))
+  test        <- vector("list", length(variables))
+  testlabels  <- vector("list", length(variables))
+  plots       <- list()
+  
+  for (i in seq_along(variables)) {
+    
+    tab <- table(dfsub[[variables[i]]], exclude = NA)
+    
+    chi <- chisq.test(tab)
+    
+    test[[i]] <- paste0(
+      "χ²(", chi$parameter, ") = ",
+      round(chi$statistic, 2),
+      ", p = ",
+      round(chi$p.value, 3),
+      pformat(chi$p.value)
+    )
+    
+    # Percentages
+    sociodemo[[i]] <- as.data.frame(
+      round(prop.table(tab) * 100, 2)
+    )
+    colnames(sociodemo[[i]]) <- c("category", "percent")
+    
+    sociodemo[[i]]$variable <- names_list[[j]][i]
+  }
+  
+  for (i in seq_along(test)) {
+    pval <- as.numeric(gsub("\\*", "", gsub(".*p = ", "", test[[i]])))
+    if (!is.na(pval) && pval < .001) {
+      testlabels[[i]] <- gsub("p = 0", "p < .001", test[[i]])
+    } else {
+      testlabels[[i]] <- test[[i]]
+    }
+  }
+  
+  for (i in seq_along(sociodemo)) {
+    
+    df_plot <- sociodemo[[i]]
+    
+    p <- ggplot(
+      df_plot,
+      aes(
+        x = variable,
+        y = percent,
+        fill = category,
+        label = paste0(round(percent, 0), "%")
+      )
+    ) +
+      geom_col(width = 1) +
+      scale_fill_brewer(palette="RdYlBu")+
+      geom_text(
+        position = position_stack(vjust = 0.5),
+        size = 3,
+        color = "white"
+      ) +
+      scale_y_continuous(limits = c(0, 105)) +
+      #coord_flip() +
+      labs(
+        x = "",
+        y = "Percentage",
+        fill = "",
+        caption = paste('N =',length(na.omit(dfsub[,variables[i]]))),
+        title = df_plot$variable[1]
+        # ,subtitle = testlabels[[i]]
+      ) +
+      theme_hc(base_size = 10) +
+      theme(legend.position = "right")
+    
+    
+    plots[[i]] <- p
+  }
+  
+  plot_list[[j]] <- ggarrange(
+    plotlist = plots,
+    align = "hv",
+    ncol = 2,
+    nrow = 2,
+    common.legend = FALSE
+  )
+}
+
+plot_list[[1]]
+
+```
+
+## Depression and anxiety
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  'zelden of nooit (minder dan 1 dag)0',
+  'een paar keer (1 tot 2 dagen)1',
+  'nu en dan of regelmatig (3 tot 4 dagen)2',
+  'meestal of voortdurend (5 tot 7 dagen)3'
+)
+
+likert_labels <- c(
+  "Rarely or never (less than 1 day)",
+  "A few times (1 to 2 days)",
+  "Sometimes or regularly (3 to 4 days)",
+  "Mostly or continuously (5 to 7 days)"
+)
+
+cols <- c("angst_1","angst_2","angst_3","angst_4","angst_5" ,
+          "depr_1","depr_2","depr_3","depr_4","depr_5","depr_6" )
+
+caption <- c(
+  "Below is a list of feelings you may have experienced during the past week. 
+  For each statement, indicate how often you felt this way during the past week.")
+
+col_labels <- c(  "... I felt calm.",
+                  "... I felt tense.",
+                  "... I felt anxious.",
+                  "... I felt satisfied.",
+                  "... I worried.",
+                  "... I did not feel like eating; my appetite was low.",
+                  "... I felt depressed.",
+                  "... I felt sad.",
+                  "... I had trouble getting started.",
+                  "... I felt lonely.",
+                  "... I felt that people disliked me.")
+
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = 'Concerns',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Concerns',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+```
+:::
+
+## Concerns
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+likert_levels <- c(
+  'Helemaal niet akkoord',
+  'Niet akkoord',
+  'Noch wel, noch niet akkoord',
+  'Eerder akkoord',
+  'Helemaal akkoord'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("zorgen_situatie", "zorgen_gezondheid", "zorgen_naasten",         
+          "zorgen_oekraine", "zorgen_middenoosten", "zorgen_wereldoorlog",    
+          "zorgen_covidvariant", "zorgen_finsit")
+
+
+caption <- c(
+  "Through the statements below, we would like to learn about your feelings and thoughts over the past week. 
+  Please use the response scale to indicate the extent to which you agree with each statement."
+)
+
+col_labels <- c(  "I worried about how the current situation will develop",
+                  "I worried about my health",
+                  "I worried about the health of people close to me",
+                  "I worried about the current situation in Ukraine",
+                  "I worried about the current situation in the Middle East",
+                  "I worried about the possible outbreak of a new world war",
+                  "I worried about new variants of COVID-19",
+                  "I worried about my financial situation")
+
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = 'Concerns',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Concerns',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+
+## Post-crisis identity development
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+likert_levels <- c(
+  'Helemaal niet akkoord',
+  'Niet akkoord',
+  'Noch wel, noch niet akkoord',
+  'Eerder akkoord',
+  'Helemaal akkoord'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("post_crisis1", "post_crisis2", "post_crisis3",           
+          "post_crisis4", "post_crisis5", "post_crisis6", "post_crisis7","post_crisis8",           
+          "novelty_post5","novelty_post6","novelty_post7", "novelty_post8")
+
+caption <- c(
+  "Below you will find several statements about the crisis and how you think about it afterwards.
+  Please use the response scale to indicate to what extent you agree with each statement."
+)
+
+col_labels <- c("After the COVID-19 crisis... my view of what is important in life changed.",
+                "After the COVID-19 crisis... I learned to appreciate my own life more than before.",
+                "After the COVID-19 crisis... I am able to do better things with my life.",
+                "After the COVID-19 crisis... I feel a greater sense of connection with others.",
+                "After the COVID-19 crisis... I mapped out a new path for my life.",
+                "After the COVID-19 crisis... I know better that I can handle problems.",
+                "After the COVID-19 crisis... I discovered that I am stronger than I thought.",
+                "After the COVID-19 crisis... I learned a lot about how good people are.",
+                "Because of the COVID-19 crisis... it became clear to me what I am going to do with my life.",
+                "Because of the COVID-19 crisis... I thought about different goals I can pursue.",
+                "Because of the COVID-19 crisis... I doubted what I really want to achieve in life.",
+                "Because of the COVID-19 crisis... I actively reflected on whether my future plans match what I truly want.")
+
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = 'Concerns',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Concerns',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+
+```
+:::
+
+# Policy 
+
+## Perceived democracy 
+
+How democratic do you think Belgium is in general?
+
+Choose your answer on a scale from 1 to 10, where 1 means “not democratic at all” and 10 means “fully democratic.”
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+hist(dftot$demo_perceptie_1)
+```
+
+## Identification
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+likert_levels <- c(
+  'Helemaal niet akkoord',
+  'Niet akkoord',
+  'Noch wel, noch niet akkoord',
+  'Eerder akkoord',
+  'Helemaal akkoord'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c('nat_id','gov_id')
+
+
+caption <- c(
+  ' '
+  )
+
+col_labels <- c(
+"I identify with Belgium",
+"I identify with the Belgian government"
+  )
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = 'Identification',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Identification',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+
+## Capabilities
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  'Helemaal niet akkoord',
+  'Niet akkoord',
+  'Noch wel, noch niet akkoord',
+  'Eerder akkoord',
+  'Helemaal akkoord'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("capab_1","capab_2R",             
+          "capab_3","capab_4","capab_5","capab_6","capab_7",                
+          "capab_8R","capab_9","capab_10","capab_11R","capab_12",               
+          "capab_13","capab_14","capab_15","capab_16","capab_17",               
+          "capab_18R","capab_19R")
+
+
+caption <- c(
+  '"Please indicate to what extent each of the following statements applies to you in your life"'
+  )
+
+col_labels <- c(
+  "My rights and freedoms are protected in this society.",
+  "The legal system and institutions in this society treat me as a second-class citizen.",
+  "People are treated equally under the law.",
+  "When I see law enforcement officers around me, I feel protected and safe.",
+  "I am afraid of the police and other legal authorities.",
+  "I am free to travel and live wherever I want in this country.",
+  "I can choose the job or career I want to pursue.",
+  "Some professions are not accessible to people like me.",
+  "I have had good opportunities to develop my talents.",
+  "I am free to vote in elections and participate in the civic life of my community.",
+  "I am excluded from leadership positions.",
+  "I have access to adequate transportation options.",
+  "I have access to sufficient healthy food and safe drinking water.",
+  "I have a safe and comfortable place to live.",
+  "Libraries, parks, and other recreational and cultural opportunities are available to me.",
+  "The availability of healthcare and public health protection is sufficient where I live.",
+  "I have the financial means to pursue my goals.",
+  "People like me are looked down upon in this society.",
+  "I have often experienced unfair discrimination."
+  )
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = 'Capabilities',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Capabilities',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+
+
+## Trust
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  'Helemaal niet akkoord1',
+  'Niet akkoord2',
+  'Noch wel, noch niet akkoord3',
+  'Eerder akkoord4',
+  'Helemaal akkoord5'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("trust_gov_comp1",        
+          "trust_gov_comp2","trust_gov_comp3","trust_gov_int1",
+          "trust_gov_int2","trust_gov_int3",         
+          "trust_gov_bene1","trust_gov_bene2","trust_gov_bene3")
+
+
+caption <- c(
+  "Below you will find a list of different characteristics. 
+  To what extent would you rate the people in the government who make decisions about Belgian policy on the following characteristics?"
+  )
+
+col_labels <- c(
+  "Qualified.",
+  "Competent.",
+  "Capable.",
+  "Fair.",
+  "Honest.",
+  "Moral.",
+  "Responsible.",
+  "Benevolent.",
+  "Caring."
+)
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+title <- 'Trust in Belgian government'
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = title,
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = title,
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+
+## Populism
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  'Helemaal niet akkoord1',
+  'Niet akkoord2',
+  'Noch wel, noch niet akkoord3',
+  'Eerder akkoord4',
+  'Helemaal akkoord5'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("populism_1","populism_2",             
+          "populism_3","populism_4","populism_5")
+
+
+caption <- c(
+  "Below are some statements about the political system. Please indicate the extent to which you agree with the following statements using the response scale."
+)
+
+col_labels <- c(
+  "Elected politicians talk too much and take too little action.",
+  "I would rather be represented by an ordinary citizen than by a specialized politician.",
+  "Politicians in the national parliament should follow the will of the people.",
+  "The people, not politicians, should make the most important decisions for our country.",
+  "What is called a ‘compromise’ in politics is in reality a betrayal of one’s principles."
+)
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+title <- 'Populism'
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = title,
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = title,
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+```
+:::
+
+## Conspiracy (COVID)
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  "Helemaal niet geloofwaardig",
+  "Niet geloofwaardig",
+  "Neutraal",
+  "Geloofwaardig",
+  "Heel geloofwaardig"
+)
+
+likert_labels <- c(
+  "Not at all credible",
+  "Not credible",
+  "Neutral",
+  "Credible",
+  "Very credible"
+)
+
+cols <- c("complot_corona_1","complot_corona_4",
+          "complot_corona_5","complot_corona_6b")
+
+caption <- c(
+  "During the pandemic, we heard certain claims about COVID-19 and the pandemic. How credible do you find each of the following statements?"
+    )
+
+col_labels <- c(
+  "The coronavirus was a biological weapon used by the Chinese Communist Party to spread panic in the West.",
+  "There was a vaccine against the coronavirus, but it was kept secret by those who had it in order to increase its value.",
+  "Governments used the COVID-19 pandemic to monitor the population more closely.",
+  "Politicians colluded with the pharmaceutical industry to sell vaccines whose safety or effectiveness was uncertain."
+  )
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+title <- 'Conspiracy COVID'
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = title,
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = title,
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+```
+:::
+
+## Conspiracy (In general)
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  "Zeer onwaarschijnlijk",
+  'Onwaarschijnlijk',
+  "Onbeslist",
+  "Waarschijnlijk",
+  "Zeer waarschijnlijk"
+)
+
+likert_labels <- c(
+  "Very unlikely",
+  "Unlikely",
+  "Undecided",
+  "Likely",
+  "Very likely"
+)
+
+cols <- c("complot_mentality_1","complot_mentality_2",
+          "complot_mentality_3","complot_mentality_4","complot_mentality_5" )
+
+caption <- c(
+  'Below you will find a list of general statements. 
+  Please indicate how likely you find these statements.
+  I think that…'
+)
+
+col_labels <- c(
+  "Many very important things happen in the world without the public ever being informed about them.",
+  "Politicians usually do not tell us the true reasons behind their decisions.",
+  "Government authorities closely monitor all citizens.",
+  "Events that appear unrelated on the surface are often the result of secret activities.",
+  "There are secret organizations that exert a great deal of influence over political decisions."
+)
+
+title <- 'Conspiracy in general'
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("mean"),
+  sort_descending = FALSE,
+  col_labels = col_labels,
+  title = title,
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = title,
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+
+# Youth images
+
+## General
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+likert_levels <- c(
+  'Helemaal niet akkoord',
+  'Niet akkoord',
+  'Noch wel, noch niet akkoord',
+  'Eerder akkoord',
+  'Helemaal akkoord'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("sneeuwvlok_1", "sneeuwvlok_2", "sneeuwvlok_3", "sneeuwvlok_4", "sneeuwvlok_5",
+          "entitled_1", "entitled_2", "entitled_3", "entitled_4", "entitled_5",
+          "respect_1", "respect_2", "respect_3", "respect_4", "respect_5",
+          "positief_1", "positief_2", "positief_3")
+
+
+caption <- c(
+ "Below are several statements about today’s younger generation compared to older generations.
+ Please indicate the extent to which you agree with each of the following statements."
+)
+
+col_labels <- c(
+  "are like snowflakes; they are so sensitive that they perceive any form of feedback as criticism",
+  "have little resilience to cope with difficulties",
+  "give up quickly when things become difficult",
+  "are not very independent",
+  "are overly sheltered",
+  
+  "overestimate themselves, even when they are not yet capable of doing something",
+  "believe they are entitled to things without having to put in much effort",
+  "think that problems are never their own fault but always someone else’s",
+  "believe they are entitled to special treatment",
+  "have an overly inflated view of themselves",
+  
+  "lack respect for authority",
+  "disregard rules",
+  "are too outspoken",
+  "no longer listen to their teachers, parents, or employers",
+  "are ungrateful toward adults",
+  
+  "are engaged and have ideals",
+  "want to make the world a better place",
+  "try to collectively address important problems in the world"
+)
+
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("none"),
+  sort_descending = TRUE,
+  col_labels = col_labels,
+  title = 'Youth images',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Youth images',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+```
+:::
+
+## Own child
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+hist(dftot$leeftijd_oudstkind_1,breaks=60)
+
+```
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+likert_levels <- c(
+  'Helemaal niet akkoord',
+  'Niet akkoord',
+  'Noch wel, noch niet akkoord',
+  'Eerder akkoord',
+  'Helemaal akkoord'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("sneeuwvlok_mk_1", "sneeuwvlok_mk_2", "sneeuwvlok_mk_3", "sneeuwvlok_mk_4", "sneeuwvlok_mk_5",
+          "entitled_mk_1", "entitled_mk_2", "entitled_mk_3", "entitled_mk_4", "entitled_mk_5",
+          "respect_mk_1", "respect_mk_2", "respect_mk_3", "respect_mk_4", "respect_mk_5",
+          "pos_mk_1", "pos_mk_2", "pos_mk_3")
+
+
+caption <- c(
+  "Below are several statements about your child(ren).
+  Please indicate the extent to which you agree with each statement with regard to your oldest child."
+)
+
+col_labels <- c(
+  "are like snowflakes; they are so sensitive that they perceive any form of feedback as criticism",
+  "have little resilience to cope with difficulties",
+  "give up quickly when things become difficult",
+  "are not very independent",
+  "are overly sheltered",
+  
+  "overestimate themselves, even when they are not yet capable of doing something",
+  "believe they are entitled to things without having to put in much effort",
+  "think that problems are never their own fault but always someone else’s",
+  "believe they are entitled to special treatment",
+  "have an overly inflated view of themselves",
+  
+  "lack respect for authority",
+  "disregard rules",
+  "are too outspoken",
+  "no longer listen to their teachers, parents, or employers",
+  "are ungrateful toward adults",
+  
+  "are engaged and have ideals",
+  "want to make the world a better place",
+  "try to collectively address important problems in the world"
+)
+
+
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("none"),
+  sort_descending = TRUE,
+  col_labels = col_labels,
+  title = 'Child images',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Child images',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+
+
+# Crisis
+
+## Risk perception (probability)
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  'Zeer onwaarschijnlijk',
+  'Onwaarschijnlijk',
+  'Matig waarschijnlijk',
+  'Waarschijnlijk',
+  'Zeer waarschijnlijk'
+)
+
+likert_labels <- c(
+  "Very unlikely",
+  "Unlikely",
+  "Moderately likely",
+  "Likely",
+  "Very likely"
+)
+
+cols <- c(
+  'covid_pers_infection','covid_pop_infect',
+  'climate_pers_inf','climate_pop_inf',
+  'crisis_pers_infect','crisis_pop_infect'
+)
+
+caption <- c(
+  "Please use the response scale to indicate how you think about this statement."
+)
+
+col_labels <- c(
+  "COVID personal infection",
+  "COVID population infection",
+  "CLIMATE personal consequences",
+  "CLIMATE population consequences",
+  "CRISIS personal consequences",
+  "CRISIS population consequences")
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("none"),
+  sort_descending = TRUE,
+  col_labels = col_labels,
+  title = 'Risk perception',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Risk perception',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+
+## Risk perception (severity)
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  'Helemaal niet ernstig',
+  'Niet ernstig',
+  'Tamelijk ernstig',
+  'Ernstig',
+  'Zeer ernstig'
+)
+
+likert_labels <- c(
+  "Not at all severe",
+  "Not severe",
+  "Fairly severe",
+  "Severe",
+  "Very severe"
+)
+
+cols <- c(
+  'covid_pers_severity','covid_pop_severity',
+  'climate_pers_sev','climate_pop_sev',
+  'crisis_pers_severity','crisis_pop_severity'
+)
+
+caption <- c(
+  "Please use the response scale to indicate how you think about this statement."
+)
+
+col_labels <- c(
+  "COVID personal severity",
+  "COVID population severity",
+  "CLIMATE personal severity",
+  "CLIMATE population severity",
+  "CRISIS personal severity",
+  "CRISIS population severity")
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("none"),
+  sort_descending = TRUE,
+  col_labels = col_labels,
+  title = 'Risk perception',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Risk perception',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+
+
+## COVID adherence
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+ "Volg ik helemaal niet",
+ "Volg ik niet",
+ "Volg ik deels wel, deels niet",
+ "Volg ik",
+ "Volg ik helemaal"
+)
+
+likert_labels <- c(
+  "Do not follow at all",
+  "Do not follow",
+  "Follow partly, partly not",
+  "Follow",
+  "Follow completely"
+)
+
+cols <- c("covid_fysiek" , "covid_handen", "covid_mondmasker",     
+          "covid_soccontact", "covid_essverplaatsingen", "covid_thuiswerken" ,
+          "covid_ventilatie")
+
+
+caption <- c(
+  "Suppose a new COVID-19 crisis were to occur tomorrow. 
+  To what extent would you be willing to comply with the following measures?"
+)
+
+col_labels <- c(
+ "Maintain physical distance from others.",
+ "Wash hands as much as possible.",
+ "Wear a face mask.",
+ "Limit social contacts to the maximum number of people allowed.",
+ "Only make essential trips.",
+ "Work from home.",
+ "Ensure sufficient ventilation at home."
+)
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("none"),
+  sort_descending = TRUE,
+  col_labels = col_labels,
+  title = '(A)Motivation COVID measures',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = '(A)Motivation COVID measures',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+```
+:::
+
+## Lasting COVID behavior
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+likert_levels <- c(
+  'Minder',
+  'Een beetje minder',
+  'Geen verschil',
+  'Beetje meer',
+  'Meer'
+)
+
+likert_labels <- c(
+  "Less","Little bit less",
+  "No difference",
+  "Little bit more","More"
+)
+
+cols <- c("sick_behavior_work_1","sick_behavior_work_2","sick_behavior_work_3",   
+          "sick_behavior_work_4","sick_behavior_work_5","sick_behavior_work_6",
+          "sick_behavior_family_1","sick_behavior_family_2","sick_behavior_family_3",
+          "sick_behavior_family_4", "sick_behavior_family_5","sick_behavior_family_6")
+
+
+caption <- c(
+  "what you do or do not do when you feel sick in the situation below. 
+  Since the COVID-19 crisis, when I feel sick, I… (at work/at home or towards family and friends)"
+)
+
+col_labels <- c(
+  "WORK... avoid physical interactions with others at work.",
+  "FAM... avoid physical interactions with family members or friends.",
+  
+  "WORK... wear a face mask in indoor spaces or crowded places at work.",
+  "FAM... wear a face mask in indoor spaces or crowded places when visiting family.",
+  
+  "WORK... cancel or reschedule work-related appointments or activities.",
+  "FAM... cancel or reschedule social activities with family or friends.",
+  
+  "WORK... inform my colleagues or supervisor that I am sick.",
+  "FAM... inform family members or friends that I am sick.",
+  
+  "WORK... choose to work from home if that is possible.",
+  "FAM... choose to stay at home and limit social contacts when possible.",
+  
+  "WORK... take extra hygiene measures (e.g., washing hands, cleaning surfaces) at work.",
+  "FAM... take extra hygiene measures (e.g., washing hands, cleaning surfaces) at home."
+)
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("none"),
+  sort_descending = TRUE,
+  col_labels = col_labels,
+  title = 'Sick behavior at work/with friends & family',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = 'Sick behavior at work/with friends & family',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+
+## Motivation
+
+### COVID
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  'Helemaal niet akkoord',
+  'Niet akkoord',
+  'Noch wel, noch niet akkoord',
+  'Eerder akkoord',
+  'Helemaal akkoord'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("idmot1_covid", "idmot2_covid", "idmot3_covid", "idmot4_covid",
+          "introj1_covid", "introj2_covid", "introj3_covid","introj4_covid", 
+          "extmot1_covid", "extmot2_covid", "extmot3_covid", "extmot4_covid",
+          "amotivation_covid_1", "amotivation_covid_2", "amotivation_covid_3", "amotivation_covid_4" )
+
+
+caption <- c(
+"I would follow these measures in a new COVID-19 crisis because... 
+Please indicate to what extent you agree with each statement.
+
+There may also be moments when you feel less motivated to comply with the measures. 
+What would be your reason for this?"
+)
+
+col_labels <- c(
+  "... I understand why these measures are important.",
+  "... I can fully stand behind this decision.",
+  "... I personally find these measures meaningful.",
+  "... these measures express my personal values.",
+  
+  "... I can then feel proud of myself.",
+  "... I feel that I owe it to myself to do so.",
+  "... I would feel ashamed if I did not do so.",
+  "... only then can I feel satisfied with myself.",
+  
+  "... I feel pressured to do so.",
+  "... I feel forced to do so.",
+  "... otherwise I would be criticized.",
+  "... I want to avoid a fine or sanction.",
+  
+  "Because I do not believe that the current approach to the COVID-19 crisis helps to solve the problem.",
+  "Because I can no longer make the necessary sacrifices or put in the required effort.",
+  "Because I do not feel capable of complying with the imposed measures.",
+  "Because the COVID-19 crisis is so large that my behavior has only a limited impact."
+)
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("none"),
+  sort_descending = TRUE,
+  col_labels = col_labels,
+  title = '(A)Motivation COVID measures',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = '(A)Motivation COVID measures',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+```
+:::
+
+### Climate
+
+::: {.panel-tabset}
+
+## Unweighted
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+likert_levels <- c(
+  'Helemaal niet akkoord',
+  'Niet akkoord',
+  'Noch wel, noch niet akkoord',
+  'Eerder akkoord',
+  'Helemaal akkoord'
+)
+
+likert_labels <- c(
+  "Strongly disagree",
+  "Disagree",
+  "Neither agree nor disagree",
+  "Rather agree",
+  "Strongly agree"
+)
+
+cols <- c("idmot1_clim", "idmot2_clim", "idmot3_clim", "idmot4_clim",
+          "introj1_clim", "introj2_clim", "introj3_clim","introj4_clim", 
+          "extmot1_clim", "extmot2_clim", "extmot3_clim", "extmot4_clim",
+          "amotivation_climate_1", "amotivation_climate_2", "amotivation_climate_3", "amotivation_climate_4" )
+
+
+caption <- c(
+"I would follow these measures in a climate crisis because... 
+Please indicate to what extent you agree with each statement.
+
+There may also be moments when you feel less motivated to comply with the measures. 
+What would be your reason for this?"
+)
+
+col_labels <- c(
+  "... I understand why these measures are important.",
+  "... I can fully stand behind this decision.",
+  "... I personally find these measures meaningful.",
+  "... these measures express my personal values.",
+  
+  "... I can then feel proud of myself.",
+  "... I feel that I owe it to myself to do so.",
+  "... I would feel ashamed if I did not do so.",
+  "... only then can I feel satisfied with myself.",
+  
+  "... I feel pressured to do so.",
+  "... I feel forced to do so.",
+  "... otherwise I would be criticized.",
+  "... I want to avoid a fine or sanction.",
+  
+  "Because I do not believe that the current approach to the climate crisis helps to solve the problem.",
+  "Because I can no longer make the necessary sacrifices or put in the required effort.",
+  "Because I do not feel capable of complying with the imposed measures.",
+  "Because the climate crisis is so large that my behavior has only a limited impact."
+)
+
+cols <- rev(cols)
+col_labels <- rev(col_labels)
+
+uw <- plot_likert_unweighted_base(
+  data = dftot,
+  cols = cols,
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  sort_items = c("none"),
+  sort_descending = TRUE,
+  col_labels = col_labels,
+  title = '(A)Motivation climate measures',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+uw$plot
+item_order   <- uw$item_order
+
+
+```
+
+## Weighted 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+
+plot_likert_weighted_base(
+  data = dftot,
+  cols = cols,
+  weights_col = 'weights',
+  likert_levels = likert_levels,
+  likert_labels = likert_labels,
+  col_labels = col_labels,
+  item_order = item_order,
+  title = '(A)Motivation climate measures',
+  caption = caption,
+  palette = "RdYlBu",
+  show_percent_labels = TRUE,
+  label_min_prop = 0.04
+) 
+
+```
+:::
+

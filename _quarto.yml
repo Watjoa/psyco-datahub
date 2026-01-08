@@ -32,7 +32,7 @@ website:
         aria-label: GitHub
 
   page-footer:
-    center: "© 2025 - Centre for Developmental and Motivation Psychology (COM)"
+    center: "© 2026 - Centre for Developmental and Motivation Psychology (COM)"
         
 
 format:
@@ -41,6 +41,7 @@ format:
     toc-depth: 3
     toc-location: left
     number-sections: false
+    lightbox: true
     theme: flatly
     fontsize: 15px
     smooth-scroll: true
