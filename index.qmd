@@ -1,7 +1,7 @@
 ---
 format:
   html:
-    toc: true
+    toc: false
     page-layout: full
     smooth-scroll: true
 ---
@@ -44,12 +44,13 @@ format:
 ::: {.columns style="display:flex; gap:1em;"}
 ::: {.column width="65%"}
 
-# PsySoc Data Hub
+# Societal Needs Data Hub
 
-> Welcome to the PsySoc Data Hub: the Psychology & Society Data Hub. This platform serves as a central repository for large-scale datasets on themes regarding psychology and society. <br><br>
-The name PsySoc highlights the mission of the Data Hub: to bridge psychological science with societal topics by fostering collaboration across research domains, practitioners, and policy actors, an essential endeavour both in times of crisis and for society’s long-term resilience.
+> Welcome to the Societal Needs Data Hub, a central repository for large-scale datasets at the intersection of psychology and society.
+<br><br>
+The Data Hub’s mission is to bridge psychological science with societal challenges by fostering collaboration across research domains, practitioners, and policy actors, an essential endeavour both in times of crisis and for society’s long-term resilience.
 :::
-::: {.column width="35%"}
+::: {.column width="25%"}
 <center>![Official logo of the Motivation Barometer](logo.png)</center>
 :::
 :::
@@ -103,7 +104,6 @@ Use this layer to:
 - Teach & learn longitudinal analysis  
 
 [Browse documentation](documentation/index.qmd){.btn .btn-primary}  
-[View tutorials](tutorials/index.qmd){.btn .btn-outline}
 
 </div>
 

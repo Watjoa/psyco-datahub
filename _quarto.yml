@@ -4,7 +4,7 @@ project:
   
 
 website:
-  title: "PsySoc Data Hub"
+  title: "Societal Needs Data Hub"
   favicon: favicon_io/favicon-32x32.png
   navbar:
     background: primary
@@ -16,8 +16,6 @@ website:
         href: documentation/index.qmd
       - text: "Data Access"
         href: data/download.qmd
-      - text: "Tutorials"
-        href: tutorials/index.qmd
       - text: "Citation"
         href: citation.qmd
     right:  

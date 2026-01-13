@@ -21,7 +21,6 @@ Select a dataset to access its study design, methodology, variables, and codeboo
   <ul>
     <li><a href="datasets/motivation-barometer/index.qmd">Dataset overview</a></li>
     <li><a href="datasets/motivation-barometer/codebook.qmd">Codebook</a></li>
-    <li><a href="datasets/motivation-barometer/study_design.qmd">Study design</a></li>
     <li><a href="datasets/motivation-barometer/methodology.qmd">Methodology</a></li>
   </ul>
 </div>
@@ -30,14 +29,14 @@ Select a dataset to access its study design, methodology, variables, and codeboo
   <h2>Louvain Foundation Dataset 🦠</h2>
   <p>
     Survey data supported by the Louvain Foundation, focusing on citizens’ motivation,
-    needs, and well-being in response to societal and public health challenges during and after the COVID-19 crisis.
+    needs, and well-being in response to societal and public health challenges during and after the COVID-19 crisis. <br><br> [to be updated]
   </p>
   <ul>
-    <li><a href="datasets/louvain-foundation/index.qmd">Dataset overview</a></li>
-    <li><a href="datasets/louvain-foundation/study_design.qmd">Study design</a></li>
-    <li><a href="datasets/louvain-foundation/methodology.qmd">Methodology</a></li>
-    <li><a href="datasets/louvain-foundation/variables_overview.qmd">Variables & modules</a></li>
-    <li><a href="datasets/louvain-foundation/codebook.qmd">Codebook</a></li>
+    <!-- <li><a href="datasets/louvain-foundation/index.qmd">Dataset overview</a></li> -->
+    <!-- <li><a href="datasets/louvain-foundation/study_design.qmd">Study design</a></li> -->
+    <!-- <li><a href="datasets/louvain-foundation/methodology.qmd">Methodology</a></li> -->
+    <!-- <li><a href="datasets/louvain-foundation/variables_overview.qmd">Variables & modules</a></li> -->
+    <!-- <li><a href="datasets/louvain-foundation/codebook.qmd">Codebook</a></li> -->
   </ul>
 </div>
 

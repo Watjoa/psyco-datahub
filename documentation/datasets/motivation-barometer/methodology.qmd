@@ -3,41 +3,73 @@ title: Methodology
 format:
   html:
     toc: true
+    page-layout: full
 ---
 
-# Data collection procedures
+# Overview
+
+The **Motivation Barometer** and **THRIVE datasets** comprise cross-sectional and longitudinal data collected during and after the COVID-19 pandemic. The key aims include:
+
+- Assessing changes in motivation, psychological needs, and well-being over time.
+- Examining responses to public communication and policy measures.
+- Investigating links between societal conditions, behavior and mental health.
+- Deriving evidence-based recommendations for future crisis preparedness and inclusive post-COVID policies.
+
+## Motivation Barometer
+
+The **Motivation Barometer** is a large-scale, online monitoring study that was launched on 19 March 2020, one day after the first national lockdown in Belgium (2020 - 2023). During the first ten weeks of the pandemic, daily surveys were administered, with a subset of participants followed for ten consecutive weeks. As the pandemic evolved, new waves were organized at a slower pace and adapted to emerging topics (e.g., vaccination, COVID certificate, trust, conspiracy beliefs).
+
+- **Total waves:** more than 110 measurement waves over roughly 2.5 years.  
+- **Total responses:** nearly 484 000 completed questionnaires.  
+- **Unique participants:** over 320 000 individuals.  
+- **Design:** combination of cross-sectional cohorts and longitudinal panels, with targeted subsamples (e.g., students, parents, older adults, athletes, (un)vaccinated individuals).
+
+Each wave combined a core set of variables (motivation, basic psychological needs, adherence to measures) with topical modules tailored to the phase of the pandemic (e.g., attitudes toward mandatory vaccination, perceptions of the COVID certificate, conspiracy beliefs, boredom, loneliness).
+
+## THRIVE Project
+
+The **THRIVE** project ("Taking stock to foster health and trust for an inclusive post-Covid society") is a BELSPO funded Post-Covid research programme (2023 - 2026). THRIVE explicitly builds on the Motivation Barometer by:
+
+- Consolidating and harmonizing existing Motivation Barometer waves.  
+- Adding new post-Covid follow-up waves.  
+- Integrating complementary qualitative and survey data.  
+
+Its core objectives are to:
+
+1. Chart the **social and psychological heterogeneity** of the population during the COVID-19 crisis by identifying distinctive trajectories of motivation, well-being, trust, and democratic attitudes.
+2. Examine how these trajectories relate to **resilience and vulnerability**, including long-term mental health outcomes.
+3. Combine multiple **disciplines and methods** (health psychology, motivation psychology, social psychology, sociology; quantitative and qualitative approaches).
+4. Identify **contextual drivers** (e.g., communication style, stringency of measures, trust, ideology) that feed into people’s experiences and reactions.
+
+## Longitudinal follow-up
+
+[to be updated soon]
+
+# Data collection
 
 - Online questionnaires administered via secure survey platform Qualtrics.
 - Participants reached through social media advertisement, newspapers, institutional mailing lists, and partner organizations.
 - No financial incentives: participation was voluntary and based on informed consent.
 - Attention checks ("Please, assign option 2 here") and data quality indicators (e.g., removing all participants having completed the survey in less than 200 seconds) were used to identify low-quality responses.
 
-# Data cleaning and processing
+## Cleaning and processing
 
 Key steps include:
 
 1. **Screening for invalid responses** (e.g., extremely short completion time, failed attention checks).
-2. **Handling missing data** according to pre-specified rules (e.g., minimum item responses for scale scores). - see tutorial how to handle missing data
-3. **Recoding and labeling variables** consistently across surveys, waves and projects. - see tutorial
-4. **Constructing composite scores** (e.g., mean scores). - see tutorial
-5. **Creating weights** for selected waves to approximate Belgian population distributions in age, gender, education, and region. - see tutorial
+2. **Handling missing data** according to pre-specified rules (e.g., minimum item responses for scale scores). 
+3. **Recoding and labeling variables** consistently across surveys, waves and projects.
+4. **Constructing composite scores** 
+5. **Creating weights** for selected waves to approximate Belgian population distributions in age, gender, and region.
 
 All major processing steps are documented in reproducible R scripts, available in the GitHub repository and referenced in the [tutorials](../tutorials/index.qmd).
 
-# Analytic approaches
+# Ethical Considerations
 
-Analyses conducted with these datasets include:
+All data collections were approved by the relevant ethics committees. Participants:
 
-- Cross-sectional regression and structural equation models.
-- Multilevel models and growth curve models for longitudinal data.
-- Cluster profile, latent class, and trajectory analyses. - see tutorial
-- Experimental and quasi-experimental designs embedded in specific waves.
-- Mixed-method integration with qualitative data.
+- ... provided informed consent before participation.  
+- ... were informed about the aims of the project, data handling, and their rights.  
+- ... could withdraw at any time without consequences.
 
-See full list of projects the overview of [publications](publications.qmd) 
-
-The data hub provides example scripts and tutorials to replicate common analytic strategies.
-
-# Ethics
-
-[to be updated soon]
+Ethical and data protection procedures are detailed in the project’s ethics applications and summarized in the [methodology](methodology.qmd) section.
