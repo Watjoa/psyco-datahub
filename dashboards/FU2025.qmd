@@ -1188,7 +1188,7 @@ plot_likert_weighted_base(
 
 How democratic do you think Belgium is in general?
 
-Choose your answer on a scale from 1 to 10, where 1 means “not democratic at all” and 10 means “fully democratic.”
+Choose your answer on a scale from 1 to 10, where 1 means “not democratic at all” and 10 means “fully democratic”.
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
 hist(dftot$demo_perceptie_1)
