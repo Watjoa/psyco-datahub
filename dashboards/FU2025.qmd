@@ -33,7 +33,7 @@ x<-c('foreign','lavaan','tidyverse','cluster',
      'srvyr','questionr','ggalt','lm.beta','clubSandwich',
      'lme4','lmerTest','jtools','zoo','performance',
      'lavaanPlot','questionr','writexl','janitor','CaviR',
-     'nFactors','ggthemes')
+     'nFactors','ggthemes','colorspace')
 
 shift<-function(x,shift_by){
   stopifnot(is.numeric(shift_by))
@@ -56,6 +56,9 @@ shift<-function(x,shift_by){
 lapply(x, require, character.only = TRUE)
 
 dftot <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/FollowUp2025/followup_2025.rds")
+df2025long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/FollowUp2025/followup_2025.rds")
+df2024long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/FollowUp2024/followup_2024.rds")
+
 
 plot_likert_unweighted_base <- function(
     data = data,
@@ -650,6 +653,7 @@ plot_likert_weighted_base(
   label_min_prop = 0.04
 ) 
 ```
+
 :::
 
 # Well-being
@@ -758,8 +762,8 @@ plot_likert_weighted_base(
   label_min_prop = 0.04
 ) 
 ```
-:::
 
+:::
 
 ## Life satisfaction and vitality
 
@@ -911,6 +915,8 @@ plot_list[[1]]
 
 ```
 
+:::
+
 ## Depression and anxiety
 
 ::: {.panel-tabset}
@@ -994,6 +1000,7 @@ plot_likert_weighted_base(
   label_min_prop = 0.04
 ) 
 ```
+
 :::
 
 ## Concerns
@@ -1081,6 +1088,7 @@ plot_likert_weighted_base(
 ) 
 
 ```
+
 :::
 
 ## Post-crisis identity development
@@ -1171,6 +1179,7 @@ plot_likert_weighted_base(
 
 
 ```
+
 :::
 
 # Policy 
@@ -1410,15 +1419,15 @@ caption <- c(
   )
 
 col_labels <- c(
-  "Qualified.",
-  "Competent.",
-  "Capable.",
-  "Fair.",
-  "Honest.",
-  "Moral.",
-  "Responsible.",
-  "Benevolent.",
-  "Caring."
+  "Qualified",
+  "Competent",
+  "Capable",
+  "Fair",
+  "Honest",
+  "Moral",
+  "Responsible",
+  "Benevolent",
+  "Caring"
 )
 
 cols <- rev(cols)
@@ -1467,7 +1476,8 @@ plot_likert_weighted_base(
 ) 
 
 ```
-:::
+
+::: 
 
 ## Populism
 
@@ -1555,7 +1565,8 @@ plot_likert_weighted_base(
   label_min_prop = 0.04
 ) 
 ```
-:::
+
+::: 
 
 ## Conspiracy (COVID)
 
@@ -1641,7 +1652,8 @@ plot_likert_weighted_base(
   label_min_prop = 0.04
 ) 
 ```
-:::
+
+::: 
 
 ## Conspiracy (In general)
 
@@ -1728,9 +1740,12 @@ plot_likert_weighted_base(
 ) 
 
 ```
-:::
+
+::: 
 
 # Youth images
+
+Figures are based on the subsample of participants having children < 25 and having completed both sets of items
 
 ## General
 
@@ -1762,6 +1777,21 @@ cols <- c("sneeuwvlok_1", "sneeuwvlok_2", "sneeuwvlok_3", "sneeuwvlok_4", "sneeu
           "positief_1", "positief_2", "positief_3")
 
 
+itemsss <- c("sneeuwvlok_1", "sneeuwvlok_2", "sneeuwvlok_3", "sneeuwvlok_4", "sneeuwvlok_5",
+          "entitled_1", "entitled_2", "entitled_3", "entitled_4", "entitled_5",
+          "respect_1", "respect_2", "respect_3", "respect_4", "respect_5",
+          "positief_1", "positief_2", "positief_3",
+          "sneeuwvlok_mk_1", "sneeuwvlok_mk_2", "sneeuwvlok_mk_3", "sneeuwvlok_mk_4", "sneeuwvlok_mk_5",
+          "entitled_mk_1", "entitled_mk_2", "entitled_mk_3", "entitled_mk_4", "entitled_mk_5",
+          "respect_mk_1", "respect_mk_2", "respect_mk_3", "respect_mk_4", "respect_mk_5",
+          "pos_mk_1", "pos_mk_2", "pos_mk_3")
+
+df_complete <- dftot %>%
+  dplyr::filter(
+    if_all(all_of(itemsss), ~ !is.na(.)),
+    as.numeric(leeftijd_oudstkind_1) < 25
+  )
+
 caption <- c(
  "Below are several statements about today’s younger generation compared to older generations.
  Please indicate the extent to which you agree with each of the following statements."
@@ -1792,8 +1822,9 @@ col_labels <- c(
 )
 
 
+
 uw <- plot_likert_unweighted_base(
-  data = dftot,
+  data = df_complete,
   cols = cols,
   likert_levels = likert_levels,
   likert_labels = likert_labels,
@@ -1818,7 +1849,7 @@ item_order   <- uw$item_order
 
 
 plot_likert_weighted_base(
-  data = dftot,
+  data = df_complete,
   cols = cols,
   weights_col = 'weights',
   likert_levels = likert_levels,
@@ -1838,7 +1869,7 @@ plot_likert_weighted_base(
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
 
-hist(dftot$leeftijd_oudstkind_1,breaks=60)
+hist(df_complete$leeftijd_oudstkind_1,breaks=60)
 
 ```
 
@@ -1868,7 +1899,6 @@ cols <- c("sneeuwvlok_mk_1", "sneeuwvlok_mk_2", "sneeuwvlok_mk_3", "sneeuwvlok_m
           "entitled_mk_1", "entitled_mk_2", "entitled_mk_3", "entitled_mk_4", "entitled_mk_5",
           "respect_mk_1", "respect_mk_2", "respect_mk_3", "respect_mk_4", "respect_mk_5",
           "pos_mk_1", "pos_mk_2", "pos_mk_3")
-
 
 caption <- c(
   "Below are several statements about your child(ren).
@@ -1902,7 +1932,7 @@ col_labels <- c(
 
 
 uw <- plot_likert_unweighted_base(
-  data = dftot,
+  data = df_complete,
   cols = cols,
   likert_levels = likert_levels,
   likert_labels = likert_labels,
@@ -1927,7 +1957,7 @@ item_order   <- uw$item_order
 
 
 plot_likert_weighted_base(
-  data = dftot,
+  data = df_complete,
   cols = cols,
   weights_col = 'weights',
   likert_levels = likert_levels,
@@ -2034,7 +2064,8 @@ plot_likert_weighted_base(
 ) 
 
 ```
-:::
+
+::: 
 
 ## Risk perception (severity)
 
@@ -2122,8 +2153,8 @@ plot_likert_weighted_base(
 ) 
 
 ```
-:::
 
+::: 
 
 ## COVID adherence
 

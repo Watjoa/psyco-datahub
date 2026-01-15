@@ -1,0 +1,2044 @@
+---
+title: "Longitudinal"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-expand: true
+    page-layout: full
+    number-sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results = "hide"}
+
+x<-c('foreign','lavaan','tidyverse','cluster',
+     'factoextra','dendextend','ape','tidyr',
+     'magrittr','clValid','sirt','broom.mixed',
+     'ggfortify','clustree','FactoMineR',
+     'corrplot','ggiraphExtra','GGally',
+     'knitr','kableExtra','plyr','haven','apaTables',
+     'qgraph','dplyr','ComplexHeatmap','dendextend',
+     'circlize','RColorBrewer','ggpubr','rstatix',
+     'car','broom','hausekeep',"writexl",
+     'Publish','data.table','ja  nitor','psych',
+     'sjPlot', 'Hmisc','xtable','survey', 'marginaleffects',
+     'srvyr','questionr','ggalt','lm.beta','clubSandwich',
+     'lme4','lmerTest','jtools','zoo','performance',
+     'lavaanPlot','questionr','writexl','janitor','CaviR',
+     'nFactors','ggthemes','colorspace','plotly')
+
+shift<-function(x,shift_by){
+  stopifnot(is.numeric(shift_by))
+  stopifnot(is.numeric(x))
+  
+  if (length(shift_by)>1)
+    return(sapply(shift_by,shift, x=x))
+  
+  out<-NULL
+  abs_shift_by=abs(shift_by)
+  if (shift_by > 0 )
+    out<-c(tail(x,-abs_shift_by),rep(NA,abs_shift_by))
+  else if (shift_by < 0 )
+    out<-c(rep(NA,abs_shift_by), head(x,-abs_shift_by))
+  else
+    out<-x
+  out
+}
+
+lapply(x, require, character.only = TRUE)
+
+library(ggplot2)
+
+theme_professional <- theme_minimal() +
+  theme(
+    # Titles
+    plot.title = element_text(
+      size = 15,
+      #face = "bold",
+      hjust = 0
+    ),
+    plot.caption = element_text(
+      size = 10,
+      color = "grey40",
+      hjust = 0
+    ),
+    
+    # Axis text
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 11, color = "grey20"),
+    
+    # Grid lines
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.y = element_line(color = "grey85", linewidth = 0.4),
+    
+    # Legend
+    legend.position = "top",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 11),
+    
+    # Spacing
+    plot.margin = margin(10, 15, 10, 10)
+  )
+
+
+dfmot <- readRDS('/Users/joachimwaterschoot/OneDrive - UGent/RESEARCH/COVID-19/Data analysis/All_seperate_datasets/datasets/final_motivationbarometer_addings_calculation.rds')
+dfmot <- as.data.frame(dfmot)
+dfmot <- dfmot[!is.na(dfmot$email),]
+
+
+library(dplyr)
+library(lubridate)
+
+df2020begin <- dfmot[which(dfmot$date<='2020-05-01' & dfmot$date>='2020-03-01'),] %>%
+  mutate(date = as.Date(date)) %>%
+  dplyr::group_by(email) %>%
+  slice_max(date, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  mutate(month = format(date, "%Y-%m"))
+
+dim(dfmot)
+dim(df2020begin)
+length(unique(df2020begin$email))
+
+df2020wave2 <- dfmot[which(dfmot$date<='2020-11-30' & dfmot$date>='2020-09-01'),] %>%
+  mutate(date = as.Date(date)) %>%
+  dplyr::group_by(email) %>%
+  slice_max(date, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  mutate(month = format(date, "%Y-%m"))
+
+dim(dfmot)
+dim(df2020wave2)
+length(unique(df2020wave2$email))
+
+df2020long <- dfmot[which(dfmot$date<='2021-02-15' & dfmot$date>='2020-12-01'),] %>%
+  mutate(date = as.Date(date)) %>%
+  dplyr::group_by(email) %>%
+  slice_max(date, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  mutate(month = format(date, "%Y-%m"))
+
+dim(dfmot)
+dim(df2020long)
+length(unique(df2020long$email))
+
+dfwave3 <- dfmot[which(dfmot$date>='2021-03-15' & dfmot$date<='2021-06-15'),] %>%
+  mutate(date = as.Date(date)) %>%
+  dplyr::group_by(email) %>%
+  slice_max(date, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  mutate(month = format(date, "%Y-%m"))
+
+dim(dfmot)
+dim(dfwave3)
+length(unique(dfwave3$email))
+
+
+df2021long <- dfmot[which(dfmot$date<='2022-02-01' & dfmot$date>='2021-12-01'),] %>%
+  mutate(date = as.Date(date)) %>%
+  dplyr::group_by(email) %>%
+  slice_max(date, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  mutate(month = format(date, "%Y-%m"))
+
+dim(dfmot)
+dim(df2021long)
+length(unique(df2021long$email))
+
+df2022postcovid <- dfmot[which(dfmot$date>'2022-02-28'),] %>%
+  mutate(date = as.Date(date)) %>%
+  dplyr::group_by(email) %>%
+  slice_max(date, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  mutate(month = format(date, "%Y-%m"))
+
+dim(dfmot)
+dim(df2022postcovid)
+length(unique(df2022postcovid$email))
+
+df2025long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/FollowUp2025/followup_2025.rds")
+df2024long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/FollowUp2024/followup_2024.rds")
+df2022long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/FollowUp2022/followup_2022.rds")
+
+
+```
+
+# Basic Psychological Needs
+
+::: {.panel-tabset}
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=1, dpi=300}
+cols <- c("AS_1" , "AS_3",  "AF_1",  "AF_3",  "CS_1", 
+          "CS_3",  "CF_2",  "CF_3",  "RS_2",  "RS_4", 
+          "RF_1",  "RF_2")
+
+
+col_labels <- c(
+  # Autonomy satisfaction (AS)
+  "I feel a sense of choice and freedom in the things I do",
+  "I feel that my choices reflect who I truly am",
+  
+  # Autonomy frustration (AF)
+  "Most of the things I do feel like something I have to do",
+  "I feel forced to do many things that I would not choose to do myself",
+  
+  # Competence satisfaction (CS)
+  "I feel confident that I can do things well",
+  "I feel capable in what I do",
+  
+  # Competence frustration (CF)
+  "I feel insecure about my abilities",
+  "I feel disappointed in many of my achievements",
+  
+  # Relatedness satisfaction (RS)
+  "I feel connected to people who care about me and whom I care about",
+  "I feel a sense of warmth toward the people I spend time with",
+  
+  # Relatedness frustration (RF)
+  "I feel excluded from the group I want to belong to",
+  "I feel that people who are important to me are cold and distant toward me"
+)
+```
+
+## Longitudinal
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%", fig.asp=0.3, dpi=300}
+items <- cols
+
+make_wave_long <- function(df, wave_id, cols) {
+  cols_here <- intersect(cols, names(df))
+  if (length(cols_here) == 0) return(NULL)
+  
+  df %>%
+    select(email, weights, all_of(cols_here)) %>%   # <-- include weights
+    mutate(wave = wave_id) %>%
+    pivot_longer(
+      cols = all_of(cols_here),
+      names_to = "item",
+      values_to = "score"
+    )
+}
+
+df_long <- bind_rows(
+  make_wave_long(df2020begin,     1, cols),
+  make_wave_long(df2020wave2,     2, cols),
+  make_wave_long(df2020long,      3, cols),
+  make_wave_long(dfwave3,         4, cols),
+  make_wave_long(df2021long,      5, cols),
+  make_wave_long(df2022postcovid, 6, cols),
+  make_wave_long(df2022long,      7, cols),
+  make_wave_long(df2024long,      8, cols),
+  make_wave_long(df2025long,      9, cols)
+) %>%
+  filter(!is.na(score)) %>%                      # drop NAs per-item (not whole rows)
+  mutate(item = factor(item, levels = cols))
+
+aantalwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]-3
+
+emails_longitudinal <- df_long %>%
+  dplyr::distinct(email, wave) %>%
+  dplyr::count(email) %>%
+  filter(n == aantalwaves) %>%          # your "at least 6/9 waves" criterion (exactly 6 here)
+  pull(email)
+
+df_long <- df_long %>%
+  filter(email %in% emails_longitudinal)
+
+n_longitudinal <- n_distinct(df_long$email)
+#n_longitudinal
+
+
+# ADD WEIGHTS
+
+dfsub <- na.omit(dfmot[,c("email","province")])
+df_long$province <- dfsub$province[match(df_long$email,dfsub$email)]
+df_long$province <- as.factor(df_long$province)
+#freq(df_long$province)
+#print(paste('the number of missing provinces is',length(unique(df_long[is.na(df_long$province),'email']))))
+#levels(df_long$province)
+levels(df_long$province) <- c('West-Vlaanderen',
+                            'Oost-Vlaanderen',
+                            'Antwerpen',
+                            'Limburg',
+                            'Vlaams-Brabant',
+                            'Andere',
+                            'Henegouwen',
+                            'Namen',
+                            'Luik',
+                            'Luxemburg',
+                            'Waals-Brabant',
+                            'Brussels Hoofdstedelijk Gewest')
+df_long$region <- df_long$province
+levels(df_long$region) <- c('Flanders','Flanders','Flanders','Flanders','Flanders',NA,
+                          'Wallonia','Wallonia','Wallonia','Wallonia','Wallonia',
+                          'Brussels')
+df_long$region_w <- plyr::revalue(df_long$region, c("Flanders"="1","Wallonia"="2","Brussels"="3"))
+
+dfsub <- na.omit(dfmot[,c("email","gender")])
+df_long$gender <- dfsub$gender[match(df_long$email,dfsub$email)]
+df_long$gender <- as.factor(df_long$gender)
+#print(paste('the number of missing gender is',length(unique(df_long[is.na(df_long$gender),'email']))))
+
+#freq(df_long$gender)
+#levels(df_long$gender)
+levels(df_long$gender) <- c('Male','Female')
+df_long$gender_w <- as.factor(df_long$gender)
+levels(df_long$gender_w) <- c('Male','Female')
+df_long$gender_w <- plyr::revalue(df_long$gender_w, c("Female"="2", "Male"="1"))
+
+dfsub <- na.omit(dfmot[,c("email","age")])
+df_long$age <- dfsub$age[match(df_long$email,dfsub$email)]
+#freq(df_long$age)
+#print(paste('the number of missing age is',length(unique(df_long[is.na(df_long$age),'email']))))
+
+df_long$age_group <- cut(
+  df_long$age,
+  breaks = c(20, 30, 40, 50, 60, 70, Inf),
+  right = FALSE,
+  labels = c(
+    "20–29",
+    "30–39",
+    "40–49",
+    "50–59",
+    "60–69",
+    "70+"
+  )
+)
+library(questionr)
+#freq(df_long$age_group)
+df_long$age_w <- plyr::revalue(df_long$age_group, c("20–29" = "1",
+                                                "30–39" = "2",
+                                                "40–49" = "3",
+                                                "50–59" = "4",
+                                                "60–69" = "5",
+                                                "70+" = "6"))
+df_long$waves <- as.factor(df_long$wave)
+
+dfsub <- df_long
+dfsub$group <- dfsub$waves
+levels(dfsub$group) <- c('COVID wave I','COVID wave II','End of 2020',
+                           'COVID wave III','End of 2021','Post-COVID',
+                           'End of 2022','End of 2024','End of 2025')
+dfsub <- dfsub[!is.na(dfsub$age_group),]
+dfsub <- dfsub[!is.na(dfsub$gender),]
+dfsub <- dfsub[!is.na(dfsub$region),]
+dfsub <- dfsub[!is.na(dfsub$group),]
+dfsub <- droplevels(dfsub)
+dfsub <- as.data.frame(dfsub)
+
+variableslist <- list(
+  fig0 = c('age_group','gender','region'))
+names <- list(
+  fig0 = c('Age group','Gender','Region'))
+
+pformat <- function(p.value){
+  unclass(symnum(p.value, corr = FALSE, na = FALSE, 
+                 cutpoints = c(0, 0.001, 0.01, 0.05, 1), 
+                 symbols = c("***", "**", "*", " ")))
+}
+
+plot_list = list()
+plot_list3 = list()
+sociodemo <- c()
+test <- c()
+testlabels <- c()
+
+for(j in 1:length(variableslist)) {
+  i <- 1
+  variables <- variableslist[[j]]
+  
+  sociodemo <- vector(mode = "list", length = length(variables)) # lengte aanpassen
+  test <- vector(mode = "list", length = length(variables))
+  
+  for(i in 1:length(variables)) { ## tabellen worden gemaakt
+    sociodemo[[i]] <- table(dfsub$group,dfsub[,variables[i]],exclude=NA)
+  }
+  
+  
+  for(i in 1:length(variables)) { ## chi squares worden berekend
+    test[[i]] <- paste('χ2(',chisq.test(sociodemo[[i]])$parameter,') = ',
+                       round(chisq.test(sociodemo[[i]])$statistic,2),', p = ',
+                       round(chisq.test(sociodemo[[i]])$p.value,2),
+                       pformat(chisq.test(sociodemo[[i]])$p.value),
+                       sep="")
+  }
+  
+  for(i in 1:length(variables)) { ## tabellen in percentages
+    sociodemo[[i]] <- as.data.frame(round(prop.table(sociodemo[[i]],1)*100,2))
+  }
+  
+  testlabels <- vector(mode = "list", length = length(variables))
+  for(i in 1:length(variables)) { ## p waarde 0 wordt vervangen door <.001
+    if(as.numeric(gsub("\\*", "", gsub(".*p =","",test[[i]]))) <.001){
+      testlabels[[i]] <- gsub("p = 0","p = <.001",test[[i]])
+    } else {
+      testlabels[[i]] <- test[[i]]
+    }
+  }
+  testlabels
+  
+  
+  names(sociodemo)<- names[[j]]
+  
+  g<-list() # aanmaken van figuren
+  a <- sociodemo
+  for(i in 1:length(a)) {
+    p = ggplot(reshape2::melt(a[[i]]), aes(as.factor(Var1), value, 
+                                           fill=as.factor(Var2), 
+                                           label=paste(round(value, 0),sep="") ))+
+      geom_col()+geom_text(position=position_stack(vjust=0.5))+
+      coord_flip()+scale_fill_brewer(type="seq", palette=1)+
+      labs(x="", y="", title=names(a)[i], fill = "Categorieën: ",
+           subtitle=testlabels[i]
+      )+
+      theme_hc(base_size = 10)+
+      theme(legend.position='right')
+    g[[i]] = p
+    
+  }
+  
+  for(i in 1:length(variables)) { ## er wordt gecheckt welke significant is of niet
+    if(as.numeric(gsub("\\*", "", gsub(".*p =","",test[[i]]))) >.05){
+      g[[i]] <- g[[i]] + scale_fill_brewer(type="seq",palette=6)
+    }  
+  }
+  
+  # figuur ----
+  
+  plot_list[[j]] <- ggarrange(plotlist=g, align = "hv",# totale plot
+                              common.legend=FALSE,
+                              ncol = 1, nrow = 3 # aantal rijen en kolommen
+  )
+}
+
+
+# Make new dataframe
+weighting <- df_long
+
+# Summarize characteristics by waves
+weights <- weighting %>%
+  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
+  dplyr::summarise(n=n())
+weights <- na.omit(weights)
+
+weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
+
+weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
+
+weights$weights <- as.numeric('1')
+
+### MALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
+weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
+weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
+weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
+weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
+weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
+
+### FEMALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
+weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
+weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
+weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
+weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
+weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
+
+### MALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
+weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
+weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
+weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
+weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
+weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
+
+### FEMALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
+weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
+weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
+weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
+weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
+weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
+
+### MALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
+weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
+weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
+weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
+weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
+weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
+
+### FEMALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
+weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
+weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
+weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
+weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
+weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
+
+weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
+
+df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
+
+df_long <- as.data.frame(df_long)
+df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
+
+unique(df_long[,c('email','age_group','gender','region')])
+
+mean_df <- df_long %>%
+  dplyr::group_by(wave, item) %>%
+  dplyr::summarise(
+    sum_w = sum(weights[!is.na(score) & !is.na(weights)], na.rm = TRUE),
+    mean_w = ifelse(sum_w > 0,
+                    sum(score * weights, na.rm = TRUE) / sum_w,
+                    NA_real_),
+    n = sum(!is.na(score)),
+    .groups = "drop"
+  )%>%as.data.frame()
+
+items_with_lines <- mean_df %>%
+  dplyr::count(item) %>%
+  dplyr::filter(n >= 2) %>%   # at least two waves → line possible
+  dplyr::pull(item)
+
+mean_df_lines <- mean_df %>%
+  filter(item %in% items_with_lines)
+
+mean_df <- mean_df %>%
+  mutate(item_label = col_labels[as.character(item)])
+mean_df[which(mean_df$n<100),] <- NA
+mean_df_lines <- mean_df_lines %>%
+  mutate(item_label = col_labels[as.character(item)])
+mean_df_lines[which(mean_df_lines$n<100),] <- NA
+
+p <- ggplot(mean_df,
+            aes(
+              x = wave,
+              y = mean_w,
+              color = item,
+              shape = item,
+              group = item,
+              text = paste0(
+                "Item: ", col_labels,
+                "<br>Code: ", item,
+                "<br>Wave: ", wave,
+                "<br>Weighted mean: ", round(mean_w, 2),
+                "<br>N: ", n
+              )
+            )) +
+  geom_line(
+    data = mean_df_lines,
+    linewidth = 0.8
+  ) +
+  geom_point(size = 2) +
+  scale_color_discrete_qualitative(
+    palette = "Dark 3",
+    labels = col_labels
+  ) +
+  scale_shape_manual(
+    values = rep(c(16, 17, 15, 18, 3, 7),
+                 length.out = length(unique(mean_df$item))),
+    labels = col_labels
+  ) +
+  scale_x_continuous(
+    breaks = 1:9,
+    labels = c(
+      'COVID<br>wave I','COVID<br>wave II','End of<br>2020',
+                           'COVID<br>wave III','End of<br>2021','Post-COVID',
+                           'End of<br>2022','End of<br>2024','End of<br>2025'
+    )
+  ) +
+  scale_y_continuous(limits = c(1, 5), expand = expansion(mult = c(.02, .05))) +
+  labs(
+    title = "Longitudinal change",
+    caption = paste0("Weighted; total longitudinal N = ", n_longitudinal),
+    x = NULL,
+    y = "Mean score"
+  ) + theme_minimal()
+
+fig <- ggplotly(p, tooltip = "text")
+
+fig %>% plotly::layout(
+  margin = list(b = 120),
+  annotations = list(list(
+    text = paste0(
+      "Weighted; total longitudinal N = ", n_longitudinal,
+      "<br>with at least 6/9 participation waves"
+    ),
+    x = 0, y = 0,                 # keep INSIDE paper
+    xref = "paper", yref = "paper",
+    xanchor = "left", yanchor = "top",
+    yshift = -70,                 # push it DOWN into the bottom margin
+    showarrow = FALSE,
+    align = "left",
+    font = list(family = "Arial", size = 10)
+  ))
+)
+```
+
+## Sociodemographics
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
+
+plot_list[[j]]
+
+```
+
+## Weights
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+top_age_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(age_group)) %>%
+  group_by(wave, age_group) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+ageweights <- top_age_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = age_group)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted age group",
+    title = "Most upweighted age group"
+  ) +
+  theme_minimal(base_size = 12)
+
+top_region_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(region)) %>%
+  group_by(wave, region) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+regionweights <- top_region_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = region)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted region group",
+    title = "Most upweighted region"
+  ) +
+  theme_minimal(base_size = 12)
+
+top_gender_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(gender)) %>%
+  group_by(wave, gender) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+genderweights <- top_gender_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = gender)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted gender group",
+    title = "Most upweighted gender"
+  ) +
+  theme_minimal(base_size = 12)
+
+ggarrange(ageweights, regionweights, genderweights, ncol = 3, nrow = 1)
+```
+::: 
+
+# Concerns
+
+
+::: {.panel-tabset}
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=1, dpi=300}
+
+cols <- c("zorgen_situatie", "zorgen_gezondheid", "zorgen_naasten",         
+          "zorgen_oekraine", "zorgen_middenoosten", "zorgen_wereldoorlog",    
+          "zorgen_covidvariant", "zorgen_financien")
+
+col_labels <- c(  "I worried about how the current situation will develop",
+                  "I worried about my health",
+                  "I worried about the health of people close to me",
+                  "I worried about the current situation in Ukraine",
+                  "I worried about the current situation in the Middle East",
+                  "I worried about the possible outbreak of a new world war",
+                  "I worried about new variants of COVID-19",
+                  "I worried about my financial situation")
+```
+
+## Longitudinal
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%", fig.asp=0.3, dpi=300}
+items <- cols
+
+make_wave_long <- function(df, wave_id, cols) {
+  cols_here <- intersect(cols, names(df))
+  if (length(cols_here) == 0) return(NULL)
+  
+  df %>%
+    select(email, weights, all_of(cols_here)) %>%   # <-- include weights
+    mutate(wave = wave_id) %>%
+    pivot_longer(
+      cols = all_of(cols_here),
+      names_to = "item",
+      values_to = "score"
+    )
+}
+
+df_long <- bind_rows(
+  make_wave_long(df2020begin,     1, cols),
+  make_wave_long(df2020wave2,     2, cols),
+  make_wave_long(df2020long,      3, cols),
+  make_wave_long(dfwave3,         4, cols),
+  make_wave_long(df2021long,      5, cols),
+  make_wave_long(df2022postcovid, 6, cols),
+  make_wave_long(df2022long,      7, cols),
+  make_wave_long(df2024long,      8, cols),
+  make_wave_long(df2025long,      9, cols)
+) %>%
+  filter(!is.na(score)) %>%                      # drop NAs per-item (not whole rows)
+  mutate(item = factor(item, levels = cols))
+
+aantalwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]-3
+
+emails_longitudinal <- df_long %>%
+  dplyr::distinct(email, wave) %>%
+  dplyr::count(email) %>%
+  filter(n == aantalwaves) %>%          # your "at least 6/9 waves" criterion (exactly 6 here)
+  pull(email)
+
+df_long <- df_long %>%
+  filter(email %in% emails_longitudinal)
+
+n_longitudinal <- n_distinct(df_long$email)
+#n_longitudinal
+
+
+# ADD WEIGHTS
+
+dfsub <- na.omit(dfmot[,c("email","province")])
+df_long$province <- dfsub$province[match(df_long$email,dfsub$email)]
+df_long$province <- as.factor(df_long$province)
+#freq(df_long$province)
+#print(paste('the number of missing provinces is',length(unique(df_long[is.na(df_long$province),'email']))))
+#levels(df_long$province)
+levels(df_long$province) <- c('West-Vlaanderen',
+                            'Oost-Vlaanderen',
+                            'Antwerpen',
+                            'Limburg',
+                            'Vlaams-Brabant',
+                            'Andere',
+                            'Henegouwen',
+                            'Namen',
+                            'Luik',
+                            'Luxemburg',
+                            'Waals-Brabant',
+                            'Brussels Hoofdstedelijk Gewest')
+df_long$region <- df_long$province
+levels(df_long$region) <- c('Flanders','Flanders','Flanders','Flanders','Flanders',NA,
+                          'Wallonia','Wallonia','Wallonia','Wallonia','Wallonia',
+                          'Brussels')
+df_long$region_w <- plyr::revalue(df_long$region, c("Flanders"="1","Wallonia"="2","Brussels"="3"))
+
+dfsub <- na.omit(dfmot[,c("email","gender")])
+df_long$gender <- dfsub$gender[match(df_long$email,dfsub$email)]
+df_long$gender <- as.factor(df_long$gender)
+#print(paste('the number of missing gender is',length(unique(df_long[is.na(df_long$gender),'email']))))
+
+#freq(df_long$gender)
+#levels(df_long$gender)
+levels(df_long$gender) <- c('Male','Female')
+df_long$gender_w <- as.factor(df_long$gender)
+levels(df_long$gender_w) <- c('Male','Female')
+df_long$gender_w <- plyr::revalue(df_long$gender_w, c("Female"="2", "Male"="1"))
+
+dfsub <- na.omit(dfmot[,c("email","age")])
+df_long$age <- dfsub$age[match(df_long$email,dfsub$email)]
+#freq(df_long$age)
+#print(paste('the number of missing age is',length(unique(df_long[is.na(df_long$age),'email']))))
+
+df_long$age_group <- cut(
+  df_long$age,
+  breaks = c(20, 30, 40, 50, 60, 70, Inf),
+  right = FALSE,
+  labels = c(
+    "20–29",
+    "30–39",
+    "40–49",
+    "50–59",
+    "60–69",
+    "70+"
+  )
+)
+library(questionr)
+#freq(df_long$age_group)
+df_long$age_w <- plyr::revalue(df_long$age_group, c("20–29" = "1",
+                                                "30–39" = "2",
+                                                "40–49" = "3",
+                                                "50–59" = "4",
+                                                "60–69" = "5",
+                                                "70+" = "6"))
+df_long$waves <- as.factor(df_long$wave)
+
+dfsub <- df_long
+dfsub$group <- dfsub$waves
+levels(dfsub$group) <- c('COVID wave I','COVID wave II','End of 2020',
+                           'COVID wave III','End of 2021','Post-COVID',
+                           'End of 2022','End of 2024','End of 2025')
+dfsub <- dfsub[!is.na(dfsub$age_group),]
+dfsub <- dfsub[!is.na(dfsub$gender),]
+dfsub <- dfsub[!is.na(dfsub$region),]
+dfsub <- dfsub[!is.na(dfsub$group),]
+dfsub <- droplevels(dfsub)
+dfsub <- as.data.frame(dfsub)
+
+variableslist <- list(
+  fig0 = c('age_group','gender','region'))
+names <- list(
+  fig0 = c('Age group','Gender','Region'))
+
+pformat <- function(p.value){
+  unclass(symnum(p.value, corr = FALSE, na = FALSE, 
+                 cutpoints = c(0, 0.001, 0.01, 0.05, 1), 
+                 symbols = c("***", "**", "*", " ")))
+}
+
+plot_list = list()
+plot_list3 = list()
+sociodemo <- c()
+test <- c()
+testlabels <- c()
+
+for(j in 1:length(variableslist)) {
+  i <- 1
+  variables <- variableslist[[j]]
+  
+  sociodemo <- vector(mode = "list", length = length(variables)) # lengte aanpassen
+  test <- vector(mode = "list", length = length(variables))
+  
+  for(i in 1:length(variables)) { ## tabellen worden gemaakt
+    sociodemo[[i]] <- table(dfsub$group,dfsub[,variables[i]],exclude=NA)
+  }
+  
+  
+  for(i in 1:length(variables)) { ## chi squares worden berekend
+    test[[i]] <- paste('χ2(',chisq.test(sociodemo[[i]])$parameter,') = ',
+                       round(chisq.test(sociodemo[[i]])$statistic,2),', p = ',
+                       round(chisq.test(sociodemo[[i]])$p.value,2),
+                       pformat(chisq.test(sociodemo[[i]])$p.value),
+                       sep="")
+  }
+  
+  for(i in 1:length(variables)) { ## tabellen in percentages
+    sociodemo[[i]] <- as.data.frame(round(prop.table(sociodemo[[i]],1)*100,2))
+  }
+  
+  testlabels <- vector(mode = "list", length = length(variables))
+  for(i in 1:length(variables)) { ## p waarde 0 wordt vervangen door <.001
+    if(as.numeric(gsub("\\*", "", gsub(".*p =","",test[[i]]))) <.001){
+      testlabels[[i]] <- gsub("p = 0","p = <.001",test[[i]])
+    } else {
+      testlabels[[i]] <- test[[i]]
+    }
+  }
+  testlabels
+  
+  
+  names(sociodemo)<- names[[j]]
+  
+  g<-list() # aanmaken van figuren
+  a <- sociodemo
+  for(i in 1:length(a)) {
+    p = ggplot(reshape2::melt(a[[i]]), aes(as.factor(Var1), value, 
+                                           fill=as.factor(Var2), 
+                                           label=paste(round(value, 0),sep="") ))+
+      geom_col()+geom_text(position=position_stack(vjust=0.5))+
+      coord_flip()+scale_fill_brewer(type="seq", palette=1)+
+      labs(x="", y="", title=names(a)[i], fill = "Categorieën: ",
+           subtitle=testlabels[i]
+      )+
+      theme_hc(base_size = 10)+
+      theme(legend.position='right')
+    g[[i]] = p
+    
+  }
+  
+  for(i in 1:length(variables)) { ## er wordt gecheckt welke significant is of niet
+    if(as.numeric(gsub("\\*", "", gsub(".*p =","",test[[i]]))) >.05){
+      g[[i]] <- g[[i]] + scale_fill_brewer(type="seq",palette=6)
+    }  
+  }
+  
+  # figuur ----
+  
+  plot_list[[j]] <- ggarrange(plotlist=g, align = "hv",# totale plot
+                              common.legend=FALSE,
+                              ncol = 1, nrow = 3 # aantal rijen en kolommen
+  )
+}
+
+
+# Make new dataframe
+weighting <- df_long
+
+# Summarize characteristics by waves
+weights <- weighting %>%
+  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
+  dplyr::summarise(n=n())
+weights <- na.omit(weights)
+
+weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
+
+weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
+
+weights$weights <- as.numeric('1')
+
+### MALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
+weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
+weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
+weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
+weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
+weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
+
+### FEMALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
+weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
+weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
+weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
+weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
+weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
+
+### MALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
+weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
+weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
+weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
+weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
+weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
+
+### FEMALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
+weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
+weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
+weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
+weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
+weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
+
+### MALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
+weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
+weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
+weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
+weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
+weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
+
+### FEMALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
+weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
+weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
+weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
+weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
+weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
+
+weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
+
+df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
+
+df_long <- as.data.frame(df_long)
+df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
+
+mean_df <- df_long %>%
+  dplyr::group_by(wave, item) %>%
+  dplyr::summarise(
+    sum_w = sum(weights[!is.na(score) & !is.na(weights)], na.rm = TRUE),
+    mean_w = ifelse(sum_w > 0,
+                    sum(score * weights, na.rm = TRUE) / sum_w,
+                    NA_real_),
+    n = sum(!is.na(score)),
+    .groups = "drop"
+  )%>%as.data.frame()
+
+items_with_lines <- mean_df %>%
+  dplyr::count(item) %>%
+  dplyr::filter(n >= 2) %>%   # at least two waves → line possible
+  dplyr::pull(item)
+
+mean_df_lines <- mean_df %>%
+  filter(item %in% items_with_lines)
+
+mean_df <- mean_df %>%
+  mutate(item_label = col_labels[as.character(item)])
+mean_df[which(mean_df$n<100),] <- NA
+mean_df_lines <- mean_df_lines %>%
+  mutate(item_label = col_labels[as.character(item)])
+mean_df_lines[which(mean_df_lines$n<100),] <- NA
+
+p <- ggplot(mean_df,
+            aes(
+              x = wave,
+              y = mean_w,
+              color = item,
+              shape = item,
+              group = item,
+              text = paste0(
+                "Item: ", col_labels,
+                "<br>Code: ", item,
+                "<br>Wave: ", wave,
+                "<br>Weighted mean: ", round(mean_w, 2),
+                "<br>N: ", n
+              )
+            )) +
+  geom_line(
+    data = mean_df_lines,
+    linewidth = 0.8
+  ) +
+  geom_point(size = 2) +
+  scale_color_discrete_qualitative(
+    palette = "Dark 3",
+    labels = col_labels
+  ) +
+  scale_shape_manual(
+    values = rep(c(16, 17, 15, 18, 3, 7),
+                 length.out = length(unique(mean_df$item))),
+    labels = col_labels
+  ) +
+  scale_x_continuous(
+    breaks = 1:9,
+    labels = c(
+      'COVID<br>wave I','COVID<br>wave II','End of<br>2020',
+                           'COVID<br>wave III','End of<br>2021','Post-COVID',
+                           'End of<br>2022','End of<br>2024','End of<br>2025'
+    )
+  ) +
+  scale_y_continuous(limits = c(1, 5), expand = expansion(mult = c(.02, .05))) +
+  labs(
+    title = "Longitudinal change",
+    caption = paste0("Weighted; total longitudinal N = ", n_longitudinal),
+    x = NULL,
+    y = "Mean score"
+  ) + theme_minimal()
+
+fig <- ggplotly(p, tooltip = "text")
+
+fig %>% plotly::layout(
+  margin = list(b = 120),
+  annotations = list(list(
+    text = paste0(
+      "Weighted; total longitudinal N = ", n_longitudinal,
+      "<br>with at least 6/9 participation waves"
+    ),
+    x = 0, y = 0,                 # keep INSIDE paper
+    xref = "paper", yref = "paper",
+    xanchor = "left", yanchor = "top",
+    yshift = -70,                 # push it DOWN into the bottom margin
+    showarrow = FALSE,
+    align = "left",
+    font = list(family = "Arial", size = 10)
+  ))
+)
+```
+
+## Sociodemographics
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
+
+plot_list[[j]]
+
+```
+
+## Weights
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+top_age_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(age_group)) %>%
+  group_by(wave, age_group) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+ageweights <- top_age_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = age_group)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted age group",
+    title = "Most upweighted age group"
+  ) +
+  theme_minimal(base_size = 12)
+
+top_region_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(region)) %>%
+  group_by(wave, region) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+regionweights <- top_region_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = region)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted region group",
+    title = "Most upweighted region"
+  ) +
+  theme_minimal(base_size = 12)
+
+top_gender_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(gender)) %>%
+  group_by(wave, gender) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+genderweights <- top_gender_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = gender)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted gender group",
+    title = "Most upweighted gender"
+  ) +
+  theme_minimal(base_size = 12)
+
+ggarrange(ageweights, regionweights, genderweights, ncol = 3, nrow = 1)
+```
+::: 
+
+# Well-being
+
+::: {.panel-tabset}
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=1, dpi=300}
+
+cols <- c("levenstevredenheid", "vitaliteit")
+
+col_labels <- c("Life satisfaction","Vitality")
+```
+
+## Longitudinal
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%", fig.asp=0.3, dpi=300}
+items <- cols
+
+make_wave_long <- function(df, wave_id, cols) {
+  cols_here <- intersect(cols, names(df))
+  if (length(cols_here) == 0) return(NULL)
+  
+  df %>%
+    select(email, weights, all_of(cols_here)) %>%   # <-- include weights
+    mutate(wave = wave_id) %>%
+    pivot_longer(
+      cols = all_of(cols_here),
+      names_to = "item",
+      values_to = "score"
+    )
+}
+
+df_long <- bind_rows(
+  make_wave_long(df2020begin,     1, cols),
+  make_wave_long(df2020wave2,     2, cols),
+  make_wave_long(df2020long,      3, cols),
+  make_wave_long(dfwave3,         4, cols),
+  make_wave_long(df2021long,      5, cols),
+  make_wave_long(df2022postcovid, 6, cols),
+  make_wave_long(df2022long,      7, cols),
+  make_wave_long(df2024long,      8, cols),
+  make_wave_long(df2025long,      9, cols)
+) %>%
+  filter(!is.na(score)) %>%                      # drop NAs per-item (not whole rows)
+  mutate(item = factor(item, levels = cols))
+
+aantalwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]-3
+
+emails_longitudinal <- df_long %>%
+  dplyr::distinct(email, wave) %>%
+  dplyr::count(email) %>%
+  filter(n == aantalwaves) %>%          # your "at least 6/9 waves" criterion (exactly 6 here)
+  pull(email)
+
+df_long <- df_long %>%
+  filter(email %in% emails_longitudinal)
+
+n_longitudinal <- n_distinct(df_long$email)
+#n_longitudinal
+
+
+# ADD WEIGHTS
+
+dfsub <- na.omit(dfmot[,c("email","province")])
+df_long$province <- dfsub$province[match(df_long$email,dfsub$email)]
+df_long$province <- as.factor(df_long$province)
+#freq(df_long$province)
+#print(paste('the number of missing provinces is',length(unique(df_long[is.na(df_long$province),'email']))))
+#levels(df_long$province)
+levels(df_long$province) <- c('West-Vlaanderen',
+                            'Oost-Vlaanderen',
+                            'Antwerpen',
+                            'Limburg',
+                            'Vlaams-Brabant',
+                            'Andere',
+                            'Henegouwen',
+                            'Namen',
+                            'Luik',
+                            'Luxemburg',
+                            'Waals-Brabant',
+                            'Brussels Hoofdstedelijk Gewest')
+df_long$region <- df_long$province
+levels(df_long$region) <- c('Flanders','Flanders','Flanders','Flanders','Flanders',NA,
+                          'Wallonia','Wallonia','Wallonia','Wallonia','Wallonia',
+                          'Brussels')
+df_long$region_w <- plyr::revalue(df_long$region, c("Flanders"="1","Wallonia"="2","Brussels"="3"))
+
+dfsub <- na.omit(dfmot[,c("email","gender")])
+df_long$gender <- dfsub$gender[match(df_long$email,dfsub$email)]
+df_long$gender <- as.factor(df_long$gender)
+#print(paste('the number of missing gender is',length(unique(df_long[is.na(df_long$gender),'email']))))
+
+#freq(df_long$gender)
+#levels(df_long$gender)
+levels(df_long$gender) <- c('Male','Female')
+df_long$gender_w <- as.factor(df_long$gender)
+levels(df_long$gender_w) <- c('Male','Female')
+df_long$gender_w <- plyr::revalue(df_long$gender_w, c("Female"="2", "Male"="1"))
+
+dfsub <- na.omit(dfmot[,c("email","age")])
+df_long$age <- dfsub$age[match(df_long$email,dfsub$email)]
+#freq(df_long$age)
+#print(paste('the number of missing age is',length(unique(df_long[is.na(df_long$age),'email']))))
+
+df_long$age_group <- cut(
+  df_long$age,
+  breaks = c(20, 30, 40, 50, 60, 70, Inf),
+  right = FALSE,
+  labels = c(
+    "20–29",
+    "30–39",
+    "40–49",
+    "50–59",
+    "60–69",
+    "70+"
+  )
+)
+library(questionr)
+#freq(df_long$age_group)
+df_long$age_w <- plyr::revalue(df_long$age_group, c("20–29" = "1",
+                                                "30–39" = "2",
+                                                "40–49" = "3",
+                                                "50–59" = "4",
+                                                "60–69" = "5",
+                                                "70+" = "6"))
+df_long$waves <- as.factor(df_long$wave)
+
+dfsub <- df_long
+dfsub$group <- dfsub$waves
+levels(dfsub$group) <- c('COVID wave I','COVID wave II','End of 2020',
+                           'COVID wave III','End of 2021','Post-COVID',
+                           'End of 2022','End of 2024','End of 2025')
+dfsub <- dfsub[!is.na(dfsub$age_group),]
+dfsub <- dfsub[!is.na(dfsub$gender),]
+dfsub <- dfsub[!is.na(dfsub$region),]
+dfsub <- dfsub[!is.na(dfsub$group),]
+dfsub <- droplevels(dfsub)
+dfsub <- as.data.frame(dfsub)
+
+variableslist <- list(
+  fig0 = c('age_group','gender','region'))
+names <- list(
+  fig0 = c('Age group','Gender','Region'))
+
+pformat <- function(p.value){
+  unclass(symnum(p.value, corr = FALSE, na = FALSE, 
+                 cutpoints = c(0, 0.001, 0.01, 0.05, 1), 
+                 symbols = c("***", "**", "*", " ")))
+}
+
+plot_list = list()
+plot_list3 = list()
+sociodemo <- c()
+test <- c()
+testlabels <- c()
+
+for(j in 1:length(variableslist)) {
+  i <- 1
+  variables <- variableslist[[j]]
+  
+  sociodemo <- vector(mode = "list", length = length(variables)) # lengte aanpassen
+  test <- vector(mode = "list", length = length(variables))
+  
+  for(i in 1:length(variables)) { ## tabellen worden gemaakt
+    sociodemo[[i]] <- table(dfsub$group,dfsub[,variables[i]],exclude=NA)
+  }
+  
+  
+  for(i in 1:length(variables)) { ## chi squares worden berekend
+    test[[i]] <- paste('χ2(',chisq.test(sociodemo[[i]])$parameter,') = ',
+                       round(chisq.test(sociodemo[[i]])$statistic,2),', p = ',
+                       round(chisq.test(sociodemo[[i]])$p.value,2),
+                       pformat(chisq.test(sociodemo[[i]])$p.value),
+                       sep="")
+  }
+  
+  for(i in 1:length(variables)) { ## tabellen in percentages
+    sociodemo[[i]] <- as.data.frame(round(prop.table(sociodemo[[i]],1)*100,2))
+  }
+  
+  testlabels <- vector(mode = "list", length = length(variables))
+  for(i in 1:length(variables)) { ## p waarde 0 wordt vervangen door <.001
+    if(as.numeric(gsub("\\*", "", gsub(".*p =","",test[[i]]))) <.001){
+      testlabels[[i]] <- gsub("p = 0","p = <.001",test[[i]])
+    } else {
+      testlabels[[i]] <- test[[i]]
+    }
+  }
+  testlabels
+  
+  
+  names(sociodemo)<- names[[j]]
+  
+  g<-list() # aanmaken van figuren
+  a <- sociodemo
+  for(i in 1:length(a)) {
+    p = ggplot(reshape2::melt(a[[i]]), aes(as.factor(Var1), value, 
+                                           fill=as.factor(Var2), 
+                                           label=paste(round(value, 0),sep="") ))+
+      geom_col()+geom_text(position=position_stack(vjust=0.5))+
+      coord_flip()+scale_fill_brewer(type="seq", palette=1)+
+      labs(x="", y="", title=names(a)[i], fill = "Categorieën: ",
+           subtitle=testlabels[i]
+      )+
+      theme_hc(base_size = 10)+
+      theme(legend.position='right')
+    g[[i]] = p
+    
+  }
+  
+  for(i in 1:length(variables)) { ## er wordt gecheckt welke significant is of niet
+    if(as.numeric(gsub("\\*", "", gsub(".*p =","",test[[i]]))) >.05){
+      g[[i]] <- g[[i]] + scale_fill_brewer(type="seq",palette=6)
+    }  
+  }
+  
+  # figuur ----
+  
+  plot_list[[j]] <- ggarrange(plotlist=g, align = "hv",# totale plot
+                              common.legend=FALSE,
+                              ncol = 1, nrow = 3 # aantal rijen en kolommen
+  )
+}
+
+
+# Make new dataframe
+weighting <- df_long
+
+# Summarize characteristics by waves
+weights <- weighting %>%
+  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
+  dplyr::summarise(n=n())
+weights <- na.omit(weights)
+
+weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
+
+weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
+
+weights$weights <- as.numeric('1')
+
+### MALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
+weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
+weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
+weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
+weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
+weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
+
+### FEMALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
+weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
+weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
+weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
+weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
+weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
+
+### MALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
+weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
+weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
+weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
+weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
+weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
+
+### FEMALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
+weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
+weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
+weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
+weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
+weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
+
+### MALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
+weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
+weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
+weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
+weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
+weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
+
+### FEMALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
+weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
+weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
+weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
+weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
+weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
+
+weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
+
+df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
+
+df_long <- as.data.frame(df_long)
+df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
+
+mean_df <- df_long %>%
+  dplyr::group_by(wave, item) %>%
+  dplyr::summarise(
+    sum_w = sum(weights[!is.na(score) & !is.na(weights)], na.rm = TRUE),
+    mean_w = ifelse(sum_w > 0,
+                    sum(score * weights, na.rm = TRUE) / sum_w,
+                    NA_real_),
+    n = sum(!is.na(score)),
+    .groups = "drop"
+  )%>%as.data.frame()
+
+items_with_lines <- mean_df %>%
+  dplyr::count(item) %>%
+  dplyr::filter(n >= 2) %>%   # at least two waves → line possible
+  dplyr::pull(item)
+
+mean_df_lines <- mean_df %>%
+  filter(item %in% items_with_lines)
+
+mean_df <- mean_df %>%
+  mutate(item_label = col_labels[as.character(item)])
+mean_df[which(mean_df$n<100),] <- NA
+mean_df_lines <- mean_df_lines %>%
+  mutate(item_label = col_labels[as.character(item)])
+mean_df_lines[which(mean_df_lines$n<100),] <- NA
+
+p <- ggplot(mean_df,
+            aes(
+              x = wave,
+              y = mean_w,
+              color = item,
+              shape = item,
+              group = item,
+              text = paste0(
+                "Item: ", col_labels,
+                "<br>Code: ", item,
+                "<br>Wave: ", wave,
+                "<br>Weighted mean: ", round(mean_w, 2),
+                "<br>N: ", n
+              )
+            )) +
+  geom_line(
+    data = mean_df_lines,
+    linewidth = 0.8
+  ) +
+  geom_point(size = 2) +
+  scale_color_discrete_qualitative(
+    palette = "Dark 3",
+    labels = col_labels
+  ) +
+  scale_shape_manual(
+    values = rep(c(16, 17, 15, 18, 3, 7),
+                 length.out = length(unique(mean_df$item))),
+    labels = col_labels
+  ) +
+  scale_x_continuous(
+    breaks = 1:9,
+    labels = c(
+      'COVID<br>wave I','COVID<br>wave II','End of<br>2020',
+                           'COVID<br>wave III','End of<br>2021','Post-COVID',
+                           'End of<br>2022','End of<br>2024','End of<br>2025'
+    )
+  ) +
+  scale_y_continuous(limits = c(1, 5), expand = expansion(mult = c(.02, .05))) +
+  labs(
+    title = "Longitudinal change",
+    caption = paste0("Weighted; total longitudinal N = ", n_longitudinal),
+    x = NULL,
+    y = "Mean score"
+  ) + theme_minimal()
+
+fig <- ggplotly(p, tooltip = "text")
+
+fig %>% plotly::layout(
+  margin = list(b = 120),
+  annotations = list(list(
+    text = paste0(
+      "Weighted; total longitudinal N = ", n_longitudinal,
+      "<br>with at least 6/9 participation waves"
+    ),
+    x = 0, y = 0,                 # keep INSIDE paper
+    xref = "paper", yref = "paper",
+    xanchor = "left", yanchor = "top",
+    yshift = -70,                 # push it DOWN into the bottom margin
+    showarrow = FALSE,
+    align = "left",
+    font = list(family = "Arial", size = 10)
+  ))
+)
+```
+
+## Sociodemographics
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
+
+plot_list[[j]]
+
+```
+
+## Weights
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+top_age_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(age_group)) %>%
+  group_by(wave, age_group) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+ageweights <- top_age_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = age_group)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted age group",
+    title = "Most upweighted age group"
+  ) +
+  theme_minimal(base_size = 12)
+
+top_region_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(region)) %>%
+  group_by(wave, region) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+regionweights <- top_region_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = region)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted region group",
+    title = "Most upweighted region"
+  ) +
+  theme_minimal(base_size = 12)
+
+top_gender_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(gender)) %>%
+  group_by(wave, gender) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+genderweights <- top_gender_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = gender)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted gender group",
+    title = "Most upweighted gender"
+  ) +
+  theme_minimal(base_size = 12)
+
+ggarrange(ageweights, regionweights, genderweights, ncol = 3, nrow = 1)
+```
+::: 
+
+# Ill-being
+
+
+::: {.panel-tabset}
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=1, dpi=300}
+
+
+cols <- c("angst_1","angst_2","angst_3","angst_4","angst_5" ,
+          "depr_1","depr_2","depr_3","depr_4","depr_5","depr_6" )
+
+col_labels <- c(  "... I felt calm.",
+                  "... I felt tense.",
+                  "... I felt anxious.",
+                  "... I felt satisfied.",
+                  "... I worried.",
+                  "... I did not feel like eating; my appetite was low.",
+                  "... I felt depressed.",
+                  "... I felt sad.",
+                  "... I had trouble getting started.",
+                  "... I felt lonely.",
+                  "... I felt that people disliked me.")
+```
+
+## Longitudinal
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, out.width="100%", fig.asp=0.3, dpi=300}
+items <- cols
+
+make_wave_long <- function(df, wave_id, cols) {
+  cols_here <- intersect(cols, names(df))
+  if (length(cols_here) == 0) return(NULL)
+  
+  df %>%
+    select(email, weights, all_of(cols_here)) %>%   # <-- include weights
+    mutate(wave = wave_id) %>%
+    pivot_longer(
+      cols = all_of(cols_here),
+      names_to = "item",
+      values_to = "score"
+    )
+}
+
+df_long <- bind_rows(
+  make_wave_long(df2020begin,     1, cols),
+  make_wave_long(df2020wave2,     2, cols),
+  make_wave_long(df2020long,      3, cols),
+  make_wave_long(dfwave3,         4, cols),
+  make_wave_long(df2021long,      5, cols),
+  make_wave_long(df2022postcovid, 6, cols),
+  make_wave_long(df2022long,      7, cols),
+  make_wave_long(df2024long,      8, cols),
+  make_wave_long(df2025long,      9, cols)
+) %>%
+  filter(!is.na(score)) %>%                      # drop NAs per-item (not whole rows)
+  mutate(item = factor(item, levels = cols))
+
+aantalwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]-3
+
+emails_longitudinal <- df_long %>%
+  dplyr::distinct(email, wave) %>%
+  dplyr::count(email) %>%
+  filter(n == aantalwaves) %>%          # your "at least 6/9 waves" criterion (exactly 6 here)
+  pull(email)
+
+df_long <- df_long %>%
+  filter(email %in% emails_longitudinal)
+
+n_longitudinal <- n_distinct(df_long$email)
+#n_longitudinal
+
+
+# ADD WEIGHTS
+
+dfsub <- na.omit(dfmot[,c("email","province")])
+df_long$province <- dfsub$province[match(df_long$email,dfsub$email)]
+df_long$province <- as.factor(df_long$province)
+#freq(df_long$province)
+#print(paste('the number of missing provinces is',length(unique(df_long[is.na(df_long$province),'email']))))
+#levels(df_long$province)
+levels(df_long$province) <- c('West-Vlaanderen',
+                            'Oost-Vlaanderen',
+                            'Antwerpen',
+                            'Limburg',
+                            'Vlaams-Brabant',
+                            'Andere',
+                            'Henegouwen',
+                            'Namen',
+                            'Luik',
+                            'Luxemburg',
+                            'Waals-Brabant',
+                            'Brussels Hoofdstedelijk Gewest')
+df_long$region <- df_long$province
+levels(df_long$region) <- c('Flanders','Flanders','Flanders','Flanders','Flanders',NA,
+                          'Wallonia','Wallonia','Wallonia','Wallonia','Wallonia',
+                          'Brussels')
+df_long$region_w <- plyr::revalue(df_long$region, c("Flanders"="1","Wallonia"="2","Brussels"="3"))
+
+dfsub <- na.omit(dfmot[,c("email","gender")])
+df_long$gender <- dfsub$gender[match(df_long$email,dfsub$email)]
+df_long$gender <- as.factor(df_long$gender)
+#print(paste('the number of missing gender is',length(unique(df_long[is.na(df_long$gender),'email']))))
+
+#freq(df_long$gender)
+#levels(df_long$gender)
+levels(df_long$gender) <- c('Male','Female')
+df_long$gender_w <- as.factor(df_long$gender)
+levels(df_long$gender_w) <- c('Male','Female')
+df_long$gender_w <- plyr::revalue(df_long$gender_w, c("Female"="2", "Male"="1"))
+
+dfsub <- na.omit(dfmot[,c("email","age")])
+df_long$age <- dfsub$age[match(df_long$email,dfsub$email)]
+#freq(df_long$age)
+#print(paste('the number of missing age is',length(unique(df_long[is.na(df_long$age),'email']))))
+
+df_long$age_group <- cut(
+  df_long$age,
+  breaks = c(20, 30, 40, 50, 60, 70, Inf),
+  right = FALSE,
+  labels = c(
+    "20–29",
+    "30–39",
+    "40–49",
+    "50–59",
+    "60–69",
+    "70+"
+  )
+)
+library(questionr)
+#freq(df_long$age_group)
+df_long$age_w <- plyr::revalue(df_long$age_group, c("20–29" = "1",
+                                                "30–39" = "2",
+                                                "40–49" = "3",
+                                                "50–59" = "4",
+                                                "60–69" = "5",
+                                                "70+" = "6"))
+df_long$waves <- as.factor(df_long$wave)
+
+dfsub <- df_long
+dfsub$group <- dfsub$waves
+levels(dfsub$group) <- c('COVID wave I','COVID wave II','End of 2020',
+                           'COVID wave III','End of 2021','Post-COVID',
+                           'End of 2022','End of 2024','End of 2025')
+dfsub <- dfsub[!is.na(dfsub$age_group),]
+dfsub <- dfsub[!is.na(dfsub$gender),]
+dfsub <- dfsub[!is.na(dfsub$region),]
+dfsub <- dfsub[!is.na(dfsub$group),]
+dfsub <- droplevels(dfsub)
+dfsub <- as.data.frame(dfsub)
+
+variableslist <- list(
+  fig0 = c('age_group','gender','region'))
+names <- list(
+  fig0 = c('Age group','Gender','Region'))
+
+pformat <- function(p.value){
+  unclass(symnum(p.value, corr = FALSE, na = FALSE, 
+                 cutpoints = c(0, 0.001, 0.01, 0.05, 1), 
+                 symbols = c("***", "**", "*", " ")))
+}
+
+plot_list = list()
+plot_list3 = list()
+sociodemo <- c()
+test <- c()
+testlabels <- c()
+
+for(j in 1:length(variableslist)) {
+  i <- 1
+  variables <- variableslist[[j]]
+  
+  sociodemo <- vector(mode = "list", length = length(variables)) # lengte aanpassen
+  test <- vector(mode = "list", length = length(variables))
+  
+  for(i in 1:length(variables)) { ## tabellen worden gemaakt
+    sociodemo[[i]] <- table(dfsub$group,dfsub[,variables[i]],exclude=NA)
+  }
+  
+  
+  for(i in 1:length(variables)) { ## chi squares worden berekend
+    test[[i]] <- paste('χ2(',chisq.test(sociodemo[[i]])$parameter,') = ',
+                       round(chisq.test(sociodemo[[i]])$statistic,2),', p = ',
+                       round(chisq.test(sociodemo[[i]])$p.value,2),
+                       pformat(chisq.test(sociodemo[[i]])$p.value),
+                       sep="")
+  }
+  
+  for(i in 1:length(variables)) { ## tabellen in percentages
+    sociodemo[[i]] <- as.data.frame(round(prop.table(sociodemo[[i]],1)*100,2))
+  }
+  
+  testlabels <- vector(mode = "list", length = length(variables))
+  for(i in 1:length(variables)) { ## p waarde 0 wordt vervangen door <.001
+    if(as.numeric(gsub("\\*", "", gsub(".*p =","",test[[i]]))) <.001){
+      testlabels[[i]] <- gsub("p = 0","p = <.001",test[[i]])
+    } else {
+      testlabels[[i]] <- test[[i]]
+    }
+  }
+  testlabels
+  
+  
+  names(sociodemo)<- names[[j]]
+  
+  g<-list() # aanmaken van figuren
+  a <- sociodemo
+  for(i in 1:length(a)) {
+    p = ggplot(reshape2::melt(a[[i]]), aes(as.factor(Var1), value, 
+                                           fill=as.factor(Var2), 
+                                           label=paste(round(value, 0),sep="") ))+
+      geom_col()+geom_text(position=position_stack(vjust=0.5))+
+      coord_flip()+scale_fill_brewer(type="seq", palette=1)+
+      labs(x="", y="", title=names(a)[i], fill = "Categorieën: ",
+           subtitle=testlabels[i]
+      )+
+      theme_hc(base_size = 10)+
+      theme(legend.position='right')
+    g[[i]] = p
+    
+  }
+  
+  for(i in 1:length(variables)) { ## er wordt gecheckt welke significant is of niet
+    if(as.numeric(gsub("\\*", "", gsub(".*p =","",test[[i]]))) >.05){
+      g[[i]] <- g[[i]] + scale_fill_brewer(type="seq",palette=6)
+    }  
+  }
+  
+  # figuur ----
+  
+  plot_list[[j]] <- ggarrange(plotlist=g, align = "hv",# totale plot
+                              common.legend=FALSE,
+                              ncol = 1, nrow = 3 # aantal rijen en kolommen
+  )
+}
+
+
+# Make new dataframe
+weighting <- df_long
+
+# Summarize characteristics by waves
+weights <- weighting %>%
+  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
+  dplyr::summarise(n=n())
+weights <- na.omit(weights)
+
+weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
+
+weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
+
+weights$weights <- as.numeric('1')
+
+### MALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
+weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
+weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
+weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
+weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
+weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
+
+### FEMALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
+weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
+weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
+weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
+weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
+weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
+
+### MALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
+weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
+weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
+weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
+weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
+weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
+
+### FEMALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
+weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
+weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
+weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
+weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
+weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
+
+### MALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
+weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
+weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
+weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
+weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
+weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
+
+### FEMALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
+weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
+weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
+weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
+weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
+weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
+
+weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
+
+df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
+
+df_long <- as.data.frame(df_long)
+df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
+
+mean_df <- df_long %>%
+  dplyr::group_by(wave, item) %>%
+  dplyr::summarise(
+    sum_w = sum(weights[!is.na(score) & !is.na(weights)], na.rm = TRUE),
+    mean_w = ifelse(sum_w > 0,
+                    sum(score * weights, na.rm = TRUE) / sum_w,
+                    NA_real_),
+    n = sum(!is.na(score)),
+    .groups = "drop"
+  )%>%as.data.frame()
+
+items_with_lines <- mean_df %>%
+  dplyr::count(item) %>%
+  dplyr::filter(n >= 2) %>%   # at least two waves → line possible
+  dplyr::pull(item)
+
+mean_df_lines <- mean_df %>%
+  filter(item %in% items_with_lines)
+
+mean_df <- mean_df %>%
+  mutate(item_label = col_labels[as.character(item)])
+mean_df[which(mean_df$n<100),] <- NA
+mean_df_lines <- mean_df_lines %>%
+  mutate(item_label = col_labels[as.character(item)])
+mean_df_lines[which(mean_df_lines$n<100),] <- NA
+
+p <- ggplot(mean_df,
+            aes(
+              x = wave,
+              y = mean_w,
+              color = item,
+              shape = item,
+              group = item,
+              text = paste0(
+                "Item: ", col_labels,
+                "<br>Code: ", item,
+                "<br>Wave: ", wave,
+                "<br>Weighted mean: ", round(mean_w, 2),
+                "<br>N: ", n
+              )
+            )) +
+  geom_line(
+    data = mean_df_lines,
+    linewidth = 0.8
+  ) +
+  geom_point(size = 2) +
+  scale_color_discrete_qualitative(
+    palette = "Dark 3",
+    labels = col_labels
+  ) +
+  scale_shape_manual(
+    values = rep(c(16, 17, 15, 18, 3, 7),
+                 length.out = length(unique(mean_df$item))),
+    labels = col_labels
+  ) +
+  scale_x_continuous(
+    breaks = 1:9,
+    labels = c(
+      'COVID<br>wave I','COVID<br>wave II','End of<br>2020',
+                           'COVID<br>wave III','End of<br>2021','Post-COVID',
+                           'End of<br>2022','End of<br>2024','End of<br>2025'
+    )
+  ) +
+  scale_y_continuous(limits = c(1, 4), expand = expansion(mult = c(.02, .05))) +
+  labs(
+    title = "Longitudinal change",
+    caption = paste0("Weighted; total longitudinal N = ", n_longitudinal),
+    x = NULL,
+    y = "Mean score"
+  ) + theme_minimal()
+
+fig <- ggplotly(p, tooltip = "text")
+
+fig %>% plotly::layout(
+  margin = list(b = 120),
+  annotations = list(list(
+    text = paste0(
+      "Weighted; total longitudinal N = ", n_longitudinal,
+      "<br>with at least 6/9 participation waves"
+    ),
+    x = 0, y = 0,                 # keep INSIDE paper
+    xref = "paper", yref = "paper",
+    xanchor = "left", yanchor = "top",
+    yshift = -70,                 # push it DOWN into the bottom margin
+    showarrow = FALSE,
+    align = "left",
+    font = list(family = "Arial", size = 10)
+  ))
+)
+```
+
+## Sociodemographics
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
+
+plot_list[[j]]
+
+```
+
+## Weights
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
+
+top_age_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(age_group)) %>%
+  group_by(wave, age_group) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+ageweights <- top_age_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = age_group)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted age group",
+    title = "Most upweighted age group"
+  ) +
+  theme_minimal(base_size = 12)
+
+top_region_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(region)) %>%
+  group_by(wave, region) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+regionweights <- top_region_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = region)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted region group",
+    title = "Most upweighted region"
+  ) +
+  theme_minimal(base_size = 12)
+
+top_gender_by_wave <- df_long %>%
+  filter(!is.na(weights), !is.na(gender)) %>%
+  group_by(wave, gender) %>%
+  summarise(mean_w = mean(weights, na.rm = TRUE), .groups = "drop") %>%
+  group_by(wave) %>%
+  slice_max(mean_w, n = 1, with_ties = FALSE) %>%
+  ungroup()
+
+genderweights <- top_gender_by_wave %>%
+  ggplot(aes(x = factor(wave), y = mean_w, label = gender)) +
+  geom_point(size = 2) +
+  geom_text(vjust = -0.7, size = 3) +
+  labs(
+    x = "Wave",
+    y = "Mean weight of most-upweighted gender group",
+    title = "Most upweighted gender"
+  ) +
+  theme_minimal(base_size = 12)
+
+ggarrange(ageweights, regionweights, genderweights, ncol = 3, nrow = 1)
+```
+::: 
