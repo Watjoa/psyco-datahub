@@ -172,6 +172,10 @@ df2022long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/Fol
 
 ```
 
+Per wave, all sociodemographic groups with *less than 40 participants have been removed* (for the sake of weightening). Most of the times, this is Brussels and Wallonia in wave 1 and 2 as, then, the project was only targeting Flemish participants. From Survey 3 on, we included Belgium in total. The specific information is provided in tab 'Sociodemographics'
+
+Participants are included with *at least having participated* -4 the total number of waves
+
 # Basic Psychological Needs
 
 ::: {.panel-tabset}
@@ -242,7 +246,8 @@ df_long <- bind_rows(
   filter(!is.na(score)) %>%                      # drop NAs per-item (not whole rows)
   mutate(item = factor(item, levels = cols))
 
-aantalwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]-3
+maxwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]
+aantalwaves <- maxwaves-4
 
 emails_longitudinal <- df_long %>%
   dplyr::distinct(email, wave) %>%
@@ -322,6 +327,108 @@ df_long$age_w <- plyr::revalue(df_long$age_group, c("20–29" = "1",
                                                 "60–69" = "5",
                                                 "70+" = "6"))
 df_long$waves <- as.factor(df_long$wave)
+
+
+
+# Make new dataframe
+weighting <- df_long
+
+# Summarize characteristics by waves
+weights <- weighting %>%
+  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
+  dplyr::summarise(n=n())
+weights <- na.omit(weights)
+
+weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
+
+weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
+
+weights$weights <- as.numeric('1')
+
+### MALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
+weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
+weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
+weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
+weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
+weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
+
+### FEMALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
+weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
+weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
+weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
+weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
+weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
+
+### MALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
+weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
+weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
+weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
+weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
+weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
+
+### FEMALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
+weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
+weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
+weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
+weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
+weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
+
+### MALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
+weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
+weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
+weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
+weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
+weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
+
+### FEMALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
+weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
+weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
+weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
+weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
+weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
+
+weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
+
+df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
+
+df_long <- as.data.frame(df_long)
+df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
+
+dfuniquek <- na.omit(unique(df_long[,c('email','age_group','gender','region','wave')]))
+minaantal <- 40
+tableregion <- as.data.frame(table(dfuniquek$wave,dfuniquek$region))
+colnames(tableregion) <- c('wave','region','Freq')
+tableregion$combo <- paste0(tableregion$wave,tableregion$region)
+removedregion <- tableregion[which(tableregion$Freq<minaantal),'combo']
+tableregion[which(tableregion$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste0(df_long$wave,df_long$region)
+df_long$Freq <- tableregion$Freq[match(df_long$combo,tableregion$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
+
+tableage_group <- as.data.frame(table(dfuniquek$wave,dfuniquek$age_group))
+colnames(tableage_group) <- c('wave','age_group','Freq')
+tableage_group$combo <- paste(tableage_group$wave,tableage_group$age_group,sep="-")
+removedage <- tableage_group[which(tableage_group$Freq<minaantal),'combo']
+
+tableage_group[which(tableage_group$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste(df_long$wave,df_long$age_group,sep="-")
+df_long$Freq <- tableage_group$Freq[match(df_long$combo,tableage_group$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
+
+tablegender <- as.data.frame(table(dfuniquek$wave,dfuniquek$gender))
+colnames(tablegender) <- c('wave','gender','Freq')
+tablegender$combo <- paste(tablegender$wave,tablegender$gender,sep="-")
+removedgender <- tablegender[which(tablegender$Freq<minaantal),'combo']
+tablegender[which(tablegender$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste(df_long$wave,df_long$gender,sep="-")
+df_long$Freq <- tablegender$Freq[match(df_long$combo,tablegender$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
 
 dfsub <- df_long
 dfsub$group <- dfsub$waves
@@ -421,78 +528,6 @@ for(j in 1:length(variableslist)) {
 }
 
 
-# Make new dataframe
-weighting <- df_long
-
-# Summarize characteristics by waves
-weights <- weighting %>%
-  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
-  dplyr::summarise(n=n())
-weights <- na.omit(weights)
-
-weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
-
-weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
-
-weights$weights <- as.numeric('1')
-
-### MALE - AGE GROUPS - FLANDERS
-weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
-weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
-weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
-weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
-weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
-weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
-
-### FEMALE - AGE GROUPS - FLANDERS
-weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
-weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
-weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
-weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
-weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
-weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
-
-### MALE - AGE GROUPS - WALLONIA
-weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
-weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
-weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
-weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
-weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
-weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
-
-### FEMALE - AGE GROUPS - WALLONIA
-weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
-weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
-weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
-weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
-weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
-weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
-
-### MALE - AGE GROUPS - BRUSSELS
-weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
-weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
-weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
-weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
-weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
-weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
-
-### FEMALE - AGE GROUPS - BRUSSELS
-weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
-weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
-weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
-weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
-weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
-weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
-
-weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
-
-df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
-
-df_long <- as.data.frame(df_long)
-df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
-
-unique(df_long[,c('email','age_group','gender','region')])
-
 mean_df <- df_long %>%
   dplyr::group_by(wave, item) %>%
   dplyr::summarise(
@@ -512,13 +547,16 @@ items_with_lines <- mean_df %>%
 mean_df_lines <- mean_df %>%
   filter(item %in% items_with_lines)
 
+mean_df$item <- as.factor(mean_df$item)
 mean_df <- mean_df %>%
-  mutate(item_label = col_labels[as.character(item)])
+  mutate(item_label = col_labels[item])
 mean_df[which(mean_df$n<100),] <- NA
-mean_df_lines <- mean_df_lines %>%
-  mutate(item_label = col_labels[as.character(item)])
-mean_df_lines[which(mean_df_lines$n<100),] <- NA
 
+mean_df_lines$item <- as.factor(mean_df_lines$item)
+mean_df_lines <- mean_df_lines %>%
+  mutate(item_label = col_labels[item])
+
+mean_df_lines[which(mean_df_lines$n<100),] <- NA
 p <- ggplot(mean_df,
             aes(
               x = wave,
@@ -527,7 +565,7 @@ p <- ggplot(mean_df,
               shape = item,
               group = item,
               text = paste0(
-                "Item: ", col_labels,
+                "Item: ", item_label,
                 "<br>Code: ", item,
                 "<br>Wave: ", wave,
                 "<br>Weighted mean: ", round(mean_w, 2),
@@ -571,7 +609,8 @@ fig %>% plotly::layout(
   annotations = list(list(
     text = paste0(
       "Weighted; total longitudinal N = ", n_longitudinal,
-      "<br>with at least 6/9 participation waves"
+      "<br>with at least ",
+      aantalwaves,"/",maxwaves," waves"
     ),
     x = 0, y = 0,                 # keep INSIDE paper
     xref = "paper", yref = "paper",
@@ -585,6 +624,8 @@ fig %>% plotly::layout(
 ```
 
 ## Sociodemographics
+
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
 
 plot_list[[j]]
@@ -655,8 +696,22 @@ ggarrange(ageweights, regionweights, genderweights, ncol = 3, nrow = 1)
 ```
 ::: 
 
-# Concerns
+<details>
+<summary>Click to see which categories were excluded</summary>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
 
+print('Following groups were excluded from the dataset due to n<40 participants:')
+print('Wave-Regions:')
+removedregion
+print('Wave-Age group:')
+removedage
+print('Wave-Gender:')
+removedgender
+
+```
+</details> 
+
+# Concerns
 
 ::: {.panel-tabset}
 
@@ -709,7 +764,9 @@ df_long <- bind_rows(
   filter(!is.na(score)) %>%                      # drop NAs per-item (not whole rows)
   mutate(item = factor(item, levels = cols))
 
-aantalwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]-3
+maxwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]
+aantalwaves <- maxwaves-4
+
 
 emails_longitudinal <- df_long %>%
   dplyr::distinct(email, wave) %>%
@@ -789,6 +846,106 @@ df_long$age_w <- plyr::revalue(df_long$age_group, c("20–29" = "1",
                                                 "60–69" = "5",
                                                 "70+" = "6"))
 df_long$waves <- as.factor(df_long$wave)
+
+# Make new dataframe
+weighting <- df_long
+
+# Summarize characteristics by waves
+weights <- weighting %>%
+  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
+  dplyr::summarise(n=n())
+weights <- na.omit(weights)
+
+weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
+
+weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
+
+weights$weights <- as.numeric('1')
+
+### MALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
+weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
+weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
+weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
+weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
+weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
+
+### FEMALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
+weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
+weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
+weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
+weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
+weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
+
+### MALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
+weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
+weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
+weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
+weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
+weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
+
+### FEMALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
+weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
+weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
+weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
+weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
+weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
+
+### MALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
+weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
+weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
+weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
+weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
+weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
+
+### FEMALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
+weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
+weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
+weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
+weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
+weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
+
+weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
+
+df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
+
+df_long <- as.data.frame(df_long)
+df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
+
+
+dfuniquek <- na.omit(unique(df_long[,c('email','age_group','gender','region','wave')]))
+minaantal <- 40
+tableregion <- as.data.frame(table(dfuniquek$wave,dfuniquek$region))
+colnames(tableregion) <- c('wave','region','Freq')
+tableregion$combo <- paste0(tableregion$wave,tableregion$region)
+removedgender <- tableregion[which(tableregion$Freq<minaantal),'combo']
+tableregion[which(tableregion$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste0(df_long$wave,df_long$region)
+df_long$Freq <- tableregion$Freq[match(df_long$combo,tableregion$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
+
+tableage_group <- as.data.frame(table(dfuniquek$wave,dfuniquek$age_group))
+colnames(tableage_group) <- c('wave','age_group','Freq')
+tableage_group$combo <- paste(tableage_group$wave,tableage_group$age_group,sep="-")
+removedage <- tableage_group[which(tableage_group$Freq<minaantal),'combo']
+tableage_group[which(tableage_group$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste(df_long$wave,df_long$age_group,sep="-")
+df_long$Freq <- tableage_group$Freq[match(df_long$combo,tableage_group$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
+
+tablegender <- as.data.frame(table(dfuniquek$wave,dfuniquek$gender))
+colnames(tablegender) <- c('wave','gender','Freq')
+tablegender$combo <- paste(tablegender$wave,tablegender$gender,sep="-")
+removedgender <- tablegender[which(tablegender$Freq<minaantal),'combo']
+tablegender[which(tablegender$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste(df_long$wave,df_long$gender,sep="-")
+df_long$Freq <- tablegender$Freq[match(df_long$combo,tablegender$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
 
 dfsub <- df_long
 dfsub$group <- dfsub$waves
@@ -888,76 +1045,6 @@ for(j in 1:length(variableslist)) {
 }
 
 
-# Make new dataframe
-weighting <- df_long
-
-# Summarize characteristics by waves
-weights <- weighting %>%
-  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
-  dplyr::summarise(n=n())
-weights <- na.omit(weights)
-
-weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
-
-weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
-
-weights$weights <- as.numeric('1')
-
-### MALE - AGE GROUPS - FLANDERS
-weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
-weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
-weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
-weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
-weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
-weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
-
-### FEMALE - AGE GROUPS - FLANDERS
-weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
-weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
-weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
-weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
-weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
-weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
-
-### MALE - AGE GROUPS - WALLONIA
-weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
-weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
-weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
-weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
-weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
-weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
-
-### FEMALE - AGE GROUPS - WALLONIA
-weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
-weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
-weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
-weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
-weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
-weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
-
-### MALE - AGE GROUPS - BRUSSELS
-weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
-weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
-weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
-weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
-weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
-weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
-
-### FEMALE - AGE GROUPS - BRUSSELS
-weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
-weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
-weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
-weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
-weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
-weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
-
-weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
-
-df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
-
-df_long <- as.data.frame(df_long)
-df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
-
 mean_df <- df_long %>%
   dplyr::group_by(wave, item) %>%
   dplyr::summarise(
@@ -977,11 +1064,15 @@ items_with_lines <- mean_df %>%
 mean_df_lines <- mean_df %>%
   filter(item %in% items_with_lines)
 
+mean_df$item <- as.factor(mean_df$item)
 mean_df <- mean_df %>%
-  mutate(item_label = col_labels[as.character(item)])
+  mutate(item_label = col_labels[item])
 mean_df[which(mean_df$n<100),] <- NA
+
+mean_df_lines$item <- as.factor(mean_df_lines$item)
 mean_df_lines <- mean_df_lines %>%
-  mutate(item_label = col_labels[as.character(item)])
+  mutate(item_label = col_labels[item])
+
 mean_df_lines[which(mean_df_lines$n<100),] <- NA
 
 p <- ggplot(mean_df,
@@ -992,7 +1083,7 @@ p <- ggplot(mean_df,
               shape = item,
               group = item,
               text = paste0(
-                "Item: ", col_labels,
+                "Item: ", item_label,
                 "<br>Code: ", item,
                 "<br>Wave: ", wave,
                 "<br>Weighted mean: ", round(mean_w, 2),
@@ -1034,9 +1125,10 @@ fig <- ggplotly(p, tooltip = "text")
 fig %>% plotly::layout(
   margin = list(b = 120),
   annotations = list(list(
-    text = paste0(
+     text = paste0(
       "Weighted; total longitudinal N = ", n_longitudinal,
-      "<br>with at least 6/9 participation waves"
+      "<br>with at least ",
+      aantalwaves,"/",maxwaves," waves"
     ),
     x = 0, y = 0,                 # keep INSIDE paper
     xref = "paper", yref = "paper",
@@ -1050,11 +1142,6 @@ fig %>% plotly::layout(
 ```
 
 ## Sociodemographics
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
-
-plot_list[[j]]
-
-```
 
 ## Weights
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
@@ -1120,7 +1207,23 @@ ggarrange(ageweights, regionweights, genderweights, ncol = 3, nrow = 1)
 ```
 ::: 
 
+<details>
+<summary>Click to see which categories were excluded</summary>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
+
+print('Following groups were excluded from the dataset due to n<40 participants:')
+print('Wave-Regions:')
+removedregion
+print('Wave-Age group:')
+removedage
+print('Wave-Gender:')
+removedgender
+
+```
+</details> 
+
 # Well-being
+
 
 ::: {.panel-tabset}
 
@@ -1164,7 +1267,9 @@ df_long <- bind_rows(
   filter(!is.na(score)) %>%                      # drop NAs per-item (not whole rows)
   mutate(item = factor(item, levels = cols))
 
-aantalwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]-3
+maxwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]
+aantalwaves <- maxwaves-4
+
 
 emails_longitudinal <- df_long %>%
   dplyr::distinct(email, wave) %>%
@@ -1244,6 +1349,107 @@ df_long$age_w <- plyr::revalue(df_long$age_group, c("20–29" = "1",
                                                 "60–69" = "5",
                                                 "70+" = "6"))
 df_long$waves <- as.factor(df_long$wave)
+
+
+# Make new dataframe
+weighting <- df_long
+
+# Summarize characteristics by waves
+weights <- weighting %>%
+  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
+  dplyr::summarise(n=n())
+weights <- na.omit(weights)
+
+weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
+
+weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
+
+weights$weights <- as.numeric('1')
+
+### MALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
+weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
+weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
+weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
+weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
+weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
+
+### FEMALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
+weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
+weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
+weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
+weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
+weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
+
+### MALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
+weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
+weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
+weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
+weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
+weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
+
+### FEMALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
+weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
+weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
+weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
+weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
+weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
+
+### MALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
+weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
+weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
+weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
+weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
+weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
+
+### FEMALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
+weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
+weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
+weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
+weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
+weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
+
+weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
+
+df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
+
+df_long <- as.data.frame(df_long)
+df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
+
+
+dfuniquek <- na.omit(unique(df_long[,c('email','age_group','gender','region','wave')]))
+minaantal <- 40
+tableregion <- as.data.frame(table(dfuniquek$wave,dfuniquek$region))
+colnames(tableregion) <- c('wave','region','Freq')
+tableregion$combo <- paste0(tableregion$wave,tableregion$region)
+removedregion <- tableregion[which(tableregion$Freq<minaantal),'combo']
+tableregion[which(tableregion$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste0(df_long$wave,df_long$region)
+df_long$Freq <- tableregion$Freq[match(df_long$combo,tableregion$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
+
+tableage_group <- as.data.frame(table(dfuniquek$wave,dfuniquek$age_group))
+colnames(tableage_group) <- c('wave','age_group','Freq')
+tableage_group$combo <- paste(tableage_group$wave,tableage_group$age_group,sep="-")
+removedage <- tableage_group[which(tableage_group$Freq<minaantal),'combo']
+tableage_group[which(tableage_group$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste(df_long$wave,df_long$age_group,sep="-")
+df_long$Freq <- tableage_group$Freq[match(df_long$combo,tableage_group$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
+
+tablegender <- as.data.frame(table(dfuniquek$wave,dfuniquek$gender))
+colnames(tablegender) <- c('wave','gender','Freq')
+tablegender$combo <- paste(tablegender$wave,tablegender$gender,sep="-")
+removedgender<- tablegender[which(tablegender$Freq<minaantal),'combo']
+tablegender[which(tablegender$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste(df_long$wave,df_long$gender,sep="-")
+df_long$Freq <- tablegender$Freq[match(df_long$combo,tablegender$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
 
 dfsub <- df_long
 dfsub$group <- dfsub$waves
@@ -1343,76 +1549,6 @@ for(j in 1:length(variableslist)) {
 }
 
 
-# Make new dataframe
-weighting <- df_long
-
-# Summarize characteristics by waves
-weights <- weighting %>%
-  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
-  dplyr::summarise(n=n())
-weights <- na.omit(weights)
-
-weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
-
-weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
-
-weights$weights <- as.numeric('1')
-
-### MALE - AGE GROUPS - FLANDERS
-weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
-weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
-weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
-weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
-weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
-weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
-
-### FEMALE - AGE GROUPS - FLANDERS
-weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
-weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
-weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
-weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
-weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
-weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
-
-### MALE - AGE GROUPS - WALLONIA
-weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
-weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
-weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
-weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
-weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
-weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
-
-### FEMALE - AGE GROUPS - WALLONIA
-weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
-weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
-weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
-weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
-weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
-weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
-
-### MALE - AGE GROUPS - BRUSSELS
-weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
-weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
-weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
-weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
-weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
-weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
-
-### FEMALE - AGE GROUPS - BRUSSELS
-weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
-weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
-weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
-weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
-weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
-weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
-
-weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
-
-df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
-
-df_long <- as.data.frame(df_long)
-df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
-
 mean_df <- df_long %>%
   dplyr::group_by(wave, item) %>%
   dplyr::summarise(
@@ -1432,13 +1568,16 @@ items_with_lines <- mean_df %>%
 mean_df_lines <- mean_df %>%
   filter(item %in% items_with_lines)
 
+mean_df$item <- as.factor(mean_df$item)
 mean_df <- mean_df %>%
-  mutate(item_label = col_labels[as.character(item)])
+  mutate(item_label = col_labels[item])
 mean_df[which(mean_df$n<100),] <- NA
-mean_df_lines <- mean_df_lines %>%
-  mutate(item_label = col_labels[as.character(item)])
-mean_df_lines[which(mean_df_lines$n<100),] <- NA
 
+mean_df_lines$item <- as.factor(mean_df_lines$item)
+mean_df_lines <- mean_df_lines %>%
+  mutate(item_label = col_labels[item])
+
+mean_df_lines[which(mean_df_lines$n<100),] <- NA
 p <- ggplot(mean_df,
             aes(
               x = wave,
@@ -1447,7 +1586,7 @@ p <- ggplot(mean_df,
               shape = item,
               group = item,
               text = paste0(
-                "Item: ", col_labels,
+                "Item: ", item_label,
                 "<br>Code: ", item,
                 "<br>Wave: ", wave,
                 "<br>Weighted mean: ", round(mean_w, 2),
@@ -1489,9 +1628,10 @@ fig <- ggplotly(p, tooltip = "text")
 fig %>% plotly::layout(
   margin = list(b = 120),
   annotations = list(list(
-    text = paste0(
+      text = paste0(
       "Weighted; total longitudinal N = ", n_longitudinal,
-      "<br>with at least 6/9 participation waves"
+      "<br>with at least ",
+      aantalwaves,"/",maxwaves," waves"
     ),
     x = 0, y = 0,                 # keep INSIDE paper
     xref = "paper", yref = "paper",
@@ -1505,11 +1645,6 @@ fig %>% plotly::layout(
 ```
 
 ## Sociodemographics
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
-
-plot_list[[j]]
-
-```
 
 ## Weights
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
@@ -1575,8 +1710,22 @@ ggarrange(ageweights, regionweights, genderweights, ncol = 3, nrow = 1)
 ```
 ::: 
 
-# Ill-being
+<details>
+<summary>Click to see which categories were excluded</summary>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
 
+print('Following groups were excluded from the dataset due to n<40 participants:')
+print('Wave-Regions:')
+removedregion
+print('Wave-Age group:')
+removedage
+print('Wave-Gender:')
+removedgender
+
+```
+</details> 
+
+# Ill-being
 
 ::: {.panel-tabset}
 
@@ -1632,7 +1781,9 @@ df_long <- bind_rows(
   filter(!is.na(score)) %>%                      # drop NAs per-item (not whole rows)
   mutate(item = factor(item, levels = cols))
 
-aantalwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]-3
+maxwaves <- dim(df_long %>% dplyr::count(wave, name = "n_values"))[1]
+aantalwaves <- maxwaves-4
+
 
 emails_longitudinal <- df_long %>%
   dplyr::distinct(email, wave) %>%
@@ -1712,6 +1863,107 @@ df_long$age_w <- plyr::revalue(df_long$age_group, c("20–29" = "1",
                                                 "60–69" = "5",
                                                 "70+" = "6"))
 df_long$waves <- as.factor(df_long$wave)
+
+
+# Make new dataframe
+weighting <- df_long
+
+# Summarize characteristics by waves
+weights <- weighting %>%
+  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
+  dplyr::summarise(n=n())
+weights <- na.omit(weights)
+
+weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
+
+weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
+
+weights$weights <- as.numeric('1')
+
+### MALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
+weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
+weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
+weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
+weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
+weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
+
+### FEMALE - AGE GROUPS - FLANDERS
+weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
+weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
+weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
+weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
+weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
+weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
+
+### MALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
+weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
+weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
+weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
+weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
+weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
+
+### FEMALE - AGE GROUPS - WALLONIA
+weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
+weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
+weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
+weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
+weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
+weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
+
+### MALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
+weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
+weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
+weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
+weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
+weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
+
+### FEMALE - AGE GROUPS - BRUSSELS
+weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
+weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
+weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
+weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
+weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
+weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
+
+weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
+
+df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
+
+df_long <- as.data.frame(df_long)
+df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
+
+
+dfuniquek <- na.omit(unique(df_long[,c('email','age_group','gender','region','wave')]))
+minaantal <- 40
+tableregion <- as.data.frame(table(dfuniquek$wave,dfuniquek$region))
+colnames(tableregion) <- c('wave','region','Freq')
+tableregion$combo <- paste0(tableregion$wave,tableregion$region)
+removedregion <- tableregion[which(tableregion$Freq<minaantal),'combo']
+tableregion[which(tableregion$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste0(df_long$wave,df_long$region)
+df_long$Freq <- tableregion$Freq[match(df_long$combo,tableregion$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
+
+tableage_group <- as.data.frame(table(dfuniquek$wave,dfuniquek$age_group))
+colnames(tableage_group) <- c('wave','age_group','Freq')
+tableage_group$combo <- paste(tableage_group$wave,tableage_group$age_group,sep="-")
+removedage <- tableage_group[which(tableage_group$Freq<minaantal),'combo']
+tableage_group[which(tableage_group$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste(df_long$wave,df_long$age_group,sep="-")
+df_long$Freq <- tableage_group$Freq[match(df_long$combo,tableage_group$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
+
+tablegender <- as.data.frame(table(dfuniquek$wave,dfuniquek$gender))
+colnames(tablegender) <- c('wave','gender','Freq')
+tablegender$combo <- paste(tablegender$wave,tablegender$gender,sep="-")
+removedgender <- tablegender[which(tablegender$Freq<minaantal),'combo']
+tablegender[which(tablegender$Freq<minaantal),'Freq'] <- 'NOWP'
+df_long$combo <- paste(df_long$wave,df_long$gender,sep="-")
+df_long$Freq <- tablegender$Freq[match(df_long$combo,tablegender$combo)]
+df_long <- df_long[!(df_long$Freq %in% "NOWP"), ]
 
 dfsub <- df_long
 dfsub$group <- dfsub$waves
@@ -1811,76 +2063,6 @@ for(j in 1:length(variableslist)) {
 }
 
 
-# Make new dataframe
-weighting <- df_long
-
-# Summarize characteristics by waves
-weights <- weighting %>%
-  dplyr::group_by(waves,gender_w,age_w,region_w) %>% 
-  dplyr::summarise(n=n())
-weights <- na.omit(weights)
-
-weights <- weights %>% group_by(waves)  %>% mutate(Proportion=n/sum(n))
-
-weights$combo <- paste(weights$gender_w, weights$age_w,weights$region_w)
-
-weights$weights <- as.numeric('1')
-
-### MALE - AGE GROUPS - FLANDERS
-weights[which(weights$combo == "1 1 1"),'weights'] <- 0.0431/weights[which(weights$combo == "1 1 1"),'Proportion']
-weights[which(weights$combo == "1 2 1"),'weights'] <- 0.0472/weights[which(weights$combo == "1 2 1"),'Proportion']
-weights[which(weights$combo == "1 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "1 3 1"),'Proportion']
-weights[which(weights$combo == "1 4 1"),'weights'] <- 0.0494/weights[which(weights$combo == "1 4 1"),'Proportion']
-weights[which(weights$combo == "1 5 1"),'weights'] <- 0.0478/weights[which(weights$combo == "1 5 1"),'Proportion']
-weights[which(weights$combo == "1 6 1"),'weights'] <- 0.0518/weights[which(weights$combo == "1 6 1"),'Proportion']
-
-### FEMALE - AGE GROUPS - FLANDERS
-weights[which(weights$combo == "2 1 1"),'weights'] <- 0.0417/weights[which(weights$combo == "2 1 1"),'Proportion']
-weights[which(weights$combo == "2 2 1"),'weights'] <- 0.0473/weights[which(weights$combo == "2 2 1"),'Proportion']
-weights[which(weights$combo == "2 3 1"),'weights'] <- 0.0474/weights[which(weights$combo == "2 3 1"),'Proportion']
-weights[which(weights$combo == "2 4 1"),'weights'] <- 0.0484/weights[which(weights$combo == "2 4 1"),'Proportion']
-weights[which(weights$combo == "2 5 1"),'weights'] <- 0.0483/weights[which(weights$combo == "2 5 1"),'Proportion']
-weights[which(weights$combo == "2 6 1"),'weights'] <- 0.0647/weights[which(weights$combo == "2 6 1"),'Proportion']
-
-### MALE - AGE GROUPS - WALLONIA
-weights[which(weights$combo == "1 1 2"),'weights'] <- 0.0245/weights[which(weights$combo == "1 1 2"),'Proportion']
-weights[which(weights$combo == "1 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "1 2 2"),'Proportion']
-weights[which(weights$combo == "1 3 2"),'weights'] <- 0.0253/weights[which(weights$combo == "1 3 2"),'Proportion']
-weights[which(weights$combo == "1 4 2"),'weights'] <- 0.0268/weights[which(weights$combo == "1 4 2"),'Proportion']
-weights[which(weights$combo == "1 5 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 5 2"),'Proportion']
-weights[which(weights$combo == "1 6 2"),'weights'] <- 0.0242/weights[which(weights$combo == "1 6 2"),'Proportion']
-
-### FEMALE - AGE GROUPS - WALLONIA
-weights[which(weights$combo == "2 1 2"),'weights'] <- 0.0236/weights[which(weights$combo == "2 1 2"),'Proportion']
-weights[which(weights$combo == "2 2 2"),'weights'] <- 0.0258/weights[which(weights$combo == "2 2 2"),'Proportion']
-weights[which(weights$combo == "2 3 2"),'weights'] <- 0.0256/weights[which(weights$combo == "2 3 2"),'Proportion']
-weights[which(weights$combo == "2 4 2"),'weights'] <- 0.0269/weights[which(weights$combo == "2 4 2"),'Proportion']
-weights[which(weights$combo == "2 5 2"),'weights'] <- 0.0259/weights[which(weights$combo == "2 5 2"),'Proportion']
-weights[which(weights$combo == "2 6 2"),'weights'] <- 0.0332/weights[which(weights$combo == "2 6 2"),'Proportion']
-
-### MALE - AGE GROUPS - BRUSSELS
-weights[which(weights$combo == "1 1 3"),'weights'] <- 0.0102/weights[which(weights$combo == "1 1 3"),'Proportion']
-weights[which(weights$combo == "1 2 3"),'weights'] <- 0.0110/weights[which(weights$combo == "1 2 3"),'Proportion']
-weights[which(weights$combo == "1 3 3"),'weights'] <- 0.0097/weights[which(weights$combo == "1 3 3"),'Proportion']
-weights[which(weights$combo == "1 4 3"),'weights'] <- 0.0085/weights[which(weights$combo == "1 4 3"),'Proportion']
-weights[which(weights$combo == "1 5 3"),'weights'] <- 0.0057/weights[which(weights$combo == "1 5 3"),'Proportion']
-weights[which(weights$combo == "1 6 3"),'weights'] <- 0.0051/weights[which(weights$combo == "1 6 3"),'Proportion']
-
-### FEMALE - AGE GROUPS - BRUSSELS
-weights[which(weights$combo == "2 1 3"),'weights'] <- 0.0110/weights[which(weights$combo == "2 1 3"),'Proportion']
-weights[which(weights$combo == "2 2 3"),'weights'] <- 0.0112/weights[which(weights$combo == "2 2 3"),'Proportion']
-weights[which(weights$combo == "2 3 3"),'weights'] <- 0.0095/weights[which(weights$combo == "2 3 3"),'Proportion']
-weights[which(weights$combo == "2 4 3"),'weights'] <- 0.0080/weights[which(weights$combo == "2 4 3"),'Proportion']
-weights[which(weights$combo == "2 5 3"),'weights'] <- 0.0061/weights[which(weights$combo == "2 5 3"),'Proportion']
-weights[which(weights$combo == "2 6 3"),'weights'] <- 0.0077/weights[which(weights$combo == "2 6 3"),'Proportion']
-
-weights$combo3 <- as.factor(paste(weights$waves,weights$age_w, weights$gender_w,weights$region_w))
-
-df_long$combo_y2 <- as.factor(paste(df_long$wave, df_long$age_w, df_long$gender_w,df_long$region_w))
-
-df_long <- as.data.frame(df_long)
-df_long[,'weights'] <- weights$weights[match(df_long[,'combo_y2'], weights$combo3)]
-
 mean_df <- df_long %>%
   dplyr::group_by(wave, item) %>%
   dplyr::summarise(
@@ -1900,11 +2082,15 @@ items_with_lines <- mean_df %>%
 mean_df_lines <- mean_df %>%
   filter(item %in% items_with_lines)
 
+mean_df$item <- as.factor(mean_df$item)
 mean_df <- mean_df %>%
-  mutate(item_label = col_labels[as.character(item)])
+  mutate(item_label = col_labels[item])
 mean_df[which(mean_df$n<100),] <- NA
+
+mean_df_lines$item <- as.factor(mean_df_lines$item)
 mean_df_lines <- mean_df_lines %>%
-  mutate(item_label = col_labels[as.character(item)])
+  mutate(item_label = col_labels[item])
+
 mean_df_lines[which(mean_df_lines$n<100),] <- NA
 
 p <- ggplot(mean_df,
@@ -1915,7 +2101,7 @@ p <- ggplot(mean_df,
               shape = item,
               group = item,
               text = paste0(
-                "Item: ", col_labels,
+                "Item: ", item_label,
                 "<br>Code: ", item,
                 "<br>Wave: ", wave,
                 "<br>Weighted mean: ", round(mean_w, 2),
@@ -1959,7 +2145,8 @@ fig %>% plotly::layout(
   annotations = list(list(
     text = paste0(
       "Weighted; total longitudinal N = ", n_longitudinal,
-      "<br>with at least 6/9 participation waves"
+      "<br>with at least ",
+      aantalwaves,"/",maxwaves," waves"
     ),
     x = 0, y = 0,                 # keep INSIDE paper
     xref = "paper", yref = "paper",
@@ -1973,11 +2160,6 @@ fig %>% plotly::layout(
 ```
 
 ## Sociodemographics
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
-
-plot_list[[j]]
-
-```
 
 ## Weights
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.5, dpi=300}
@@ -2042,3 +2224,18 @@ genderweights <- top_gender_by_wave %>%
 ggarrange(ageweights, regionweights, genderweights, ncol = 3, nrow = 1)
 ```
 ::: 
+
+<details>
+<summary>Click to see which categories were excluded</summary>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, out.width="100%",fig.asp=0.6, dpi=300}
+
+print('Following groups were excluded from the dataset due to n<40 participants:')
+print('Wave-Regions:')
+removedregion
+print('Wave-Age group:')
+removedage
+print('Wave-Gender:')
+removedgender
+
+```
+</details> 

@@ -10,5 +10,6 @@ This section provides visualizations of key indicators across time.
 Available dashboards include:
 
 - [Follow-up survey 2025](FU2025.qmd)
+- [Longitudinal](Longitudinal.qmd)
 
 These dashboards are based on aggregated or synthetic data and are intended for exploration and communication, not for detailed statistical inference.
