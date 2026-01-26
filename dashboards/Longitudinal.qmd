@@ -182,6 +182,13 @@ The procedure:
 
 - For data quality and reliability, sociodemographic subgroups with **fewer than 40 participants within a wave** were excluded from analyses. Weighted mean scores were then calculated for each item at each wave, and vizualised as longitudinal trends. Alongside this, we checked whether the sociodemographic composition of the sample differed across waves using descriptive statistics and chi-square tests (see tab 'Sociodemographics').
 
+<details>
+<summary>Which variables are not included?</summary>
+
+
+
+</details> 
+
 # Mental health
 
 ## Basic Psychological Needs
@@ -634,6 +641,23 @@ fig %>% plotly::layout(
     font = list(family = "Arial", size = 10)
   ))
 )
+# 
+# fig %>% layout(
+#   images = list(
+#     list(
+#       source = 'logo.png',
+#       xref = "paper",
+#       yref = "paper",
+#       x = 0.1,
+#       y = 0.1,
+#       sizex = 0.1,
+#       sizey = 0.1,
+#       xanchor = "right",
+#       yanchor = "bottom"
+#     )
+#   )
+# )
+
 
 ```
 
