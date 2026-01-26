@@ -147,6 +147,90 @@
     "text": "The procedure:"
   },
   {
+    "objectID": "dashboards/Longitudinal.html#basic-psychological-needs",
+    "href": "dashboards/Longitudinal.html#basic-psychological-needs",
+    "title": "Longitudinal",
+    "section": "1.1 Basic Psychological Needs",
+    "text": "1.1 Basic Psychological Needs\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\" \"4Brussels\"\n [7] \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"1-30–39\"\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#concerns",
+    "href": "dashboards/Longitudinal.html#concerns",
+    "title": "Longitudinal",
+    "section": "1.2 Concerns",
+    "text": "1.2 Concerns\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\" \"4Brussels\"\n [7] \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\" \"5-20–29\"\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#well-being",
+    "href": "dashboards/Longitudinal.html#well-being",
+    "title": "Longitudinal",
+    "section": "1.3 Well-being",
+    "text": "1.3 Well-being\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\"\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#ill-being",
+    "href": "dashboards/Longitudinal.html#ill-being",
+    "title": "Longitudinal",
+    "section": "1.4 Ill-being",
+    "text": "1.4 Ill-being\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\" \"5-20–29\"\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#physical-activity",
+    "href": "dashboards/Longitudinal.html#physical-activity",
+    "title": "Longitudinal",
+    "section": "1.5 Physical activity",
+    "text": "1.5 Physical activity\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"1-30–39\" \"1-40–49\" \"1-50–59\"\n[8] \"1-60–69\" \"1-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\n[1] \"1-Male\""
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#vaccin",
+    "href": "dashboards/Longitudinal.html#vaccin",
+    "title": "Longitudinal",
+    "section": "2.1 Vaccin",
+    "text": "2.1 Vaccin\n\n2.1.1 Vaccin motivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"2-20–29\" \"2-30–39\" \"2-40–49\" \"2-50–59\" \"2-60–69\" \"2-70+\"   \"4-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\n[1] \"2-Male\"   \"2-Female\"\n\n\n\n\n\n2.1.2 Vaccin amotivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"2-20–29\" \"2-30–39\" \"2-40–49\" \"2-50–59\" \"2-60–69\" \"2-70+\"   \"4-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\n[1] \"2-Male\"   \"2-Female\""
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#hygiene-behaviors",
+    "href": "dashboards/Longitudinal.html#hygiene-behaviors",
+    "title": "Longitudinal",
+    "section": "2.2 Hygiene behaviors",
+    "text": "2.2 Hygiene behaviors\n\n2.2.1 COVID adherence\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"5-30–39\"\n [8] \"6-30–39\" \"1-70+\"   \"5-70+\"   \"6-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)\n\n\n\n\n\n2.2.2 COVID motivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"1-30–39\"\n [8] \"2-30–39\" \"3-30–39\" \"4-30–39\" \"5-30–39\" \"6-30–39\" \"1-40–49\" \"4-40–49\"\n[15] \"6-40–49\" \"1-70+\"   \"3-70+\"   \"4-70+\"   \"5-70+\"   \"6-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)\n\n\n\n\n\n2.2.3 COVID amotivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"1-30–39\"\n [8] \"2-30–39\" \"3-30–39\" \"4-30–39\" \"5-30–39\" \"6-30–39\" \"1-40–49\" \"4-40–49\"\n[15] \"6-40–49\" \"1-70+\"   \"3-70+\"   \"4-70+\"   \"5-70+\"   \"6-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#risk-perception",
+    "href": "dashboards/Longitudinal.html#risk-perception",
+    "title": "Longitudinal",
+    "section": "2.3 Risk perception",
+    "text": "2.3 Risk perception\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#memory",
+    "href": "dashboards/Longitudinal.html#memory",
+    "title": "Longitudinal",
+    "section": "2.4 Memory",
+    "text": "2.4 Memory\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#government-perception",
+    "href": "dashboards/Longitudinal.html#government-perception",
+    "title": "Longitudinal",
+    "section": "3.1 Government perception",
+    "text": "3.1 Government perception\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"7-20–29\" \"3-30–39\" \"4-30–39\"\n [8] \"5-30–39\" \"6-30–39\" \"7-30–39\" \"3-40–49\" \"4-40–49\" \"4-50–59\" \"4-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#populism",
+    "href": "dashboards/Longitudinal.html#populism",
+    "title": "Longitudinal",
+    "section": "3.2 Populism",
+    "text": "3.2 Populism\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
+    "objectID": "dashboards/Longitudinal.html#democracy-perception",
+    "href": "dashboards/Longitudinal.html#democracy-perception",
+    "title": "Longitudinal",
+    "section": "3.3 Democracy perception",
+    "text": "3.3 Democracy perception\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Societal Needs Data Hub",
@@ -362,103 +446,5 @@
     "title": "Dashboards",
     "section": "",
     "text": "This section provides visualizations of key indicators across time.\nAvailable dashboards include:\n\nFollow-up survey 2025\nLongitudinal\n\nThese dashboards are based on aggregated or synthetic data and are intended for exploration and communication, not for detailed statistical inference."
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#basic-psychological-needs",
-    "href": "dashboards/Longitudinal.html#basic-psychological-needs",
-    "title": "Longitudinal",
-    "section": "1.1 Basic Psychological Needs",
-    "text": "1.1 Basic Psychological Needs\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\" \"4Brussels\"\n [7] \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"1-30–39\"\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#concerns",
-    "href": "dashboards/Longitudinal.html#concerns",
-    "title": "Longitudinal",
-    "section": "1.2 Concerns",
-    "text": "1.2 Concerns\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\" \"4Brussels\"\n [7] \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\" \"5-20–29\"\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#well-being",
-    "href": "dashboards/Longitudinal.html#well-being",
-    "title": "Longitudinal",
-    "section": "1.3 Well-being",
-    "text": "1.3 Well-being\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\"\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#ill-being",
-    "href": "dashboards/Longitudinal.html#ill-being",
-    "title": "Longitudinal",
-    "section": "1.4 Ill-being",
-    "text": "1.4 Ill-being\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\" \"5-20–29\"\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#physical-activity",
-    "href": "dashboards/Longitudinal.html#physical-activity",
-    "title": "Longitudinal",
-    "section": "1.5 Physical activity",
-    "text": "1.5 Physical activity\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"1-30–39\" \"1-40–49\" \"1-50–59\"\n[8] \"1-60–69\" \"1-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\n[1] \"1-Male\""
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#vaccin",
-    "href": "dashboards/Longitudinal.html#vaccin",
-    "title": "Longitudinal",
-    "section": "2.1 Vaccin",
-    "text": "2.1 Vaccin\n\n2.1.1 Vaccin motivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"2-20–29\" \"2-30–39\" \"2-40–49\" \"2-50–59\" \"2-60–69\" \"2-70+\"   \"4-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\n[1] \"2-Male\"   \"2-Female\"\n\n\n\n\n\n2.1.2 Vaccin amotivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n[1] \"2-20–29\" \"2-30–39\" \"2-40–49\" \"2-50–59\" \"2-60–69\" \"2-70+\"   \"4-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\n[1] \"2-Male\"   \"2-Female\""
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#hygene-behaviors",
-    "href": "dashboards/Longitudinal.html#hygene-behaviors",
-    "title": "Longitudinal",
-    "section": "2.2 Hygene behaviors",
-    "text": "2.2 Hygene behaviors\n\n2.2.1 COVID adherence\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"5-30–39\"\n [8] \"6-30–39\" \"1-70+\"   \"5-70+\"   \"6-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)\n\n\n\n\n\n2.2.2 COVID motivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"1-30–39\"\n [8] \"2-30–39\" \"3-30–39\" \"4-30–39\" \"5-30–39\" \"6-30–39\" \"1-40–49\" \"4-40–49\"\n[15] \"6-40–49\" \"1-70+\"   \"3-70+\"   \"4-70+\"   \"5-70+\"   \"6-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)\n\n\n\n\n\n2.2.3 COVID amotivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"1-30–39\"\n [8] \"2-30–39\" \"3-30–39\" \"4-30–39\" \"5-30–39\" \"6-30–39\" \"1-40–49\" \"4-40–49\"\n[15] \"6-40–49\" \"1-70+\"   \"3-70+\"   \"4-70+\"   \"5-70+\"   \"6-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)\n\n\n\n\n\n2.2.4 COVID outcome expectation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"2-20–29\" \"3-20–29\" \"4-20–29\" \"2-30–39\" \"3-30–39\" \"4-30–39\" \"2-40–49\"\n [8] \"3-40–49\" \"4-40–49\" \"2-70+\"   \"3-70+\"   \"4-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\n[1] \"2-Male\" \"3-Male\" \"4-Male\"\n\n\n\n\n\n2.2.5 COVID self-efficacy\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"2-20–29\" \"3-20–29\" \"4-20–29\" \"2-30–39\" \"3-30–39\" \"4-30–39\" \"2-40–49\"\n [8] \"3-40–49\" \"4-40–49\" \"2-70+\"   \"3-70+\"   \"4-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\n[1] \"2-Male\" \"3-Male\" \"4-Male\""
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#risk-perception",
-    "href": "dashboards/Longitudinal.html#risk-perception",
-    "title": "Longitudinal",
-    "section": "2.3 Risk perception",
-    "text": "2.3 Risk perception\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#memory",
-    "href": "dashboards/Longitudinal.html#memory",
-    "title": "Longitudinal",
-    "section": "2.4 Memory",
-    "text": "2.4 Memory\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#post-crisis",
-    "href": "dashboards/Longitudinal.html#post-crisis",
-    "title": "Longitudinal",
-    "section": "2.5 Post crisis",
-    "text": "2.5 Post crisis\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"4-20–29\" \"8-20–29\" \"9-20–29\" \"4-30–39\" \"8-30–39\" \"9-30–39\" \"4-40–49\"\n [8] \"8-40–49\" \"9-40–49\" \"4-60–69\" \"8-60–69\" \"9-60–69\" \"4-70+\"   \"8-70+\"  \n[15] \"9-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\n[1] \"4-Male\" \"8-Male\" \"9-Male\""
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#government-perception",
-    "href": "dashboards/Longitudinal.html#government-perception",
-    "title": "Longitudinal",
-    "section": "3.1 Government perception",
-    "text": "3.1 Government perception\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"7-20–29\" \"3-30–39\" \"4-30–39\"\n [8] \"5-30–39\" \"6-30–39\" \"7-30–39\" \"3-40–49\" \"4-40–49\" \"4-50–59\" \"4-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#populism",
-    "href": "dashboards/Longitudinal.html#populism",
-    "title": "Longitudinal",
-    "section": "3.2 Populism",
-    "text": "3.2 Populism\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#democracy-perception",
-    "href": "dashboards/Longitudinal.html#democracy-perception",
-    "title": "Longitudinal",
-    "section": "3.3 Democracy perception",
-    "text": "3.3 Democracy perception\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
-  },
-  {
-    "objectID": "dashboards/Longitudinal.html#hygiene-behaviors",
-    "href": "dashboards/Longitudinal.html#hygiene-behaviors",
-    "title": "Longitudinal",
-    "section": "2.2 Hygiene behaviors",
-    "text": "2.2 Hygiene behaviors\n\n2.2.1 COVID adherence\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"5-30–39\"\n [8] \"6-30–39\" \"1-70+\"   \"5-70+\"   \"6-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)\n\n\n\n\n\n2.2.2 COVID motivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"1-30–39\"\n [8] \"2-30–39\" \"3-30–39\" \"4-30–39\" \"5-30–39\" \"6-30–39\" \"1-40–49\" \"4-40–49\"\n[15] \"6-40–49\" \"1-70+\"   \"3-70+\"   \"4-70+\"   \"5-70+\"   \"6-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)\n\n\n\n\n\n2.2.3 COVID amotivation\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\n [1] \"1-20–29\" \"2-20–29\" \"3-20–29\" \"4-20–29\" \"5-20–29\" \"6-20–29\" \"1-30–39\"\n [8] \"2-30–39\" \"3-30–39\" \"4-30–39\" \"5-30–39\" \"6-30–39\" \"1-40–49\" \"4-40–49\"\n[15] \"6-40–49\" \"1-70+\"   \"3-70+\"   \"4-70+\"   \"5-70+\"   \"6-70+\"  \n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
   }
 ]

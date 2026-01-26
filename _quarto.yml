@@ -12,12 +12,10 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Documentation"
+      - text: "Projects"
         href: documentation/index.qmd
-      - text: "Data Access"
+      - text: "Data Access Form"
         href: data/download.qmd
-      - text: "Citation"
-        href: citation.qmd
     right:  
       - text: "Dashboards"
         href: dashboards/index.qmd
