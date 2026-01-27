@@ -144,7 +144,7 @@
     "href": "dashboards/Longitudinal.html",
     "title": "Longitudinal",
     "section": "",
-    "text": "The procedure:"
+    "text": "The analytical procedure:"
   },
   {
     "objectID": "dashboards/Longitudinal.html#basic-psychological-needs",
@@ -220,15 +220,15 @@
     "objectID": "dashboards/Longitudinal.html#populism",
     "href": "dashboards/Longitudinal.html#populism",
     "title": "Longitudinal",
-    "section": "3.2 Populism",
-    "text": "3.2 Populism\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+    "section": "3.1 Populism",
+    "text": "3.1 Populism\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
   },
   {
     "objectID": "dashboards/Longitudinal.html#democracy-perception",
     "href": "dashboards/Longitudinal.html#democracy-perception",
     "title": "Longitudinal",
-    "section": "3.3 Democracy perception",
-    "text": "3.3 Democracy perception\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
+    "section": "3.2 Democracy perception",
+    "text": "3.2 Democracy perception\n\nLongitudinalSociodemographicsWeights\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClick to see which categories were excluded\n\n\n\n[1] \"Following groups were excluded from the dataset due to n&lt;40 participants:\"\n\n\n[1] \"Wave-Regions:\"\n\n\n [1] \"1Wallonia\" \"2Wallonia\" \"4Wallonia\" \"1Brussels\" \"2Brussels\" \"3Brussels\"\n [7] \"4Brussels\" \"5Brussels\" \"6Brussels\" \"7Brussels\" \"8Brussels\" \"9Brussels\"\n\n\n[1] \"Wave-Age group:\"\n\n\ncharacter(0)\n\n\n[1] \"Wave-Gender:\"\n\n\ncharacter(0)"
   },
   {
     "objectID": "index.html",

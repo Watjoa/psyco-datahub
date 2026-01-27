@@ -9,19 +9,6 @@ format:
     number-sections: true
 ---
 
-<style>
-.card {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 1.4rem 1.6rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  gap: .6rem;
-}
-</style>
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo = FALSE,
@@ -195,8 +182,6 @@ df2022long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/Fol
 
 - To study participants' psychological functioning over time, we combined data from nine survey waves collected between 2020 and 2025 (5 annual, 4 COVID-specific):
 
-<div class="card">
-
   1. *COVID wave I* (*N* = 10 331): March - April 2020
   
   2. *COVID wave II* (*N* = 17 157): September - November 2020
@@ -214,8 +199,6 @@ df2022long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/Fol
   8. *End of 2024* (*N* = 15 065): December 2024
   
   9. *End of 2025* (*N* = 10 296): December 2025
-  
-</div>
 
 - Only respondents who participated in a sufficient number of waves were included (**(#waves/2)+1**), ensuring that the trends reflect genuine longitudinal change rather than one-off responses. 
 
@@ -863,7 +846,7 @@ item_colors <- c(
   zorgen_oekraine          = "#7B2CBF",
   zorgen_middenoosten      = "#5A189A"
 )
-names(item_colors) <- codenames
+
 # col_labels <- c(  "I worried about how the current situation will develop",
 #                   "I worried about my health",
 #                   "I worried about the health of people close to me",
@@ -1392,9 +1375,6 @@ item_colors <- c(
   levenstevredenheid = "#2C7FB8",  # calm, reflective blue
   vitaliteit         = "#52B788"   # energetic but not neon green
 )
-names(item_colors) <- codenames
-
-
 ```
 
 ## Longitudinal
@@ -1952,7 +1932,7 @@ item_colors <- c(
   depr_5 = "#4A4E69",  # Lonely
   depr_6 = "#22223B"   # Feeling disliked by others (darkest)
 )
-names(item_colors) <- codenames
+
 
 ```
 
@@ -2471,7 +2451,6 @@ col_labels <- cols
 item_colors <- c(
   fys_activiteit = "#2EC4B6"  # energetic teal-green
 )
-names(item_colors) <- codenames
 # col_labels <- c(  "I worried about how the current situation will develop",
 #                   "I worried about my health",
 #                   "I worried about the health of people close to me",
@@ -3036,7 +3015,7 @@ item_colors <- c(
   vaccin_idmot3 = "#2D6A4F",  # Personal meaning
   vaccin_idmot4 = "#1B4332"   # Value alignment (deepest internalization)
 )
-names(item_colors) <- codenames
+
 ```
 
 ## Longitudinal
@@ -3620,7 +3599,7 @@ item_colors <- c(
   vaccamot_zelfeff4 = "#2F2F2F"   # Lack of access to information
 )
 
-names(item_colors) <- codenames
+
 ```
 
 ## Longitudinal
@@ -4175,7 +4154,7 @@ item_colors <- c(
   # Risk behavior – warm contrast
   nauw_contact_1              = "#E76F51"   # close contact with others
 )
-names(item_colors) <- codenames
+
 ```
 
 ## Longitudinal
@@ -4751,7 +4730,7 @@ item_colors <- c(
   introj3 = "#7B2CBF",  # Anticipated shame
   introj4 = "#5A189A"   # Self-satisfaction
 )
-names(item_colors) <- codenames
+
 
 ```
 
@@ -5295,7 +5274,7 @@ item_colors <- c(
   verzet = "#9B2226"   # Active non-compliance
 )
 
-names(item_colors) <- codenames
+
 ```
 
 ## Longitudinal
@@ -5833,7 +5812,7 @@ item_colors <- c(
   pop_severity   = "#E6550D"   # population severity (dark)
 )
 
-names(item_colors) <- codenames
+
 ```
 
 ## Longitudinal
@@ -6428,7 +6407,7 @@ item_colors <- c(
   memo_neut_2  = "#CED4DA"   # staying at home
 )
 
-names(item_colors) <- codenames
+
 ```
 
 ## Longitudinal
@@ -8549,7 +8528,7 @@ item_colors <- c(
   populism_4 = "#C2410C",  # people over politicians
   populism_5 = "#9A3412"   # rejection of political compromise
 )
-names(item_colors) <- codenames
+
 ```
 
 ## Longitudinal
@@ -9073,8 +9052,6 @@ col_labels <- c(
 item_colors <- c(
   demo_perceptie_1 = "#1F4E79"  # institutional, calm blue
 )
-
-names(item_colors) <- codenames
 ```
 
 ## Longitudinal
@@ -9579,4 +9556,5 @@ removedgender
 
 ```
 </details> 
+
 
