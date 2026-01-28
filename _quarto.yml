@@ -18,7 +18,11 @@ website:
         href: data/download.qmd
     right:  
       - text: "Dashboards"
-        href: dashboards/index.qmd
+        menu:
+        - text: "Follow-up 2025"
+          href: dashboards/FU2025.qmd
+        - text: "Longitudinal"
+          href: dashboards/Longitudinal.qmd
       - text: "Publications"
         href: publications.qmd
       - text: "Outreach"
