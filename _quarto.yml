@@ -19,8 +19,10 @@ website:
     right:  
       - text: "Dashboards"
         menu:
+        - text: "Motivation Barometer"
         - text: "Follow-up 2025"
           href: dashboards/FU2025.qmd
+        - text: "—"
         - text: "Longitudinal"
           href: dashboards/Longitudinal.qmd
       - text: "Publications"
@@ -30,7 +32,7 @@ website:
       - icon: github
         href: "https://github.com/"
         aria-label: GitHub
-
+    
   page-footer:
     center: "© 2026 - Centre for Developmental and Motivation Psychology (COM)"
         
