@@ -10,13 +10,15 @@ format:
 
 ## About this dataset
 
-The Motivation Barometer & THRIVE dataset brings together repeated follow-up surveys with a large panel of participants in Belgium. It follows people’s motivation, psychological functioning, and societal attitudes during and after the COVID-19 crisis and across broader societal challenges.
+The Motivation Barometer & THRIVE dataset brings together both (sequential) **cross-sectional as repeated follow-up** surveys with a large panel of participants in Belgium. It follows people’s motivation, psychological functioning, and societal attitudes during and after the COVID-19 crisis and across broader societal challenges.
 
 - All variables with items can be found in the [codebook](codebook.qmd)
 - A total overview of variables can be found [here](#total-overview-of-variables)
-- See all variables by year [here](#variables-by-year)
+- See all variables by follow-up survey [here](#variables-by-follow-up-survey)
 
 ## Total overview of variables
+
+This is a list of all variables and information included in the total dataset (including both cross-sectional as longitudinal assessments). To see the list of variables included in longitudinal follow-up surveys, click [here](#variables-by-year)
 
 ### 1. Core psychological processes
 
@@ -44,30 +46,28 @@ The Motivation Barometer & THRIVE dataset brings together repeated follow-up sur
   - **_Self-efficacy_**: physical distance, hand washing, face covering, pcr test, social contact, telework, ventilatino (duration and effort)
 
 - **Well-being and Ill-being**
-  - Anxiety
+  - Life satisfaction
+  - Vitality and depletion
+  - Mindfulness
+  - Emotion-Regulation
+  - Novelty
+  - Sleep duration
+  - Anxiety and Depression
   - Aspiration (importance and in practice, post-crisis)
   - Boredom
   - Climate anxiety
   - Concerns: health, significant others, situation, finances, job, climate change, war, new COVID-19 variants
-  - Depression
-  - Emotion-Regulation
-  - Life satisfaction
   - Loneliness
-  - Mindfulness
-  - Novelty
   - Parental stress
-  - Sleep duration
-  - Vitality and depletion
 
 ### 2. Behavior and behavioral intentions
 
 - **Behavior**
-  - adherence to the measures (keeping physical distance, hand washing, avoiding social contect, wearing mouthmask, working from home, ventilation)
-  - planned adherence
-  - taking part in a protest
+  - Adherence to the measures (keeping physical distance, hand washing, avoiding social contect, wearing mouthmask, working from home, ventilation)
+  - Planned adherence
+  - Taking part in a protest
 
 - **Intention to climate activism**
-
 
 ### 3. Perceptions of crisis and society
 
@@ -135,10 +135,19 @@ The Motivation Barometer & THRIVE dataset brings together repeated follow-up sur
   - Number of vaccination doses (A - EEE, source: Sciensano)
   - Stringency Index (source: Oxford Govermental Tool)
   
-## Variables by year
+## Variables by follow-up survey
 
-<details open>
-<summary><strong>2025: Post-crisis adjustment & regimes</strong></summary>
+::: {.callout-note collapse="true" appearance="simple"}
+## 2025: Post-crisis adjustment & regimes
+
+### Core battery:
+
+- **Memory** about COVID-19 crisis  
+
+- **Trust**  
+  Populism  
+  Trust towards politicians, healthcare workers, social media, traditional media, scientists  
+  Conspiracy beliefs
 
 - **Basic psychological needs**  
   Autonomy, competence, and relatedness satisfaction, unfulfillment and frustration  
@@ -149,31 +158,61 @@ The Motivation Barometer & THRIVE dataset brings together repeated follow-up sur
   Vitality & life satisfaction  
   Sleep quality  
   Concerns
+  
+### Specific modules
+
+- **Youth images**  
+  Both in perspective of general youth as own child (younger than 25)
+
+- **Post crisis**  
+  Identity development and post-traumatic growth
+
+- **Capabilities**  
 
 - **Governmental communication style**  
   The development of a circumplex pattern
-
-- **Societal attitudes**  
-  anomie 
   
 - **Old and new crises**  
   Intention to adhere to COVID-19 and climate-related measures and related (lack of) motivation  
-  Risk perception COVID-19 and climate crisis  
+  Risk perception COVID-19, climate crisis and societal crisis in general. 
   Intented usage of COVID-19 hygiene behaviors at work and at family occassions when feeling sick
-  
-</details>
 
-<details>
-<summary><strong>2024: Post-crisis adjustment & regimes</strong></summary>
+---
 
-- **Basic psychological needs (personal & group-based)**  
-  Autonomy, competence, and relatedness satisfaction and frustration; group-based needs.
+See overview of responses in [Follow-Up 2025 dashboard](dashboards/FU2025.qmd)
+
+See overview of longitudinal responses in [Longitudinal dashboard](dashboards/Longitudinal.qmd)
+
+:::
+
+::: {.callout-note collapse="true" appearance="simple"}
+## 2024: Post-crisis adjustment & regimes
+
+### Core battery:
+
+- **Memory** about COVID-19 crisis  
+
+- **Trust**  
+  Populism  
+  Trust towards politicians, healthcare workers, social media, traditional media, scientists  
+  Conspiracy beliefs
+
+- **Basic psychological needs**  
+  Autonomy, competence, and relatedness satisfaction and frustration  
+  Group-based needs 
 
 - **Well-being and ill-being**  
-  Anxiety, depression, depletion, vitality, life satisfaction, sleep quality, concerns, loneliness, flourishing/mental health (MHC), novelty, self-compassion, post-crisis and post-lockdown perceptions.
+  Anxiety, depression, depletion  
+  Vitality & life satisfaction  
+  Sleep quality  
+  Concerns  
+  Flourishing/mental health (MHC)  
+  self-compassion  
 
-- **Perceptions of the COVID-19 crisis & future crises**  
-  Memories of the crisis, post-crisis perception, approach to future crises, risk perception of future crises.
+- **Post crisis**  
+  Identity development and post-traumatic growth
+
+### Specific modules:
 
 - **Democratic attitudes and societal views**  
   Perceptions of democracy and autocracy, anomie, populist attitudes, conspiracy beliefs (incl. corona), views on experts and government.
@@ -184,22 +223,16 @@ The Motivation Barometer & THRIVE dataset brings together repeated follow-up sur
 - **Social identities & group membership**  
   Identity centrality, national and government identification, social group variables.
 
-- **Sociodemographics**  
-  Age, gender, education, work situation, socio-economic and financial situation, province, nationality, number of children, partner status, political orientation, language, consent, and survey metadata.
-</details>
+---
 
-<details>
+<!-- See overview of responses in [Follow-Up 2025 dashboard](dashboards/FU2025.qmd) -->
 
-<summary><strong>2022: COVID transition period, climate concern & vaccination attitudes</strong></summary>
+See overview of longitudinal responses in [Longitudinal dashboard](dashboards/Longitudinal.qmd)
 
-- **Basic psychological needs**  
-  Satisfaction and frustration of autonomy, competence, relatdness 
+:::
 
-- **Well-being and ill-being**  
-  Anxiety, depression, depletion  
-  Vitality & life satisfaction  
-  Sleep quality & sleep duration  
-  Concerns and irritations (e.g., annoyance by others)
+::: {.callout-note collapse="true" appearance="simple"}
+## 2022: COVID transition period, climate concern & vaccination attitudes
 
 - **Crisis perceptions & societal attitudes**  
   Attitudes toward **obligatory vaccination**  
@@ -210,7 +243,7 @@ The Motivation Barometer & THRIVE dataset brings together repeated follow-up sur
 - **Vaccination behaviour, intentions & motivation**  
   Vaccination status (dose count: 1–4 doses, one/two doses)  
   Intention for yearly booster  
-  Beliefs about vaccine **efficacy** & **safety**  
+  Beliefs about vaccine efficacy & safety
   Motivation for vaccination (SDT-based): External motivation, Identified motivation, Amotivation (defiance, distrust, self-efficacy)  
 
 - **Perceptions of experts, government & institutions**  
@@ -221,8 +254,99 @@ The Motivation Barometer & THRIVE dataset brings together repeated follow-up sur
   Protective behaviour and adherence  
   (e.g., avoiding interactions, mask use, informing others)
 
-- **Sociodemographics & personal background**  
-  Age, gender, education, region/province, work situation, partner status, number of children, Belgian region of living, religion, socio-economic status & financial situation, comorbidities, recent infection (COVID-19)  
+- **Basic psychological needs**  
+  Autonomy, competence, and relatedness satisfaction and frustration  
+  Group-based needs 
 
-</details>
+- **Well-being and ill-being**  
+  Anxiety, depression, depletion  
+  Vitality & life satisfaction  
+  Sleep quality  
+  Concerns  
+
+---
+
+<!-- See overview of responses in [Follow-Up 2025 dashboard](dashboards/FU2025.qmd) -->
+
+See overview of longitudinal responses in [Longitudinal dashboard](dashboards/Longitudinal.qmd)
+
+:::
+
+::: {.callout-note collapse="true" appearance="simple"}
+## 2022: Post-COVID
+
+[to be updated]
+
+---
+
+<!-- See overview of responses in [Follow-Up 2025 dashboard](dashboards/FU2025.qmd) -->
+
+See overview of longitudinal responses in [Longitudinal dashboard](dashboards/Longitudinal.qmd)
+
+:::
+
+::: {.callout-note collapse="true" appearance="simple"}
+## 2021: December
+
+[to be updated]
+
+---
+
+<!-- See overview of responses in [Follow-Up 2025 dashboard](dashboards/FU2025.qmd) -->
+
+See overview of longitudinal responses in [Longitudinal dashboard](dashboards/Longitudinal.qmd)
+
+:::
+
+::: {.callout-note collapse="true" appearance="simple"}
+## 2021: COVID wave III
+
+[to be updated]
+
+---
+
+<!-- See overview of responses in [Follow-Up 2025 dashboard](dashboards/FU2025.qmd) -->
+
+See overview of longitudinal responses in [Longitudinal dashboard](dashboards/Longitudinal.qmd)
+
+:::
+
+::: {.callout-note collapse="true" appearance="simple"}
+## 2020: December
+
+[to be updated]
+
+---
+
+<!-- See overview of responses in [Follow-Up 2025 dashboard](dashboards/FU2025.qmd) -->
+
+See overview of longitudinal responses in [Longitudinal dashboard](dashboards/Longitudinal.qmd)
+
+:::
+
+::: {.callout-note collapse="true" appearance="simple"}
+## 2020: COVID wave II
+
+[to be updated]
+
+---
+
+<!-- See overview of responses in [Follow-Up 2025 dashboard](dashboards/FU2025.qmd) -->
+
+See overview of longitudinal responses in [Longitudinal dashboard](dashboards/Longitudinal.qmd)
+
+:::
+
+::: {.callout-note collapse="true" appearance="simple"}
+## 2020: COVID wave I
+
+[to be updated]
+
+---
+
+<!-- See overview of responses in [Follow-Up 2025 dashboard](dashboards/FU2025.qmd) -->
+
+See overview of longitudinal responses in [Longitudinal dashboard](dashboards/Longitudinal.qmd)
+
+:::
 

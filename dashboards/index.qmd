@@ -2,7 +2,8 @@
 title: "Dashboards"
 format:
   html:
-    toc: true
+    toc: false
+    page-layout: full
 ---
 
 This section provides visualizations of key indicators across time.

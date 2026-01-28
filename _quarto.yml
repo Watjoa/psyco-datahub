@@ -4,9 +4,9 @@ project:
   
 
 website:
-  title: "Societal Needs Data Hub"
   favicon: favicon_io/favicon-32x32.png
   navbar:
+    logo: logodh_circle.png
     background: primary
     search: true
     left:

@@ -1,9 +1,9 @@
 ---
 format:
   html:
-    toc: false
     page-layout: full
     smooth-scroll: true
+    toc-depth: 1
 ---
 
 <style>
@@ -41,23 +41,25 @@ format:
 }
 </style>
 
+# Welcome
+
 ::: {.columns style="display:flex; gap:1em;"}
 ::: {.column width="65%"}
-
-# Societal Needs Data Hub
 
 > Welcome to the Societal Needs Data Hub, a central repository for large-scale datasets at the intersection of psychology and society.
 <br><br>
 The Data Hub’s mission is to bridge psychological science with societal challenges by fostering collaboration across research domains, practitioners, and policy actors, an essential endeavour both in times of crisis and for society’s long-term resilience.
 :::
-::: {.column width="25%"}
-<center>![Official logo of the Motivation Barometer](logo.png)</center>
+::: {.column width="35%"}
+<center>![](logodh.png)</center>
 :::
 :::
 
-## About
+<br> 
 
-The **PsySoc Data Hub** brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them. It offers:
+# About
+
+The **Societal Needs Data Hub** brings together a growing collection of complementary datasets that offer insight into how people navigate societal challenges, adapt over time, and experience the conditions around them. It offers:
 
 - 📊 **A growing collection of high-quality datasets** 
 - 🧠 Documenting **central themes** such as motivation, need satisfaction and frustration, well-being, mental health, trust in institutions, adherence, and risk perception, along with the full catalogue of publications derived from these datasets.
@@ -65,30 +67,17 @@ The **PsySoc Data Hub** brings together a growing collection of complementary da
 - 🛡️ **GDPR-compliant controlled access** for sensitive data  
 - 🧪 **Synthetic datasets**, tutorials, and reproducible examples for learning and transparent analysis  
 
-### Current datasets
-
-#### Motivation Barometer & THRIVE Datasets  
-
-At the heart of the hub lies the **Motivation Barometer**, a landmark monitoring project that followed the psychological functioning of the Belgian population from the earliest days of the COVID-19 crisis. Across more than 110 waves and over 320,000 participants, the project tracked motivation, psychological needs, risk perception, adherence, well-being, and trust.
-
-The **THRIVE** project builds on this infrastructure, extending it beyond the pandemic with new longitudinal waves and additional qualitative and quantitative data. Together, these efforts create a rich, theory-driven resource for studying resilience, vulnerability, democratic attitudes, communication, and long-term recovery.
-
-Both datasets are integrated into one cohesive data ecosystem, allowing researchers to seamlessly explore trends over time, compare modules, and link psychological indicators to societal developments.
-
-#### Louvain Foundation Dataset  
-
-The **Louvain Foundation** dataset follows more than 5000 UCLouvain students and Belgian residents across seven waves from 2021–2022, with a follow-up wave in 2025. It gives many information into COVID-19–related perceptions and behaviors (e.g., trust in health authorities, adherence to public health measures), alongside well-being, social connection, emotional responses, and other psychological indicators during and after the pandemic. Fully anonymized by design, it offers a secure and useful resource for research on the social and psychological impact of COVID-19.
-
 [Browse datasets](documentation/index.qmd){.btn .btn-primary}
 
----
+<br>
 
-## Accessibility
+# Accessibility and usage of the data
 
-::: {.columns-3}
+## Layers of accessibility
 
-<div class="card">
-**🔓 Layer 1: Public Access**
+::: {.callout-note collapse="true"}
+
+## 🔓 Layer 1: Public Access
 
 Openly available to everyone:
 
@@ -105,11 +94,11 @@ Use this layer to:
 
 [Browse documentation](documentation/index.qmd){.btn .btn-primary}  
 
-</div>
+:::
 
-<div class="card">
+::: {.callout-note collapse="true"}
 
-**📝 Layer 2: Registered Access**
+## 📝 Layer 2: Registered Access
 
 Restricted, de-identified versions of the real data are available **on request**.
 
@@ -130,13 +119,13 @@ Access is granted via **private links** tied to a specific dataset version.
 
 [Request data access](data/download.qmd){.btn .btn-primary}
 
-</div>
+:::
 
-<div class="card">
+::: {.callout-note collapse="true"}
 
-**🔒 Layer 3: Internal Access**
+## 🔒 Layer 3: Internal Access
 
-Full datasets—including sensitive modules and detailed identifiers—are restricted to the **project consortium**.
+Full datasets, including sensitive modules and detailed identifiers, are restricted to the **project consortium**.
 
 These data:
 
@@ -144,27 +133,11 @@ These data:
 - Support ongoing modelling & manuscript preparation  
 - Are not shared externally without additional procedures  
 
-</div>
-
 :::
 
----
+## Transparency and reproducibility
 
-## Using the Data
-
-Once you have access to the synthetic or restricted data, you can work with it directly in R.  
-Below is a minimal example showing how to load the data and inspect basic need variables:
-
-For more advanced examples (longitudinal modelling, multilevel models, weighting, handling missing data), see:
-
-- [Tutorials](tutorials/index.qmd)  
-- [Analysis examples](tutorials/how_to_run_longitudinal_models.qmd)
-
----
-
-## Versioning and Reproducibility
-
-To ensure **transparency and reproducibility**, all datasets are:
+All datasets are:
 
 - Released in clearly labeled **versions** (e.g., v1.0, v1.1)  
 - Accompanied by **release notes** describing changes in variables, coding, or sample composition  
@@ -172,16 +145,14 @@ To ensure **transparency and reproducibility**, all datasets are:
 
 Analysis scripts and Quarto documents are aligned with specific data versions, allowing users to reproduce published work and tutorial examples exactly.
 
----
-
 ## Citation
 
 If you use the resources or data from this hub, please cite the specific dataset(s) and version(s) you relied on.  
 An up-to-date citation format for each dataset is available on the [Citation & Acknowledgements](citation.qmd) page.
 
----
+<br>
 
-## Contact
+# Contact
 
 For questions about:
 
@@ -191,6 +162,5 @@ For questions about:
 
 please contact the coordinating team at:
 
-**[Project coordination team]**  
-Centre for Developmental and Motivation Psychology, Ghent University  
+**Centre for Developmental and Motivation Psychology, Ghent University** 
 Email: *joachim.waterschoot@ugent.be*

@@ -1,5 +1,5 @@
 ---
-title: "Documentation"
+title: "Projects"
 format:
   html:
     toc: false
@@ -14,6 +14,9 @@ Select a dataset to access its study design, methodology, variables, and codeboo
 
 <div class="dataset-card">
   <h2>Motivation Barometer & THRIVE 🦠</h2>
+  
+  <center><img src="logo.png" width="250"></center>
+  
   <p>
     Longitudinal monitoring of motivation, basic psychological needs, mental health,
     and responses to public health measures in Belgium during and after the COVID-19 crisis.

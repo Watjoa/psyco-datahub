@@ -195,7 +195,8 @@ df2022long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/Fol
 
 - To study participants' psychological functioning over time, we combined data from nine survey waves collected between 2020 and 2025 (5 annual, 4 COVID-specific):
 
-<div class="card">
+::: {.callout-note collapse="true" appearance="simple"}
+## Overview of waves
 
   1. *COVID wave I* (*N* = 10 331): March - April 2020
   
@@ -214,8 +215,7 @@ df2022long <- readRDS("~/Library/CloudStorage/OneDrive-UGent/RESEARCH/BELSPO/Fol
   8. *End of 2024* (*N* = 15 065): December 2024
   
   9. *End of 2025* (*N* = 10 296): December 2025
-  
-</div>
+:::
 
 - Only respondents who participated in a sufficient number of waves were included (**(#waves/2)+1**), ensuring that the trends reflect genuine longitudinal change rather than one-off responses. 
 
