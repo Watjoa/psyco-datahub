@@ -22,9 +22,9 @@ website:
         - text: "Motivation Barometer"
         - text: "Follow-up 2025"
           href: dashboards/FU2025.qmd
-        - text: "—"
         - text: "Longitudinal"
           href: dashboards/Longitudinal.qmd
+        - text: "—"
       - text: "Publications"
         href: publications.qmd
       - text: "Outreach"

@@ -1,0 +1,1102 @@
+
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Publicatiebibliotheek</title>
+  <style>
+:root{
+  --border:#e5e7eb;
+  --muted:#777;
+  --accent:#2563eb;
+  --bg:#f6f8fb;
+  --track:#d1d5db;
+  --track-fill:#93c5fd;
+  --abs-accent:#16a34a;
+}
+*{box-sizing:border-box}
+html, body { height:100%; margin:0; }
+body{font-family:system-ui, Segoe UI, Arial, sans-serif; background:#f6f8fb; color:#111}
+
+.wrap{max-width:1400px; margin:0 auto; padding:16px; height:100%}
+.layout{display:grid; grid-template-columns:400px 1fr; gap:20px; height:calc(100vh - 48px)}
+@media(max-width:900px){ .layout{grid-template-columns:1fr; height:auto} }
+
+.card{background:#fff; border:1px solid var(--border); border-radius:12px}
+.filters{padding:10px; overflow-y:auto; font-size:13px; height:100vh; position:sticky; top:0;}
+.results{padding:10px; background:transparent; border:none}
+.result .muted{font-size:12px; color:#777;}
+.titlebar{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px}
+.titlebar h1{margin:0; font-size:18px}
+
+/* search block */
+.searchBlock{
+  padding:10px; margin-bottom:12px; background:#fff; border:1px solid var(--border); border-radius:10px;
+}
+.searchBlock input[type="search"]{
+  width:100%; padding:10px; border:1px solid var(--border); border-radius:10px; margin-bottom:8px;
+}
+
+details{border:1px solid var(--border); border-radius:10px; margin:8px 0; background:#fff}
+summary{cursor:pointer; padding:10px 12px; font-weight:600}
+.section{padding:10px 12px; border-top:1px solid var(--border)}
+label{display:block; margin:4px 0}
+input[type="checkbox"]{cursor:pointer}
+input[type="search"], select{
+  padding:10px; border:1px solid var(--border); border-radius:10px; background:#fff
+}
+input:focus, select:focus{
+  outline:2px solid color-mix(in oklab, var(--accent) 30%, white);
+  outline-offset:2px;
+}
+label.disabled{opacity:.45}
+label.disabled input{cursor:not-allowed}
+
+/* language switch */
+.lang-switch{
+  display:inline-flex; gap:4px; border:1px solid var(--border); border-radius:10px; padding:2px;
+  background:#fff; align-items:center;
+}
+.lang-switch button{
+  border:none; background:transparent; padding:6px 10px; border-radius:8px; cursor:pointer; font-weight:600;
+}
+.lang-switch button.active{
+  background:color-mix(in oklab, var(--accent) 12%, white);
+  box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+
+#langBox{display:flex; gap:12px; flex-wrap:wrap}
+#langBox label{display:inline-flex; align-items:center; gap:6px; margin:0}
+
+/* double range slider */
+.double-range{position:relative; height:38px}
+.double-range .track{
+  position:absolute; left:0; right:0; top:50%; transform:translateY(-50%);
+  height:6px; background:var(--track); border-radius:999px;
+}
+.double-range .range-fill{
+  position:absolute; top:50%; transform:translateY(-50%);
+  height:6px; background:var(--track-fill); border-radius:999px;
+  left:0; right:0;
+}
+.double-range input[type="range"]{
+  position:absolute; left:0; right:0; top:0; bottom:0; width:100%;
+  background:transparent; pointer-events:auto; -webkit-appearance:none;
+}
+.double-range input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none; appearance:none; width:16px; height:16px; border-radius:50%;
+  background:#fff; border:2px solid var(--accent);
+  box-shadow:0 0 0 2px rgba(37,99,235,0.15); cursor:pointer; position:relative; z-index:2;
+}
+.double-range input[type="range"]::-webkit-slider-runnable-track{height:6px; background:transparent}
+.double-range input[type="range"]::-moz-range-thumb{
+  width:16px; height:16px; border-radius:50%; background:#fff; border:2px solid var(--accent);
+  box-shadow:0 0 0 2px rgba(37,99,235,0.15); cursor:pointer; position:relative; z-index:2;
+}
+.double-range input[type="range"]::-moz-range-track{height:6px; background:transparent}
+.range-labels{display:flex; justify-content:space-between; font-variant-numeric:tabular-nums; margin-top:6px}
+.range-labels span{font-size:12px; color:var(--muted)}
+
+.toprow{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
+.leftinfo{display:flex; gap:10px; align-items:center}
+.rightactions{display:flex; gap:10px; align-items:center}
+.small-select{font-size:12px; padding:2px 4px}
+.small-label{font-size:12px; color:var(--muted)}
+button{padding:8px 12px; border:1px solid var(--border); background:#fff; border-radius:10px; cursor:pointer}
+button:hover{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+
+.result{
+  border:1px solid var(--border); border-radius:12px; margin:10px 0; position:relative;
+  padding:12px 120px 12px 12px;
+  transition:box-shadow .15s ease, transform .15s ease;
+  background:#fff;
+}
+.result:hover{box-shadow:0 6px 20px rgba(0,0,0,.06); transform:translateY(-1px)}
+.result h3{margin:0 0 6px; font-size:17px; line-height:1.3}
+
+/* icon bar */
+.icon-bar{
+  position:absolute; top:10px; right:10px; display:flex; gap:8px;
+}
+.icon-bar a{
+  font-size:18px; text-decoration:none; line-height:1;
+  display:inline-flex; align-items:center; justify-content:center;
+  width:28px; height:28px; border:1px solid var(--border); border-radius:8px; background:#fff;
+}
+.icon-bar a:focus{
+  outline:2px solid color-mix(in oklab, var(--accent) 30%, white)
+}
+
+/* title row + abstract button */
+.title-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:6px;
+}
+.title-row h3{margin:0; font-size:17px; line-height:1.25;}
+
+.result .toggle-abs{
+  background: color-mix(in oklab, var(--abs-accent) 12%, white);
+  border:1px solid color-mix(in oklab, var(--abs-accent) 35%, var(--border));
+  color:#0b1b3a;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; font-size:12px; font-weight:600;
+  border-radius:999px; white-space:nowrap;
+}
+.result .toggle-abs:hover{
+  background: color-mix(in oklab, var(--abs-accent) 18%, white);
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.result .toggle-abs:focus{
+  outline:3px solid color-mix(in oklab, var(--abs-accent) 35%, white);
+  outline-offset:2px;
+}
+.result .toggle-abs[aria-expanded="true"]{
+  background: color-mix(in oklab, var(--abs-accent) 24%, white);
+  border-color: color-mix(in oklab, var(--abs-accent) 55%, var(--border));
+}
+.result .toggle-abs .chev path{ fill: currentColor; }
+@media (prefers-reduced-motion: reduce){ .toggle-abs .chev{ transition:none; } }
+
+.abstract-box{
+  margin-top:10px; padding:10px; border:1px solid var(--border); border-radius:10px; background:#fafafa;
+  font-size:14px; line-height:1.5;
+}
+.abstract-box .loading{color:var(--muted); font-style:italic;}
+.hidden{display:none;}
+.result .abs-actions{margin-top:8px; display:flex; gap:8px; align-items:center}
+
+.badges{display:flex; gap:6px; flex-wrap:wrap; margin:6px 8px}
+.badge{
+  border:1px solid var(--border); background:#fff; border-radius:999px;
+  padding:3px 10px; font-size:11px; font-weight:normal;
+}
+.badge.domain{font-weight:bold}
+.badge.subject-parent{font-weight:bold}
+.badge.active{
+  border-color:var(--accent);
+  background:color-mix(in oklab, var(--accent) 15%, white)
+}
+
+.muted{color:var(--muted)}
+.authors{font-size:13px; margin-top:4px; color:var(--muted)}
+.authors .label{color:var(--muted)}
+.extra-line{margin-top:4px; font-size:12px; color:var(--muted)}
+</style>
+
+</head>
+<body>
+  <div class="wrap">
+    <div class="layout">
+      <!-- LEFT: FILTERS -->
+      <aside class="card filters">
+        <!-- Search + helper -->
+        <div class="searchBlock">
+          <input id="q" type="search" placeholder="Zoek in titel/samenvatting/trefwoorden">
+          <div id="helperText" style="font-size:12px; color:#666; font-style:italic;">
+            Selecteer één of meerdere filters om de lijst met publicaties te verfijnen.
+            Alleen publicaties die aan <strong>alle</strong> geselecteerde criteria voldoen, worden getoond.
+            Je kunt filteren op Levensdomeinen, Subdomeinen, Onderwerp <em>(hoofdcategorie)</em> en Subonderwerp.
+            Klik op 🔗, 📑 of ✉️ om te openen.
+          </div>
+        </div>
+
+        <details>
+          <summary id="sumYear">Jaartal</summary>
+          <div class="section">
+            <div class="double-range" id="yearSlider">
+              <div class="track"></div>
+              <div class="range-fill" id="yearFill"></div>
+              <input id="yearMin" type="range">
+              <input id="yearMax" type="range">
+            </div>
+            <div class="range-labels">
+              <span id="fromLbl">Vanaf: <strong id="yearMinLabel"></strong></span>
+              <span id="toLbl">Tot en met: <strong id="yearMaxLabel"></strong></span>
+            </div>
+            <div class="muted" id="yearHint" style="margin-top:4px"></div>
+          </div>
+        </details>
+
+        <details>
+          <summary id="sumLang">Taal</summary>
+          <div class="section" id="langBox"></div>
+        </details>
+
+        <details>
+          <summary id="sumType">Type</summary>
+          <div class="section" id="typeBox"></div>
+        </details>
+
+        <!-- NEW: PROJECT FILTER -->
+        <details>
+          <summary id="sumProject">Project</summary>
+          <div class="section" id="projectBox"></div>
+        </details>
+
+        <details>
+          <summary id="sumDomain">Levensdomeinen</summary>
+          <div class="section" id="domainBox"></div>
+        </details>
+
+        <details>
+          <summary id="sumSubject">Onderwerpen</summary>
+          <div class="section" id="subjectBox"></div>
+        </details>
+
+        <details>
+          <summary id="sumAge">Leeftijdsgroep</summary>
+          <div class="section" id="ageBox"></div>
+        </details>
+
+        <details>
+          <summary id="sumAuthor">Auteurs</summary>
+          <div class="section" id="authorBox"></div>
+        </details>
+        
+        <button id="share">Deel selectie</button>
+      </aside>
+
+      <!-- RIGHT: RESULTS -->
+      <main class="results">
+        <div class="toprow">
+          <div class="leftinfo">
+            <div><span id="count">0</span> <span id="resWord">resultaten</span></div>
+            <div class="muted" id="hint"></div>
+          </div>
+          <div class="rightactions">
+            <div class="lang-switch" aria-label="Language switch">
+              <button id="btnEN" class="active" type="button">English</button>
+              <button id="btnNL" type="button">Nederlands</button>
+            </div>
+            <button id="reset">Wissen</button>
+            <label class="small-label" for="sort" id="sortLbl">Sorteer:</label>
+            <select id="sort" class="small-select">
+              <option value="">—</option>
+              <option value="year_desc" data-i18n="sortNewest">Nieuwste eerst</option>
+              <option value="year_asc" data-i18n="sortOldest">Oudste eerst</option>
+              <option value="title_asc" data-i18n="sortAToZ">Titel A–Z</option>
+              <option value="title_desc" data-i18n="sortZToA">Titel Z–A</option>
+            </select>
+          </div>
+        </div>
+        <div id="list"></div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+  // ---------- HYDRATION ----------
+  let isHydrating = true;
+
+  // ---------- UI LANGUAGE ----------
+  const I18N = {
+    nl: {
+      htmlLang: 'nl',
+      helper: 'Selecteer één of meerdere filters om de lijst met publicaties te verfijnen. Alleen publicaties die aan <strong>alle</strong> geselecteerde criteria voldoen, worden getoond. Je kunt filteren op Levensdomeinen, Subdomeinen, Onderwerp <em>(hoofdcategorie)</em> en Subonderwerp. Klik op 🔗, 📑 of ✉️ om te openen.',
+      searchPH: 'Zoek in titel/samenvatting/trefwoorden',
+      year: 'Jaartal',
+      from: 'Vanaf:',
+      to: 'Tot en met:',
+      rangeHint: (min,max)=>`Bereik: ${min} – ${max}`,
+      lang: 'Taal',
+      type: 'Type',
+      project: 'Project', // NEW
+      domains: 'Levensdomeinen',
+      subjects: 'Onderwerpen',
+      ages: 'Leeftijdsgroep',
+      authors: 'Auteurs',
+      share: 'Deel selectie',
+      copiedOK: 'Link naar deze selectie is gekopieerd naar het klembord!',
+      copiedFail: 'Kopiëren mislukt. Kopieer de URL uit de adresbalk.',
+      reset: 'Wissen',
+      sort: 'Sorteer:',
+      sortNewest: 'Nieuwste eerst',
+      sortOldest: 'Oudste eerst',
+      sortAToZ: 'Titel A–Z',
+      sortZToA: 'Titel Z–A',
+      resultsWord: 'resultaten',
+      noResults: 'Geen resultaten.',
+      abstractBtn: 'Samenvatting',
+      absLoading: 'Samenvatting laden…',
+      absNone: 'Geen samenvatting beschikbaar.',
+      absError: 'Kon samenvatting niet laden.',
+      metaAuthorsLabel: 'Auteurs: ',
+      ariaOpenLink: 'Open artikel (link)',
+      ariaOpenPdf: 'Open PDF',
+      ariaEmail: 'Mail verantwoordelijke onderzoeker',
+      langOptions: { 'Nederlands':'Nederlands','Engels':'Engels' },
+      typeOptions: {
+        'Artikel':'Artikel','Boek':'Boek','Hoofdstuk':'Hoofdstuk','Editor':'Editor',
+        'Doctoraat':'Doctoraat','Interviews':'Interviews','Misc':'Misc'
+      },
+      ageMap: {
+        'Baby en Peuters':'Baby en Peuters','Kinderen':'Kinderen','Jongeren':'Jongeren',
+        'Jongvolwassenen':'Jongvolwassenen','Volwassenen':'Volwassenen','Ouderen':'Ouderen'
+      }
+    },
+    en: {
+      htmlLang: 'en',
+      helper: 'Select one or more filters to refine the publication list. Only publications that match <strong>all</strong> selected criteria are shown. You can filter by Life domains, Subdomains, Topic <em>(parent)</em>, and Subtopic. Click 🔗, 📑 or ✉️ to open.',
+      searchPH: 'Search title/abstract/keywords',
+      year: 'Year',
+      from: 'From:',
+      to: 'Through:',
+      rangeHint: (min,max)=>`Range: ${min} – ${max}`,
+      lang: 'Language',
+      type: 'Type',
+      project: 'Project', // NEW
+      domains: 'Life domains',
+      subjects: 'Topics',
+      ages: 'Age group',
+      authors: 'Authors',
+      share: 'Share selection',
+      copiedOK: 'Link to this selection has been copied to the clipboard!',
+      copiedFail: 'Copy failed. Please copy the URL from the address bar.',
+      reset: 'Reset',
+      sort: 'Sort:',
+      sortNewest: 'Newest first',
+      sortOldest: 'Oldest first',
+      sortAToZ: 'Title A–Z',
+      sortZToA: 'Title Z–A',
+      resultsWord: 'results',
+      noResults: 'No results.',
+      abstractBtn: 'Abstract',
+      absLoading: 'Loading abstract…',
+      absNone: 'No abstract available.',
+      absError: 'Could not load abstract.',
+      metaAuthorsLabel: 'Authors: ',
+      ariaOpenLink: 'Open article (link)',
+      ariaOpenPdf: 'Open PDF',
+      ariaEmail: 'Email corresponding author',
+      // Display labels -> values stay Dutch to match DATA
+      langOptions: { 'Nederlands':'Dutch','Engels':'English' },
+      typeOptions: {
+        'Artikel':'Article','Boek':'Book','Hoofdstuk':'Chapter','Editor':'Editor',
+        'Doctoraat':'Doctoral thesis','Interviews':'Interviews','Misc':'Misc'
+      },
+      ageMap: {
+        'Baby en Peuters':'Babies & Toddlers','Kinderen':'Children','Jongeren':'Adolescents',
+        'Jongvolwassenen':'Young adults','Volwassenen':'Adults','Ouderen':'Older adults'
+      }
+    }
+  };
+  // Label translations for domain/subject badges (fallback to Dutch if missing)
+  const LABEL_MAP_EN = {
+    // Domains
+    "Fysieke activiteit":"Physical activity","Lichamelijke opvoeding":"Physical education","Lichaamsbeweging":"Exercise","Sport":"Sport",
+    "Gezondheid":"Health","Chronische pijn":"Chronic pain","Covid-19":"COVID-19","Diabetes":"Diabetes","Obesitas":"Obesity","Slaap":"Sleep",
+    "Klimaat en natuur":"Climate and nature","Maatschappij en veiligheid":"Society and safety",
+    "Onderwijs":"Education","Lager onderwijs":"Primary education","Secundair onderwijs":"Secondary education","Hoger onderwijs":"Higher education","Leerkracht":"Teacher",
+    "Ouderschap en gezin":"Parenting and family","Hechting":"Attachment","Opvoedingsstijl":"Parenting style",
+    "Psychopathologie":"Psychopathology","Eetstoornissen":"Eating disorders","Externaliserend probleemgedrag":"Externalizing behavior","Internaliserend probleemgedrag":"Internalizing problems",
+    "Psychotherapie en counseling":"Psychotherapy and counseling","Jeugdzorg":"Youth care",
+    "Social media en gaming":"Social media and gaming","Relaties":"Relationships","Autonomie":"Autonomy","Seksuele ontwikkeling":"Sexual development","Religie en spiritualiteit":"Religion and spirituality",
+    "Werk en organisaties":"Work and organizations","Leiderschap en jobkenmerken":"Leadership & job characteristics",
+    "Mentorschap en professionele ontwikkeling":"Mentorship & professional development","Werkloosheid":"Unemployment",
+    // Subjects
+    "Bewustzijn en mindfulness":"Awareness and mindfulness","Cognitie":"Cognition","Cross-cultureel":"Cross-cultural","Beperking":"Disability",
+    "Doelen & ambities & identiteit":"Goals, ambitions & identity","Emotieregulatie":"Emotion regulation","Internalisatie":"Internalization",
+    "Intrinsieke motivatie":"Intrinsic motivation","Neuropsychologisch en biologisch":"Neuropsychological and biological",
+    "Persoonlijkheid":"Personality","Afhankelijkheid":"Dependency","Big five":"Big Five","Causaliteitsoriëntaties":"Causality orientations","Perfectionisme":"Perfectionism","Verlatingsangst":"Separation anxiety",
+    "Psychologische basisbehoeften":"Basic psychological needs","Vitaliteit en energie":"Vitality and energy",
+    "Zelf & (voorwaardelijk) zelfwaarde":"Self & (contingent) self-worth"
+  };
+
+  let uiLang = 'nl';
+  function getInitialUiLang(){
+    const url = new URL(window.location.href);
+    const p = url.searchParams.get('uiLang');
+    if (p === 'en' || p === 'nl') return p;
+    const saved = localStorage.getItem('uiLang');
+    if (saved === 'en' || saved === 'nl') return saved;
+    return 'nl';
+  }
+  function setUiLang(lang){
+    uiLang = (lang==='en') ? 'en' : 'nl';
+    localStorage.setItem('uiLang', uiLang);
+    const url = new URL(window.location.href);
+    url.searchParams.set('uiLang', uiLang);
+    history.replaceState(null, "", url.toString());
+    document.documentElement.lang = I18N[uiLang].htmlLang;
+    // Toggle active button
+    document.getElementById('btnNL').classList.toggle('active', uiLang==='nl');
+    document.getElementById('btnEN').classList.toggle('active', uiLang==='en');
+    // Update static texts
+    applyStaticTexts();
+    // Rebuild filter boxes (labels) and re-render
+    rebuildBoxes();
+    apply();
+  }
+  function trLabel(str){
+    if (uiLang==='nl') return str;
+    return LABEL_MAP_EN[str] || str;
+  }
+  function applyStaticTexts(){
+    const L = I18N[uiLang];
+    document.getElementById('helperText').innerHTML = L.helper;
+    document.getElementById('q').placeholder = L.searchPH;
+    document.getElementById('sumYear').textContent = L.year;
+    document.getElementById('fromLbl').firstChild.nodeValue = L.from + ' ';
+    document.getElementById('toLbl').firstChild.nodeValue = L.to + ' ';
+    document.getElementById('sumLang').textContent = L.lang;
+    document.getElementById('sumType').textContent = L.type;
+    document.getElementById('sumProject').textContent = L.project; // NEW
+    document.getElementById('sumDomain').textContent = L.domains;
+    document.getElementById('sumSubject').textContent = L.subjects;
+    document.getElementById('sumAge').textContent = L.ages;
+    document.getElementById('sumAuthor').textContent = L.authors;
+    document.getElementById('share').textContent = L.share;
+    document.getElementById('reset').textContent = L.reset;
+    document.getElementById('sortLbl').textContent = L.sort;
+    document.getElementById('resWord').textContent = L.resultsWord;
+    // Sort option labels
+    [...document.querySelectorAll('#sort option')].forEach(opt=>{
+      if(opt.value==='year_desc') opt.textContent = L.sortNewest;
+      if(opt.value==='year_asc')  opt.textContent = L.sortOldest;
+      if(opt.value==='title_asc') opt.textContent = L.sortAToZ;
+      if(opt.value==='title_desc')opt.textContent = L.sortZToA;
+    });
+    // Update year hint
+    updateYearHint();
+  }
+
+  // ---------- DATA & CONFIG ----------
+  const DOMAIN_TREE_RAW = {
+    "Fysieke activiteit": ["Lichamelijke opvoeding","Lichaamsbeweging","Sport"],
+    "Gezondheid": ["Chronische pijn","Covid-19","Diabetes","Obesitas","Slaap"],
+    "Klimaat en natuur": [],
+    "Maatschappij en veiligheid": [],
+    "Onderwijs": ["Lager onderwijs","Secundair onderwijs","Hoger onderwijs","Leerkracht"],
+    "Ouderschap en gezin": ["Hechting","Opvoedingsstijl"],
+    "Psychopathologie": ["Eetstoornissen","Externaliserend probleemgedrag","Internaliserend probleemgedrag"],
+    "Psychotherapie en counseling": ["Jeugdzorg"],
+    "Social media en gaming": [],
+    "Relaties": ["Autonomie","Seksuele ontwikkeling"],
+    "Religie en spiritualiteit": [],
+    "Werk en organisaties": ["Leiderschap en jobkenmerken","Mentorschap en professionele ontwikkeling","Werkloosheid"]
+  };
+  const DOMAIN_TREE = Object.fromEntries(Object.entries(DOMAIN_TREE_RAW).map(([k, arr]) => [k, [...arr]]));
+
+  const SUBJECT_TREE_RAW = {
+    "Bewustzijn en mindfulness": [],
+    "Cognitie": [],
+    "Cross-cultureel": [],
+    "Beperking": [],
+    "Doelen & ambities & identiteit": [],
+    "Emotieregulatie": [],
+    "Internalisatie": [],
+    "Intrinsieke motivatie": [],
+    "Neuropsychologisch en biologisch": [],
+    "Persoonlijkheid": ["Afhankelijkheid","Big five","Causaliteitsoriëntaties","Perfectionisme","Verlatingsangst"],
+    "Psychologische basisbehoeften": [],
+    "Vitaliteit en energie": [],
+    "Zelf & (voorwaardelijk) zelfwaarde": []
+  };
+  const SUBJECT_TREE = Object.fromEntries(
+    Object.entries(SUBJECT_TREE_RAW)
+      .sort(([a],[b]) => a.localeCompare(b,'nl'))
+      .map(([k,arr]) => [k, [...arr].sort((a,b)=>a.localeCompare(b,'nl'))])
+  );
+
+  const AGE_GROUPS = ["Baby en Peuters","Kinderen","Jongeren","Jongvolwassenen","Volwassenen","Ouderen"];
+
+  const AUTHORS = [
+    "Bart Soenens","Beatrijs Vandenkerckhove","Beiwen Chen","Branko Vermote","Cát Tường Nguyễn Phước","Charlotte Schrooyen",
+    "Daphne van den Bogaard","Dorien Wuyts","Elien Audenaert","Elien Mabbe","Eveline Raemdonck","Evie Kins","Gert-Jan De Muynck",
+    "Janne Vanhalst","Joachim Waterschoot","Jochen Delrue","Joke Verstuyf","Jolene Van der Kaap-Deeder","Jolien Braet",
+    "Jotie De Meyer","Katrijn Brenning","Liesbet Boone","Lisa Dieleman","Maarten Vansteenkiste","Matteo Giletta",
+    "Michiel Boncquet","Nathalie Aelterman","Nathalie Coorevits","Nathalie Michels","Nele Flamant","Nele Laporte","Peter Prinzie","Rachel Campbell",
+    "Sabine Sypré","Sarah De Pauw","Simon Malfait","Sofie Morbée","Sophie Goemaere","Stijn Van Petegem",
+    "Wim Beyers"
+  ].sort((a,b)=>a.localeCompare(b,'nl'));
+
+  const LANGS = ["Nederlands","Engels"];
+  const TYPES = ["Artikel","Boek","Hoofdstuk","Editor","Doctoraat","Interviews","Misc"];
+
+  // NEW: Project values
+  const PROJECT = ["Motivation Barometer","Louvain Foundation"];
+
+  // Data gebruikt mainsubjects & subsubject
+  // NOTE: add `project` per item if you want filtering to work.
+  const DATA = [
+  {id:1,title:"Risk perception as a motivational resource during the COVID-19 pandemic: the role of vaccination status and emerging variants.",project:"Motivation Barometer",year:2024,authors:["Joachim Waterschoot", "Maarten Vansteenkiste","Sofie Morbée", "Eveline Raemdonck"],language:"Engels",journal:"BMC PUBLIC HEALTH",ageGroup:["Jongvolwassenen","Volwassenen","Ouderen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/risk-perception-as-a-motivational-resource-during-the-covid-19-pandemic-the-role-of-vaccination-status-and-emerging-variants-waterschoot-et-al.-2024.pdf",abstract:"",url:"https://bmcpublichealth.biomedcentral.com/articles/10.1186/s12889-024-18020-z"},
+{id:2,title:"Why motivation for adhering to COVID-19 measures matters: Investigating time-lagged associations with epidemiological indicators.",project:"Motivation Barometer",year:2024,authors:["Joachim Waterschoot", "Sofie Morbée", "Maarten Vansteenkiste"],language:"Engels",journal:"MOTIVATION SCIENCE",ageGroup:["Jongvolwassenen","Volwassenen","Ouderen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie"],subsubject:[],pdf:"",abstract:"Om de SARS-CoV-2-pandemie te beheersen, voerden overheden maatregelen in die veel inspanning en gedragsverandering vergden. Vanuit de Zelf-Determinatie Theorie onderzochten  we de relatie tussen de motivatie van burgers om maatregelen te volgen en epidemiologische schommelingen. We toetsten (H1) gelijktijdige en (H2) prospectieve verbanden tussen de dagelijkse kwaliteit van motivatie en de dagelijkse groeicijfers in besmettingen en ziekenhuisopnames in België, en (H3) in welke mate gedragsnaleving de prospectieve verbanden verklaart. Gegevens kwamen uit online vragenlijsten gedurende de eerste 12 maanden (N = 183.766; 7,2% ontbrekende dagen; 0% gevaccineerd; Gemiddelde leeftijd = 50,41; 68,2% vrouwelijke deelnemers) en Google Mobility data. Multilevelmodellen toonden aan dat ziekenhuisopnames (niet het aantal besmettingen) gelijktijdig samenhingen met betere motivatiekvaliteit: op dagen met meer opnames identificeerden burgers zich sterker met de waarde van maatregelen en voelden ze minder externe druk. Daarnaast voorspelde betere motivatiekvaliteit lagere besmettings- en ziekenhuisopnamecijfers 6 à 7 weken later, waarbij verbeterde naleving (gemeten via zelfrapportage en mobiliteitsdata) deze effecten medieerden. Conclusie: duurzame impact van preventiebeleid vergt dat burgers de maatregelen volmondig onderschrijven en er vrijwillig naar handelen.",url:"https://APA Psycnet.apa.org/doiLanding?doi=10.1037%2Fmot0000346"},
+{id:3,title:"Attitudes toward mandatory vaccination and the covid certificate as a function of vaccination status and risk perception: A vignette‐based study.",project:"Motivation Barometer",year:2024,authors:["Maarten Vansteenkiste" , "Sofie Morbée","Joachim Waterschoot", "Eveline Raemdonck"],language:"Engels",journal:"ANALYSES OF SOCIAL ISSUES AND PUBLIC POLICY (ASAP)",ageGroup:["Jongvolwassenen","Volwassenen","Ouderen"],format:"Artikel",domain:["Gezondheid","Openbare veiligheid"],subdomain:["Covid-19"],mainsubjects:[],subsubject:[],pdf:"",abstract:"",url:"https://spssi.onlinelibrary.wiley.com/doi/epdf/10.1111/asap.12435"},
+{id:4,title:"Psychological science and its societal mission during the SARS‐CoV‐2 pandemic: The Motivation Barometer as an evidence‐informed policy instrument in Belgium.",project:"Motivation Barometer",year:2024,authors:["Maarten Vansteenkiste", "Joachim Waterschoot", "Sofie Morbée"],language:"Engels",journal:"SOCIAL ISSUES AND POLICY REVIEW",ageGroup:["Jongvolwassenen","Volwassenen","Ouderen"],format:"Artikel",domain:["Gezondheid","Openbare veiligheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie"],subsubject:[],pdf:"",abstract:"",url:"https://spssi.onlinelibrary.wiley.com/doi/10.1111/sipr.12101"},
+{id:5,title:"When views about alternative medicine, nature, and God come in the way of people’s vaccination intentions.",project:"Motivation Barometer",year:2024,authors:["Sofie Morbée", "Eveline Raemdonck", "Maarten Vansteenkiste", "Joachim Waterschoot"],language:"Engels",journal:"EUROPEAN JOURNAL OF SOCIAL PSYCHOLOGY",ageGroup:["Jongvolwassenen","Volwassenen","Ouderen"],format:"Artikel",domain:["Gezondheid","Religie en spiritualiteit"],subdomain:["Covid-19"],mainsubjects:["Cross-cultureel"],subsubject:[],pdf:"",abstract:"",url:"https://onlinelibrary.wiley.com/doi/10.1002/ejsp.3047"},
+{id:6,title:"How do late adults experience meaning during the COVID-19 lockdown? The role of intrinsic goals.",project:"Motivation Barometer",year:2023,authors:["Branko Vermote", "Sofie Morbée", "Bart Soenens", "Maarten Vansteenkiste", "Joachim Waterschoot", "Wim Beyers", "Jolene Van der Kaap-Deeder"],language:"Engels",journal:"JOURNAL OF HAPPINESS STUDIES",ageGroup:"Ouderen",format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Doelen & ambities & identiteit"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/how-do-late-adults-experience-meaning-during-the-covid-19-lockdown-the-role-of-intrinsic-goals-vermote-et-al.-2023.pdf",abstract:"",url:"https://link.springer.com/article/10.1007/s10902-023-00657-z"},
+{id:7,title:"Parents’ stress, parental burnout, and parenting behavior during the COVID-19 pandemic: Comparing parents of children with and without complex care needs.",project:"Motivation Barometer",year:2023,authors:["Eline Desimpelaere", "Bart Soenens", "Peter Prinzie", "Joachim Waterschoot", "Maarten Vansteenkiste", "Sofie Morbée", "Charlotte Schrooyen", "Sarah De Pauw"],language:"Engels",journal:"JOURNAL OF CHILD AND FAMILY STUDIES",ageGroup:"Volwassenen",format:"Artikel",domain:["Gezondheid","Ouderschap en gezin"],subdomain:["Covid-19"],mainsubjects:["Beperking","Neuropsychologisch en biologisch"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/parents-stress-parental-burnout-and-parenting-behavior-during-the-covid-19-pandemic-comparing-parents-of-children-with-and-without-complex-care-needs-desimpelaere-et-al.-2023.pdf",abstract:"",url:"https://link.springer.com/article/10.1007/s10826-023-02702-0"},
+{id:8,title:"The motivation barometer during the COVID-19 crisis in Belgium: the role of basic needs, risk perception and motivation predicting behavior and well-being.",project:"Motivation Barometer",year:2023,authors:["Joachim Waterschoot"],language:"Engels",journal:"",ageGroup:["Jongvolwassenen","Volwassenen","ouderen"],format:"Doctoraat",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie","Psychologische basisbehoeften"],subsubject:[],pdf:"",abstract:"",url:"https://biblio.ugent.be/publication/01H4WQ7YAZA9ES768Z4C41Q16C"},
+{id:9,title:"How do vaccination intentions change over time? The role of motivational growth.",project:"Motivation Barometer",year:2023,authors:["Joachim Waterschoot", "Bart Soenens", "Sofie Morbée", "Maarten Vansteenkiste"],language:"Engels",journal:"HEALTH PSYCHOLOGY",ageGroup:["Jongvolwassenen","Volwassenen","ouderen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie"],subsubject:[],pdf:"",abstract:"",url:"https://APA Psycnet.apa.org/doiLanding?doi=10.1037%2Fhea0001228"},
+{id:10,title:"Who is motivated to accept a booster an annual dose? A dimensional and person-centered approach.",project:"Motivation Barometer",year:2023,authors:["Joachim Waterschoot", "Maarten Vansteenkiste", "Sofie Morbée"],language:"Engels",journal:"APPLIED PSYCHOLOGY",ageGroup:["Jongvolwassenen","Volwassenen","ouderen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie"],subsubject:[],pdf:"",abstract:"",url:"https://iaap-journals.onlinelibrary.wiley.com/doi/10.1111/aphw.12437"},
+{id:11,title:"How the stringency of the COVID-19 restrictions influences motivation for adherence and well-being: The critical role of proportionality.",project:"Motivation Barometer",year:2023,authors:["Joachim Waterschoot", "Sofie Morbée", "Bart Soenens" , "Maarten Vansteenkiste"],language:"Engels",journal:"INTERNATIONAL JOURNAL OF HEALTH POLICY AND MANAGEMENT",ageGroup:["Jongvolwassenen","Volwassenen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Psychologische basisbehoeften"],subsubject:[],pdf:"",abstract:"",url:"https://www.ijhpm.com/article_4509.html"},
+{id:12,title:"Psychological need fulfillment as a source of resilience: Its protective role in concerns and symptoms of anxiety and depression during the COVID-19 pandemic.",project:"Motivation Barometer",year:2023,authors:["Joachim Waterschoot", "Sofie Morbée", "Bart Soenens", "Eveline Raemdonck", "Maarten Vansteenkiste"],language:"Engels",journal:"APPLIED PSYCHOLOGY",ageGroup:["Jongvolwassenen","Volwassenen","Ouderen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Psychologische basisbehoeften"],subsubject:[],pdf:"",abstract:"",url:"https://iaap-journals.onlinelibrary.wiley.com/doi/10.1111/aphw.12508"},
+{id:13,title:"Merry Christmas and a ‘healthy’ new year: Assessing people’s expectations regarding Christmas gathering in pandemic times.",project:"Motivation Barometer",year:2023,authors:["Joachim Waterschoot", "Sofie Morbée", "Maarten Vansteenkiste"],language:"Engels",journal:"EUROPEAN JOURNAL OF HEALTH PSYCHOLOGY",ageGroup:["Jongvolwassenen","Volwassenen","ouderen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie"],subsubject:[],pdf:"",abstract:"",url:"https://APA Psycnet.apa.org/doiLanding?doi=10.1027%2F2512-8442%2Fa000114"},
+{id:14,title:"The role of emotion regulation in mental health during the COVID-19 outbreak: A 10-wave longitudinal study.",project:"Motivation Barometer",year:2023,authors:["Katrijn Brenning","Joachim Waterschoot", "Lisa Dieleman", "Sofie Morbée", "Branko Vermote", "Bart Soenens", "Jolene Van der Kaap-Deeder", "Daphne van den Bogaard", "Maarten Vansteenkiste"],language:"Engels",journal:"STRESS AND HEALTH",ageGroup:["Jongvolwassenen","Volwassenen","ouderen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Emotieregulatie"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/the-role-of-emotion-regulation-in-mental-health-during-the-covid-19-outbreak-a-10-wave-longitudinal-study-brenning-et-al.-2023.pdf",abstract:"",url:"https://onlinelibrary.wiley.com/doi/10.1002/smi.3204"},
+{id:15,title:"An examination of the reciprocal associations between physical activity and anxiety, depressive symptoms, and sleep quality during the first 9 weeks of the COVID-19 pandemic in Belgium.",project:"Motivation Barometer",year:2023,authors:["Sofie Morbée", "Joachim Waterschoot", "Maarten Vansteenkiste"],language:"Engels",journal:"MENTAL HEALTH AND PHYSICAL ACTIVITY",ageGroup:["Jongvolwassenen","Volwassenen","ouderen"],format:"Artikel",domain:["Gezondheid","Fysieke activiteit","Psychopathologie"],subdomain:["Covid-19","Slaap","Lichaamsbeweging","Internaliserend probleemgedrag"],mainsubjects:[],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/an-examination-of-the-reciprocal-associations-between-physical-activity-and-anxiety-depressive-symptoms-and-sleep-quality-morbee-et-al.-2023.pdf",abstract:"",url:"https://www.sciencedirect.com/science/article/pii/S175529662200062X?via%3Dihub"},
+{id:16,title:"The role of communication style and external motivators in predicting vaccination experiences and intentions: An experimental vignette study.",project:"Motivation Barometer",year:2023,authors:["Sofie Morbée", "Maarten Vansteenkiste", "Joachim Waterschoot"],language:"Engels",journal:"HEALTH COMMUNICATION",ageGroup:["Jongvolwassenen","Volwassenen","ouderen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:[],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/the-role-of-communication-style-and-external-motivators-in-predicting-vaccination-experiences-and-intentions-morbee-et-al.-2023.pdf",abstract:"",url:"https://www.tandfonline.com/doi/full/10.1080/10410236.2022.2125012"},
+{id:17,title:"Mental health outcomes among parents of children with a chronic disease during the COVID-19 pandemic: the role of parental burn-out",project:"Motivation Barometer",year:2022,authors:["Aline Wauters", "Tine Vervoort", "Karlien Dhondt", "Bart Soenens", "Maarten Vansteenkiste", "Sofie Morbée", "Joachim Waterschoot", "Filomeen Haerynck", "Kristof Vandekerckhove", "Helene Verhelst", "Sara Van Aken", "Ann Raes", "Petra Schelstraete", "Johan Vande Walle", "Eline Van Hoecke"],language:"Engels",journal:"JOURNAL OF PEDIATRIC PSYCHOLOGY",ageGroup:"Volwassenen",format:"Artikel",domain:["Gezondheid","Psychopathologie","Ouderschap en gezin"],subdomain:["Covid-19","Internaliserend probleemgedrag"],mainsubjects:[],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/mental-health-outcomes-among-parents-of-children-with-a-chronic-disease-during-the-covid-19-pandemic-the-role-of-parental-burn-out-wauters-et-al.-2022.pdf",abstract:"",url:"https://academic.oup.com/jpepsy/article/47/4/420/6463512"},
+{id:18,title:"Do psychological needs play a role in times of uncertainty? Associations with well‑being during the COVID‑19 crisis",project:"Motivation Barometer",year:2022,authors:["Branko Vermote", "Joachim Waterschoot", "Sofie Morbée", "Charlotte Schrooyen", "Bart Soenens", "Maarten Vansteenkiste"],language:"Engels",journal:"JOURNAL OF HAPPINESS STUDIES",ageGroup:["Jongeren","Jongvolwassenen","Volwassenen"],format:"Artikel",domain:["Gezondheid","Psychopathologie"],subdomain:["Covid-19","Internaliserend probleemgedrag"],mainsubjects:["Psychologische basisbehoeften"],subsubject:[],pdf:"",abstract:"",url:"https://link.springer.com/article/10.1007/s10902-021-00398-x"},
+{id:19,title:"Emotion regulation in times of COVID-19: a person-centered approach based on self-determination theory",project:"Motivation Barometer",year:2022,authors:["Joachim Waterschoot", "Sofie Morbée", "Branko Vermote", "Katrijn Brenning", "Nele Flamant", "Maarten Vansteenkiste", "Bart Soenens"],language:"Engels",journal:"CURRENT PSYCHOLOGY",ageGroup:"Volwassenen",format:"Artikel",domain:["Gezondheid","Psychopathologie"],subdomain:["Covid-19","Internaliserend probleemgedrag"],mainsubjects:["Emotieregulatie"],subsubject:[],pdf:"",abstract:"",url:"https://link.springer.com/article/10.1007/s12144-021-02623-5"},
+{id:20,title:"The role of ego integrity and despair in older adults’ well-being during the COVID-19 crisis: the mediating role of need-based experiences",project:"Motivation Barometer",year:2022,authors:["Jolene Van der Kaap-Deeder", "Branko Vermote", "Joachim Waterschoot", "Bart Soenens", "Sofie Morbée", "Maarten Vansteenkiste"],language:"Engels",journal:"EUROPEAN JOURNAL OF AGEING",ageGroup:"Ouderen",format:"Artikel",domain:["Gezondheid","Psychopathologie"],subdomain:["Covid-19","Internaliserend probleemgedrag"],mainsubjects:["Psychologische basisbehoeften","Vitaliteit en energie"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/the-role-of-ego-integrity-and-despair-in-older-adults-well-being-during-the-covid-19-crisis-the-mediating-role-of-need-based-experiences-van-der-kaap-deeder-et-al.-2022.pdf",abstract:"",url:"https://link.springer.com/article/10.1007/s10433-021-00610-0"},
+{id:21,title:"Saliva testing among teachers during the COVID-19 pandemic: effects on health concerns, well-being, and precautionary behavior",project:"Motivation Barometer",year:2022,authors:["Marlies Van de Casteele","Joachim Waterschoot","Sofie Morbée","Maarten Vansteenkiste"],language:"Engels",journal:"SOCIAL SCIENCE & MEDICINE",ageGroup:"Volwassenen",format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:[],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/saliva-testing-among-teachers-during-the-covid-19-pandemic-effects-on-health-concerns-well-being-and-precautionary-behavior-van-de-casteele-et-al.-2022.pdf",abstract:"",url:"https://www.sciencedirect.com/science/article/pii/S0277953622006013?via%3Dihub"},
+{id:22,title:"Which cyclists manage to cope with the corona crisis in a resilient way? The role of motivational profiles",project:"Motivation Barometer",year:2022,authors:["Sofie Morbée", "Joachim Waterschoot", "Maarten Vansteenkiste"],language:"Engels",journal:"INTERNATIONAL JOURNAL OF SPORT AND EXERCISE PSYCHOLOGY",ageGroup:["Jongeren","Jongvolwassenen","Volwassenen"],format:"Artikel",domain:["Gezondheid","Fysieke activiteit"],subdomain:["Covid-19","Sport"],mainsubjects:["Psychologische basisbehoeften","Intrinsieke motivatie"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/which-cyclists-manage-to-cope-with-the-corona-crisis-in-a-resilient-way-the-role-of-motivational-profiles-morbee-et-al.-2021.pdf",abstract:"",url:"https://www.tandfonline.com/doi/full/10.1080/1612197X.2021.1940241"},
+{id:23,title:"Personal and contextual determinants of COVID-19 vaccination intention: a vignette study",project:"Motivation Barometer",year:2022,authors:["Sofie Morbée", "Joachim Waterschoot", "Maarten Vansteenkiste"],language:"Engels",journal:"EXPERT REVIEW OF VACCINES",ageGroup:"Volwassenen",format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/personal-and-contextual-determinants-of-covid-19-vaccination-intention-a-vignette-study-morbee-et-al.-2022.pdf",abstract:"",url:"https://www.tandfonline.com/doi/full/10.1080/14760584.2022.2105212"},
+{id:24,title:"A global experiment on motivating social distancing during the COVID-19 pandemic.",project:"Motivation Barometer",year:2022,authors:["Sofie Morbée", "Maarten Vansteenkiste", "Joachim Waterschoot", "Branko Vermote", "Bart Soenens"],language:"Engels",journal:"PROCEEDINGS OF THE NATIONAL ACADEMY OF SCIENCES OF THE UNITED STATES OF AMERICA",ageGroup:["Jongeren","Jongvolwassenen","Volwassenen","Ouderen"],format:"Artikel",domain:["Gezondheid","Openbare veiligheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/a-global-experiment-on-motivating-social-distancing-during-the-covid-19-pandemic-chen-et-al.-2022.pdf",abstract:"",url:"https://www.pnas.org/doi/full/10.1073/pnas.2111091119"},
+{id:25,title:"Parental identity as a resource for parental adaptation during the COVID-19 lockdown",project:"Motivation Barometer",year:2021,authors:["Charlotte Schrooyen", "Bart Soenens", "Joachim Waterschoot", "Branko Vermote", "Sofie Morbée", "Wim Beyers", "Katrijn Brenning", "Lisa Dieleman", "Maarten Vansteenkiste"],language:"Engels",journal:"JOURNAL OF FAMILY PSYCHOLOGY",ageGroup:"Volwassenen",format:"Artikel",domain:["Gezondheid","Psychopathologie"],subdomain:["Covid-19","Internaliserend probleemgedrag"],mainsubjects:["Psychologische basisbehoeften"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/parental-identity-as-a-resource-for-parental-adaptation-during-the-covid-19-lockdown-schrooyen-et-al.-2021.pdf",abstract:"",url:"https://psycnet.apa.org/record/2021-65223-001"},
+{id:26,title:"How to unlock myself from boredom?' The role of mindfulness and a dual awareness- and action-oriented pathway during the COVID-19 lockdown",project:"Motivation Barometer",year:2021,authors:["Joachim Waterschoot", "Jolene Van der Kaap-Deeder", "Sofie Morbée", "Bart Soenens", "Maarten Vansteenkiste"],language:"Engels",journal:"PERSONALITY AND INDIVIDUAL DIFFERENCES",ageGroup:["Jongeren","Jongvolwassenen","Volwassenen"],format:"Artikel",domain:[],subdomain:[],mainsubjects:["Bewustzijn en mindfulness","Psychologische basisbehoeften"],subsubject:[],pdf:"",abstract:"",url:"https://www.sciencedirect.com/science/article/pii/S0191886921001045?via%3Dihub"},
+{id:27,title:"Adherence to COVID-19 measures: the critical role of autonomous motivation on a short- and long-term basis",project:"Motivation Barometer",year:2021,authors:["Sofie Morbée", "Branko Vermote", "Joachim Waterschoot", "Lisa Dieleman", "Bart Soenens", "Janne Vanhalst", "Gert-Jan De Muynck", "Maarten Vansteenkiste"],language:"Engels",journal:"MOTIVATION SCIENCE",ageGroup:["Jongeren","Jongvolwassenen","Volwassenen"],format:"Artikel",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie","Internalisatie"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/adherence-to-covid-19-measures-the-critical-role-of-autonomous-motivation-on-a-short--and-long-term-basis-morbee-et-al.-2021.pdf",abstract:"",url:"https://psycnet.apa.org/record/2021-95518-001"},
+{id:28,title:"Predicting vaccine uptake during COVID-19 crisis: a motivational approach",project:"Motivation Barometer",year:2021,authors:["Sofie Morbée", "Joachim Waterschoot", "Maarten Vansteenkiste"],language:"Engels",journal:"",ageGroup:["Jongeren","Jongvolwassenen","Volwassenen"],format:"Misc",domain:["Gezondheid"],subdomain:["Covid-19"],mainsubjects:["Intrinsieke motivatie"],subsubject:[],pdf:"http://https://watjoa.github.io/psyco-datahub/PDFARTIKELS/predicting-vaccine-uptake-during-covid-19-crisis-a-motivational-approach-schmitz-et-al.-2021.pdf",abstract:"",url:"https://www.sciencedirect.com/science/article/pii/S0264410X21015425?via%3Dihub"}
+];
+
+  // ---------- HELPERS ----------
+  const DATA_BY_ID = Object.fromEntries(DATA.map(d => [String(d.id), d]));
+  const $ = id => document.getElementById(id);
+  const toArray = v => Array.isArray(v) ? v.filter(Boolean) : (v ? [v] : []);
+  const create = (tag, html) => { const el=document.createElement(tag); el.innerHTML=html; return el; };
+
+  function getChecked(containerSelector){
+    return Array.from(document.querySelectorAll(`${containerSelector} input[type=checkbox]:checked`)).map(i=>i.value);
+  }
+
+  // ---------- BUILD FILTER BOXES (labels localized, values stay Dutch) ----------
+  function buildDomainBox(){
+    const box = $('domainBox'); box.innerHTML = '';
+    Object.entries(DOMAIN_TREE).forEach(([dom, subs])=>{
+      box.appendChild(create('label', `<input type="checkbox" class="domain" value="${dom}"> ${trLabel(dom)}`));
+      subs.forEach(sd => {
+        const l = document.createElement('label');
+        l.style.marginLeft='16px';
+        l.innerHTML = `<input type="checkbox" class="subdomain" value="${sd}"> ${trLabel(sd)}`;
+        box.appendChild(l);
+      });
+    });
+    box.addEventListener('change', onFilterChange);
+  }
+
+  function buildSubjectBox(){
+    const box = $('subjectBox'); box.innerHTML='';
+    Object.entries(SUBJECT_TREE).forEach(([parent, children])=>{
+      box.appendChild(create('label', `<input type="checkbox" class="subject-main" value="${parent}"> ${trLabel(parent)}`));
+      children.forEach(ch=>{
+        const l=document.createElement('label');
+        l.style.marginLeft='16px';
+        l.innerHTML = `<input type="checkbox" class="subject-sub" value="${ch}"> ${trLabel(ch)}`;
+        box.appendChild(l);
+      });
+    });
+    box.addEventListener('change', onFilterChange);
+  }
+
+  function buildCheckboxes(containerId, values, cls, labelMap=null){
+    const box = $(containerId); box.innerHTML='';
+    values.forEach(v=>{
+      const label = labelMap ? (labelMap[v] || v) : v;
+      box.appendChild(create('label', `<input type="checkbox" class="${cls}" value="${v}"> ${label}`));
+    });
+    box.addEventListener('change', onFilterChange);
+  }
+
+  function rebuildBoxes(){
+    // language and type displayed labels localized
+    const L = I18N[uiLang];
+    buildCheckboxes('langBox', LANGS, 'lang', L.langOptions);
+    buildCheckboxes('typeBox', TYPES, 'type', L.typeOptions);
+
+    // NEW: project box
+    buildCheckboxes('projectBox', PROJECT, 'project', null);
+
+    buildDomainBox();
+    buildSubjectBox();
+    buildCheckboxes('ageBox', AGE_GROUPS, 'age', L.ageMap);
+    buildCheckboxes('authorBox', AUTHORS, 'author', null);
+
+    // Restore selections already in URL/DOM
+    const sel = readSelectionsFromURL();
+    const restore = (container, vals)=>{
+      vals.forEach(v=>{
+        const box = [...document.querySelectorAll(`${container} input[type=checkbox]`)].find(i=>i.value===v);
+        if (box) box.checked = true;
+      });
+    };
+    restore('#domainBox', sel.mains);
+    restore('#domainBox', sel.subs);
+    restore('#subjectBox', sel.mainSubjects);
+    restore('#subjectBox', sel.subSubjects);
+    restore('#authorBox', sel.auth);
+    restore('#langBox', sel.lang);
+    restore('#typeBox', sel.type);
+    restore('#projectBox', sel.project); // NEW
+    restore('#ageBox', sel.ages);
+  }
+
+  // ---------- MATCHERS ----------
+  function matchAllInArray(itemArr, selected){
+    if(selected.length === 0) return true;
+    const arr = toArray(itemArr);
+    return selected.every(v => arr.includes(v));
+  }
+  function matchSingleAND(value, selected){
+    if(selected.length === 0) return true;
+    return selected.every(s => s === value);
+  }
+  function matchDomainAND(item, mains, subs){
+    if(mains.length === 0 && subs.length === 0) return true;
+    const doms  = toArray(item.domain);
+    const subds = toArray(item.subdomain);
+    if(mains.length > 0 && !mains.every(m => doms.includes(m))) return false;
+    if(subs.length  > 0 && !subs.every(s => subds.includes(s))) return false;
+    return true;
+  }
+  function matchSubjectsAND(item, mainSel, subSel){
+    const mains = toArray(item.mainsubjects);
+    const subs  = toArray(item.subsubject);
+    if(mainSel.length>0 && !mainSel.every(m=>mains.includes(m))) return false;
+    if(subSel.length>0  && !subSel.every(s=>subs.includes(s)))   return false;
+    return true;
+  }
+  function matchYear(item, yMin, yMax){
+    if(!yMin && !yMax) return true;
+    const y = item.year || 0;
+    if(yMin && y < yMin) return false;
+    if(yMax && y > yMax) return false;
+    return true;
+  }
+  function matchQuery(item, q){
+    if(!q) return true;
+    const hay = (item.title || '').toLowerCase();
+    return hay.includes(q.toLowerCase());
+  }
+
+  // ---------- FILTER PIPE ----------
+  function collectSelections(){
+    const selectedMains = Array.from(document.querySelectorAll('#domainBox input.domain:checked')).map(i=>i.value);
+    const selectedSubs  = Array.from(document.querySelectorAll('#domainBox input.subdomain:checked')).map(i=>i.value);
+    const selectedMainSubjects = Array.from(document.querySelectorAll('#subjectBox input.subject-main:checked')).map(i=>i.value);
+    const selectedSubSubjects  = Array.from(document.querySelectorAll('#subjectBox input.subject-sub:checked')).map(i=>i.value);
+
+    return {
+      mains: selectedMains,
+      subs: selectedSubs,
+      mainSubjects: selectedMainSubjects,
+      subSubjects: selectedSubSubjects,
+      auth: getChecked('#authorBox'),
+      lang: getChecked('#langBox'),
+      type: getChecked('#typeBox'),
+      project: getChecked('#projectBox'), // NEW
+      ages: getChecked('#ageBox'),
+      yMin: parseInt($('yearMin').value || ''),
+      yMax: parseInt($('yearMax').value || ''),
+      q:    $('q').value.trim(),
+      sortVal: $('sort').value
+    };
+  }
+
+  // ---------- URL SYNC ----------
+  function updateURLFromSelections(sel) {
+    const params = new URLSearchParams();
+    if (sel.q) params.set("q", sel.q);
+    if (sel.sortVal) params.set("sort", sel.sortVal);
+    if (sel.yMin) params.set("yMin", sel.yMin);
+    if (sel.yMax) params.set("yMax", sel.yMax);
+
+    const multi = {
+      mains: sel.mains, subs: sel.subs,
+      mainSubjects: sel.mainSubjects, subSubjects: sel.subSubjects,
+      auth: sel.auth, lang: sel.lang,
+      type: sel.type,
+      project: sel.project, // NEW
+      ages: sel.ages
+    };
+    for (const [key, arr] of Object.entries(multi)) {
+      arr.forEach(v => params.append(key, v));
+    }
+    // also keep UI language
+    params.set('uiLang', uiLang);
+
+    const qs = params.toString();
+    const newUrl = qs ? (window.location.pathname + "?" + qs) : window.location.pathname;
+    history.replaceState(null, "", newUrl);
+  }
+  function readSelectionsFromURL() {
+    const url = new URL(window.location.href);
+    const getArr = key => url.searchParams.getAll(key);
+
+    return {
+      mains: getArr("mains"),
+      subs: getArr("subs"),
+      mainSubjects: getArr("mainSubjects"),
+      subSubjects: getArr("subSubjects"),
+      auth: getArr("auth"),
+      lang: getArr("lang"),
+      type: getArr("type"),
+      project: getArr("project"), // NEW
+      ages: getArr("ages"),
+      yMin: parseInt(url.searchParams.get("yMin") || ""),
+      yMax: parseInt(url.searchParams.get("yMax") || ""),
+      q: url.searchParams.get("q") || "",
+      sortVal: url.searchParams.get("sort") || ""
+    };
+  }
+
+  function filterData(sel){
+    return DATA.filter(it =>
+      matchQuery(it, sel.q) &&
+      matchYear(it, Number.isNaN(sel.yMin)? null : sel.yMin, Number.isNaN(sel.yMax)? null : sel.yMax) &&
+      matchSingleAND(it.language, sel.lang) &&
+      matchSingleAND(it.format, sel.type) &&
+      matchAllInArray(it.project, sel.project) &&       // NEW
+      matchDomainAND(it, sel.mains, sel.subs) &&
+      matchSubjectsAND(it, sel.mainSubjects, sel.subSubjects) &&
+      matchAllInArray(it.authors, sel.auth) &&
+      matchAllInArray(it.ageGroup, sel.ages)
+    );
+  }
+
+  // ---------- SORT ----------
+  function sortItems(items, sortVal){
+    const arr = [...items];
+    if(sortVal === 'year_desc') arr.sort((a,b)=>(b.year||0)-(a.year||0));
+    else if(sortVal === 'year_asc') arr.sort((a,b)=>(a.year||0)-(b.year||0));
+    else if(sortVal === 'title_asc') arr.sort((a,b)=> (a.title||'').localeCompare(b.title||'','nl'));
+    else if(sortVal === 'title_desc') arr.sort((a,b)=> (b.title||'').localeCompare(a.title||'','nl'));
+    return arr;
+  }
+
+  // ---------- FACET DISABLING ----------
+  function updateFacets(){
+    const sel = collectSelections();
+
+    function testWithExtra(group, value){
+      const next = JSON.parse(JSON.stringify(sel));
+      if(!next[group].includes(value)) next[group].push(value);
+      return filterData(next).length > 0;
+    }
+    function updateBox(containerSelector, groupName, inputSelector){
+      document.querySelectorAll(`${containerSelector} ${inputSelector}`).forEach(inp=>{
+        const lbl = inp.closest('label');
+        if(inp.checked){
+          inp.disabled = false;
+          lbl.classList.remove('disabled');
+        }else{
+          const ok = testWithExtra(groupName, inp.value);
+          inp.disabled = !ok;
+          lbl.classList.toggle('disabled', !ok);
+        }
+        // Update label text on language switch
+        if (containerSelector==='#domainBox' || containerSelector==='#subjectBox') {
+          const textNode = [...lbl.childNodes].find(n=>n.nodeType===Node.TEXT_NODE);
+          if (textNode) textNode.nodeValue = ' ' + trLabel(inp.value);
+        }
+        if (containerSelector==='#langBox') {
+          const map = I18N[uiLang].langOptions;
+          const textNode = [...lbl.childNodes].find(n=>n.nodeType===Node.TEXT_NODE);
+          if (textNode) textNode.nodeValue = ' ' + (map[inp.value] || inp.value);
+        }
+        if (containerSelector==='#typeBox') {
+          const map = I18N[uiLang].typeOptions;
+          const textNode = [...lbl.childNodes].find(n=>n.nodeType===Node.TEXT_NODE);
+          if (textNode) textNode.nodeValue = ' ' + (map[inp.value] || inp.value);
+        }
+        if (containerSelector==='#ageBox') {
+          const map = I18N[uiLang].ageMap;
+          const textNode = [...lbl.childNodes].find(n=>n.nodeType===Node.TEXT_NODE);
+          if (textNode) textNode.nodeValue = ' ' + (map[inp.value] || inp.value);
+        }
+      });
+    }
+
+    updateBox('#domainBox', 'mains', '.domain');
+    updateBox('#domainBox', 'subs',  '.subdomain');
+    updateBox('#subjectBox','mainSubjects', '.subject-main');
+    updateBox('#subjectBox','subSubjects',  '.subject-sub');
+    updateBox('#authorBox', 'auth', 'input[type=checkbox]');
+    updateBox('#ageBox',    'ages', 'input[type=checkbox]');
+    updateBox('#langBox',   'lang', 'input[type=checkbox]');
+    updateBox('#typeBox',   'type', 'input[type=checkbox]');
+    updateBox('#projectBox','project','input[type=checkbox]'); // NEW
+  }
+
+  // ---------- RENDER ----------
+  function render(items){
+    $('count').textContent = items.length;
+    const list = $('list');
+    const L = I18N[uiLang];
+    if(items.length === 0){
+      list.innerHTML = `<p class="muted">${L.noResults}</p>`;
+      return;
+    }
+
+    const selectedMains = Array.from(document.querySelectorAll('#domainBox input.domain:checked')).map(i=>i.value);
+    const selectedSubs  = Array.from(document.querySelectorAll('#domainBox input.subdomain:checked')).map(i=>i.value);
+    const selectedMainSubjects = Array.from(document.querySelectorAll('#subjectBox input.subject-main:checked')).map(i=>i.value);
+    const selectedSubSubjects  = Array.from(document.querySelectorAll('#subjectBox input.subject-sub:checked')).map(i=>i.value);
+    const selectedAges     = getChecked('#ageBox');
+
+    list.innerHTML = items.map(it=>{
+      const authorsLine = toArray(it.authors).join(', ');
+
+      const domBadges = toArray(it.domain)
+        .filter(Boolean)
+        .map(d => `<span class="badge domain${selectedMains.includes(d) ? ' active' : ''}">${trLabel(d)}</span>`)
+        .join('');
+
+      const subBadges = toArray(it.subdomain)
+        .filter(Boolean)
+        .map(s => `<span class="badge${selectedSubs.includes(s) ? ' active' : ''}">${trLabel(s)}</span>`)
+        .join('');
+
+      const mainSubjBadges = toArray(it.mainsubjects)
+        .filter(Boolean)
+        .map(s => `<span class="badge subject-parent${selectedMainSubjects.includes(s) ? ' active' : ''}">${trLabel(s)}</span>`)
+        .join('');
+
+      const subSubjBadges = toArray(it.subsubject)
+        .filter(Boolean)
+        .map(s => `<span class="badge${selectedSubSubjects.includes(s) ? ' active' : ''}">${trLabel(s)}</span>`)
+        .join('');
+
+      const ageBadges = toArray(it.ageGroup)
+        .filter(Boolean)
+        .map(a => `<span class="badge${selectedAges.includes(a) ? ' active' : ''}">${I18N[uiLang].ageMap[a]||a}</span>`)
+        .join('');
+
+      const metaParts = [
+        it.year || '—',
+        (I18N[uiLang].langOptions[it.language] || it.language),
+        (I18N[uiLang].typeOptions[it.format] || it.format) + (it.journal ? ` · <em>${it.journal}</em>` : '')
+      ].filter(Boolean);
+
+      const linkIcon = it.url ? `<a href="${it.url}" target="_blank" rel="noopener" aria-label="${L.ariaOpenLink}" title="${L.ariaOpenLink}">🔗</a>` : '';
+      const pdfIcon  = it.pdf ? `<a href="${it.pdf}" target="_blank" rel="noopener" aria-label="${L.ariaOpenPdf}" title="${L.ariaOpenPdf}">📑</a>` : '';
+      const mailIcon = it.contactEmail ? `<a href="mailto:${encodeURIComponent(it.contactEmail)}?subject=${encodeURIComponent('information publication')}" aria-label="${L.ariaEmail}" title="${L.ariaEmail}">✉️</a>` : '';
+
+     return `
+  <article class="result" data-id="${it.id}">
+    <div class="icon-bar">
+      ${linkIcon}
+      ${pdfIcon}
+      ${mailIcon}
+    </div>
+
+    <div class="title-row">
+      <h3>${it.title}</h3>
+      ${((it.abstract && it.abstract.trim()) || it.doi || it.openalex) ? `
+        <button class="toggle-abs" data-id="${it.id}" aria-expanded="false" title="${L.abstractBtn}">
+          <span>${L.abstractBtn}</span>
+          <svg class="chev" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
+            <path d="M3 2 L7 5 L3 8 Z"></path>
+          </svg>
+        </button>
+      ` : ``}
+    </div>
+
+    <div class="muted">${metaParts.join(' · ')}</div>
+    <div class="authors"><span class="label">${L.metaAuthorsLabel}</span>${authorsLine || '—'}</div>
+
+    <div class="badges">
+      ${domBadges}
+      ${subBadges}
+      ${mainSubjBadges}
+      ${subSubjBadges}
+      ${ageBadges}
+    </div>
+
+    ${((it.abstract && it.abstract.trim()) || it.doi || it.openalex) ? `
+      <div id="abs-${it.id}" class="abstract-box hidden" role="region" aria-live="polite"></div>
+    ` : ``}
+  </article>`;
+    }).join('');
+  }
+
+  // ---------- YEAR SLIDER ----------
+  function updateYearHint(){
+    const years = DATA.map(d => d.year).filter(Number.isFinite);
+    const min = Math.min(...years), max = Math.max(...years);
+    const L = I18N[uiLang];
+    $('yearHint').textContent = L.rangeHint(min, max);
+  }
+  function initYearSlider(){
+    const years = DATA.map(d => d.year).filter(Number.isFinite);
+    const min = Math.min(...years);
+    const max = Math.max(...years);
+
+    const minEl = $('yearMin'), maxEl = $('yearMax'), fill = $('yearFill');
+    const minLab = $('yearMinLabel'), maxLab = $('yearMaxLabel');
+
+    [minEl, maxEl].forEach(el=>{ el.min=String(min); el.max=String(max); el.step="1"; });
+    minEl.value = String(min);
+    maxEl.value = String(max);
+
+    const update = ()=>{
+      let a = parseInt(minEl.value,10);
+      let b = parseInt(maxEl.value,10);
+      if(a > b){
+        const active = document.activeElement === minEl ? 'min' : 'max';
+        if(active === 'min') maxEl.value = String(a);
+        else minEl.value = String(b);
+        a = parseInt(minEl.value,10); b = parseInt(maxEl.value,10);
+      }
+      minLab.textContent = a; maxLab.textContent = b;
+      const pct = v => ((v - min)/(max - min))*100;
+      fill.style.left = pct(a)+'%';
+      fill.style.right = (100 - pct(b))+'%';
+      updateYearHint();
+      apply();
+    };
+    minEl.addEventListener('input', update);
+    maxEl.addEventListener('input', update);
+    update();
+  }
+
+  // ---------- APPLY ----------
+  function apply(){
+    const sel = collectSelections();
+    let out = filterData(sel);
+    out = sortItems(out, sel.sortVal);
+    render(out);
+    updateFacets();
+    if (!isHydrating) updateURLFromSelections(sel);
+  }
+
+  // ---------- INIT ----------
+  (function(){
+    // Hydrate UI language
+    setUiLang(getInitialUiLang());
+
+    // Build boxes with current language
+    rebuildBoxes();
+
+    // Jaar slider
+    initYearSlider();
+
+    // Restore from URL selections
+    const initial = readSelectionsFromURL();
+    $('q').value = initial.q || "";
+    $('sort').value = initial.sortVal || "";
+    if (!Number.isNaN(initial.yMin) && initial.yMin) $('yearMin').value = initial.yMin;
+    if (!Number.isNaN(initial.yMax) && initial.yMax) $('yearMax').value = initial.yMax;
+    $('yearMin').dispatchEvent(new Event('input', { bubbles: true }));
+    $('yearMax').dispatchEvent(new Event('input', { bubbles: true }));
+
+    // Search & sort & reset
+    $('q').addEventListener('input', apply);
+    $('sort').addEventListener('input', apply);
+    $('reset').addEventListener('click', ()=>{
+      document.querySelectorAll('input[type=checkbox]').forEach(i=>i.checked=false);
+      $('q').value=''; $('sort').value='';
+      const years = DATA.map(d => d.year).filter(Number.isFinite);
+      $('yearMin').value = Math.min(...years);
+      $('yearMax').value = Math.max(...years);
+      $('yearMin').dispatchEvent(new Event('input'));
+      $('yearMax').dispatchEvent(new Event('input'));
+      apply();
+    });
+
+    $('share').addEventListener('click', ()=>{
+      navigator.clipboard.writeText(window.location.href)
+        .then(()=> alert(I18N[uiLang].copiedOK))
+        .catch(()=> alert(I18N[uiLang].copiedFail));
+    });
+
+    // Language switch buttons
+    document.getElementById('btnNL').addEventListener('click', ()=> setUiLang('nl'));
+    document.getElementById('btnEN').addEventListener('click', ()=> setUiLang('en'));
+
+    // End hydration
+    isHydrating = false;
+    apply();
+  })();
+
+  // ---------- ABSTRACT TOGGLE ----------
+  document.getElementById('list').addEventListener('click', async (e) => {
+    const btn = e.target.closest('.toggle-abs');
+    if (!btn) return;
+
+    const id = String(btn.dataset.id);
+    const box = document.getElementById(`abs-${id}`);
+    const opened = !box.classList.contains('hidden');
+
+    if (opened) {
+      box.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      return;
+    }
+
+    if (!box.dataset.loaded) {
+      box.innerHTML = `<div class="loading">${I18N[uiLang].absLoading}</div>`;
+      try {
+        const html = await getAbstractHTML(id);
+        box.innerHTML = html || `<div class="muted">${I18N[uiLang].absNone}</div>`;
+      } catch (err) {
+        box.innerHTML = `<div class="muted">${I18N[uiLang].absError}</div>`;
+        console.error(err);
+      }
+      box.dataset.loaded = "1";
+    }
+
+    box.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+  });
+
+  // ---------- ABSTRACT HELPERS ----------
+  async function getAbstractHTML(id){
+    const it = DATA_BY_ID[id];
+    if (!it) return '';
+
+    if (it.abstract && String(it.abstract).trim()) {
+      return sanitizeAbstract(it.abstract);
+    }
+
+    if (it.doi) {
+      try {
+        const res = await fetch(`https://api.crossref.org/works/${encodeURIComponent(it.doi)}`);
+        if (res.ok) {
+          const json = await res.json();
+          const raw = json?.message?.abstract || '';
+          if (raw) return sanitizeAbstract(raw);
+        }
+      } catch (e) { /* ignore */ }
+    }
+
+    if (it.openalex) {
+      try {
+        const res = await fetch(`https://api.openalex.org/works/${encodeURIComponent(it.openalex)}`);
+        if (res.ok) {
+          const json = await res.json();
+          const raw = json?.abstract
+            || (json?.abstract_inverted_index ? flattenOpenAlex(json.abstract_inverted_index) : '');
+          if (raw) return sanitizeAbstract(raw);
+        }
+      } catch (e) { /* ignore */ }
+    }
+    return '';
+  }
+
+  function sanitizeAbstract(raw){
+    let txt = String(raw)
+      .replace(/<\/?jats:\w+[^>]*>/g, '')
+      .replace(/<\/?p[^>]*>/g, '\n\n')
+      .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    txt = txt.trim();
+    const paras = txt.split(/\n{2,}/).map(p => `<p>${escapeHTML(p)}</p>`).join('');
+    return `<div>${paras || escapeHTML(txt)}</div>`;
+  }
+  function escapeHTML(s){
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+  function flattenOpenAlex(idx){
+    if (!idx) return '';
+    const entries = Object.entries(idx).flatMap(([word, positions]) => positions.map(pos => [pos, word]));
+    entries.sort((a,b)=>a[0]-b[0]);
+    return entries.map(e=>e[1]).join(' ').replace(/\s+/g,' ').trim();
+  }
+
+  // Generic handler
+  function onFilterChange(){ apply(); }
+  </script>
+</body>
+</html>
